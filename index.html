@@ -1,0 +1,325 @@
+# The Skate Guys — Static Site (Vercel + GitHub)
+
+This repo hosts a single-page static site (`index.html`) for lessons and event hire.
+
+## Quick Start (first time)
+1. Create a new GitHub repo (e.g. `the-skate-guys-site`).
+2. Upload **index.html** and **README.md** to the repo **root** and commit to **main**.
+3. Go to **Vercel → New Project → Import Git Repository** and choose your repo.
+   - Framework: **Other**
+   - Build Command: **(leave empty)**
+   - Output Directory: **(leave empty)**
+   - Root Directory: **/** (or the folder that contains `index.html`)
+4. Click **Deploy** → your site is live at `https://<project>.vercel.app`.
+
+## Editing the Site
+- Edit `index.html` on GitHub (click **Edit**, then **Commit**) — Vercel auto-deploys.
+- Common edits:
+  - Contact (bottom script):
+    ```js
+    const CONTACT = { WHATSAPP_E164: '18682766878', EMAIL: 'info.theskateguys@gmail.com' };
+    ```
+  - Locations: update both the **Locations list** and the **Preferred Location** `<select>`.
+  - Pricing & packages: change the text in Pricing / Hire sections.
+  - Spacing/layout: tweak CSS variables at the top of the file.
+- Troubleshooting:
+  - **404 on vercel.app** → Ensure `index.html` is in the **Root Directory** Vercel uses.
+  - **404 on custom domain** → DNS not configured yet; verify “Valid Configuration” in Vercel Domains.
+  - **Deploy failed** → For this static file, leave Build/Output blank and Framework = Other.
+
+© 2025 The Skate Guys. All rights reserved.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Skate Guys Hub — Lessons & Event Hire</title>
+  <style>
+    :root{
+      --cyan:#00FFFF; --pink:#FF3366;
+      --bg:#0a0a0a; --ink:#ffffff; --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.12); --soft: rgba(255,255,255,.06);
+      --gap: 20px; --gap-lg: 28px;
+      --section-pad: 80px; --section-pad-md: 96px;
+      --card-pad: 24px; --card-pad-lg: 28px;
+      --field-gap: 16px; --field-gap-lg: 22px;
+      --field-py: 12px; --field-px: 14px;
+      --stack-gap-sm: 12px; --stack-gap-md: 16px;
+      --radius: 16px;
+    }
+    html,body{height:100%}
+    body{
+      margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink); background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(0,255,255,.12), rgba(0,0,0,0) 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(255,51,102,.12), rgba(0,0,0,0) 55%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{ color: var(--cyan); text-decoration: none }
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px }
+    header{ position: sticky; top:0; z-index:10; backdrop-filter: blur(8px); background: rgba(0,0,0,.4); border-bottom: 1px solid var(--line) }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0 }
+    .brand{ display:flex; align-items:center; gap:10px }
+    .brand .dot{ width:32px; height:32px; border-radius:10px; background: linear-gradient(135deg, var(--cyan), var(--pink)) }
+    .chips{ display:flex; gap:10px; flex-wrap:wrap }
+    .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid var(--line); border-radius:999px; background: var(--soft); color: var(--muted); font-size:12px }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid transparent; cursor:pointer; transition: transform .15s ease }
+    .btn:hover{ transform: scale(1.02) } .btn:active{ transform: scale(.98) }
+    .btn-primary{ background: var(--cyan); color:#000 } .btn-accent{ background: var(--pink); color:#fff } .btn-ghost{ background: var(--soft); color:#fff; border-color: var(--line) }
+    .hero h1{ font-size: clamp(28px, 6vw, 60px); line-height:1.05; margin:10px 0 0 } .hero p{ color: var(--muted); max-width:720px }
+    section{ padding: var(--section-pad) 0; border-top:1px solid var(--line) } @media(min-width:1024px){ section{ padding: var(--section-pad-md) 0 } }
+    h2{ font-size: clamp(22px, 3.5vw, 40px); margin:10px 0 24px }
+    .kicker{ letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.6); font-size:12px; display:flex; align-items:center; gap:10px } .kicker .bar{ width:32px; height:1px; background:var(--line) }
+    .grid{ display:grid; gap: var(--gap) } @media(min-width:768px){ .grid{ gap: var(--gap-lg) } .grid-2{ grid-template-columns:1fr 1fr } .grid-3{ grid-template-columns:repeat(3,1fr) } }
+    .card{ border:1px solid var(--line); background: var(--soft); border-radius: var(--radius); padding: var(--card-pad) } @media(min-width:1024px){ .card{ padding: var(--card-pad-lg) } }
+    .muted{ color: var(--muted) } .list{ list-style:disc; padding-left:18px }
+    .price{ font-size:30px; font-weight:800 } .unit{ font-size:14px; vertical-align:super; color:var(--muted); margin-left:2px }
+    label{ display:block; font-size:13px; color:rgba(255,255,255,.9); margin-bottom:8px }
+    input,select,textarea{ width:100%; background: rgba(0,0,0,.35); color:#fff; border:1px solid var(--line); border-radius:12px; padding: var(--field-py) var(--field-px); outline:none }
+    input+*, select+*, textarea+*{ margin-top:6px }
+    .row{ display:grid; gap: var(--field-gap) } @media(min-width:768px){ .row{ gap: var(--field-gap-lg) } .row-2{ grid-template-columns:1fr 1fr } }
+    footer{ text-align:center; color:var(--muted); padding:48px 0; border-top:1px solid var(--line) }
+    .wheel{ width:30px; height:30px; color:rgba(255,255,255,.85) }
+    .stack-8>*+*{ margin-top: var(--stack-gap-sm) } .stack-12>*+*{ margin-top: var(--stack-gap-md) }
+    details#diagnostics{ border-top:1px dashed var(--line); padding-top:12px; margin-top:12px } details#diagnostics summary{ cursor:pointer; color: var(--muted) }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><div class="dot"></div><strong>The Skate Guys Hub</strong></div>
+      <div class="chips">
+        <span class="chip"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--pink)"></span> Limited Spots</span>
+        <span class="chip">All Ages</span><span class="chip">Beginner Friendly</span>
+      </div>
+      <div><a class="btn btn-primary" id="navWhatsApp" href="#" target="_blank" rel="noopener">WhatsApp</a></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="chips" style="margin-bottom:12px"><span class="chip">Members-first Access</span><span class="chip">Safer Floors</span></div>
+        <h1>Small circle. <span style="color:var(--cyan)">Big progress.</span> Real community.</h1>
+        <p>All-ages rollerskating lessons and event experiences across Trinidad & Tobago. We keep numbers capped for safety and personal coaching.</p>
+        <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap">
+          <a class="btn btn-primary" href="#learn">Book a Class</a>
+          <a class="btn btn-accent" href="#hire">Hire Us</a>
+          <a class="btn btn-ghost" href="#perks">Why Join</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="perks">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Members Only</div>
+        <h2>Why families and skaters choose TSG</h2>
+        <div class="grid grid-3">
+          <div class="card stack-8"><svg class="wheel" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><strong>Small Groups</strong><p class="muted">Safer floors and 1‑on‑1 feedback.</p></div>
+          <div class="card stack-8"><svg class="wheel" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><strong>Priority Access</strong><p class="muted">Members‑first sessions and rentals.</p></div>
+          <div class="card stack-8"><svg class="wheel" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><strong>Progress Tracking</strong><p class="muted">Milestones for kids and adults.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Simple Pricing</div>
+        <h2>Start simple. Scale as you go.</h2>
+        <div class="grid grid-3">
+          <div class="card"><div class="stack-12"><strong>Drop‑in Class</strong><div><span class="price">$60</span><span class="unit">TTD / 1 hr</span></div><p class="muted">Great for first‑timers.</p><ul class="list"><li>All ages • Beginner friendly</li><li>Small group coaching</li><li>Add rentals if needed</li></ul><a class="btn btn-primary" href="#learn">Book a Class</a></div></div>
+          <div class="card" style="outline:2px solid var(--pink)"><div class="stack-12"><strong>Monthly (4 + 1 Free)</strong><div><span class="price">$240</span><span class="unit">TTD / month</span></div><p class="muted">Best value for consistent progress.</p><ul class="list"><li>4 sessions + 1 free</li><li>Priority booking window</li><li>Progress card included</li></ul><a class="btn btn-primary" href="#learn">Join Monthly</a></div></div>
+          <div class="card"><div class="stack-12"><strong>Event Hire</strong><div><span class="price">Custom</span></div><p class="muted">Limited dates each month.</p><ul class="list"><li>Birthdays • Schools • Corporate</li><li>We can bring rentals & games</li><li>Venue guidance available</li></ul><a class="btn btn-accent" href="#hire">Get a Quote</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>On‑Demand Scheduling</div>
+        <h2>We match your availability to a coach</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <strong>How it works</strong>
+            <ul class="list">
+              <li>Tell us your <strong>preferred days/times</strong> in the form.</li>
+              <li>We match you with an available coach at your chosen location.</li>
+              <li>We confirm on WhatsApp with your booking & payment details.</li>
+            </ul>
+            <p class="muted">Most members choose after‑school/evenings or weekend mornings.</p>
+          </div>
+          <div class="card">
+            <strong>Locations</strong>
+            <ul class="list">
+              <li>JD&#39;s Skating Rink — Arima</li>
+              <li>River Ranch — Arima (off Calvary Hill)</li>
+              <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
+              <li>SK868 — South Trinidad</li>
+              <li>Larry Gomes Stadium — Arima</li>
+              <li>Canoe Bay Road — Tobago</li>
+              <li>Montgomery Grounds — Tobago</li>
+            </ul>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:14px">Last updated: 15 Sept 2025. Sessions are arranged per coach availability—spots are capped for safety.</p>
+      </div>
+    </section>
+
+    <section id="learn">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>All Ages</div>
+        <h2>Learn to Skate — book your spot</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <form id="formLearn" class="stack-12">
+              <div class="row row-2">
+                <div><label>Full Name</label><input name="name" placeholder="Your name" required /></div>
+                <div><label>WhatsApp Number</label><input name="phone" placeholder="868‑276‑6878" /></div>
+              </div>
+              <div class="row row-2">
+                <div><label>Email (optional)</label><input name="email" type="email" placeholder="you@example.com" /></div>
+                <div><label>Age / Group</label><select name="age"><option>All Ages</option><option>Kids (5–9)</option><option>Preteens (10–12)</option><option>Teens (13–17)</option><option>Adults (18+)</option><option>Family (Mixed)</option></select></div>
+              </div>
+              <div class="row row-2">
+                <div><label>Skill Level</label><select name="level"><option>Beginner</option><option>Improver</option><option>Intermediate</option><option>Advanced</option></select></div>
+                <div><label>Preferred Location</label><select name="location"><option>JD&#39;s Skating Rink (Arima)</option><option>River Ranch (Arima — off Calvary Hill)</option><option>Rootsyardd (Skallywag) — Chaguaramas (West)</option><option>SK868 (South)</option><option>Larry Gomes Stadium (Arima)</option><option>Canoe Bay Road (Tobago)</option><option>Montgomery Grounds (Tobago)</option><option>Other / Not sure</option></select></div>
+              </div>
+              <div class="row row-2">
+                <div><label>Rental Skates Needed?</label><select name="rentals"><option>No</option><option>Yes</option></select></div>
+                <div><label>Shoe Size (if rentals)</label><input name="size" placeholder="US 6" /></div>
+              </div>
+              <div class="row row-2">
+                <div><label>Preferred Days/Times</label><input name="date" placeholder="Your best windows (e.g. Tue/Thu 5–7pm or Sat morning)" /></div>
+                <div><label>Notes (optional)</label><input name="message" placeholder="Goals, concerns, access needs" /></div>
+              </div>
+              <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px">
+                <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
+                <a id="learnEmail" class="btn btn-ghost" href="#">Email Us</a>
+              </div>
+              <p class="muted">We cap class sizes for safety & personal coaching. Tell us your preferred days/times; we’ll reach out to confirm your booking. If the month is full, we’ll offer a waitlist + free community session invite.</p>
+            </form>
+          </div>
+          <div class="stack-12">
+            <div class="card"><strong>Age Groups</strong><ul class="list"><li>Kids (5–9) • Preteens (10–12) • Teens (13–17) • Adults (18+) • Family</li><li>Absolute beginners welcome</li></ul></div>
+            <div class="card"><strong>Locations</strong><ul class="list"><li>JD&#39;s Skating Rink — Arima</li><li>River Ranch — Arima (off Calvary Hill)</li><li>Rootsyardd (Skallywag) — Chaguaramas (West)</li><li>SK868 — South Trinidad</li><li>Larry Gomes Stadium — Arima</li><li>Canoe Bay Road — Tobago</li><li>Montgomery Grounds — Tobago</li></ul></div>
+            <div class="card"><strong>Rentals</strong><p class="muted">Limited sizes available. Add your shoe size if you need rentals. Helmets recommended.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hire">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Events & Experiences</div>
+        <h2>Hire us — birthdays, schools, corporate & pop‑ups</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <form id="formHire" class="stack-12">
+              <div class="row row-2">
+                <div><label>Full Name</label><input name="name" placeholder="Your name" required /></div>
+                <div><label>WhatsApp Number</label><input name="phone" placeholder="868‑276‑6878" /></div>
+              </div>
+              <div class="row row-2">
+                <div><label>Email (optional)</label><input name="email" type="email" placeholder="you@example.com" /></div>
+                <div><label>Event Type</label><select name="type"><option>Birthday Party</option><option>School / Youth Program</option><option>Corporate Team Day</option><option>Pop‑up Rink / Festival</option><option>Rink Launch Consulting</option><option>Other</option></select></div>
+              </div>
+              <div class="row row-2">
+                <div><label>Preferred Date/Time</label><input name="date" placeholder="Your preferred windows (e.g. Sat 3–6pm or Tue/Thu evenings)" /></div>
+                <div><label>Venue / Address</label><input name="venue" placeholder="Location or 'Need a venue'" /></div>
+              </div>
+              <div class="row row-2">
+                <div><label>Expected Headcount</label><input name="headcount" placeholder="e.g. 25" /></div>
+                <div><label>Notes (optional)</label><input name="message" placeholder="Vibe, age range, rentals, DJ, games" /></div>
+              </div>
+              <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px">
+                <button class="btn btn-accent" type="submit">Send via WhatsApp</button>
+                <a id="hireEmail" class="btn btn-ghost" href="#">Email Us</a>
+              </div>
+              <p class="muted">Dates are limited. A booking confirmation & deposit secures your date. Tell us your preferred dates/times and we’ll reach out to confirm. We’ll share packages on reply.</p>
+            </form>
+          </div>
+          <div class="stack-12">
+            <div class="card"><strong>Birthday Party — from $2,400 TTD</strong><ul class="list"><li>2‑hour experience • up to 12 skaters</li><li>2 coaches • floor games • music playlist</li><li>Rental skates (limited sizes) on request</li><li>Add‑ons: extra hour $800 • photo/drone add‑on $500</li></ul></div>
+            <div class="card"><strong>School / Youth Day — from $4,800 TTD</strong><ul class="list"><li>3‑hour program • up to 30 students in rotations</li><li>Safety briefing • beginner coaching • mini‑challenges</li><li>Options: rentals, certificates, parent showcase</li></ul></div>
+            <div class="card"><strong>Corporate Team Day — from $6,000 TTD</strong><ul class="list"><li>3‑hour experience • up to 25 staff</li><li>Team relays • dance‑off • fun skill labs</li><li>Options: rentals, MC, trophies, media add‑on</li></ul></div>
+            <div class="card"><strong>Pop‑up Rink / Festival — POA</strong><ul class="list"><li>Day‑rate engagement • programming & games</li><li>We integrate with your event schedule</li><li>Ask about venue requirements & rentals</li></ul></div>
+            <div class="card"><strong>Rink Launch Consulting — from $5,500 TTD</strong><ul class="list"><li>2‑week launch sprint: SOPs, staff training, floor rules</li><li>Opening weekend programming & marketing scripts</li><li>Follow‑up report & revenue ideas</li></ul></div>
+            <p class="muted">All packages subject to venue suitability, availability of rental sizes, and a 20% booking deposit. Travel fees may apply outside core hubs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Quick Answers</div>
+        <h2>FAQ</h2>
+        <div class="grid grid-2">
+          <div class="card"><strong>Is it beginner friendly?</strong><p class="muted">Absolutely. We teach from first stand‑up to advanced dance moves.</p></div>
+          <div class="card"><strong>Do you accept all ages?</strong><p class="muted">Yes—kids, teens, adults, and family groups. We place by comfort level.</p></div>
+          <div class="card"><strong>Do I need my own skates?</strong><p class="muted">BYO if you have; otherwise request rentals and add your shoe size.</p></div>
+          <div class="card"><strong>How do I pay?</strong><p class="muted">We’ll confirm your spot and share secure payment options in WhatsApp.</p></div>
+          <div class="card"><strong>Are classes crowded?</strong><p class="muted">No—spots are capped to keep floors safe and coaching personal.</p></div>
+          <div class="card"><strong>Can I try before joining?</strong><p class="muted">Yes—ask for our next free Community Day or book a single class.</p></div>
+        </div>
+        <details id="diagnostics"><summary>Diagnostics & Tests</summary>
+          <div id="testlog" class="muted" style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"></div>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>We’re Friendly</div>
+        <h2>Contact & Socials</h2>
+        <div class="grid grid-3">
+          <div class="card"><strong>WhatsApp</strong><p class="muted">Fastest for bookings & quick questions.</p><div style="margin-top:10px"><a class="btn btn-primary" id="ctaWhatsApp" href="#" target="_blank" rel="noopener">Message Us</a></div></div>
+          <div class="card"><strong>Email</strong><p class="muted">For invoices, group bookings, and partnerships.</p><div style="margin-top:10px"><a class="btn btn-ghost" id="ctaEmail" href="#">Send Email</a></div></div>
+          <div class="card"><strong>Social</strong><p class="muted">Follow for schedules, clips, and events.</p><div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap"><a class="btn btn-ghost" id="ctaInstagram" href="https://instagram.com/theskateguys" target="_blank" rel="noopener">Instagram</a><a class="btn btn-ghost" id="ctaTiktok" href="https://tiktok.com/@theskateguys" target="_blank" rel="noopener">TikTok</a></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© <span id="year"></span> The Skate Guys Hub. All rights reserved.</div></footer>
+
+  <noscript><div class="wrap" style="padding:16px; color:#ffbdbd">This page uses a little JavaScript to open WhatsApp with your details. Please enable JavaScript or use the email link.</div></noscript>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const CONTACT = { WHATSAPP_E164: '18682766878', EMAIL: 'info.theskateguys@gmail.com' };
+      const yearEl = document.getElementById('year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
+      const waUrl = `https://wa.me/${CONTACT.WHATSAPP_E164}`;
+      const navWhatsApp = document.getElementById('navWhatsApp'); if (navWhatsApp) navWhatsApp.href = waUrl;
+      const ctaWhatsApp = document.getElementById('ctaWhatsApp'); if (ctaWhatsApp) ctaWhatsApp.href = waUrl;
+      const ctaEmail = document.getElementById('ctaEmail'); if (ctaEmail) ctaEmail.href = `mailto:${CONTACT.EMAIL}`;
+      function openWhatsApp(message){ const url = `${waUrl}?text=${encodeURIComponent(message)}`; window.open(url, '_blank'); }
+
+      const formLearn = document.getElementById('formLearn');
+      if (formLearn) formLearn.addEventListener('submit', (e)=>{ e.preventDefault(); const fd = new FormData(e.target);
+        const msg = ['TSG Inquiry: Learn to Skate',`Name: ${fd.get('name')||''}`,fd.get('phone')?`Phone: ${fd.get('phone')}`:'',fd.get('email')?`Email: ${fd.get('email')}`:'',`Age/Group: ${fd.get('age')}`,`Level: ${fd.get('level')}`,`Preferred Location: ${fd.get('location')}`,`Rental Needed: ${fd.get('rentals')}`,fd.get('size')?`Shoe Size: ${fd.get('size')}`:'',fd.get('date')?`Preferred Date/Time: ${fd.get('date')}`:'',fd.get('message')?`Notes: ${fd.get('message')}`:''].filter(Boolean).join('\n'); openWhatsApp(msg); });
+
+      const formHire = document.getElementById('formHire');
+      if (formHire) formHire.addEventListener('submit', (e)=>{ e.preventDefault(); const fd = new FormData(e.target);
+        const msg = [`TSG Inquiry: Hire Us — ${fd.get('type')}`,`Name: ${fd.get('name')||''}`,fd.get('phone')?`Phone: ${fd.get('phone')}`:'',fd.get('email')?`Email: ${fd.get('email')}`:'',fd.get('venue')?`Venue: ${fd.get('venue')}`:'',fd.get('date')?`Date/Time: ${fd.get('date')}`:'',fd.get('headcount')?`Headcount: ${fd.get('headcount')}`:'',fd.get('message')?`Notes: ${fd.get('message')}`:''].filter(Boolean).join('\n'); openWhatsApp(msg); });
+
+      const learnEmail = document.getElementById('learnEmail');
+      if (learnEmail) learnEmail.addEventListener('click', function(){ const sub=encodeURIComponent('TSG Learn to Skate Inquiry'); const body=encodeURIComponent(`Hi TSG,\n\nI'd like to book a class. Please contact me via WhatsApp or email.\n\nThanks!`); this.href=`mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`; });
+      const hireEmail = document.getElementById('hireEmail');
+      if (hireEmail) hireEmail.addEventListener('click', function(){ const sub=encodeURIComponent('TSG Event Hire Inquiry'); const body=encodeURIComponent(`Hi TSG,\n\nWe'd like to hire you for an event. Please contact us.\n\nThanks!`); this.href=`mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`; });
+
+      try {
+        const log = document.getElementById('testlog'); const lines = [];
+        function pass(m){ lines.push('✅ '+m); } function fail(m){ lines.push('❌ '+m); }
+        const sample='Line1\nLine2 & more'; const enc=encodeURIComponent(sample); if(/%0A/.test(enc)&&/%26/.test(enc)) pass('encodeURIComponent ok'); else fail('encodeURIComponent failed');
+        const gridGap = parseInt(getComputedStyle(document.querySelector('.grid')).gap); if (gridGap>=18) pass('Grid gap ok'); else fail('Grid gap small');
+        const cardPad = parseInt(getComputedStyle(document.querySelector('.card')).paddingLeft); if (cardPad>=22) pass('Card padding ok'); else fail('Card padding small');
+        const opts = Array.from(document.querySelectorAll('select[name="location"] option')).map(o=>o.textContent.trim());
+        ['JD\'s Skating Rink (Arima)','River Ranch (Arima — off Calvary Hill)','Rootsyardd (Skallywag) — Chaguaramas (West)'].forEach(v=>{ if(opts.includes(v)) pass('Location: '+v); else fail('Missing location: '+v); });
+        if (log) log.innerHTML = lines.map(l=>`<div>${l}</div>`).join('');
+      } catch(e){ console.warn('[TSG] test warning', e); }
+    });
+  </script>
+</body>
+</html>

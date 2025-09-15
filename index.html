@@ -4,87 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Skate Guys Hub — Lessons & Event Hire</title>
-  <style>
-    :root{
-      /* Brand */
-      --cyan:#00FFFF; --pink:#FF3366;
-      --bg:#0a0a0a; --ink:#ffffff; --muted: rgba(255,255,255,.72);
-      --line: rgba(255,255,255,.12);
-      /* Surfaces */
-      --card-bg: rgba(255,255,255,.05);
-      --field-bg: rgba(255,255,255,.10); /* darker than card to visibly separate */
-      /* Layout spacing */
-      --gap: 24px;            /* default grid gap */
-      --gap-lg: 32px;         /* grid gap >=768px */
-      --section-pad: 84px;    /* section padding */
-      --section-pad-md: 104px;/* section padding >=1024px */
-      --card-pad: 26px;       /* card padding */
-      --card-pad-lg: 32px;    /* card padding >=1024px */
-      --field-gap: 18px;      /* gap between fields */
-      --field-gap-lg: 28px;   /* gap between fields >=768px */
-      --field-py: 13px;       /* input vertical pad */
-      --field-px: 16px;       /* input horizontal pad */
-      --stack-gap-sm: 14px;   /* stack-8 actual gap */
-      --stack-gap-md: 18px;   /* stack-12 actual gap */
-      --radius: 16px;
-    }
-    html,body{height:100%}
-    body{
-      margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--ink); background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
-        radial-gradient(900px 600px at 100% 0%, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
-        var(--bg);
-      line-height:1.5;
-    }
-    a{ color: var(--cyan); text-decoration: none }
-    .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px }
-    header{ position: sticky; top:0; z-index:10; backdrop-filter: blur(8px); background: rgba(0,0,0,.4); border-bottom: 1px solid var(--line) }
-    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0 }
-    .brand{ display:flex; align-items:center; gap:10px }
-    .brand .dot{ width:32px; height:32px; border-radius:10px; background: linear-gradient(135deg, var(--cyan), var(--pink)) }
-    .chips{ display:flex; gap:10px; flex-wrap:wrap }
-    .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid var(--line); border-radius:999px; background: rgba(255,255,255,.06); color: var(--muted); font-size: 12px }
-    .btn{ display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid transparent; cursor:pointer; transition: transform .15s ease }
-    .btn:hover{ transform: scale(1.02) } .btn:active{ transform: scale(.98) }
-    .btn-primary{ background: var(--cyan); color:#000 }
-    .btn-accent{ background: var(--pink); color:#fff }
-    .btn-ghost{ background: rgba(255,255,255,.06); color:#fff; border-color: var(--line) }
-    .hero h1{ font-size: clamp(28px, 6vw, 60px); line-height:1.05; margin: 10px 0 0 }
-    .hero p{ color: var(--muted); max-width: 720px }
-    section{ padding: var(--section-pad) 0; border-top: 1px solid var(--line) }
-    @media(min-width:1024px){ section{ padding: var(--section-pad-md) 0 } }
-    h2{ font-size: clamp(22px, 3.5vw, 40px); margin: 10px 0 24px }
-    .kicker{ letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6); font-size: 12px; display:flex; align-items:center; gap:10px }
-    .kicker .bar{ width: 32px; height: 1px; background: var(--line) }
-    .grid{ display:grid; gap: var(--gap) }
-    @media(min-width: 768px){ .grid{ gap: var(--gap-lg) } .grid-2{ grid-template-columns: 1fr 1fr } .grid-3{ grid-template-columns: repeat(3,1fr) } }
-    .card{ border:1px solid var(--line); background: var(--card-bg); border-radius: var(--radius); padding: var(--card-pad); position: relative; overflow: hidden }
-    @media(min-width:1024px){ .card{ padding: var(--card-pad-lg) } }
-    .muted{ color: var(--muted) }
-    .list{ list-style: disc; padding-left: 18px }
-    .price{ font-size: 30px; font-weight: 800 } .unit{ font-size: 14px; vertical-align: super; color: var(--muted); margin-left: 2px }
+  <style><style>
+  /* ===== Darker cards + lighter fields ===== */
+  :root{
+    --card-bg: rgba(0,0,0,.72);     /* darker than before */
+    --field-bg: rgba(255,255,255,.18); /* lighter fields for contrast */
+  }
 
-    /* ------- Form spacing & visual separation ------- */
-    .row{ display:grid; gap: var(--field-gap) }
-    @media(min-width:768px){ .row{ gap: var(--field-gap-lg) } .row-2{ grid-template-columns: minmax(0,1fr) minmax(0,1fr) } }
-    .row > div{ display:grid; gap: 10px } /* space between label and input */
-    label{ font-size: 13px; color: rgba(255,255,255,.9); margin:0 }
-    input,select,textarea{
-      width:100%; background: var(--field-bg); color:#fff; border:1px solid rgba(255,255,255,.18); border-radius: 14px;
-      padding: var(--field-py) var(--field-px); outline:none; box-shadow: 0 0 0 1px rgba(0,0,0,0) inset;
-    }
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(0,255,255,.6); box-shadow: 0 0 0 2px rgba(0,255,255,.25);
-    }
+  .card{
+    background: linear-gradient(180deg, rgba(0,0,0,.80), rgba(0,0,0,.66));
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 10px 28px rgba(0,0,0,.50), inset 0 1px rgba(255,255,255,.05);
+    backdrop-filter: saturate(120%) blur(1.5px);
+    isolation: isolate; /* keeps background glow from bleeding between cards */
+  }
 
-    footer{ text-align:center; color: var(--muted); padding: 48px 0; border-top:1px solid var(--line) }
-    .wheel{ width:30px; height:30px; color: rgba(255,255,255,.85) }
-    .stack-8>*+*{ margin-top: var(--stack-gap-sm) }
-    .stack-12>*+*{ margin-top: var(--stack-gap-md) }
-    details#diagnostics { border-top:1px dashed var(--line); padding-top:12px; margin-top:12px }
-    details#diagnostics summary{ cursor:pointer; color: var(--muted) }
-  </style>
+  input,select,textarea{
+    background: var(--field-bg);
+    border: 1px solid rgba(255,255,255,.26);
+    border-radius: 14px;
+  }
+  input::placeholder, textarea::placeholder{ color: rgba(255,255,255,.58) }
+
+  /* Slightly more space between fields */
+  .row{ gap: calc(var(--field-gap) + 6px) }
+  @media(min-width:768px){
+    .row{ gap: calc(var(--field-gap-lg) + 6px) }
+  }
+
+  /* Kicker bar alignment/visibility */
+  .kicker{ align-items:center; min-height:24px }
+  .kicker .bar{ width:40px; opacity:.55; transform: translateY(1px) }
+</style>
 </head>
 <body>
   <header>

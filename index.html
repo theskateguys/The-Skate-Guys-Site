@@ -11,7 +11,6 @@
   <meta property="og:image" content="https://your-domain/og-card.jpg">
   <meta property="og:url" content="https://your-domain/">
   <meta name="twitter:card" content="summary_large_image">
-
   <title>The Skate Guys Hub — Skate Class & Event Hire</title>
 
   <style>
@@ -22,12 +21,12 @@
       --line: rgba(255,255,255,.12);
       /* Surfaces */
       --card-bg: rgba(255,255,255,.05);
-      --field-bg: rgba(255,255,255,.10); /* darker than card to visibly separate */
+      --field-bg: rgba(255,255,255,.10);
       /* Layout spacing */
       --gap: 13px;            /* default grid gap */
       --gap-lg: 32px;         /* grid gap >=768px */
       --section-pad: 30px;    /* section padding */
-      --section-pad-md: 85px;/* section padding >=1024px */
+      --section-pad-md: 85px; /* section padding >=1024px */
       --card-pad: 40px;       /* card padding */
       --card-pad-lg: 35px;    /* card padding >=1024px */
       --field-gap: 16px;      /* gap between fields */
@@ -37,11 +36,12 @@
       --stack-gap-sm: 13px;   /* stack-8 actual gap */
       --stack-gap-md: 13px;   /* stack-12 actual gap */
       --radius: 15px;
-    /* Align glows to the content grid */
+
+      /* Align glows to the content grid (.wrap) */
       --wrap: 1100px;     /* must match .wrap max-width */
       --page-pad: 16px;   /* must match .wrap side padding */
       --gutter: max((100vw - var(--wrap)) / 2, var(--page-pad));
-}
+    }
 
     /* Height + base typography */
     html,body{ min-height:100% }
@@ -51,30 +51,28 @@
       color:var(--ink);
       background: var(--bg); /* gradients provided by body::before */
       line-height:1.9;
+      position: relative;
     }
 
-    /* Fixed gradient layer pinned to viewport (prevents misalignment) */
-    body{ position: relative; }
-   body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
+    /* Fixed gradient layer pinned to viewport and aligned to grid */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        radial-gradient(600px 380px at center, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
+        radial-gradient(520px 340px at center, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
+        linear-gradient(var(--bg), var(--bg));
+      background-repeat: no-repeat;
+      /* cyan hugs left edge of .wrap, pink hugs right edge */
+      background-position:
+        calc(var(--gutter)) -120px,
+        calc(100vw - var(--gutter)) -80px,
+        0 0;
+    }
 
-  /* two glow blobs + base */
-  background-image:
-    radial-gradient(600px 380px at center, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
-    radial-gradient(520px 340px at center, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
-    linear-gradient(var(--bg), var(--bg));
-  background-repeat: no-repeat;
-
-  /* align to .wrap edges */
-  background-position:
-    calc(var(--gutter)) -120px,          /* cyan on the left content edge */
-    calc(100vw - var(--gutter)) -80px,   /* pink on the right content edge */
-    0 0;
-}
     a{ color: var(--cyan); text-decoration: none }
     .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px }
     header{ position: sticky; top:0; z-index:10; backdrop-filter: blur(8px); background: rgba(0,0,0,.4); border-bottom: 1px solid var(--line) }
@@ -103,51 +101,70 @@
     .list{ list-style: disc; padding-left: 18px }
     .price{ font-size: 30px; font-weight: 800 } .unit{ font-size: 14px; vertical-align: super; color: var(--muted); margin-left: 2px }
 
-/* ------- Form spacing & visual separation ------- */
-.row{
-  display:grid;
-  row-gap: var(--field-gap);
-  column-gap: var(--field-gap);
-}
+    /* ------- Form spacing & visual separation ------- */
+    .row{
+      display:grid;
+      row-gap: var(--field-gap);
+      column-gap: var(--field-gap);
+    }
 
-@media(min-width:768px){
-  .row{
-    row-gap: var(--field-gap-lg);
-    column-gap: var(--field-gap-lg);
-  }
-  .row-2{
-    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-  }
-}
+    /* Tablet: make the center seam clearly visible */
+    @media (min-width:768px) and (max-width:1079.98px){
+      .row{
+        row-gap: var(--field-gap-lg);
+        column-gap: 24px; /* clearer seam than 22px */
+      }
+      .row-2{
+        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      }
+    }
 
-/* desktop-only: widen just the center seam */
-@media(min-width:1024px){
-  .row{ column-gap: 26px; }
-}
+    /* Desktop: widen the center seam a touch more */
+    @media(min-width:1080px){
+      .row{ column-gap: 26px; }
+      .row-2{
+        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      }
+    }
+
     .row > div{ display:grid; gap: 10px } /* space between label and input */
     label{ font-size: 13px; color: rgba(255,255,255,.9); margin:0 }
+
+    /* Inputs */
     input,select,textarea{
-      width:100%; background: var(--field-bg); color:#fff; border:1px solid rgba(255,255,255,.18); border-radius: 14px;
-      padding: var(--field-py) var(--field-px); outline:none; box-shadow: 0 0 0 1px rgba(0,0,0,0) inset;
+      width:100%;
+      background: var(--field-bg);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius: 14px;
+      padding: var(--field-py) var(--field-px);
+      min-height: 48px;             /* better on phones */
+      outline:none;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0) inset;
+      -webkit-appearance: none;
+      appearance: none;
     }
     input:focus, select:focus, textarea:focus{
-      border-color: rgba(0,255,255,.6); box-shadow: 0 0 0 2px rgba(0,255,255,.25);
+      border-color: rgba(0,255,255,.6);
+      box-shadow: 0 0 0 2px rgba(0,255,255,.25);
     }
-    /* Subtle inner-corner tweak so paired fields never look “joined” */
-@media(min-width:768px){
-  .row-2 > div:first-child input,
-  .row-2 > div:first-child select,
-  .row-2 > div:first-child textarea{
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-  .row-2 > div:last-child input,
-  .row-2 > div:last-child select,
-  .row-2 > div:last-child textarea{
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-}
+
+    /* Inner-corner tweak so paired fields never look "joined" */
+    @media(min-width:768px){
+      .row-2 > div:first-child input,
+      .row-2 > div:first-child select,
+      .row-2 > div:first-child textarea{
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+      .row-2 > div:last-child input,
+      .row-2 > div:last-child select,
+      .row-2 > div:last-child textarea{
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+    }
+
     footer{ text-align:center; color: var(--muted); padding: 48px 0; border-top:1px solid var(--line) }
     .wheel{ width:30px; height:30px; color: rgba(255,255,255,.85) }
     .stack-8>*+*{ margin-top: var(--stack-gap-sm) }
@@ -266,7 +283,7 @@
       </div>
     </section>
 
-    <!-- On-demand Scheduling (replaces fixed slots) -->
+    <!-- On-demand Scheduling -->
     <section id="schedule">
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>On-Demand Skate Scheduling</div>
@@ -421,7 +438,7 @@
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>Events &amp; Experiences</div>
         <h2>Hire us (Rental Skates) — birthdays, schools, corporate &amp; pop-ups</h2>
-        <div class="grid grid-2">
+      <div class="grid grid-2">
           <div class="card">
             <form id="formHire" class="stack-12">
               <div class="row row-2">
@@ -550,39 +567,11 @@
           </div>
           <div class="card">
             <strong>Are classes crowded?</strong>
-            <p class="muted">No—spots (bookings) are limited to keep floors safe and coaching personal.</p>
+            <p class="muted">No—bookings are limited to keep floors safe and coaching personal.</p>
           </div>
           <div class="card">
             <strong>Can I try before joining?</strong>
             <p class="muted">Yes—ask for our next free Community Meet Up or book a single skate class.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact / Social -->
-    <section id="contact">
-      <div class="wrap">
-        <div class="kicker"><span class="bar"></span>We’re Friendly</div>
-        <h2>Contact Info &amp; Socials </h2>
-        <div class="grid grid-3">
-          <div class="card">
-            <strong>WhatsApp The Skate Fam</strong>
-            <p class="muted">Fastest for bookings &amp; quick questions.</p>
-            <div style="margin-top:10px"><a class="btn btn-primary" id="ctaWhatsApp" href="https://wa.me/18682766878" target="_blank" rel="noopener">Message Us</a></div>
-          </div>
-          <div class="card">
-            <strong>Email</strong>
-            <p class="muted">For Invoices, Group bookings, and Partnerships &amp; Collaboration</p>
-            <div style="margin-top:10px"><a class="btn btn-ghost" id="ctaEmail" href="mailto:info.theskateguys@gmail.com">Send Email For More Info</a></div>
-          </div>
-          <div class="card">
-            <strong>Social</strong>
-            <p class="muted">Follow for schedules, clips, and events.</p>
-            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
-              <a class="btn btn-ghost" id="ctaInstagram" href="https://instagram.com/the_skateguys" target="_blank" rel="noopener">Instagram ( the_skateguys )</a>
-              <a class="btn btn-ghost" id="ctaTiktok" href="https://tiktok.com/@theskateguys" target="_blank" rel="noopener">TikTok - ( The Skate Guys )</a>
-            </div>
           </div>
         </div>
       </div>
@@ -599,32 +588,27 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // ---- QUICK CONFIG (edit in one place) ----
       const CONTACT = {
-        WHATSAPP_E164: '18682766878', // numbers only, include country code
+        WHATSAPP_E164: '18682766878',
         EMAIL: 'info.theskateguys@gmail.com',
       };
 
-      // attach year
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-      // set contact links (null-safe)
       const waUrl = `https://wa.me/${CONTACT.WHATSAPP_E164}`;
       const navWhatsApp = document.getElementById('navWhatsApp');
-      if (navWhatsApp) navWhatsApp.href = waUrl; else console.warn('[TSG] navWhatsApp not found');
+      if (navWhatsApp) navWhatsApp.href = waUrl;
       const ctaWhatsApp = document.getElementById('ctaWhatsApp');
-      if (ctaWhatsApp) ctaWhatsApp.href = waUrl; else console.warn('[TSG] ctaWhatsApp not found');
+      if (ctaWhatsApp) ctaWhatsApp.href = waUrl;
       const ctaEmail = document.getElementById('ctaEmail');
-      if (ctaEmail) ctaEmail.href = `mailto:${CONTACT.EMAIL}`; else console.warn('[TSG] ctaEmail not found');
+      if (ctaEmail) ctaEmail.href = `mailto:${CONTACT.EMAIL}`;
 
-      // helper to open WhatsApp with a composed message
       function openWhatsApp(message){
         const url = `${waUrl}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
       }
 
-      // Learn form handler (null-safe)
       const formLearn = document.getElementById('formLearn');
       if (formLearn) {
         formLearn.addEventListener('submit', function(e){
@@ -645,11 +629,8 @@
           ].filter(Boolean).join('\n');
           openWhatsApp(msg);
         });
-      } else {
-        console.warn('[TSG] formLearn not found');
       }
 
-      // Hire form handler (null-safe)
       const formHire = document.getElementById('formHire');
       if (formHire) {
         formHire.addEventListener('submit', function(e){
@@ -667,68 +648,14 @@
           ].filter(Boolean).join('\n');
           openWhatsApp(msg);
         });
-      } else {
-        console.warn('[TSG] formHire not found');
       }
 
-      // Email fallbacks (basic prefill, null-safe)
-      const learnEmail = document.getElementById('learnEmail');
-      if (learnEmail) {
-        learnEmail.addEventListener('click', function(){
-          const sub = encodeURIComponent('TSG Learn to Skate Inquiry');
-          const body = encodeURIComponent(`Hi TSG,\n\nI'd like to book a class. Please contact me via WhatsApp or email.\n\nThanks!`);
-          this.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
-        });
-      } else {
-        console.warn('[TSG] learnEmail not found');
-      }
-
-      const hireEmail = document.getElementById('hireEmail');
-      if (hireEmail) {
-        hireEmail.addEventListener('click', function(){
-          const sub = encodeURIComponent('TSG Event Hire Inquiry');
-          const body = encodeURIComponent(`Hi TSG,\n\nWe'd like to hire you for an event. Please contact us.\n\nThanks!`);
-          this.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
-        });
-      } else {
-        console.warn('[TSG] hireEmail not found');
-      }
-
-      // Auto "Last updated"
       const updatedEl = document.getElementById('updated');
       if (updatedEl) {
         const d = new Date();
         const fmt = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
         updatedEl.textContent = `Last updated: ${fmt}. Sessions are arranged per coach availability—spots are capped for safety.`;
       }
-
-      // ---- Self-check tests (layout + encoding) ----
-      try {
-        const log = document.getElementById('testlog');
-        const lines = [];
-        function pass(msg){ lines.push(`✅ ${msg}`); }
-        function fail(msg){ lines.push(`❌ ${msg}`); }
-
-        // Config tests
-        try { console.assert(typeof CONTACT.WHATSAPP_E164 === 'string' && CONTACT.WHATSAPP_E164.length >= 7, 'WHATSAPP_E164 looks incorrect'); pass('CONTACT.WHATSAPP_E164 present'); } catch(_) { fail('CONTACT.WHATSAPP_E164 missing'); }
-        try { console.assert(/@/.test(CONTACT.EMAIL), 'EMAIL looks incorrect'); pass('CONTACT.EMAIL present'); } catch(_) { fail('CONTACT.EMAIL missing'); }
-        try { console.assert(typeof openWhatsApp === 'function', 'openWhatsApp not defined'); pass('openWhatsApp available'); } catch(_) { fail('openWhatsApp not available'); }
-
-        // Encoding test
-        const sample = 'Line1\nLine2 & more';
-        const encoded = encodeURIComponent(sample);
-        if (/%0A/.test(encoded) && /%26/.test(encoded)) pass('encodeURIComponent handles newlines & ampersand'); else fail('Encoding test failed');
-
-        // Layout spacing tests (non-visual heuristics)
-        const gridGap = parseInt(getComputedStyle(document.querySelector('.grid')).gap);
-        if (gridGap >= 24) pass(`Grid gap adequate (${gridGap}px)`); else fail(`Grid gap small (${gridGap}px)`);
-        const cardPad = parseInt(getComputedStyle(document.querySelector('.card')).paddingLeft);
-        if (cardPad >= 26) pass(`Card padding adequate (${cardPad}px)`); else fail(`Card padding small (${cardPad}px)`);
-        const rowGap = parseInt(getComputedStyle(document.querySelector('.row')).gap);
-        if (rowGap >= 18) pass(`Field gap adequate (${rowGap}px)`); else fail(`Field gap small (${rowGap}px)`);
-
-        if (log) log.innerHTML = lines.map(l=>`<div>${l}</div>`).join('');
-      } catch (e) { console.warn('[TSG] Self-check warning:', e); }
     });
   </script>
 </body>

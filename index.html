@@ -37,7 +37,11 @@
       --stack-gap-sm: 13px;   /* stack-8 actual gap */
       --stack-gap-md: 13px;   /* stack-12 actual gap */
       --radius: 15px;
-    }
+    /* Align glows to the content grid */
+      --wrap: 1100px;     /* must match .wrap max-width */
+      --page-pad: 16px;   /* must match .wrap side padding */
+      --gutter: max((100vw - var(--wrap)) / 2, var(--page-pad));
+}
 
     /* Height + base typography */
     html,body{ min-height:100% }
@@ -51,19 +55,26 @@
 
     /* Fixed gradient layer pinned to viewport (prevents misalignment) */
     body{ position: relative; }
-    body::before{
-      content:"";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
-        radial-gradient(900px 600px at 100% 0%, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
-        var(--bg);
-      background-repeat: no-repeat;
-    }
+   body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 
+  /* two glow blobs + base */
+  background-image:
+    radial-gradient(600px 380px at center, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
+    radial-gradient(520px 340px at center, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
+    linear-gradient(var(--bg), var(--bg));
+  background-repeat: no-repeat;
+
+  /* align to .wrap edges */
+  background-position:
+    calc(var(--gutter)) -120px,          /* cyan on the left content edge */
+    calc(100vw - var(--gutter)) -80px,   /* pink on the right content edge */
+    0 0;
+}
     a{ color: var(--cyan); text-decoration: none }
     .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px }
     header{ position: sticky; top:0; z-index:10; backdrop-filter: blur(8px); background: rgba(0,0,0,.4); border-bottom: 1px solid var(--line) }
@@ -92,12 +103,13 @@
     .list{ list-style: disc; padding-left: 18px }
     .price{ font-size: 30px; font-weight: 800 } .unit{ font-size: 14px; vertical-align: super; color: var(--muted); margin-left: 2px }
 
-    /* ------- Form spacing & visual separation ------- */
+/* ------- Form spacing & visual separation ------- */
 .row{
   display:grid;
   row-gap: var(--field-gap);
   column-gap: var(--field-gap);
 }
+
 @media(min-width:768px){
   .row{
     row-gap: var(--field-gap-lg);
@@ -108,6 +120,10 @@
   }
 }
 
+/* desktop-only: widen just the center seam */
+@media(min-width:1080px){
+  .row{ column-gap: 26px; }
+}
     .row > div{ display:grid; gap: 10px } /* space between label and input */
     label{ font-size: 13px; color: rgba(255,255,255,.9); margin:0 }
     input,select,textarea{

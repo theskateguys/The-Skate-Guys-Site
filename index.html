@@ -1,6 +1,15 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="All-ages rollerskating lessons & event hire across Trinidad & Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
+  <meta property="og:title" content="The Skate Guys Hub — Skate Class & Event Hire">
+  <meta property="og:description" content="Small circle. Big progress. Real community.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://your-domain/og-card.jpg">
+  <meta property="og:url" content="https://your-domain/">
+  <meta name="twitter:card" content="summary_large_image">
+  
   <title>The Skate Guys Hub — Skate Class &amp; Event Hire</title>
   <style>
     :root{
@@ -26,14 +35,14 @@
       --stack-gap-md: 13px;   /* stack-12 actual gap */
       --radius: 15px;
     }
-    html,body{height:1%}
+    html,body{height:100%}
     body{
-      margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+   margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--ink); background:
         radial-gradient(1200px 700px at 10% -10%, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
         radial-gradient(900px 600px at 100% 0%, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
         var(--bg);
-      line-height:1.5;
+      line-height:1.9;   
     }
     a{ color: var(--cyan); text-decoration: none }
     .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px }
@@ -81,7 +90,22 @@
     .stack-8>*+*{ margin-top: var(--stack-gap-sm) }
     .stack-12>*+*{ margin-top: var(--stack-gap-md) }
     details#diagnostics { border-top:1px dashed var(--line); padding-top:12px; margin-top:12px }
-    details#diagnostics summary{ cursor:pointer; color: var(--muted) }
+    details#diagnostics summary{ cursor:pointer; color: var(--muted)
+/* --- Fixed gradient layer (pinned to viewport) --- */
+body{ position: relative; }
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 700px at 10% -10%, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
+    radial-gradient(900px 600px at 100% 0%, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
+    var(--bg);
+  background-repeat: no-repeat;
+}
+ }
   </style>
 </head>
 <body>
@@ -159,7 +183,7 @@
               <ul class="list">
                 <li>All ages • Beginner friendly</li>
                 <li>Small group coaching</li>
-                <li>Add rentals if needed</li>
+                <li>Add rentals if needed <span class="muted">• $60 TTD / hour</span></li>
               </ul>
               <a class="btn btn-primary" href="#learn">Book a Skate Class</a>
             </div>
@@ -212,9 +236,8 @@
           <div class="card">
               <strong>Locations</strong>
               <ul class="list">
-                <li>JD's Skating Rink — Near (MainRoad Maxi Stand) Arima</li>
-                <li>River Ranch — Arima ( Blanchisseuse Road )</li>
-                <li>Rootsyardd (SkallyWag) — Chaguaramas ( West )</li>
+                <li>JD's Skating Rink — Near the main road maxi stand, Arima</li>
+                <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
                 <li>SK868 — RRM Plaza San Fernando South Trinidad</li>
                 <li>Larry Gomes Stadium — Malabar,Arima</li>
                 <li>Canoe Bay Road — Tobago</li>
@@ -222,7 +245,7 @@
               </ul>
             </div>
         </div>
-        <p class="muted" style="margin-top:14px">Last updated: 15 Sept 2025. Sessions are arranged per coach availability—spots are capped for safety.</p>
+        <p class="muted" id="updated" style="margin-top:14px"></p>
       </div>
     </section>
 
@@ -241,7 +264,7 @@
                 </div>
                 <div>
                   <label>WhatsApp Number</label>
-                  <input name="phone" placeholder="868‑276‑6878">
+                  <input name="phone" id="phoneLearn" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
                 </div>
               </div>
               <div class="row row-2">
@@ -274,8 +297,8 @@
                 <div>
                   <label>Preferred Location</label>
                   <select name="location">
-                    <option>JD's Skating Rink (Arima)</option>
-                    <option>River Ranch (Arima — off Calvary Hill)</option>
+                    <option>JD's Skating Rink — Near the main road maxi stand, Arima</option>
+                    <option>Rootsyardd (Skallywag) — Chaguaramas (West)</option>
                     <option>Rootsyardd (Skallywag) — Chaguaramas (West)</option>
                     <option>SK868 (South)</option>
                     <option>Larry Gomes Stadium (Arima)</option>
@@ -326,8 +349,8 @@
             <div class="card">
               <strong>Locations</strong>
               <ul class="list">
-                <li>JD's Skating Rink — Near Main Road Maxi Arima</li>
-                <li>River Ranch — Arima (off Calvary Hill)</li>
+                <li>JD's Skating Rink — Near the main road maxi stand, Arima</li>
+                <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
                 <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
                 <li>SK868 — South Trinidad</li>
                 <li>Larry Gomes Stadium — Malabar Arima</li>
@@ -337,7 +360,7 @@
             </div>
             <div class="card">
               <strong>Rentals</strong>
-              <p class="muted">Limited sizes available. Add your shoe size if you need rentals. Helmets recommended.</p>
+              <p class="muted">Limited sizes available. Rental skates <strong>$60 TTD/hour</strong>. Add your shoe size if you need rentals. Helmets recommended.</p>
             </div>
           </div>
         </div>
@@ -359,7 +382,7 @@
                 </div>
                 <div>
                   <label>WhatsApp Number</label>
-                  <input name="phone" placeholder="868‑276‑6878">
+                  <input name="phone" id="phoneHire" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
                 </div>
               </div>
               <div class="row row-2">
@@ -621,6 +644,13 @@
       } else {
         console.warn('[TSG] hireEmail not found');
       }
+// Auto "Last updated"
+const updatedEl = document.getElementById('updated');
+if (updatedEl) {
+  const d = new Date();
+  const fmt = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+  updatedEl.textContent = `Last updated: ${fmt}. Sessions are arranged per coach availability—spots are capped for safety.`;
+}
 
       // ---- Self-check tests (layout + encoding) ----
       try {

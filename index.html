@@ -35,7 +35,7 @@
       --stack-gap-md: 13px;   /* stack-12 actual gap */
       --radius: 15px;
     }
-    html,body{height:100%}
+    html,body{min-height:100%}
     body{
    margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--ink); background:
@@ -90,7 +90,8 @@
     .stack-8>*+*{ margin-top: var(--stack-gap-sm) }
     .stack-12>*+*{ margin-top: var(--stack-gap-md) }
     details#diagnostics { border-top:1px dashed var(--line); padding-top:12px; margin-top:12px }
-    details#diagnostics summary{ cursor:pointer; color: var(--muted)
+  details#diagnostics summary{ cursor:pointer; color: var(--muted); }
+
 /* --- Fixed gradient layer (pinned to viewport) --- */
 body{ position: relative; }
 body::before{
@@ -105,7 +106,7 @@ body::before{
     var(--bg);
   background-repeat: no-repeat;
 }
- }
+
   </style>
 </head>
 <body>

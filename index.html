@@ -93,8 +93,21 @@
     .price{ font-size: 30px; font-weight: 800 } .unit{ font-size: 14px; vertical-align: super; color: var(--muted); margin-left: 2px }
 
     /* ------- Form spacing & visual separation ------- */
-    .row{ display:grid; gap: var(--field-gap) }
-    @media(min-width:768px){ .row{ gap: var(--field-gap-lg) } .row-2{ grid-template-columns: minmax(0,1fr) minmax(0,1fr) } }
+.row{
+  display:grid;
+  row-gap: var(--field-gap);
+  column-gap: var(--field-gap);
+}
+@media(min-width:768px){
+  .row{
+    row-gap: var(--field-gap-lg);
+    column-gap: var(--field-gap-lg);
+  }
+  .row-2{
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  }
+}
+
     .row > div{ display:grid; gap: 10px } /* space between label and input */
     label{ font-size: 13px; color: rgba(255,255,255,.9); margin:0 }
     input,select,textarea{

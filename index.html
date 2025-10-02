@@ -23,18 +23,18 @@
       --card-bg: rgba(255,255,255,.05);
       --field-bg: rgba(255,255,255,.10);
       /* Layout spacing */
-      --gap: 13px;            /* default grid gap */
-      --gap-lg: 32px;         /* grid gap >=768px */
-      --section-pad: 30px;    /* section padding */
-      --section-pad-md: 85px; /* section padding >=1024px */
-      --card-pad: 40px;       /* card padding */
-      --card-pad-lg: 35px;    /* card padding >=1024px */
-      --field-gap: 16px;      /* gap between fields */
-      --field-gap-lg: 22px;   /* gap between fields >=768px */
-      --field-py: 14px;       /* input vertical pad */
-      --field-px: 14px;       /* input horizontal pad */
-      --stack-gap-sm: 13px;   /* stack-8 actual gap */
-      --stack-gap-md: 13px;   /* stack-12 actual gap */
+      --gap: 13px;
+      --gap-lg: 32px;
+      --section-pad: 30px;
+      --section-pad-md: 85px;
+      --card-pad: 40px;
+      --card-pad-lg: 35px;
+      --field-gap: 16px;
+      --field-gap-lg: 22px;
+      --field-py: 14px;
+      --field-px: 14px;
+      --stack-gap-sm: 13px;
+      --stack-gap-md: 13px;
       --radius: 15px;
 
       /* Align glows to the content grid (.wrap) */
@@ -76,7 +76,7 @@
     a{ color: var(--cyan); text-decoration: none }
     .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px }
     header{ position: sticky; top:0; z-index:10; backdrop-filter: blur(8px); background: rgba(0,0,0,.4); border-bottom: 1px solid var(--line) }
-    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0 }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:10px; flex-wrap:wrap }
     .brand{ display:flex; align-items:center; gap:10px }
     .brand .dot{ width:32px; height:32px; border-radius:10px; background: linear-gradient(135deg, var(--cyan), var(--pink)) }
     .chips{ display:flex; gap:10px; flex-wrap:wrap }
@@ -101,30 +101,23 @@
     .list{ list-style: disc; padding-left: 18px }
     .price{ font-size: 30px; font-weight: 800 } .unit{ font-size: 14px; vertical-align: super; color: var(--muted); margin-left: 2px }
 
-    /* ------- Form spacing & visual separation ------- */
+    /* ------- Form spacing & visual separation (simplified, non-joined) ------- */
     .row{
       display:grid;
-      row-gap: var(--field-gap);
-      column-gap: var(--field-gap);
+      row-gap: var(--field-gap);      /* 16px default */
+      column-gap: var(--field-gap);   /* 16px default */
     }
-
-    /* Tablet: make the center seam clearly visible */
-    @media (min-width:768px) and (max-width:1079.98px){
+    /* Tablet and up: generous seam between the two columns */
+    @media (min-width:768px){
       .row{
-        row-gap: var(--field-gap-lg);
-        column-gap: 24px; /* clearer seam than 22px */
+        row-gap: var(--field-gap-lg); /* 22px */
+        column-gap: 28px;             /* clear center seam */
       }
-      .row-2{
-        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-      }
+      .row-2{ grid-template-columns: 1fr 1fr; }
     }
-
-    /* Desktop: widen the center seam a touch more */
-    @media(min-width:1080px){
-      .row{ column-gap: 26px; }
-      .row-2{
-        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-      }
+    /* Desktop: even clearer seam on big screens */
+    @media (min-width:1080px){
+      .row{ column-gap: 36px; }
     }
 
     .row > div{ display:grid; gap: 10px } /* space between label and input */
@@ -149,22 +142,6 @@
       box-shadow: 0 0 0 2px rgba(0,255,255,.25);
     }
 
-    /* Inner-corner tweak so paired fields never look "joined" */
-    @media(min-width:768px){
-      .row-2 > div:first-child input,
-      .row-2 > div:first-child select,
-      .row-2 > div:first-child textarea{
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-      }
-      .row-2 > div:last-child input,
-      .row-2 > div:last-child select,
-      .row-2 > div:last-child textarea{
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-      }
-    }
-
     footer{ text-align:center; color: var(--muted); padding: 48px 0; border-top:1px solid var(--line) }
     .wheel{ width:30px; height:30px; color: rgba(255,255,255,.85) }
     .stack-8>*+*{ margin-top: var(--stack-gap-sm) }
@@ -180,13 +157,16 @@
         <div class="dot"></div>
         <strong>The Skate Guys</strong>
       </div>
+
       <div class="chips">
         <span class="chip"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--pink)"></span> Exclusive Spots</span>
         <span class="chip">All Ages</span>
         <span class="chip">Beginner Friendly</span>
       </div>
-      <div>
+
+      <div style="display:flex; gap:8px; flex-wrap:wrap">
         <a class="btn btn-primary" id="navWhatsApp" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-ghost" id="joinMember" href="https://tally.so/r/wLB40y" target="_blank" rel="noopener">Join Elite / Premium</a>
       </div>
     </div>
   </header>
@@ -200,7 +180,7 @@
           <span class="chip">Skate With Faith</span>
         </div>
         <h1>Small circle. <span style="color:var(--cyan)">Big progress.</span> Real community.</h1>
-        <p>All-ages rollerskating lessons and event experiences across Trinidad &amp; Tobago. We keep numbers limited for safety and personal coaching.</p>
+        <p>All-ages rollerskating lessons and event experiences across Trinidad &amp; Tobago. Where Beginners Become Skaters & Skaters Become Family</p>
         <div style="margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap">
           <a class="btn btn-primary" href="#learn">Book a Skate Class</a>
           <a class="btn btn-accent" href="#hire">Hire The Team</a>
@@ -223,7 +203,7 @@
           <div class="card stack-8">
             <svg class="wheel" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"></circle><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
             <strong>Priority Access</strong>
-            <p class="muted">TSG Members-first sessions and rentals.</p>
+            <p class="muted">TSG Premium & Elite Members-first sessions and rentals.</p>
           </div>
           <div class="card stack-8">
             <svg class="wheel" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"></circle><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
@@ -301,13 +281,13 @@
           <div class="card">
             <strong>Locations</strong>
             <ul class="list">
-              <li>JD's Skating Rink — Near the main road maxi stand, Arima</li>
-              <li>River Ranch — Arima (off Calvary Hill)</li>
-              <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
-              <li>SK868 — RRM Plaza, San Fernando (South Trinidad)</li>
-              <li>Larry Gomes Stadium — Malabar, Arima</li>
-              <li>Canoe Bay Road — Tobago</li>
-              <li>Montgomery Grounds — Tobago</li>
+              <li> - JD's Skating Rink — Near the main road maxi stand, Arima</li>
+              <li> - River Ranch — Arima (off Calvary Hill)</li>
+              <li> - Rootsyardd (Skallywag) — Chaguaramas (Port Of Spain)</li>
+              <li> - SK868 — RRM Plaza, San Fernando (South Trinidad)</li>
+              <li> - Larry Gomes Stadium — Malabar, Arima</li>
+              <li> - Canoe Bay Road — Tobago</li>
+              <li> - Montgomery Grounds — Tobago</li>
             </ul>
           </div>
         </div>
@@ -365,7 +345,7 @@
                   <select name="location">
                     <option>JD's Skating Rink — Near the main road maxi stand, Arima</option>
                     <option>River Ranch — Arima (off Calvary Hill)</option>
-                    <option>Rootsyardd (Skallywag) — Chaguaramas (West)</option>
+                    <option>Rootsyardd (Skallywag) — Chaguaramas (Port Of Spain)</option>
                     <option>SK868 (South)</option>
                     <option>Larry Gomes Stadium (Arima)</option>
                     <option>Canoe Bay Road (Tobago)</option>
@@ -417,7 +397,7 @@
               <ul class="list">
                 <li>JD's Skating Rink — Near the main road maxi stand, Arima</li>
                 <li>River Ranch — Arima (off Calvary Hill)</li>
-                <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
+                <li>Rootsyardd (Skallywag) — Chaguaramas (Port Of Spain)</li>
                 <li>SK868 — South Trinidad</li>
                 <li>Larry Gomes Stadium — Malabar, Arima</li>
                 <li>Canoe Bay Road — Tobago</li>
@@ -438,7 +418,7 @@
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>Events &amp; Experiences</div>
         <h2>Hire us (Rental Skates) — birthdays, schools, corporate &amp; pop-ups</h2>
-      <div class="grid grid-2">
+        <div class="grid grid-2">
           <div class="card">
             <form id="formHire" class="stack-12">
               <div class="row row-2">

@@ -1,16 +1,19 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/favicon.ico">
-<meta name="description" content="All-ages rollerskating lessons & event hire across Trinidad & Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
-<meta property="og:title" content="The Skate Guys Hub — Skate Class & Event Hire">
-<meta property="og:description" content="Small circle. Big progress. Real community.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://your-domain/og-card.jpg">
-<meta property="og:url" content="https://your-domain/">
-<meta name="twitter:card" content="summary_large_image">
+  <meta name="description" content="All-ages rollerskating lessons & event hire across Trinidad & Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
+  <meta property="og:title" content="The Skate Guys Hub — Skate Class & Event Hire">
+  <meta property="og:description" content="Small circle. Big progress. Real community.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://your-domain/og-card.jpg">
+  <meta property="og:url" content="https://your-domain/">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <title>The Skate Guys Hub — Skate Class &amp; Event Hire</title>
+  <title>The Skate Guys Hub — Skate Class & Event Hire</title>
+
   <style>
     :root{
       /* Brand */
@@ -35,15 +38,32 @@
       --stack-gap-md: 13px;   /* stack-12 actual gap */
       --radius: 15px;
     }
-    html,body{min-height:100%}
+
+    /* Height + base typography */
+    html,body{ min-height:100% }
     body{
-   margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--ink); background:
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background: var(--bg); /* gradients provided by body::before */
+      line-height:1.9;
+    }
+
+    /* Fixed gradient layer pinned to viewport (prevents misalignment) */
+    body{ position: relative; }
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
         radial-gradient(1200px 700px at 10% -10%, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
         radial-gradient(900px 600px at 100% 0%, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
         var(--bg);
-      line-height:1.9;   
+      background-repeat: no-repeat;
     }
+
     a{ color: var(--cyan); text-decoration: none }
     .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px }
     header{ position: sticky; top:0; z-index:10; backdrop-filter: blur(8px); background: rgba(0,0,0,.4); border-bottom: 1px solid var(--line) }
@@ -90,23 +110,7 @@
     .stack-8>*+*{ margin-top: var(--stack-gap-sm) }
     .stack-12>*+*{ margin-top: var(--stack-gap-md) }
     details#diagnostics { border-top:1px dashed var(--line); padding-top:12px; margin-top:12px }
-  details#diagnostics summary{ cursor:pointer; color: var(--muted); }
-
-/* --- Fixed gradient layer (pinned to viewport) --- */
-body{ position: relative; }
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(1200px 700px at 10% -10%, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
-    radial-gradient(900px 600px at 100% 0%, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
-    var(--bg);
-  background-repeat: no-repeat;
-}
-
+    details#diagnostics summary{ cursor:pointer; color: var(--muted) }
   </style>
 </head>
 <body>
@@ -154,12 +158,12 @@ body::before{
           <div class="card stack-8">
             <svg class="wheel" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"></circle><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
             <strong>Focus Group Sessions</strong>
-            <p class="muted">Safer floors and 1‑on‑1 Coaching.</p>
+            <p class="muted">Safer floors and 1-on-1 Coaching.</p>
           </div>
           <div class="card stack-8">
             <svg class="wheel" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"></circle><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
             <strong>Priority Access</strong>
-            <p class="muted">TSG Members‑first sessions and rentals.</p>
+            <p class="muted">TSG Members-first sessions and rentals.</p>
           </div>
           <div class="card stack-8">
             <svg class="wheel" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"></circle><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
@@ -178,9 +182,9 @@ body::before{
         <div class="grid grid-3">
           <div class="card">
             <div class="stack-12">
-              <strong>Drop‑in Class</strong>
+              <strong>Drop-in Class</strong>
               <div><span class="price">$60</span><span class="unit">TTD / 1 hr</span></div>
-              <p class="muted">Great for first‑timers.</p>
+              <p class="muted">Great for first-timers.</p>
               <ul class="list">
                 <li>All ages • Beginner friendly</li>
                 <li>Small group coaching</li>
@@ -222,7 +226,7 @@ body::before{
     <!-- On-demand Scheduling (replaces fixed slots) -->
     <section id="schedule">
       <div class="wrap">
-        <div class="kicker"><span class="bar"></span>On‑Demand Skate Scheduling</div>
+        <div class="kicker"><span class="bar"></span>On-Demand Skate Scheduling</div>
         <h2>We match your availability to a skate coach</h2>
         <div class="grid grid-2">
           <div class="card">
@@ -232,19 +236,20 @@ body::before{
               <li>We match you with an available coach at your chosen location.</li>
               <li>We confirm on WhatsApp with your booking &amp; payment details.</li>
             </ul>
-            <p class="muted">Most members choose after‑school/evenings or weekend mornings.</p>
+            <p class="muted">Most members choose after-school/evenings or weekend mornings.</p>
           </div>
           <div class="card">
-              <strong>Locations</strong>
-              <ul class="list">
-                <li>JD's Skating Rink — Near the main road maxi stand, Arima</li>
-                <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
-                <li>SK868 — RRM Plaza San Fernando South Trinidad</li>
-                <li>Larry Gomes Stadium — Malabar,Arima</li>
-                <li>Canoe Bay Road — Tobago</li>
-                <li>Montgomery Grounds — Tobago</li>
-              </ul>
-            </div>
+            <strong>Locations</strong>
+            <ul class="list">
+              <li>JD's Skating Rink — Near the main road maxi stand, Arima</li>
+              <li>River Ranch — Arima (off Calvary Hill)</li>
+              <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
+              <li>SK868 — RRM Plaza, San Fernando (South Trinidad)</li>
+              <li>Larry Gomes Stadium — Malabar, Arima</li>
+              <li>Canoe Bay Road — Tobago</li>
+              <li>Montgomery Grounds — Tobago</li>
+            </ul>
+          </div>
         </div>
         <p class="muted" id="updated" style="margin-top:14px"></p>
       </div>
@@ -261,7 +266,7 @@ body::before{
               <div class="row row-2">
                 <div>
                   <label>Full Name</label>
-                  <input name="name" placeholder="Your name" required="">
+                  <input name="name" placeholder="Your name" required>
                 </div>
                 <div>
                   <label>WhatsApp Number</label>
@@ -299,7 +304,7 @@ body::before{
                   <label>Preferred Location</label>
                   <select name="location">
                     <option>JD's Skating Rink — Near the main road maxi stand, Arima</option>
-                    <option>Rootsyardd (Skallywag) — Chaguaramas (West)</option>
+                    <option>River Ranch — Arima (off Calvary Hill)</option>
                     <option>Rootsyardd (Skallywag) — Chaguaramas (West)</option>
                     <option>SK868 (South)</option>
                     <option>Larry Gomes Stadium (Arima)</option>
@@ -351,10 +356,10 @@ body::before{
               <strong>Locations</strong>
               <ul class="list">
                 <li>JD's Skating Rink — Near the main road maxi stand, Arima</li>
-                <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
+                <li>River Ranch — Arima (off Calvary Hill)</li>
                 <li>Rootsyardd (Skallywag) — Chaguaramas (West)</li>
                 <li>SK868 — South Trinidad</li>
-                <li>Larry Gomes Stadium — Malabar Arima</li>
+                <li>Larry Gomes Stadium — Malabar, Arima</li>
                 <li>Canoe Bay Road — Tobago</li>
                 <li>Montgomery Grounds — Tobago</li>
               </ul>
@@ -372,14 +377,14 @@ body::before{
     <section id="hire">
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>Events &amp; Experiences</div>
-        <h2>Hire us (Rental Skates) — birthdays, schools, corporate &amp; pop‑ups</h2>
+        <h2>Hire us (Rental Skates) — birthdays, schools, corporate &amp; pop-ups</h2>
         <div class="grid grid-2">
           <div class="card">
             <form id="formHire" class="stack-12">
               <div class="row row-2">
                 <div>
                   <label>Full Name</label>
-                  <input name="name" placeholder="Your name" required="">
+                  <input name="name" placeholder="Your name" required>
                 </div>
                 <div>
                   <label>WhatsApp Number</label>
@@ -397,7 +402,7 @@ body::before{
                     <option>Birthday Party</option>
                     <option>School / Youth Program</option>
                     <option>Corporate Team Day</option>
-                    <option>Pop‑up Rink / Festival</option>
+                    <option>Pop-up Rink / Festival</option>
                     <option>Rink Launch Consulting</option>
                     <option>Other</option>
                   </select>
@@ -434,32 +439,32 @@ body::before{
             <div class="card">
               <strong>Birthday Party — from $1,500 TTD</strong>
               <ul class="list">
-                <li>2‑hour experience    • up to 12 skaters</li>
+                <li>2-hour experience • up to 12 skaters</li>
                 <li>2 coaches • floor games • music playlist</li>
                 <li>Rental skates (limited sizes) on request</li>
-                <li>Add‑ons: extra hour $450 • photo/drone add‑on $300</li>
+                <li>Add-ons: extra hour $450 • photo/drone add-on $300</li>
               </ul>
             </div>
             <div class="card">
               <strong>School Programme — from $3,200 TTD</strong>
               <ul class="list">
-                <li>3‑hour program • up to 30 students in rotations</li>
-                <li>Safety briefing • beginner coaching • mini‑challenges</li>
+                <li>3-hour program • up to 30 students in rotations</li>
+                <li>Safety briefing • beginner coaching • mini-challenges</li>
                 <li>Options: rentals, certificates, parent showcase</li>
               </ul>
             </div>
             <div class="card">
               <strong>Corporate Team Day — from $3,750 TTD</strong>
               <ul class="list">
-                <li>3‑hour experience • up to 25 staff</li>
-                <li>Team relays • dance‑off • fun skill labs</li>
-                <li>Options: rentals, MC, trophies, media add‑on</li>
+                <li>3-hour experience • up to 25 staff</li>
+                <li>Team relays • dance-off • fun skill labs</li>
+                <li>Options: rentals, MC, trophies, media add-on</li>
               </ul>
             </div>
             <div class="card">
-              <strong>Pop‑up Rink / Festival — POA</strong>
+              <strong>Pop-up Rink / Festival — POA</strong>
               <ul class="list">
-                <li>Day‑rate engagement • programming &amp; games</li>
+                <li>Day-rate engagement • programming &amp; games</li>
                 <li>We integrate with your event schedule</li>
                 <li>Ask about venue requirements &amp; rentals</li>
               </ul>
@@ -467,9 +472,9 @@ body::before{
             <div class="card">
               <strong>Rink Launch Consulting — from $5,500 TTD</strong>
               <ul class="list">
-                <li>2‑week launch sprint: SOPs, staff training, floor rules</li>
+                <li>2-week launch sprint: SOPs, staff training, floor rules</li>
                 <li>Opening weekend programming &amp; marketing scripts</li>
-                <li>Follow‑up report &amp; revenue ideas</li>
+                <li>Follow-up report &amp; revenue ideas</li>
               </ul>
             </div>
             <p class="muted">All packages subject to venue suitability, availability of rental sizes, and a 20% booking deposit. Travel fees may apply outside core hubs.</p>
@@ -486,7 +491,7 @@ body::before{
         <div class="grid grid-2">
           <div class="card">
             <strong>Is it beginner friendly?</strong>
-            <p class="muted">Yes Yes. We teach from first stand‑up to advanced dance moves.</p>
+            <p class="muted">Yes. We teach from first stand-up to advanced dance moves.</p>
           </div>
           <div class="card">
             <strong>Do you accept all ages?</strong>
@@ -645,13 +650,14 @@ body::before{
       } else {
         console.warn('[TSG] hireEmail not found');
       }
-// Auto "Last updated"
-const updatedEl = document.getElementById('updated');
-if (updatedEl) {
-  const d = new Date();
-  const fmt = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
-  updatedEl.textContent = `Last updated: ${fmt}. Sessions are arranged per coach availability—spots are capped for safety.`;
-}
+
+      // Auto "Last updated"
+      const updatedEl = document.getElementById('updated');
+      if (updatedEl) {
+        const d = new Date();
+        const fmt = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+        updatedEl.textContent = `Last updated: ${fmt}. Sessions are arranged per coach availability—spots are capped for safety.`;
+      }
 
       // ---- Self-check tests (layout + encoding) ----
       try {
@@ -682,8 +688,5 @@ if (updatedEl) {
       } catch (e) { console.warn('[TSG] Self-check warning:', e); }
     });
   </script>
-
-
-
-
-</body></html>
+</body>
+</html>

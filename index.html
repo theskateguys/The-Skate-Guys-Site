@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/favicon.ico">
   <meta name="description" content="All-ages rollerskating lessons &amp; event hire across Trinidad &amp; Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
-  <meta property="og:title" content="The Skate Guys Hub — Skate Class &amp; Event Hire">
+  <meta property="og:title" content="The Skate Guys Hub — Trinidad &amp; Tobago Leading Rollerskate Community">
   <meta property="og:description" content="Small circle. Big progress. Real community.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://your-domain/og-card.jpg">
@@ -40,7 +40,15 @@
       --page-pad: 16px;   /* must match .wrap side padding */
       --gutter: max((100vw - var(--wrap)) / 2, var(--page-pad));
     }
-
+    /* Site logo */
+.logo{
+  width: clamp(28px, 5vw, 44px);
+  height: clamp(28px, 5vw, 44px);
+  object-fit: contain;   /* keep aspect ratio */
+  display: block;
+  /* remove the next line if you don't want rounded corners */
+  border-radius: 10px;
+}
     /* Height + base typography */
     html,body{ min-height:100% }
     body{
@@ -152,9 +160,9 @@
   <header>
     <div class="wrap nav">
       <div class="brand">
-        <div class="dot"></div>
-        <strong>The Skate Guys</strong>
-      </div>
+  <img class="logo" src="assets/theskateguys-1.png" alt="The Skate Guys logo" loading="eager" decoding="async">
+  <strong>The Skate Guys</strong>
+</div>
 
       <div class="chips">
         <span class="chip"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--pink)"></span> Exclusive Spots</span>

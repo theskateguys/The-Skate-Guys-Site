@@ -404,7 +404,13 @@
               </div>
               <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
                 <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
-                <a id="learnEmail" class="btn btn-ghost" href="#">Email Us</a>
+                <a
+  id="learnEmail"
+  class="btn btn-ghost"
+  href="mailto:info.theskateguys@gmail.com?subject=TSG%20Learn%20to%20Skate%20Inquiry"
+>
+  Email Us
+</a>
               </div>
               <p class="muted">We cap class sizes for safety &amp; personal coaching. Tell us your preferred days/times; we’ll reach out to confirm your booking. If the month is full, we’ll offer a waitlist + free community session invite.</p>
             </form>
@@ -495,7 +501,14 @@
               </div>
               <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
                 <button class="btn btn-accent" type="submit">Send via WhatsApp</button>
-                <a id="hireEmail" class="btn btn-ghost" href="#">Email Us</a>
+                <a
+  id="hireEmail"
+  class="btn btn-ghost"
+  href="mailto:info.theskateguys@gmail.com?subject=TSG%20Event%20Hire%20Inquiry"
+>
+  Email Us
+</a>
+
               </div>
               <p class="muted">Dates are limited. A booking confirmation &amp; deposit secures your date. Tell us your preferred dates/times and we’ll reach out to confirm. We’ll share packages on reply.</p>
             </form>
@@ -597,6 +610,26 @@
         WHATSAPP_E164: '18682766878',
         EMAIL: 'info.theskateguys@gmail.com',
       };
+        // Prefill Learn email (subject + body)
+  const learnEmail = document.getElementById('learnEmail');
+  if (learnEmail) {
+    const sub = encodeURIComponent('TSG Learn to Skate Inquiry');
+    const body = encodeURIComponent(
+      `Hi TSG,\n\nI'd like to book a class. Please contact me via WhatsApp or email.\n\nThanks!`
+    );
+    learnEmail.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
+  }
+
+  // Prefill Hire email (subject + body)
+  const hireEmail = document.getElementById('hireEmail');
+  if (hireEmail) {
+    const sub = encodeURIComponent('TSG Event Hire Inquiry');
+    const body = encodeURIComponent(
+      `Hi TSG,\n\nWe'd like to hire you for an event. Please contact us.\n\nThanks!`
+    );
+    hireEmail.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
+  }
+
 
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();

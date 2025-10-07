@@ -166,6 +166,25 @@
       border-color: rgba(0,255,255,.6);
       box-shadow: 0 0 0 2px rgba(0,255,255,.25);
     }
+    /* Dark theme for select dropdown menu (the open list) */
+select { 
+  color-scheme: dark;                 /* hint to browsers for dark popups */
+}
+
+/* Most browsers (Chrome/Edge/Firefox) use <option> styling for the popup */
+select option,
+select optgroup{
+  background-color: #101214;          /* close to your card/bg tones */
+  color: #fff;
+}
+
+/* Highlight the selected row inside the menu */
+select option:checked,
+select option:focus{
+  background-color: rgba(0,255,255,.25);
+  color: #fff;
+}
+
 
     footer{ text-align:center; color: var(--muted); padding: 48px 0; border-top:1px solid var(--line) }
     .wheel{ width:30px; height:30px; color: rgba(255,255,255,.85) }

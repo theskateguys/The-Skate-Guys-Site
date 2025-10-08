@@ -192,6 +192,7 @@ select option:focus{
     .stack-12>*+*{ margin-top: var(--stack-gap-md) }
     details#diagnostics { border-top:1px dashed var(--line); padding-top:12px; margin-top:12px }
     details#diagnostics summary{ cursor:pointer; color: var(--muted) }
+    
     /* --- Community gallery --- */
 .gallery{
   display:grid;
@@ -202,9 +203,8 @@ select option:focus{
   .gallery{ grid-template-columns: repeat(3,1fr); gap: var(--gap-lg); }
 }
 .gallery figure{ margin:0 }
-.gallery img{
-  width:100%;
-  aspect-ratio: 4 / 3;       /* consistent tiles */
+.gallery img{width:100%;aspect-ratio: 4 / 3;      
+  /* consistent tiles */
   object-fit: cover;
   border-radius: var(--radius);
   border:1px solid var(--line);
@@ -388,46 +388,36 @@ select option:focus{
       </div>
     </section>
 
-    <!-- Community Gallery -->
-<section id="community">
+  <section id="community">
   <div class="wrap">
-    <div class="kicker"><span class="bar"></span>Community</div>
-    <h2>See the Skate Fam in Action</h2>
+    <div class="kicker"><span class="bar"></span>Our Skate Community</div>
+    <h2>Smiles • Progress • Good vibes</h2>
 
     <div class="gallery">
-      <!-- Replace file names + alt text with your real photos -->
-      <figure class="card">
-        <img src="/assets/community/tsg-01.webp" alt="Kids learning to skate at JD's Rink in Arima" loading="lazy">
-        <figcaption class="muted"><small>JD's Rink • Arima</small></figcaption>
+      <figure>
+        <img src="assets/community/tsg-01.webp?v=1"
+             alt="JD’s Rink • Arima"
+             loading="lazy" decoding="async">
+        <figcaption class="gallery-caption">JD’s Rink • Arima</figcaption>
       </figure>
 
-      <figure class="card">
-        <img src="/assets/community/tsg-02.webp" alt="Teens practicing cone drills in San Fernando" loading="lazy">
-        <figcaption class="muted"><small>SK868 • San Fernando</small></figcaption>
+      <figure>
+        <img src="assets/community/tsg-02.webp?v=1"
+             alt="Beginner warm-up"
+             loading="lazy" decoding="async">
+        <figcaption class="gallery-caption">Beginner warm-up</figcaption>
       </figure>
 
-      <figure class="card">
-        <img src="/assets/community/tsg-03.webp" alt="Family skate session in Port of Spain" loading="lazy">
-        <figcaption class="muted"><small>Chaguaramas • POS</small></figcaption>
-      </figure>
-
-      <figure class="card">
-        <img src="/assets/community/tsg-04.webp" alt="Beginner-friendly coaching up close" loading="lazy">
-        <figcaption class="muted"><small>1-on-1 Coaching</small></figcaption>
-      </figure>
-
-      <figure class="card">
-        <img src="/assets/community/tsg-05.webp" alt="Adults dance skate circle" loading="lazy">
-        <figcaption class="muted"><small>Dance Circle</small></figcaption>
-      </figure>
-
-      <figure class="card">
-        <img src="/assets/community/tsg-06.webp" alt="Happy skaters celebrating progress" loading="lazy">
-        <figcaption class="muted"><small>Milestones</small></figcaption>
+      <figure>
+        <img src="assets/community/tsg-03.webp?v=1"
+             alt="Family skate day"
+             loading="lazy" decoding="async">
+        <figcaption class="gallery-caption">Family skate day</figcaption>
       </figure>
     </div>
   </div>
 </section>
+
 
 <!-- Watch section (YouTube, lightweight) -->
 <section id="watch">

@@ -192,7 +192,56 @@ select option:focus{
     .stack-12>*+*{ margin-top: var(--stack-gap-md) }
     details#diagnostics { border-top:1px dashed var(--line); padding-top:12px; margin-top:12px }
     details#diagnostics summary{ cursor:pointer; color: var(--muted) }
-  </style>
+    /* --- Community gallery --- */
+.gallery{
+  display:grid;
+  gap: var(--gap);
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width:768px){
+  .gallery{ grid-template-columns: repeat(3,1fr); gap: var(--gap-lg); }
+}
+.gallery figure{ margin:0 }
+.gallery img{
+  width:100%;
+  aspect-ratio: 4 / 3;       /* consistent tiles */
+  object-fit: cover;
+  border-radius: var(--radius);
+  border:1px solid var(--line);
+  display:block;
+}
+
+/* --- Lite YouTube (thumbnail that swaps to player on click) --- */
+.yt-card{ position:relative; }
+.yt-lite{
+  position:relative;
+  border-radius: var(--radius);
+  border:1px solid var(--line);
+  overflow:hidden;
+  cursor:pointer;
+  background:#000;
+}
+.yt-thumb{
+  width:100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.92);
+}
+.yt-play{
+  position:absolute;
+  left:50%; top:50%;
+  transform: translate(-50%,-50%);
+  padding:12px 18px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.55);
+  font-weight:800;
+  line-height:1;
+  border:1px solid var(--line);
+}
+.yt-play::before{ content:"▶"; margin-right:8px }
+</style>
+  
 </head>
 <body>
   <header>
@@ -338,6 +387,78 @@ select option:focus{
         <p class="muted" id="updated" style="margin-top:14px">Last updated: 02 Oct 2025. Sessions are arranged per coach availability—spots are capped for safety.</p>
       </div>
     </section>
+
+    <!-- Community Gallery -->
+<section id="community">
+  <div class="wrap">
+    <div class="kicker"><span class="bar"></span>Community</div>
+    <h2>See the Skate Fam in Action</h2>
+
+    <div class="gallery">
+      <!-- Replace file names + alt text with your real photos -->
+      <figure class="card">
+        <img src="/assets/community/tsg-01.webp" alt="Kids learning to skate at JD's Rink in Arima" loading="lazy">
+        <figcaption class="muted"><small>JD's Rink • Arima</small></figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="/assets/community/tsg-02.webp" alt="Teens practicing cone drills in San Fernando" loading="lazy">
+        <figcaption class="muted"><small>SK868 • San Fernando</small></figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="/assets/community/tsg-03.webp" alt="Family skate session in Port of Spain" loading="lazy">
+        <figcaption class="muted"><small>Chaguaramas • POS</small></figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="/assets/community/tsg-04.webp" alt="Beginner-friendly coaching up close" loading="lazy">
+        <figcaption class="muted"><small>1-on-1 Coaching</small></figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="/assets/community/tsg-05.webp" alt="Adults dance skate circle" loading="lazy">
+        <figcaption class="muted"><small>Dance Circle</small></figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="/assets/community/tsg-06.webp" alt="Happy skaters celebrating progress" loading="lazy">
+        <figcaption class="muted"><small>Milestones</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Watch section (YouTube, lightweight) -->
+<section id="watch">
+  <div class="wrap">
+    <div class="kicker"><span class="bar"></span>Watch</div>
+    <h2>The Vibe in 60 Seconds</h2>
+
+    <div class="grid grid-2">
+      <div class="card yt-card">
+        <!-- Replace VIDEO_ID with your YouTube video ID (the part after v=) -->
+        <div class="yt-lite" data-youtube-id="VIDEO_ID" aria-label="Play video">
+          <div class="yt-thumb" style="background-image:url('https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg')"></div>
+          <div class="yt-play">Watch</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <strong>What you’ll see</strong>
+        <ul class="list">
+          <li>Beginner coaching on smooth floors</li>
+          <li>Family-friendly sessions &amp; rentals</li>
+          <li>Community meets &amp; fun challenges</li>
+        </ul>
+        <div style="margin-top:12px">
+          <a class="btn btn-primary" href="#learn">Book a Skate Class</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Learn to Skate Form -->
     <section id="learn">
@@ -713,7 +834,32 @@ select option:focus{
         const fmt = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
         updatedEl.textContent = `Last updated: ${fmt}. Sessions are arranged per coach availability—spots are capped for safety.`;
       }
-    });
+   // ---- Lite YouTube: swap thumbnail for real player on click ----
+function mountYouTube(container){
+  const id = container.getAttribute('data-youtube-id');
+  const iframe = document.createElement('iframe');
+  iframe.setAttribute('allowfullscreen', '');
+  iframe.setAttribute('loading', 'lazy');
+  iframe.setAttribute('title', 'YouTube video');
+  iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.border = '0';
+  iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+  // keep aspect ratio using a wrapper
+  const wrap = document.createElement('div');
+  wrap.style.aspectRatio = '16/9';
+  wrap.style.width = '100%';
+  wrap.style.borderRadius = 'var(--radius)';
+  wrap.style.overflow = 'hidden';
+  wrap.appendChild(iframe);
+  container.replaceWith(wrap);
+}
+
+document.querySelectorAll('.yt-lite').forEach(el=>{
+  el.addEventListener('click', ()=> mountYouTube(el));
+});
+      
   </script>
 
 

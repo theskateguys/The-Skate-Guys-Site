@@ -223,15 +223,22 @@ select option:focus{
   .gallery{ grid-template-columns: repeat(3, minmax(0,1fr)); } /* desktop */
 }
 
-.gallery figure{ margin:0; }
+/* Gallery tiles: crop less (4:3) and allow per-image focus nudges */
 .gallery img{
   width:100%;
   display:block;
-  aspect-ratio: 16 / 9;   /* shorter tiles, more “above the fold” */
-  object-fit: cover;
+  aspect-ratio: 4 / 3;   /* was 16/9 */
+  object-fit: cover;     /* fills the tile; may crop a little */
   border-radius: var(--radius);
   border:1px solid var(--line);
 }
+
+/* optional helpers to change the crop focus on specific photos */
+.pos-top img{    object-position: 50% 18%; }  /* keep more headroom */
+.pos-bottom img{ object-position: 50% 82%; }
+.pos-left img{   object-position: 20% 50%; }
+.pos-right img{  object-position: 80% 50%; }
+
 .gallery-caption{
   padding:10px 2px;
   color:var(--muted);

@@ -210,6 +210,34 @@ select option:focus{
   border:1px solid var(--line);
   display:block;
 }
+    /* --- Community gallery: 1 → 2 → 3 columns, images fit on screen --- */
+.gallery{
+  display:grid;
+  gap: var(--gap-lg);
+  grid-template-columns: 1fr; /* phones */
+}
+@media (min-width: 720px){
+  .gallery{ grid-template-columns: repeat(2, minmax(0,1fr)); } /* tablets */
+}
+@media (min-width: 1080px){
+  .gallery{ grid-template-columns: repeat(3, minmax(0,1fr)); } /* desktop */
+}
+
+.gallery figure{ margin:0; }
+.gallery img{
+  width:100%;
+  display:block;
+  aspect-ratio: 16 / 9;   /* shorter tiles, more “above the fold” */
+  object-fit: cover;
+  border-radius: var(--radius);
+  border:1px solid var(--line);
+}
+.gallery-caption{
+  padding:10px 2px;
+  color:var(--muted);
+  font-size:14px;
+}
+
 
 /* --- Lite YouTube (thumbnail that swaps to player on click) --- */
 .yt-card{ position:relative; }

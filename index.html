@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/favicon.ico">
-  <meta name="description" content="All-ages rollerskating lessons &amp; event hire across Trinidad &amp; Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
-  <meta property="og:title" content="The Skate Guys Hub — Trinidad &amp; Tobago Leading Rollerskate Community">
+  <meta name="description" content="All-ages rollerskating lessons & event hire across Trinidad & Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
+  <meta property="og:title" content="The Skate Guys Hub — Trinidad & Tobago Leading Rollerskate Community">
   <meta property="og:description" content="Small circle. Big progress. Real community.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://your-domain/og-card.jpg">
@@ -40,35 +41,8 @@
       --page-pad: 16px;   /* must match .wrap side padding */
       --gutter: max((100vw - var(--wrap)) / 2, var(--page-pad));
     }
-    /* Site logo */
-.logo{
-  width: clamp(34px, 5.5vw, 56px);
-  height: clamp(34px, 5.5vw, 56px);
-  object-fit: contain;   /* keep aspect ratio */
-  display: block;
-  /* remove the next line if you don't want rounded corners */
-  border-radius: 10px;
-}
-    /* Logo sizing: slightly larger on desktop, scales on mobile */
-.logo{
-  width: clamp(34px, 5.5vw, 56px);
-  height: clamp(34px, 5.5vw, 56px);
-  display: block;
-  object-fit: contain;
-  image-rendering: auto; /* use best quality sampling */
-}
 
-/* Make the brand row align nicely */
-.brand{
-  display: flex;
-  align-items: center;
-  gap: 10px; /* space between logo and text */
-}
-
-/* If your logo artwork gets clipped, ensure no rounding */
-.brand .logo{ border-radius: 0; }
-
-    /* Height + base typography */
+    /* -------- Base / layout -------- */
     html,body{ min-height:100% }
     body{
       margin:0;
@@ -78,8 +52,6 @@
       line-height:1.9;
       position: relative;
     }
-
-    /* Fixed gradient layer pinned to viewport and aligned to grid */
     body::before{
       content:"";
       position: fixed;
@@ -91,7 +63,6 @@
         radial-gradient(520px 340px at center, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
         linear-gradient(var(--bg), var(--bg));
       background-repeat: no-repeat;
-      /* cyan hugs left edge of .wrap, pink hugs right edge */
       background-position:
         calc(var(--gutter)) -120px,
         calc(100vw - var(--gutter)) -80px,
@@ -100,52 +71,60 @@
 
     a{ color: var(--cyan); text-decoration: none }
     .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px }
+
     header{ position: sticky; top:0; z-index:10; backdrop-filter: blur(8px); background: rgba(0,0,0,.4); border-bottom: 1px solid var(--line) }
     .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:10px; flex-wrap:wrap }
+
+    /* -------- Brand / logo (deduplicated) -------- */
     .brand{ display:flex; align-items:center; gap:10px }
+    .logo{
+      width: clamp(34px, 5.5vw, 56px);
+      height: clamp(34px, 5.5vw, 56px);
+      display: block;
+      object-fit: contain;
+      image-rendering: auto;
+      border-radius: 10px; /* remove if you don't want rounding */
+    }
+
     .brand .dot{ width:32px; height:32px; border-radius:10px; background: linear-gradient(135deg, var(--cyan), var(--pink)) }
+
     .chips{ display:flex; gap:10px; flex-wrap:wrap }
     .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid var(--line); border-radius:999px; background: rgba(255,255,255,.06); color: var(--muted); font-size: 12px }
+
     .btn{ display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid transparent; cursor:pointer; transition: transform .15s ease }
     .btn:hover{ transform: scale(1.02) } .btn:active{ transform: scale(.98) }
     .btn-primary{ background: var(--cyan); color:#000 }
     .btn-accent{ background: var(--pink); color:#fff }
     .btn-ghost{ background: rgba(255,255,255,.06); color:#fff; border-color: var(--line) }
+
     .hero h1{ font-size: clamp(28px, 6vw, 60px); line-height:1.05; margin: 10px 0 0 }
     .hero p{ color: var(--muted); max-width: 720px }
+
     section{ padding: var(--section-pad) 0; border-top: 1px solid var(--line) }
     @media(min-width:1024px){ section{ padding: var(--section-pad-md) 0 } }
+
     h2{ font-size: clamp(22px, 3.5vw, 40px); margin: 10px 0 24px }
     .kicker{ letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6); font-size: 12px; display:flex; align-items:center; gap:10px }
     .kicker .bar{ width: 32px; height: 1px; background: var(--line) }
+
     .grid{ display:grid; gap: var(--gap) }
     @media(min-width: 768px){ .grid{ gap: var(--gap-lg) } .grid-2{ grid-template-columns: 1fr 1fr } .grid-3{ grid-template-columns: repeat(3,1fr) } }
+
     .card{ border:1px solid var(--line); background: var(--card-bg); border-radius: var(--radius); padding: var(--card-pad); position: relative; overflow: hidden }
     @media(min-width:1024px){ .card{ padding: var(--card-pad-lg) } }
+
     .muted{ color: var(--muted) }
     .list{ list-style: disc; padding-left: 18px }
     .price{ font-size: 30px; font-weight: 800 } .unit{ font-size: 14px; vertical-align: super; color: var(--muted); margin-left: 2px }
 
-    /* ------- Form spacing & visual separation (simplified, non-joined) ------- */
-    .row{
-      display:grid;
-      row-gap: var(--field-gap);      /* 16px default */
-      column-gap: var(--field-gap);   /* 16px default */
-    }
-    /* Tablet and up: generous seam between the two columns */
+    /* -------- Form spacing -------- */
+    .row{ display:grid; row-gap: var(--field-gap); column-gap: var(--field-gap); }
     @media (min-width:768px){
-      .row{
-        row-gap: var(--field-gap-lg); /* 22px */
-        column-gap: 28px;             /* clear center seam */
-      }
+      .row{ row-gap: var(--field-gap-lg); column-gap: 28px; }
       .row-2{ grid-template-columns: 1fr 1fr; }
     }
-    /* Desktop: even clearer seam on big screens */
-    @media (min-width:1080px){
-      .row{ column-gap: 36px; }
-    }
-
-    .row > div{ display:grid; gap: 10px } /* space between label and input */
+    @media (min-width:1080px){ .row{ column-gap: 36px; } }
+    .row > div{ display:grid; gap: 10px }
     label{ font-size: 13px; color: rgba(255,255,255,.9); margin:0 }
 
     /* Inputs */
@@ -156,7 +135,7 @@
       border:1px solid rgba(255,255,255,.18);
       border-radius: 14px;
       padding: var(--field-py) var(--field-px);
-      min-height: 48px;             /* better on phones */
+      min-height: 48px;
       outline:none;
       box-shadow: 0 0 0 1px rgba(0,0,0,0) inset;
       -webkit-appearance: none;
@@ -166,25 +145,11 @@
       border-color: rgba(0,255,255,.6);
       box-shadow: 0 0 0 2px rgba(0,255,255,.25);
     }
-    /* Dark theme for select dropdown menu (the open list) */
-select { 
-  color-scheme: dark;                 /* hint to browsers for dark popups */
-}
 
-/* Most browsers (Chrome/Edge/Firefox) use <option> styling for the popup */
-select option,
-select optgroup{
-  background-color: #101214;          /* close to your card/bg tones */
-  color: #fff;
-}
-
-/* Highlight the selected row inside the menu */
-select option:checked,
-select option:focus{
-  background-color: rgba(0,255,255,.25);
-  color: #fff;
-}
-
+    /* Dark popup for selects */
+    select { color-scheme: dark; }
+    select option, select optgroup{ background-color:#101214; color:#fff; }
+    select option:checked, select option:focus{ background-color: rgba(0,255,255,.25); color:#fff; }
 
     footer{ text-align:center; color: var(--muted); padding: 48px 0; border-top:1px solid var(--line) }
     .wheel{ width:30px; height:30px; color: rgba(255,255,255,.85) }
@@ -192,107 +157,75 @@ select option:focus{
     .stack-12>*+*{ margin-top: var(--stack-gap-md) }
     details#diagnostics { border-top:1px dashed var(--line); padding-top:12px; margin-top:12px }
     details#diagnostics summary{ cursor:pointer; color: var(--muted) }
-    
-    /* --- Community gallery --- */
-.gallery{
-  display:grid;
-  gap: var(--gap);
-  grid-template-columns: 1fr 1fr;
-}
-@media (min-width:768px){
-  .gallery{ grid-template-columns: repeat(3,1fr); gap: var(--gap-lg); }
-}
-.gallery figure{ margin:0 }
-.gallery img{width:100%;aspect-ratio: 4 / 3;      
-  /* consistent tiles */
-  object-fit: cover;
-  border-radius: var(--radius);
-  border:1px solid var(--line);
-  display:block;
-}
-    /* --- Community gallery: 1 → 2 → 3 columns, images fit on screen --- */
-.gallery{
-  display:grid;
-  gap: var(--gap-lg);
-  grid-template-columns: 1fr; /* phones */
-}
-@media (min-width: 720px){
-  .gallery{ grid-template-columns: repeat(2, minmax(0,1fr)); } /* tablets */
-}
-@media (min-width: 1080px){
-  .gallery{ grid-template-columns: repeat(3, minmax(0,1fr)); } /* desktop */
-}
 
-/* Gallery tiles: crop less (4:3) and allow per-image focus nudges */
-.gallery img{
-  width:100%;
-  display:block;
-  aspect-ratio: 4 / 3;   /* was 16/9 */
-  object-fit: cover;     /* fills the tile; may crop a little */
-  border-radius: var(--radius);
-  border:1px solid var(--line);
-}
+    /* -------- Community gallery (deduplicated) -------- */
+    .gallery{
+      display:grid;
+      gap: var(--gap-lg);
+      grid-template-columns: 1fr; /* phones */
+    }
+    @media (min-width: 720px){
+      .gallery{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (min-width: 1080px){
+      .gallery{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+    }
+    .gallery figure{ margin:0 }
+    .gallery img{
+      width:100%;
+      display:block;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+    }
+    .pos-top img{    object-position: 50% 18%; }
+    .pos-bottom img{ object-position: 50% 82%; }
+    .pos-left img{   object-position: 20% 50%; }
+    .pos-right img{  object-position: 80% 50%; }
+    .gallery-caption{ padding:10px 2px; color:var(--muted); font-size:14px; }
 
-/* optional helpers to change the crop focus on specific photos */
-.pos-top img{    object-position: 50% 18%; }  /* keep more headroom */
-.pos-bottom img{ object-position: 50% 82%; }
-.pos-left img{   object-position: 20% 50%; }
-.pos-right img{  object-position: 80% 50%; }
+    /* -------- Lite YouTube visuals (deduplicated) -------- */
+    .yt-card { overflow: visible; }
+    .yt-lite{
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      overflow: hidden;
+      background:#000;
+      cursor:pointer;
+    }
+    .yt-thumb{
+      position:absolute; inset:0;
+      background-size:cover; background-position:center;
+      filter:brightness(.9);
+      transition:transform .35s ease;
+    }
+    .yt-lite:hover .yt-thumb{ transform: scale(1.02); }
+    .yt-play{
+      position:absolute; left:50%; top:50%;
+      transform:translate(-50%,-50%);
+      padding:.7rem 1.2rem; border-radius:999px;
+      background:rgba(0,0,0,.55); backdrop-filter: blur(4px);
+      font-weight:700; border:1px solid var(--line);
+    }
+    .yt-play::before{ content:"▶"; margin-right:8px }
 
-.gallery-caption{
-  padding:10px 2px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-
-/* --- Lite YouTube (thumbnail that swaps to player on click) --- */
-.yt-card{ position:relative; }
-.yt-lite{
-  position:relative;
-  border-radius: var(--radius);
-  border:1px solid var(--line);
-  overflow:hidden;
-  cursor:pointer;
-  background:#000;
-}
-.yt-thumb{
-  width:100%;
-  aspect-ratio: 16 / 9;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.92);
-}
-.yt-play{
-  position:absolute;
-  left:50%; top:50%;
-  transform: translate(-50%,-50%);
-  padding:12px 18px;
-  border-radius: 999px;
-  background: rgba(0,0,0,.55);
-  font-weight:800;
-  line-height:1;
-  border:1px solid var(--line);
-}
-    /* Lite YouTube visuals */
-.yt-card { overflow: visible; }
-.yt-lite { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; background:#000; cursor:pointer; }
-.yt-thumb { position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.9); transition:transform .35s ease; }
-.yt-lite:hover .yt-thumb { transform: scale(1.02); }
-.yt-play { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); padding:.7rem 1.2rem; border-radius:999px; background:rgba(0,0,0,.55); backdrop-filter: blur(4px); font-weight:700; }
-
-    
-.yt-play::before{ content:"▶"; margin-right:8px }
-</style>
-  
+    /* styling for direct embed wrapper (debug) */
+    .yt-direct-wrap{
+      margin-top:12px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+    }
+    .yt-note{ color:var(--muted); font-size:12px; margin-top:6px; }
+  </style>
 </head>
 <body>
   <header>
     <div class="wrap nav">
       <div class="brand">
-  <img class="logo" src="assets/theskateguys-1.png" alt="The Skate Guys logo" loading="eager" decoding="async">
-  <strong>The Skate Guys</strong>
-</div>
+        <img class="logo" src="assets/theskateguys-1.png" alt="The Skate Guys logo" loading="eager" decoding="async">
+        <strong>The Skate Guys</strong>
+      </div>
 
       <div class="chips">
         <span class="chip"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--pink)"></span> Exclusive Spots</span>
@@ -316,7 +249,7 @@ select option:focus{
           <span class="chip">Skate With Faith</span>
         </div>
         <h1>Small circle. <span style="color:var(--cyan)">Big progress.</span> Real community.</h1>
-        <p>All-ages rollerskating lessons and event experiences across Trinidad &amp; Tobago. Where beginners become skaters &amp; skaters become family.</p>
+        <p>All-ages rollerskating lessons and event experiences across Trinidad & Tobago. Where beginners become skaters & skaters become family.</p>
         <div style="margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap">
           <a class="btn btn-primary" href="#learn">Book a Skate Class</a>
           <a class="btn btn-accent" href="#hire">Hire The Team</a>
@@ -349,29 +282,31 @@ select option:focus{
         </div>
       </div>
     </section>
-     <section id="community">
-  <div class="wrap">
-    <div class="kicker"><span class="bar"></span>Our Skate Community</div>
-    <h2>Smiles • Progress • Good vibes</h2>
 
-    <div class="gallery">
-      <figure>
-        <img src="assets/community/tsg-01.jpg?v=1" alt="JD’s Rink • Arima" loading="lazy" decoding="async">
-        <figcaption class="gallery-caption">Rollerskating • For All Ages</figcaption>
-      </figure>
+    <!-- Community gallery -->
+    <section id="community">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Our Skate Community</div>
+        <h2>Smiles • Progress • Good vibes</h2>
 
-      <figure>
-        <img src="assets/community/tsg-02.jpg?v=1" alt="Beginner warm-up" loading="lazy" decoding="async">
-        <figcaption class="gallery-caption">Skate Guys Event</figcaption>
-      </figure>
+        <div class="gallery">
+          <figure>
+            <img src="assets/community/tsg-01.jpg?v=1" alt="JD’s Rink • Arima" loading="lazy" decoding="async">
+            <figcaption class="gallery-caption">Rollerskating • For All Ages</figcaption>
+          </figure>
 
-      <figure>
-        <img src="assets/community/tsg-03.jpg?v=1" alt="Family skate day" loading="lazy" decoding="async">
-        <figcaption class="gallery-caption">Skate Guys Family Day</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
+          <figure>
+            <img src="assets/community/tsg-02.jpg?v=1" alt="Beginner warm-up" loading="lazy" decoding="async">
+            <figcaption class="gallery-caption">Skate Guys Event</figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/community/tsg-03.jpg?v=1" alt="Family skate day" loading="lazy" decoding="async">
+            <figcaption class="gallery-caption">Skate Guys Family Day</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
     <!-- Pricing -->
     <section id="pricing">
@@ -453,44 +388,52 @@ select option:focus{
         <p class="muted" id="updated" style="margin-top:14px">Last updated: 02 Oct 2025. Sessions are arranged per coach availability—spots are capped for safety.</p>
       </div>
     </section>
-   
-<!-- Watch section (YouTube, lightweight) -->
-<section id="watch">
-  <div class="wrap">
-    <div class="kicker"><span class="bar"></span>Watch</div>
-    <h2>The Vibe in 60 Seconds</h2>
 
-    <!-- IMPORTANT: both cards live inside the same grid -->
-    <div class="grid grid-2">
+    <!-- Watch section (YouTube) -->
+    <section id="watch">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Watch</div>
+        <h2>The Vibe in 60 Seconds</h2>
 
-      <!-- Left: video card -->
-      <div class="card yt-card">
-        <!-- Use only the 11-char ID below -->
-        <div class="yt-lite"
-             data-youtube-id="5t-jL8d3Iq8"
-             aria-label="Play video" role="button" tabindex="0">
-          <div class="yt-thumb"
-               style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
-          <div class="yt-play">Watch</div>
+        <div class="grid grid-2">
+          <!-- Left: video card -->
+          <div class="card yt-card">
+            <!-- Fast poster: replace VIDEO_ID only (11 characters) -->
+            <div class="yt-lite"
+                 data-youtube-id="5t-jL8d3Iq8"
+                 aria-label="Play video" role="button" tabindex="0">
+              <div class="yt-thumb"
+                   style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
+              <div class="yt-play">Watch</div>
+            </div>
+
+            <!-- Direct embed (temporary / debug) -->
+            <div class="yt-direct-wrap">
+              <iframe width="100%" height="315"
+                src="https://www.youtube-nocookie.com/embed/5t-jL8d3Iq8?autoplay=0&rel=0&modestbranding=1"
+                title="YouTube video" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="yt-note">
+              If the top play button doesn’t work (ad-blockers), the direct player above should still play.
+              <a href="https://youtu.be/5t-jL8d3Iq8" target="_blank" rel="noopener">Watch on YouTube</a>
+            </div>
+          </div>
+
+          <!-- Right: info card -->
+          <div class="card">
+            <strong>What you’ll see</strong>
+            <ul class="list">
+              <li>Beginner coaching on smooth floors</li>
+              <li>Family-friendly sessions &amp; rentals</li>
+              <li>Community meets &amp; fun challenges</li>
+            </ul>
+            <a class="btn btn-primary" href="#learn" style="margin-top:12px">Book a Skate Class</a>
+          </div>
         </div>
       </div>
-
-      <!-- Right: info card -->
-      <div class="card">
-        <strong>What you’ll see</strong>
-        <ul class="list">
-          <li>Beginner coaching on smooth floors</li>
-          <li>Family-friendly sessions &amp; rentals</li>
-          <li>Community meets &amp; fun challenges</li>
-        </ul>
-        <a class="btn btn-primary" href="#learn" style="margin-top:12px">Book a Skate Class</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
+    </section>
 
     <!-- Learn to Skate Form -->
     <section id="learn">
@@ -503,11 +446,11 @@ select option:focus{
               <div class="row row-2">
                 <div>
                   <label>Full Name</label>
-                  <input name="name" placeholder="Your name" required="">
+                  <input name="name" placeholder="Your name" required>
                 </div>
                 <div>
                   <label>WhatsApp Number</label>
-                  <input name="phone" id="phoneLearn" placeholder="868-276-6878" required="" inputmode="tel" autocomplete="tel">
+                  <input name="phone" id="phoneLearn" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
                 </div>
               </div>
               <div class="row row-2">
@@ -576,15 +519,9 @@ select option:focus{
               </div>
               <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
                 <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
-                <a
-  id="learnEmail"
-  class="btn btn-ghost"
-  href="mailto:info.theskateguys@gmail.com?subject=TSG%20Learn%20to%20Skate%20Inquiry"
->
-  Email Us
-</a>
+                <a id="learnEmail" class="btn btn-ghost" href="mailto:info.theskateguys@gmail.com?subject=TSG%20Learn%20to%20Skate%20Inquiry">Email Us</a>
               </div>
-              <p class="muted">We cap class sizes for safety &amp; personal coaching. Tell us your preferred days/times; we’ll reach out to confirm your booking. If the month is full, we’ll offer a waitlist + free community session invite.</p>
+              <p class="muted">We cap class sizes for safety & personal coaching. Tell us your preferred days/times; we’ll reach out to confirm your booking. If the month is full, we’ll offer a waitlist + free community session invite.</p>
             </form>
           </div>
           <div class="stack-12">
@@ -596,12 +533,12 @@ select option:focus{
               </ul>
             </div>
             <div class="card">
-              <strong>Locations ( Trinidad &amp; Tobago )</strong>
+              <strong>Locations ( Trinidad & Tobago )</strong>
               <ul class="list">
                 <li>JD's Skating Rink — (Main Road maxi stand) Arima</li>
                 <li>River Ranch Rink — (Off Calvary Hill) Blanchisseuse Road, Arima</li>
-                <li>SK868 Rink— (RRM Plaza San Fernando ) South Trinidad </li><li>Rootsyardd (Skallywag) — (Chaguaramas) Port of Spain</li>
-                
+                <li>SK868 Rink— (RRM Plaza San Fernando ) South Trinidad </li>
+                <li>Rootsyardd (Skallywag) — (Chaguaramas) Port of Spain</li>
                 <li>Larry Gomes Stadium — (Malabar) Arima</li>
                 <li>Canoe Bay Road — Tobago</li>
                 <li>Montgomery Grounds — Tobago</li>
@@ -619,19 +556,19 @@ select option:focus{
     <!-- Hire Us + Packages -->
     <section id="hire">
       <div class="wrap">
-        <div class="kicker"><span class="bar"></span>Events &amp; Experiences</div>
-        <h2>Hire us (Rental Skates) — Birthdays, Schools, Corporate &amp; Pop-ups</h2>
+        <div class="kicker"><span class="bar"></span>Events & Experiences</div>
+        <h2>Hire us (Rental Skates) — Birthdays, Schools, Corporate & Pop-ups</h2>
         <div class="grid grid-2">
           <div class="card">
             <form id="formHire" class="stack-12">
               <div class="row row-2">
                 <div>
                   <label>Full Name</label>
-                  <input name="name" placeholder="Your name" required="">
+                  <input name="name" placeholder="Your name" required>
                 </div>
                 <div>
                   <label>WhatsApp Number</label>
-                  <input name="phone" id="phoneHire" placeholder="868-276-6878" required="" inputmode="tel" autocomplete="tel">
+                  <input name="phone" id="phoneHire" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
                 </div>
               </div>
               <div class="row row-2">
@@ -673,16 +610,9 @@ select option:focus{
               </div>
               <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
                 <button class="btn btn-accent" type="submit">Send via WhatsApp</button>
-                <a
-  id="hireEmail"
-  class="btn btn-ghost"
-  href="mailto:info.theskateguys@gmail.com?subject=TSG%20Event%20Hire%20Inquiry"
->
-  Email Us
-</a>
-
+                <a id="hireEmail" class="btn btn-ghost" href="mailto:info.theskateguys@gmail.com?subject=TSG%20Event%20Hire%20Inquiry">Email Us</a>
               </div>
-              <p class="muted">Dates are limited. A booking confirmation &amp; deposit secures your date. Tell us your preferred dates/times and we’ll reach out to confirm. We’ll share packages on reply.</p>
+              <p class="muted">Dates are limited. A booking confirmation & deposit secures your date. Tell us your preferred dates/times and we’ll reach out to confirm. We’ll share packages on reply.</p>
             </form>
           </div>
           <div class="stack-12">
@@ -714,17 +644,17 @@ select option:focus{
             <div class="card">
               <strong>Pop-up Rink / Festival — POA</strong>
               <ul class="list">
-                <li>Day-rate engagement • Programming &amp; games</li>
+                <li>Day-rate engagement • Programming & games</li>
                 <li>We integrate with your event schedule</li>
-                <li>Ask about venue requirements &amp; rentals</li>
+                <li>Ask about venue requirements & rentals</li>
               </ul>
             </div>
             <div class="card">
               <strong>Rink Launch Consulting — from $5,500 TTD</strong>
               <ul class="list">
                 <li>2-Week Launch Sprint: SOPs, staff training, floor rules</li>
-                <li>Opening Weekend programming &amp; marketing scripts</li>
-                <li>Follow-up report &amp; revenue ideas</li>
+                <li>Opening Weekend programming & marketing scripts</li>
+                <li>Follow-up report & revenue ideas</li>
               </ul>
             </div>
             <p class="muted">All packages subject to venue suitability, availability of rental sizes, and a 20% booking deposit. Travel fees may apply outside booking cost.</p>
@@ -782,43 +712,42 @@ select option:focus{
         WHATSAPP_E164: '18682766878',
         EMAIL: 'info.theskateguys@gmail.com',
       };
-        // Prefill Learn email (subject + body)
-  const learnEmail = document.getElementById('learnEmail');
-  if (learnEmail) {
-    const sub = encodeURIComponent('TSG Learn to Skate Inquiry');
-    const body = encodeURIComponent(
-      `Hi TSG,\n\nI'd like to book a class. Please contact me via WhatsApp or email.\n\nThanks!`
-    );
-    learnEmail.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
-  }
 
-  // Prefill Hire email (subject + body)
-  const hireEmail = document.getElementById('hireEmail');
-  if (hireEmail) {
-    const sub = encodeURIComponent('TSG Event Hire Inquiry');
-    const body = encodeURIComponent(
-      `Hi TSG,\n\nWe'd like to hire you for an event. Please contact us.\n\nThanks!`
-    );
-    hireEmail.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
-  }
+      // Prefill Learn email
+      const learnEmail = document.getElementById('learnEmail');
+      if (learnEmail) {
+        const sub = encodeURIComponent('TSG Learn to Skate Inquiry');
+        const body = encodeURIComponent(
+          `Hi TSG,\n\nI'd like to book a class. Please contact me via WhatsApp or email.\n\nThanks!`
+        );
+        learnEmail.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
+      }
 
+      // Prefill Hire email
+      const hireEmail = document.getElementById('hireEmail');
+      if (hireEmail) {
+        const sub = encodeURIComponent('TSG Event Hire Inquiry');
+        const body = encodeURIComponent(
+          `Hi TSG,\n\nWe'd like to hire you for an event. Please contact us.\n\nThanks!`
+        );
+        hireEmail.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
+      }
 
+      // Year
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+      // WhatsApp links
       const waUrl = `https://wa.me/${CONTACT.WHATSAPP_E164}`;
       const navWhatsApp = document.getElementById('navWhatsApp');
       if (navWhatsApp) navWhatsApp.href = waUrl;
-      const ctaWhatsApp = document.getElementById('ctaWhatsApp');
-      if (ctaWhatsApp) ctaWhatsApp.href = waUrl;
-      const ctaEmail = document.getElementById('ctaEmail');
-      if (ctaEmail) ctaEmail.href = `mailto:${CONTACT.EMAIL}`;
 
       function openWhatsApp(message){
         const url = `${waUrl}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
       }
 
+      // Learn form
       const formLearn = document.getElementById('formLearn');
       if (formLearn) {
         formLearn.addEventListener('submit', function(e){
@@ -841,6 +770,7 @@ select option:focus{
         });
       }
 
+      // Hire form
       const formHire = document.getElementById('formHire');
       if (formHire) {
         formHire.addEventListener('submit', function(e){
@@ -860,51 +790,52 @@ select option:focus{
         });
       }
 
+      // Updated stamp
       const updatedEl = document.getElementById('updated');
       if (updatedEl) {
         const d = new Date();
         const fmt = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
         updatedEl.textContent = `Last updated: ${fmt}. Sessions are arranged per coach availability—spots are capped for safety.`;
       }
-  // Swap the thumbnail for a real YouTube iframe on click/keyboard
-function mountYouTube(container){
-  const id = container.getAttribute('data-youtube-id');       // <-- ID only!
-  const iframe = document.createElement('iframe');
-  iframe.setAttribute('allowfullscreen','');
-  iframe.setAttribute('loading','lazy');
-  iframe.setAttribute('title','YouTube video');
-  iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-  iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
 
-  // keep aspect ratio & rounded corners
-  const wrap = document.createElement('div');
-  wrap.style.aspectRatio = '16/9';
-  wrap.style.width = '100%';
-  wrap.style.borderRadius = 'var(--radius)';
-  wrap.style.overflow = 'hidden';
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.border = '0';
-  wrap.appendChild(iframe);
+      // ---- Lite YouTube: swap poster for real player on click/keyboard ----
+      function mountYouTube(container){
+        const id = container.getAttribute('data-youtube-id'); // ID only
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('allowfullscreen','');
+        iframe.setAttribute('loading','lazy');
+        iframe.setAttribute('title','YouTube video');
+        iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        // Use privacy-friendly domain
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
 
-  container.replaceWith(wrap);
-}
+        // keep aspect & rounding
+        const wrap = document.createElement('div');
+        wrap.style.aspectRatio = '16/9';
+        wrap.style.width = '100%';
+        wrap.style.borderRadius = 'var(--radius)';
+        wrap.style.overflow = 'hidden';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = '0';
+        wrap.appendChild(iframe);
 
-// Delegated click + keyboard activation
-document.addEventListener('click', (e) => {
-  const el = e.target.closest('.yt-lite');
-  if (el) mountYouTube(el);
-});
-document.addEventListener('keydown', (e) => {
-  if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.yt-lite')) {
-    e.preventDefault();
-    mountYouTube(e.target.closest('.yt-lite'));
-  }
-});
+        container.replaceWith(wrap);
+      }
 
- 
+      // Delegated click + keyboard activation
+      document.addEventListener('click', (e) => {
+        const el = e.target.closest('.yt-lite');
+        if (el) mountYouTube(el);
+      });
+      document.addEventListener('keydown', (e) => {
+        const el = e.target.closest && e.target.closest('.yt-lite');
+        if ((e.key === 'Enter' || e.key === ' ') && el) {
+          e.preventDefault();
+          mountYouTube(el);
+        }
+      });
+    });
   </script>
-
-
-
-</body></html>
+</body>
+</html>

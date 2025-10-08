@@ -274,6 +274,14 @@ select option:focus{
   line-height:1;
   border:1px solid var(--line);
 }
+    /* Lite YouTube visuals */
+.yt-card { overflow: visible; }
+.yt-lite { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; background:#000; cursor:pointer; }
+.yt-thumb { position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.9); transition:transform .35s ease; }
+.yt-lite:hover .yt-thumb { transform: scale(1.02); }
+.yt-play { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); padding:.7rem 1.2rem; border-radius:999px; background:rgba(0,0,0,.55); backdrop-filter: blur(4px); font-weight:700; }
+
+    
 .yt-play::before{ content:"▶"; margin-right:8px }
 </style>
   
@@ -455,11 +463,17 @@ select option:focus{
     <div class="grid grid-2">
       <div class="card yt-card">
         <!-- Replace VIDEO_ID with your YouTube video ID (the part after v=) -->
-        <!-- YouTube lite player -->
-<div class="yt-lite" data-youtube-id="5t-jL8d3Iq8" aria-label="Play video">
-  <div class="yt-thumb" style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
-  <div class="yt-play">Watch</div>
+        <!-- Watch: lite YouTube -->
+<div class="card yt-card">
+  <div class="yt-lite"
+       data-youtube-id="5t-jL8d3Iq8"
+       aria-label="Play video" role="button" tabindex="0">
+    <div class="yt-thumb"
+         style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
+    <div class="yt-play">Watch</div>
+  </div>
 </div>
+
 
 
       <div class="card">
@@ -852,44 +866,42 @@ select option:focus{
         const fmt = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
         updatedEl.textContent = `Last updated: ${fmt}. Sessions are arranged per coach availability—spots are capped for safety.`;
       }
-  // ---- Lite YouTube: swap thumbnail for real player on click ----
+  // Swap the thumbnail for a real YouTube iframe on click/keyboard
 function mountYouTube(container){
-  // accept either a bare ID or any YouTube URL
-  const raw = container.getAttribute('data-youtube-id') || '';
-  const match = raw.match(/[A-Za-z0-9_-]{11}/);
-  const id = match ? match[0] : null;
-  if (!id) { console.warn('[TSG] Invalid YouTube id/url:', raw); return; }
-
+  const id = container.getAttribute('data-youtube-id');       // <-- ID only!
   const iframe = document.createElement('iframe');
-  iframe.setAttribute('allowfullscreen', '');
-  iframe.setAttribute('loading', 'lazy');
-  iframe.setAttribute('title', 'YouTube video');
-  iframe.setAttribute(
-    'allow',
-    'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-  );
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.border = '0';
+  iframe.setAttribute('allowfullscreen','');
+  iframe.setAttribute('loading','lazy');
+  iframe.setAttribute('title','YouTube video');
+  iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
   iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
 
-  // keep aspect ratio via wrapper
+  // keep aspect ratio & rounded corners
   const wrap = document.createElement('div');
   wrap.style.aspectRatio = '16/9';
   wrap.style.width = '100%';
   wrap.style.borderRadius = 'var(--radius)';
   wrap.style.overflow = 'hidden';
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.border = '0';
   wrap.appendChild(iframe);
 
   container.replaceWith(wrap);
 }
 
-
+// Delegated click + keyboard activation
 document.addEventListener('click', (e) => {
-  const c = e.target.closest('.yt-lite');
-  if (!c) return;
-  mountYouTube(c);
+  const el = e.target.closest('.yt-lite');
+  if (el) mountYouTube(el);
 });
+document.addEventListener('keydown', (e) => {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.yt-lite')) {
+    e.preventDefault();
+    mountYouTube(e.target.closest('.yt-lite'));
+  }
+});
+
  
   </script>
 

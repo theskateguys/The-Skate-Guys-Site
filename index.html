@@ -460,22 +460,22 @@ select option:focus{
     <div class="kicker"><span class="bar"></span>Watch</div>
     <h2>The Vibe in 60 Seconds</h2>
 
+    <!-- IMPORTANT: both cards live inside the same grid -->
     <div class="grid grid-2">
+
+      <!-- Left: video card -->
       <div class="card yt-card">
-        <!-- Replace VIDEO_ID with your YouTube video ID (the part after v=) -->
-        <!-- Watch: lite YouTube -->
-<div class="card yt-card">
-  <div class="yt-lite"
-       data-youtube-id="5t-jL8d3Iq8"
-       aria-label="Play video" role="button" tabindex="0">
-    <div class="yt-thumb"
-         style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
-    <div class="yt-play">Watch</div>
-  </div>
-</div>
+        <!-- Use only the 11-char ID below -->
+        <div class="yt-lite"
+             data-youtube-id="5t-jL8d3Iq8"
+             aria-label="Play video" role="button" tabindex="0">
+          <div class="yt-thumb"
+               style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
+          <div class="yt-play">Watch</div>
+        </div>
+      </div>
 
-
-
+      <!-- Right: info card -->
       <div class="card">
         <strong>What you’ll see</strong>
         <ul class="list">
@@ -483,13 +483,13 @@ select option:focus{
           <li>Family-friendly sessions &amp; rentals</li>
           <li>Community meets &amp; fun challenges</li>
         </ul>
-        <div style="margin-top:12px">
-          <a class="btn btn-primary" href="#learn">Book a Skate Class</a>
-        </div>
+        <a class="btn btn-primary" href="#learn" style="margin-top:12px">Book a Skate Class</a>
       </div>
+
     </div>
   </div>
 </section>
+
 
 
     <!-- Learn to Skate Form -->

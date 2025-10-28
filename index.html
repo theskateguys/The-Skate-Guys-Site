@@ -389,36 +389,109 @@
     </section>
 
     <!-- On-demand Scheduling -->
-    <section id="schedule">
-      <div class="wrap">
-        <div class="kicker"><span class="bar"></span>On-Demand Skate Scheduling</div>
-        <h2>We match your availability to a skate coach</h2>
-        <div class="grid grid-2">
-          <div class="card">
-            <strong>How it works</strong>
-            <ul class="list">
-              <li>Tell us your <strong>preferred days/times</strong> in the form.</li>
-              <li>We match you with an available coach at your chosen location.</li>
-              <li>We confirm on WhatsApp with your booking &amp; payment details.</li>
-            </ul>
-            <p class="muted">Most members choose after-school/evenings or weekend mornings.</p>
-          </div>
-          <div class="card">
-            <strong>Locations</strong>
-            <ul class="list">
-              <li> - JD's Skating Rink —  (Main Road maxi stand), Arima</li>
-              <li> - River Ranch — Arima (off Calvary Hill)</li>
-              <li> - Rootsyardd (Skallywag) — Chaguaramas (Port of Spain)</li>
-              <li> - SK868 — RRM Plaza, San Fernando (South Trinidad)</li>
-              <li> - Larry Gomes Stadium — Malabar, Arima</li>
-              <li> - Canoe Bay Road — Tobago</li>
-              <li> - Montgomery Grounds — Tobago</li>
-            </ul>
-          </div>
-        </div>
-        <p class="muted" id="updated" style="margin-top:14px">Last updated: 02 Oct 2025. Sessions are arranged per coach availability—spots are capped for safety.</p>
+    <!-- How it works -->
+<section id="how">
+  <div class="wrap">
+    <div class="kicker"><span class="bar"></span>How it works</div>
+    <h2>Book in 3 steps</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <strong>1) Tell us when</strong>
+        <p class="muted">Pick your best days/times.</p>
       </div>
-    </section>
+      <div class="card">
+        <strong>2) We match a coach</strong>
+        <p class="muted">We confirm availability on WhatsApp.</p>
+      </div>
+      <div class="card">
+        <strong>3) Show up & roll</strong>
+        <p class="muted">Small groups • beginner friendly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Try -->
+<section id="try">
+  <div class="wrap">
+    <div class="kicker"><span class="bar"></span>Path 1</div>
+    <h2>Try — Book a Drop-in Class</h2>
+    <div class="card">
+      <p class="muted">First time? Start simple. 1-hour small group. Rentals available.</p>
+      <ul class="list">
+        <li>$60 TTD / 1 hr</li>
+        <li>All ages • Beginner friendly</li>
+        <li>Pick your location & time</li>
+      </ul>
+      <a class="btn btn-primary interest-btn" href="#learn" data-interest="Drop-in">Book a Drop-in</a>
+    </div>
+  </div>
+</section>
+
+<!-- Join -->
+<section id="join">
+  <div class="wrap">
+    <div class="kicker"><span class="bar"></span>Path 2</div>
+    <h2>Join — Monthly Plan (4 + 1 Free)</h2>
+    <div class="card" style="outline:2px solid var(--pink)">
+      <p class="muted">Best value for consistent progress. Priority booking + progress card.</p>
+      <ul class="list">
+        <li>$240 TTD / month</li>
+        <li>4 sessions + 1 free</li>
+        <li>Priority booking window</li>
+      </ul>
+      <a class="btn btn-primary interest-btn" href="#learn" data-interest="Monthly">Join Monthly</a>
+    </div>
+  </div>
+</section>
+
+<!-- Elite -->
+<section id="elite">
+  <div class="wrap">
+    <div class="kicker"><span class="bar"></span>Path 3</div>
+    <h2>Elite — Upgrade for faster growth</h2>
+    <div class="card">
+      <p class="muted">Smaller groups, focused drills, priority access & extra coaching time.</p>
+      <ul class="list">
+        <li>Members-first windows</li>
+        <li>Milestone tracking</li>
+        <li>Invite-only community perks</li>
+      </ul>
+      <a class="btn btn-primary interest-btn" href="#learn" data-interest="Elite">Request Elite</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Locations -->
+<section id="locations">
+  <div class="wrap">
+    <div class="kicker"><span class="bar"></span>Where we skate</div>
+    <h2>Locations (Trinidad &amp; Tobago)</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <strong>Trinidad</strong>
+        <ul class="list">
+          <li>JD's Skating Rink — (Main Road maxi stand), Arima</li>
+          <li>River Ranch — Arima (off Calvary Hill)</li>
+          <li>Rootsyardd (Skallywag) — Chaguaramas (Port of Spain)</li>
+          <li>SK868 — RRM Plaza, San Fernando (South Trinidad)</li>
+          <li>Larry Gomes Stadium — Malabar, Arima</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>Tobago</strong>
+        <ul class="list">
+          <li>Canoe Bay Road — Tobago</li>
+          <li>Montgomery Grounds — Tobago</li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted" id="updated" style="margin-top:14px">
+      Last updated: 02 Oct 2025. Sessions are arranged per coach availability—spots are capped for safety.
+    </p>
+  </div>
+</section>
+
 
     <!-- Watch section (YouTube) -->
     <section id="watch">
@@ -467,122 +540,132 @@
     </section>
 
     <!-- Learn to Skate Form -->
-    <section id="learn">
-      <div class="wrap">
-        <div class="kicker"><span class="bar"></span>All Ages</div>
-        <h2>Learn to skate — book your spot</h2>
-        <div class="grid grid-2">
-          <div class="card">
-            <form id="formLearn" class="stack-12">
-              <div class="row row-2">
-                <div>
-                  <label>Full Name</label>
-                  <input name="name" placeholder="Your name" required>
-                </div>
-                <div>
-                  <label>WhatsApp Number</label>
-                  <input name="phone" id="phoneLearn" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
-                </div>
-              </div>
-              <div class="row row-2">
-                <div>
-                  <label>Email (optional)</label>
-                  <input name="email" type="email" placeholder="you@example.com">
-                </div>
-                <div>
-                  <label>Age / Group</label>
-                  <select name="age">
-                    <option>All Ages</option>
-                    <option>Kids (5–9)</option>
-                    <option>Preteens (10–12)</option>
-                    <option>Teens (13–17)</option>
-                    <option>Adults (18+)</option>
-                    <option>Family (Mixed)</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row row-2">
-                <div>
-                  <label>Skill Level</label>
-                  <select name="level">
-                    <option>Beginner</option>
-                    <option>Improver</option>
-                    <option>Intermediate</option>
-                    <option>Advanced</option>
-                  </select>
-                </div>
-                <div>
-                  <label>Preferred Location</label>
-                  <select name="location">
-                    <option>JD's Skating Rink — Near the main road maxi stand, Arima</option>
-                    <option>River Ranch — Arima (off Calvary Hill)</option>
-                    <option>Rootsyardd (Skallywag) — Chaguaramas (Port Of Spain)</option>
-                    <option>SK868 (South)</option>
-                    <option>Larry Gomes Stadium (Arima)</option>
-                    <option>Canoe Bay Road (Tobago)</option>
-                    <option>Montgomery Grounds (Tobago)</option>
-                    <option>Other / Not sure</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row row-2">
-                <div>
-                  <label>Rental Skates Needed?</label>
-                  <select name="rentals">
-                    <option>No</option>
-                    <option>Yes</option>
-                  </select>
-                </div>
-                <div>
-                  <label>Shoe Size (if rentals)</label>
-                  <input name="size" placeholder="US 6">
-                </div>
-              </div>
-              <div class="row row-2">
-                <div>
-                  <label>Preferred Days/Times</label>
-                  <input name="date" placeholder="Your best windows (e.g. Tue/Thu 5–7pm or Sat morning)">
-                </div>
-                <div>
-                  <label>Notes (optional)</label>
-                  <input name="message" placeholder="Goals, concerns, access needs">
-                </div>
-              </div>
-              <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
-                <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
-                <a id="learnEmail" class="btn btn-ghost" href="mailto:info.theskateguys@gmail.com?subject=TSG%20Learn%20to%20Skate%20Inquiry">Email Us</a>
-              </div>
-              <p class="muted">We cap class sizes for safety & personal coaching. Tell us your preferred days/times; we’ll reach out to confirm your booking. If the month is full, we’ll offer a waitlist + free community session invite.</p>
-            </form>
-          </div>
-          <div class="stack-12">
-            <div class="card">
-              <strong>Age Groups</strong>
-              <ul class="list">
-                <li>Kids (5–9) • Preteens (10–12) • Teens (13–17) • Adults (18+) • Family</li>
-                <li>Absolute beginners welcome</li>
-              </ul>
+    <!-- Learn to Skate Form -->
+<section id="learn">
+  <div class="wrap">
+    <div class="kicker"><span class="bar"></span>All Ages</div>
+    <h2>Book your spot</h2>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <form id="formLearn" class="stack-12">
+          <!-- captures which path they clicked -->
+          <input type="hidden" name="interest" id="interest" value="Drop-in">
+
+          <div class="row row-2">
+            <div>
+              <label>Full Name</label>
+              <input name="name" placeholder="Your name" required>
             </div>
-            <div class="card">
-              <strong>Locations ( Trinidad & Tobago )</strong>
-              <ul class="list">
-                <li>JD's Skating Rink — (Main Road maxi stand) Arima</li>
-                <li>River Ranch Rink — (Off Calvary Hill) Blanchisseuse Road, Arima</li>
-                <li>SK868 Rink— (RRM Plaza San Fernando ) South Trinidad </li>
-                <li>Rootsyardd (Skallywag) — (Chaguaramas) Port of Spain</li>
-                <li>Larry Gomes Stadium — (Malabar) Arima</li>
-                <li>Canoe Bay Road — Tobago</li>
-                <li>Montgomery Grounds — Tobago</li>
-              </ul>
-            </div>
-            <div class="card">
-              <strong>Rentals</strong>
-              <p class="muted">Limited sizes available. Rental skates <strong>$60 TTD/hour</strong>. Add your shoe size if you need rentals. Helmets recommended.</p>
+            <div>
+              <label>WhatsApp Number</label>
+              <input name="phone" id="phoneLearn" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
             </div>
           </div>
+
+          <div class="row row-2">
+            <div>
+              <label>Email (optional)</label>
+              <input name="email" type="email" placeholder="you@example.com">
+            </div>
+            <div>
+              <label>Age / Group</label>
+              <select name="age">
+                <option>All Ages</option>
+                <option>Kids (5–9)</option>
+                <option>Preteens (10–12)</option>
+                <option>Teens (13–17)</option>
+                <option>Adults (18+)</option>
+                <option>Family (Mixed)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div>
+              <label>Skill Level</label>
+              <select name="level">
+                <option>Beginner</option>
+                <option>Improver</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+              </select>
+            </div>
+            <div>
+              <label>Preferred Location</label>
+              <select name="location" required>
+                <option value="">Select a location…</option>
+                <option>JD's Skating Rink — Near the main road maxi stand, Arima</option>
+                <option>River Ranch — Arima (off Calvary Hill)</option>
+                <option>Rootsyardd (Skallywag) — Chaguaramas (Port Of Spain)</option>
+                <option>SK868 (South)</option>
+                <option>Larry Gomes Stadium (Arima)</option>
+                <option>Canoe Bay Road (Tobago)</option>
+                <option>Montgomery Grounds (Tobago)</option>
+                <option>Other / Not sure</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div>
+              <label>Preferred Days/Times</label>
+              <input name="date" placeholder="e.g. Tue/Thu 5–7pm or Sat morning" required>
+            </div>
+            <div>
+              <label>Rental Skates Needed?</label>
+              <select name="rentals">
+                <option>No</option>
+                <option>Yes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div>
+              <label>Shoe Size (if rentals)</label>
+              <input name="size" placeholder="US 6">
+            </div>
+            <div>
+              <label>Notes (optional)</label>
+              <input name="message" placeholder="Goals, concerns, access needs">
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
+            <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
+            <a
+              id="learnEmail"
+              class="btn btn-ghost"
+              href="mailto:info.theskateguys@gmail.com?subject=TSG%20Learn%20to%20Skate%20Inquiry"
+            >
+              Email Us
+            </a>
+            <a class="btn btn-ghost" href="tel:+18682766878" aria-label="Call us">Call</a>
+          </div>
+
+          <p class="muted">Prefer a call? We can book you in 60 seconds.</p>
+          <p class="muted">We cap class sizes for safety &amp; personal coaching. If the month is full, we’ll offer a waitlist + free community session invite.</p>
+        </form>
+      </div>
+
+      <div class="stack-12">
+        <div class="card">
+          <strong>Age Groups</strong>
+          <ul class="list">
+            <li>Kids (5–9) • Preteens (10–12) • Teens (13–17) • Adults (18+) • Family</li>
+            <li>Absolute beginners welcome</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Rentals</strong>
+          <p class="muted">Limited sizes available. Rental skates <strong>$60 TTD/hour</strong>. Helmets recommended.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
 
     <!-- Hire Us + Packages -->
     <section id="hire">
@@ -743,6 +826,15 @@
         WHATSAPP_E164: '18682766878',
         EMAIL: 'info.theskateguys@gmail.com',
       };
+      // When a "Try / Join / Elite" button is clicked, store which path they chose
+document.querySelectorAll('.interest-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const choice = btn.getAttribute('data-interest') || 'Drop-in';
+    const interestField = document.getElementById('interest');
+    if (interestField) interestField.value = choice;
+  });
+});
+
 
       // Prefill Learn email
       const learnEmail = document.getElementById('learnEmail');
@@ -786,6 +878,7 @@
           const fd = new FormData(e.target);
           const msg = [
             'TSG Inquiry: Learn to Skate',
+            `Interest: ${fd.get('interest')||'Drop-in'}`,
             `Name: ${fd.get('name')||''}`,
             fd.get('phone') ? `Phone: ${fd.get('phone')}` : '',
             fd.get('email') ? `Email: ${fd.get('email')}` : '',

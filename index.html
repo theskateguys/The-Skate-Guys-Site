@@ -96,6 +96,33 @@
     .btn-primary{ background: var(--cyan); color:#000 }
     .btn-accent{ background: var(--pink); color:#fff }
     .btn-ghost{ background: rgba(255,255,255,.06); color:#fff; border-color: var(--line) }
+    /* ---- Header nav links ---- */
+.nav-links{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.nav-links a{
+  color: var(--muted);
+  font-weight:600;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid transparent;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.nav-links a:hover{
+  color:#fff;
+  background: rgba(255,255,255,.06);
+  border-color: var(--line);
+}
+
+/* Actions (Book + WhatsApp) grouped on the right */
+.nav-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
 
     .hero h1{ font-size: clamp(28px, 6vw, 60px); line-height:1.05; margin: 10px 0 0 }
     .hero p{ color: var(--muted); max-width: 720px }

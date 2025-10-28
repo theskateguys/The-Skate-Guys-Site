@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/favicon.ico">
-  <meta name="description" content="All-ages rollerskating lessons & event hire across Trinidad & Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
-  <meta property="og:title" content="The Skate Guys Hub — Trinidad & Tobago Leading Rollerskate Community">
+  <meta name="description" content="All-ages rollerskating lessons &amp; event hire across Trinidad &amp; Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
+  <meta property="og:title" content="The Skate Guys Hub — Trinidad &amp; Tobago Leading Rollerskate Community">
   <meta property="og:description" content="Small circle. Big progress. Real community.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://your-domain/og-card.jpg">
   <meta property="og:url" content="https://your-domain/">
   <meta name="twitter:card" content="summary_large_image">
-  <title>The Skate Guys Hub — Trinidad & Tobago's Leading Rollerskate Community</title>
+  <title>The Skate Guys Hub — Trinidad &amp; Tobago's Leading Rollerskate Community</title>
 
   <style>
     :root{
@@ -75,7 +76,7 @@
     header{ position: sticky; top:0; z-index:10; backdrop-filter: blur(8px); background: rgba(0,0,0,.4); border-bottom: 1px solid var(--line) }
     .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:10px; flex-wrap:wrap }
 
-    /* -------- Brand / logo (deduplicated) -------- */
+    /* -------- Brand / logo -------- */
     .brand{ display:flex; align-items:center; gap:10px }
     .logo{
       width: clamp(34px, 5.5vw, 56px);
@@ -86,52 +87,38 @@
       border-radius: 10px; /* remove if you don't want rounding */
     }
 
-    .brand .dot{ width:32px; height:32px; border-radius:10px; background: linear-gradient(135deg, var(--cyan), var(--pink)) }
+    /* -------- Header nav links -------- */
+    .nav-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .nav-links a{
+      color: var(--muted);
+      font-weight:600;
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid transparent;
+      transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+    .nav-links a:hover{
+      color:#fff;
+      background: rgba(255,255,255,.06);
+      border-color: var(--line);
+    }
 
-    .chips{ display:flex; gap:10px; flex-wrap:wrap }
-    .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid var(--line); border-radius:999px; background: rgba(255,255,255,.06); color: var(--muted); font-size: 12px }
+    /* Actions (Book + WhatsApp + Call) grouped on the right */
+    .nav-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
 
     .btn{ display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid transparent; cursor:pointer; transition: transform .15s ease }
     .btn:hover{ transform: scale(1.02) } .btn:active{ transform: scale(.98) }
     .btn-primary{ background: var(--cyan); color:#000 }
     .btn-accent{ background: var(--pink); color:#fff }
     .btn-ghost{ background: rgba(255,255,255,.06); color:#fff; border-color: var(--line) }
-    /* ---- Header nav links ---- */
-.nav-links{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-  <!-- Replace the chips with simple nav links -->
-<nav class="links" style="display:flex; gap:18px; flex-wrap:wrap">
-  <a href="#try">Try</a>
-  <a href="#join">Join</a>
-  <a href="#elite">Elite</a>
-  <a href="#locations">Locations</a>
-</nav>
-<!-- keep your Book button on the right that links to #try -->
-     
-.nav-links a{
-  color: var(--muted);
-  font-weight:600;
-  padding:8px 10px;
-  border-radius:10px;
-  border:1px solid transparent;
-  transition: background .15s ease, color .15s ease, border-color .15s ease;
-}
-.nav-links a:hover{
-  color:#fff;
-  background: rgba(255,255,255,.06);
-  border-color: var(--line);
-}
-
-/* Actions (Book + WhatsApp) grouped on the right */
-.nav-actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
 
     .hero h1{ font-size: clamp(28px, 6vw, 60px); line-height:1.05; margin: 10px 0 0 }
     .hero p{ color: var(--muted); max-width: 720px }
@@ -194,7 +181,7 @@
     details#diagnostics { border-top:1px dashed var(--line); padding-top:12px; margin-top:12px }
     details#diagnostics summary{ cursor:pointer; color: var(--muted) }
 
-    /* -------- Community gallery (deduplicated) -------- */
+    /* -------- Community gallery -------- */
     .gallery{
       display:grid;
       gap: var(--gap-lg);
@@ -221,7 +208,7 @@
     .pos-right img{  object-position: 80% 50%; }
     .gallery-caption{ padding:10px 2px; color:var(--muted); font-size:14px; }
 
-    /* -------- Lite YouTube visuals (deduplicated) -------- */
+    /* -------- Lite YouTube visuals -------- */
     .yt-card { overflow: visible; }
     .yt-lite{
       position: relative;
@@ -247,57 +234,187 @@
       font-weight:700; border:1px solid var(--line);
     }
     .yt-play::before{ content:"▶"; margin-right:8px }
-
-    /* styling for direct embed wrapper (debug) */
-    .yt-direct-wrap{
-      margin-top:12px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
-    }
-    .yt-note{ color:var(--muted); font-size:12px; margin-top:6px; }
   </style>
 </head>
-<header>
-  <div class="wrap nav">
-    <!-- Brand -->
-    <div class="brand">
-      <img class="logo" src="assets/theskateguys-1.png" alt="The Skate Guys logo" loading="eager" decoding="async">
-      <strong>The Skate Guys</strong>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <!-- Brand -->
+      <div class="brand">
+        <img class="logo" src="assets/theskateguys-1.png" alt="The Skate Guys logo" loading="eager" decoding="async">
+        <strong>The Skate Guys</strong>
+      </div>
+
+      <!-- Primary nav links -->
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#try">Try</a>
+        <a href="#join">Join</a>
+        <a href="#elite">Elite</a>
+        <a href="#locations">Locations</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <a class="btn btn-primary" id="navBook" href="#try">Book</a>
+        <a class="btn btn-ghost" id="navWhatsApp" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+18682766878" aria-label="Call us">Call</a>
+      </div>
     </div>
-
-    <!-- Primary nav links -->
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#try">Try</a>
-      <a href="#join">Join</a>
-      <a href="#elite">Elite</a>
-      <a href="#locations">Locations</a>
-    </nav>
-
-    <!-- Actions -->
-    <div class="nav-actions">
-      <a class="btn btn-primary" id="navBook" href="#try">Book</a>
-      <a class="btn btn-ghost" id="navWhatsApp" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
-    </div>
-  </div>
-</header>
-
+  </header>
 
   <main>
     <!-- Hero -->
-<section class="hero">
-  <div class="wrap">
-    <div class="chips" style="margin-bottom: 9px;">
-      <span class="chip">Beginner Friendly</span>
-      <span class="chip">All Ages</span>
-      <span class="chip">Rentals Available</span>
-    </div>
-    <h1>Learn to roller skate in Trinidad &amp; Tobago</h1>
-    <p>Start with a simple 1-hour drop-in class. Small groups, friendly coaching, safe floors.</p>
-    <div style="margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap">
-      <a class="btn btn-primary" href="#try" aria-label="Start with a drop-in class">Start with a Drop-in</a>
-      <a class="btn btn-ghost" id="navWhatsApp" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Help</a>
-    </div>
-  </div>
-</section>
+    <section class="hero">
+      <div class="wrap">
+        <div class="chips" style="margin-bottom: 9px;">
+          <span class="chip">Beginner Friendly</span>
+          <span class="chip">All Ages</span>
+          <span class="chip">Rentals Available</span>
+        </div>
+        <h1>Learn to roller skate in Trinidad &amp; Tobago</h1>
+        <p>Start with a simple 1-hour drop-in class. Small groups, friendly coaching, safe floors.</p>
+        <div style="margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap">
+          <a class="btn btn-primary" href="#try" aria-label="Start with a drop-in class">Start with a Drop-in</a>
+          <a class="btn btn-ghost" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Help</a>
+        </div>
+      </div>
+    </section>
 
+    <!-- How it works -->
+    <section id="how">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>How it works</div>
+        <h2>Book in 3 steps</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <strong>1) Tell us when</strong>
+            <p class="muted">Pick your best days/times.</p>
+          </div>
+          <div class="card">
+            <strong>2) We match a coach</strong>
+            <p class="muted">We confirm availability on WhatsApp.</p>
+          </div>
+          <div class="card">
+            <strong>3) Show up &amp; roll</strong>
+            <p class="muted">Small groups • beginner friendly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Try -->
+    <section id="try">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Path 1</div>
+        <h2>Try — Book a Drop-in Class</h2>
+        <div class="card">
+          <p class="muted">First time? Start simple. 1-hour small group. Rentals available.</p>
+          <ul class="list">
+            <li>$60 TTD / 1 hr</li>
+            <li>All ages • Beginner friendly</li>
+            <li>Pick your location &amp; time</li>
+          </ul>
+          <a class="btn btn-primary interest-btn" href="#learn" data-interest="Drop-in">Book a Drop-in</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join -->
+    <section id="join">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Path 2</div>
+        <h2>Join — Monthly Plan (4 + 1 Free)</h2>
+        <div class="card" style="outline:2px solid var(--pink)">
+          <p class="muted">Best value for consistent progress. Priority booking + progress card.</p>
+          <ul class="list">
+            <li>$240 TTD / month</li>
+            <li>4 sessions + 1 free</li>
+            <li>Priority booking window</li>
+          </ul>
+          <a class="btn btn-primary interest-btn" href="#learn" data-interest="Monthly">Join Monthly</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elite -->
+    <section id="elite">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Path 3</div>
+        <h2>Elite — Upgrade for faster growth</h2>
+        <div class="card">
+          <p class="muted">Smaller groups, focused drills, priority access &amp; extra coaching time.</p>
+          <ul class="list">
+            <li>Members-first booking windows</li>
+            <li>Progress milestones + coach feedback</li>
+            <li>Invite-only community sessions</li>
+          </ul>
+          <a class="btn btn-primary interest-btn" href="#learn" data-interest="Elite">Request Elite</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Watch (Lite YouTube only) -->
+    <section id="watch">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Watch</div>
+        <h2>The vibe in 60 seconds</h2>
+
+        <div class="grid grid-2">
+          <!-- Left: video -->
+          <div class="card yt-card">
+            <div class="yt-lite" data-youtube-id="5t-jL8d3Iq8" aria-label="Play video" role="button" tabindex="0">
+              <div class="yt-thumb" style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
+              <div class="yt-play">Watch</div>
+            </div>
+            <p class="muted" style="margin-top:10px">
+              Trouble playing? <a href="https://youtu.be/5t-jL8d3Iq8" target="_blank" rel="noopener">Watch on YouTube</a>.
+            </p>
+          </div>
+
+          <!-- Right: bullets -->
+          <div class="card">
+            <strong>What you’ll see</strong>
+            <ul class="list">
+              <li>Beginner coaching on smooth floors</li>
+              <li>Family-friendly sessions &amp; rentals</li>
+              <li>Community meets &amp; fun challenges</li>
+            </ul>
+            <a class="btn btn-primary" href="#try" style="margin-top:12px">Start with a Drop-in</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Locations -->
+    <section id="locations">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Where we skate</div>
+        <h2>Locations (Trinidad &amp; Tobago)</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <strong>Trinidad</strong>
+            <ul class="list">
+              <li>JD's Skating Rink — (Main Road maxi stand), Arima</li>
+              <li>River Ranch — Arima (off Calvary Hill)</li>
+              <li>Rootsyardd (Skallywag) — Chaguaramas (Port of Spain)</li>
+              <li>SK868 — RRM Plaza, San Fernando (South Trinidad)</li>
+              <li>Larry Gomes Stadium — Malabar, Arima</li>
+            </ul>
+          </div>
+          <div class="card">
+            <strong>Tobago</strong>
+            <ul class="list">
+              <li>Canoe Bay Road — Tobago</li>
+              <li>Montgomery Grounds — Tobago</li>
+            </ul>
+          </div>
+        </div>
+        <p class="muted" id="updated" style="margin-top:14px">
+          Last updated: 02 Oct 2025. Sessions are arranged per coach availability—spots are capped for safety.
+        </p>
+      </div>
+    </section>
 
     <!-- Community gallery -->
     <section id="community">
@@ -324,366 +441,45 @@
       </div>
     </section>
 
-    <!-- Pricing -->
-    <section id="pricing">
+    <!-- FAQ -->
+    <section id="faq">
       <div class="wrap">
-        <div class="kicker"><span class="bar"></span>Book &amp; Roll</div>
-        <h2>Start simple. Scale as you go.</h2>
-        <div class="grid grid-3">
-          <div class="card">
-            <div class="stack-12">
-              <strong>Drop-in Class</strong>
-              <div><span class="price">$60</span><span class="unit">TTD / 1 hr</span></div>
-              <p class="muted">Great for first-timers.</p>
-              <ul class="list">
-                <li>All ages • Beginner friendly</li>
-                <li>Small group coaching</li>
-                <li>Add rentals if needed <span class="muted">• $60 TTD / hour</span></li>
-              </ul>
-              <a class="btn btn-primary" href="#learn">Book a Skate Class</a>
-            </div>
-          </div>
-          <div class="card" style="outline:2px solid var(--pink)">
-            <div class="stack-12">
-              <strong>Monthly (4 + 1 Free)</strong>
-              <div><span class="price">$240</span><span class="unit">TTD / month</span></div>
-              <p class="muted">Best value for consistent progress.</p>
-              <ul class="list">
-                <li>4 sessions + 1 free</li>
-                <li>Priority booking window</li>
-                <li>Progress card included</li>
-              </ul>
-              <a class="btn btn-primary" href="#learn">Join Monthly</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="stack-12">
-              <strong>Event Hire</strong>
-              <div><span class="price">Custom</span></div>
-              <p class="muted">Limited dates each month.</p>
-              <ul class="list">
-                <li>Birthdays • Schools • Corporate</li>
-                <li>We can bring rentals &amp; games</li>
-                <li>Venue guidance available</li>
-              </ul>
-              <a class="btn btn-accent" href="#hire">Get a Quote</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- On-demand Scheduling -->
-    <!-- How it works -->
-<section id="how">
-  <div class="wrap">
-    <div class="kicker"><span class="bar"></span>How it works</div>
-    <h2>Book in 3 steps</h2>
-    <div class="grid grid-3">
-      <div class="card">
-        <strong>1) Tell us when</strong>
-        <p class="muted">Pick your best days/times.</p>
-      </div>
-      <div class="card">
-        <strong>2) We match a coach</strong>
-        <p class="muted">We confirm availability on WhatsApp.</p>
-      </div>
-      <div class="card">
-        <strong>3) Show up & roll</strong>
-        <p class="muted">Small groups • beginner friendly.</p>
-      </div>
-    </div>
-  </div>
-</section>
-    <!-- Try -->
-<section id="try">
-  <div class="wrap">
-    <div class="kicker"><span class="bar"></span>Path 1</div>
-    <h2>Try — Book a Drop-in Class</h2>
-    <div class="card">
-      <p class="muted">First time? Start simple. 1-hour small group. Rentals available.</p>
-      <ul class="list">
-        <li>$60 TTD / 1 hr</li>
-        <li>All ages • Beginner friendly</li>
-        <li>Pick your location & time</li>
-      </ul>
-      <a class="btn btn-primary interest-btn" href="#learn" data-interest="Drop-in">Book a Drop-in</a>
-    </div>
-  </div>
-</section>
-
-<!-- Join -->
-<section id="join">
-  <div class="wrap">
-    <div class="kicker"><span class="bar"></span>Path 2</div>
-    <h2>Join — Monthly Plan (4 + 1 Free)</h2>
-    <div class="card" style="outline:2px solid var(--pink)">
-      <p class="muted">Best value for consistent progress. Priority booking + progress card.</p>
-      <ul class="list">
-        <li>$240 TTD / month</li>
-        <li>4 sessions + 1 free</li>
-        <li>Priority booking window</li>
-      </ul>
-      <a class="btn btn-primary interest-btn" href="#learn" data-interest="Monthly">Join Monthly</a>
-    </div>
-  </div>
-</section>
-
-<!-- Elite -->
-<section id="elite">
-  <div class="wrap">
-    <div class="kicker"><span class="bar"></span>Path 3</div>
-    <h2>Elite — Upgrade for faster growth</h2>
-    <div class="card">
-      <p class="muted">Smaller groups, focused drills, priority access &amp; extra coaching time.</p>
-      <ul class="list">
-        <li>Members-first booking windows</li>
-        <li>Progress milestones + coach feedback</li>
-        <li>Invite-only community sessions</li>
-      </ul>
-      <a class="btn btn-primary interest-btn" href="#learn" data-interest="Elite">Request Elite</a>
-    </div>
-  </div>
-</section>
-
-    <!-- Watch -->
-<section id="watch">
-  <div class="wrap">
-    <div class="kicker"><span class="bar"></span>Watch</div>
-    <h2>The vibe in 60 seconds</h2>
-
-    <div class="grid grid-2">
-      <!-- Left: video -->
-      <div class="card yt-card">
-        <div class="yt-lite" data-youtube-id="5t-jL8d3Iq8" aria-label="Play video" role="button" tabindex="0">
-          <div class="yt-thumb" style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
-          <div class="yt-play">Watch</div>
-        </div>
-      </div>
-
-      <!-- Right: bullets -->
-      <div class="card">
-        <strong>What you’ll see</strong>
-        <ul class="list">
-          <li>Beginner coaching on smooth floors</li>
-          <li>Family-friendly sessions &amp; rentals</li>
-          <li>Community meets &amp; fun challenges</li>
-        </ul>
-        <a class="btn btn-primary" href="#try" style="margin-top:12px">Start with a Drop-in</a>
-      </div>
-    </div>
-  </div>
-</section>
-    <!-- Watch section (YouTube) -->
-    <section id="watch">
-      <div class="wrap">
-        <div class="kicker"><span class="bar"></span>Watch</div>
-        <h2>The Vibe in 60 Seconds</h2>
-
+        <div class="kicker"><span class="bar"></span>Quick Answers</div>
+        <h2>FAQ</h2>
         <div class="grid grid-2">
-          <!-- Left: video card -->
-          <div class="card yt-card">
-            <!-- Fast poster: replace VIDEO_ID only (11 characters) -->
-            <div class="yt-lite"
-                 data-youtube-id="5t-jL8d3Iq8"
-                 aria-label="Play video" role="button" tabindex="0">
-              <div class="yt-thumb"
-                   style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
-              <div class="yt-play">Watch</div>
-            </div>
-
-            <!-- Direct embed (temporary / debug) -->
-            <div class="yt-direct-wrap">
-              <iframe width="100%" height="315"
-                src="https://www.youtube-nocookie.com/embed/5t-jL8d3Iq8?autoplay=0&rel=0&modestbranding=1"
-                title="YouTube video" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                loading="lazy" allowfullscreen></iframe>
-            </div>
-            <div class="yt-note">
-              If the top play button doesn’t work (ad-blockers), the direct player above should still play.
-              <a href="https://youtu.be/5t-jL8d3Iq8" target="_blank" rel="noopener">Watch on YouTube</a>
-            </div>
-          </div>
-
-          <!-- Right: info card -->
           <div class="card">
-            <strong>What you’ll see</strong>
-            <ul class="list">
-              <li>Beginner coaching on smooth floors</li>
-              <li>Family-friendly sessions &amp; rentals</li>
-              <li>Community meets &amp; fun challenges</li>
-            </ul>
-            <a class="btn btn-primary" href="#learn" style="margin-top:12px">Book a Skate Class</a>
+            <strong>Is it beginner friendly?</strong>
+            <p class="muted">Yes. We teach from first stand-up to advanced dance moves.</p>
+          </div>
+          <div class="card">
+            <strong>Do you accept all ages?</strong>
+            <p class="muted">Yes—kids, teens, adults, and family groups. We teach by skate level.</p>
+          </div>
+          <div class="card">
+            <strong>Do I need my own skates?</strong>
+            <p class="muted">Bring your own skates; otherwise request rental skates and add your shoe size.</p>
+          </div>
+          <div class="card">
+            <strong>How do I pay?</strong>
+            <p class="muted">We’ll confirm your spot and share secure payment options in WhatsApp.</p>
+          </div>
+          <div class="card">
+            <strong>Are classes crowded?</strong>
+            <p class="muted">No—bookings are limited to keep floors safe and coaching personal.</p>
+          </div>
+          <div class="card">
+            <strong>Can I try before joining?</strong>
+            <p class="muted">Yes—ask about our next free Community Meet Up or book a single skate class.</p>
           </div>
         </div>
       </div>
     </section>
-
-
-
-<!-- Locations -->
-<section id="locations">
-  <div class="wrap">
-    <div class="kicker"><span class="bar"></span>Where we skate</div>
-    <h2>Locations (Trinidad &amp; Tobago)</h2>
-    <div class="grid grid-2">
-      <div class="card">
-        <strong>Trinidad</strong>
-        <ul class="list">
-          <li>JD's Skating Rink — (Main Road maxi stand), Arima</li>
-          <li>River Ranch — Arima (off Calvary Hill)</li>
-          <li>Rootsyardd (Skallywag) — Chaguaramas (Port of Spain)</li>
-          <li>SK868 — RRM Plaza, San Fernando (South Trinidad)</li>
-          <li>Larry Gomes Stadium — Malabar, Arima</li>
-        </ul>
-      </div>
-      <div class="card">
-        <strong>Tobago</strong>
-        <ul class="list">
-          <li>Canoe Bay Road — Tobago</li>
-          <li>Montgomery Grounds — Tobago</li>
-        </ul>
-      </div>
-    </div>
-    <p class="muted" id="updated" style="margin-top:14px">
-      Last updated: 02 Oct 2025. Sessions are arranged per coach availability—spots are capped for safety.
-    </p>
-  </div>
-</section>
-
-    <!-- Learn to Skate Form -->
-<section id="learn">
-  <div class="wrap">
-    <div class="kicker"><span class="bar"></span>All Ages</div>
-    <h2>Book your spot</h2>
-
-    <div class="grid grid-2">
-      <div class="card">
-        <form id="formLearn" class="stack-12">
-          <!-- captures which path they clicked -->
-          <input type="hidden" name="interest" id="interest" value="Drop-in">
-
-          <div class="row row-2">
-            <div>
-              <label>Full Name</label>
-              <input name="name" placeholder="Your name" required>
-            </div>
-            <div>
-              <label>WhatsApp Number</label>
-              <input name="phone" id="phoneLearn" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
-            </div>
-          </div>
-
-          <div class="row row-2">
-            <div>
-              <label>Email (optional)</label>
-              <input name="email" type="email" placeholder="you@example.com">
-            </div>
-            <div>
-              <label>Age / Group</label>
-              <select name="age">
-                <option>All Ages</option>
-                <option>Kids (5–9)</option>
-                <option>Preteens (10–12)</option>
-                <option>Teens (13–17)</option>
-                <option>Adults (18+)</option>
-                <option>Family (Mixed)</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row row-2">
-            <div>
-              <label>Skill Level</label>
-              <select name="level">
-                <option>Beginner</option>
-                <option>Improver</option>
-                <option>Intermediate</option>
-                <option>Advanced</option>
-              </select>
-            </div>
-            <div>
-              <label>Preferred Location</label>
-              <select name="location" required>
-                <option value="">Select a location…</option>
-                <option>JD's Skating Rink — Near the main road maxi stand, Arima</option>
-                <option>River Ranch — Arima (off Calvary Hill)</option>
-                <option>Rootsyardd (Skallywag) — Chaguaramas (Port Of Spain)</option>
-                <option>SK868 (South)</option>
-                <option>Larry Gomes Stadium (Arima)</option>
-                <option>Canoe Bay Road (Tobago)</option>
-                <option>Montgomery Grounds (Tobago)</option>
-                <option>Other / Not sure</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row row-2">
-            <div>
-              <label>Preferred Days/Times</label>
-              <input name="date" placeholder="e.g. Tue/Thu 5–7pm or Sat morning" required>
-            </div>
-            <div>
-              <label>Rental Skates Needed?</label>
-              <select name="rentals">
-                <option>No</option>
-                <option>Yes</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row row-2">
-            <div>
-              <label>Shoe Size (if rentals)</label>
-              <input name="size" placeholder="US 6">
-            </div>
-            <div>
-              <label>Notes (optional)</label>
-              <input name="message" placeholder="Goals, concerns, access needs">
-            </div>
-          </div>
-
-          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
-            <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
-            <a
-              id="learnEmail"
-              class="btn btn-ghost"
-              href="mailto:info.theskateguys@gmail.com?subject=TSG%20Learn%20to%20Skate%20Inquiry"
-            >
-              Email Us
-            </a>
-            <a class="btn btn-ghost" href="tel:+18682766878" aria-label="Call us">Call</a>
-          </div>
-
-          <p class="muted">Prefer a call? We can book you in 60 seconds.</p>
-          <p class="muted">We cap class sizes for safety &amp; personal coaching. If the month is full, we’ll offer a waitlist + free community session invite.</p>
-        </form>
-      </div>
-
-      <div class="stack-12">
-        <div class="card">
-          <strong>Age Groups</strong>
-          <ul class="list">
-            <li>Kids (5–9) • Preteens (10–12) • Teens (13–17) • Adults (18+) • Family</li>
-            <li>Absolute beginners welcome</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Rentals</strong>
-          <p class="muted">Limited sizes available. Rental skates <strong>$60 TTD/hour</strong>. Helmets recommended.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
     <!-- Hire Us + Packages -->
     <section id="hire">
       <div class="wrap">
-        <div class="kicker"><span class="bar"></span>Events & Experiences</div>
-        <h2>Hire us (Rental Skates) — Birthdays, Schools, Corporate & Pop-ups</h2>
+        <div class="kicker"><span class="bar"></span>Events &amp; Experiences</div>
+        <h2>Hire us (Rental Skates) — Birthdays, Schools, Corporate &amp; Pop-ups</h2>
         <div class="grid grid-2">
           <div class="card">
             <form id="formHire" class="stack-12">
@@ -738,7 +534,7 @@
                 <button class="btn btn-accent" type="submit">Send via WhatsApp</button>
                 <a id="hireEmail" class="btn btn-ghost" href="mailto:info.theskateguys@gmail.com?subject=TSG%20Event%20Hire%20Inquiry">Email Us</a>
               </div>
-              <p class="muted">Dates are limited. A booking confirmation & deposit secures your date. Tell us your preferred dates/times and we’ll reach out to confirm. We’ll share packages on reply.</p>
+              <p class="muted">Dates are limited. A booking confirmation &amp; deposit secures your date. Tell us your preferred dates/times and we’ll reach out to confirm. We’ll share packages on reply.</p>
             </form>
           </div>
           <div class="stack-12">
@@ -770,17 +566,17 @@
             <div class="card">
               <strong>Pop-up Rink / Festival — POA</strong>
               <ul class="list">
-                <li>Day-rate engagement • Programming & games</li>
+                <li>Day-rate engagement • Programming &amp; games</li>
                 <li>We integrate with your event schedule</li>
-                <li>Ask about venue requirements & rentals</li>
+                <li>Ask about venue requirements &amp; rentals</li>
               </ul>
             </div>
             <div class="card">
               <strong>Rink Launch Consulting — from $5,500 TTD</strong>
               <ul class="list">
                 <li>2-Week Launch Sprint: SOPs, staff training, floor rules</li>
-                <li>Opening Weekend programming & marketing scripts</li>
-                <li>Follow-up report & revenue ideas</li>
+                <li>Opening Weekend programming &amp; marketing scripts</li>
+                <li>Follow-up report &amp; revenue ideas</li>
               </ul>
             </div>
             <p class="muted">All packages subject to venue suitability, availability of rental sizes, and a 20% booking deposit. Travel fees may apply outside booking cost.</p>
@@ -789,35 +585,127 @@
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq">
+    <!-- Learn to Skate Form -->
+    <section id="learn">
       <div class="wrap">
-        <div class="kicker"><span class="bar"></span>Quick Answers</div>
-        <h2>FAQ</h2>
+        <div class="kicker"><span class="bar"></span>All Ages</div>
+        <h2>Book your spot</h2>
+
         <div class="grid grid-2">
           <div class="card">
-            <strong>Is it beginner friendly?</strong>
-            <p class="muted">Yes. We teach from first stand-up to advanced dance moves.</p>
+            <form id="formLearn" class="stack-12">
+              <!-- captures which path they clicked -->
+              <input type="hidden" name="interest" id="interest" value="Drop-in">
+
+              <div class="row row-2">
+                <div>
+                  <label>Full Name</label>
+                  <input name="name" placeholder="Your name" required>
+                </div>
+                <div>
+                  <label>WhatsApp Number</label>
+                  <input name="phone" id="phoneLearn" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
+                </div>
+              </div>
+
+              <div class="row row-2">
+                <div>
+                  <label>Email (optional)</label>
+                  <input name="email" type="email" placeholder="you@example.com">
+                </div>
+                <div>
+                  <label>Age / Group</label>
+                  <select name="age">
+                    <option>All Ages</option>
+                    <option>Kids (5–9)</option>
+                    <option>Preteens (10–12)</option>
+                    <option>Teens (13–17)</option>
+                    <option>Adults (18+)</option>
+                    <option>Family (Mixed)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row row-2">
+                <div>
+                  <label>Skill Level</label>
+                  <select name="level">
+                    <option>Beginner</option>
+                    <option>Improver</option>
+                    <option>Intermediate</option>
+                    <option>Advanced</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Preferred Location</label>
+                  <select name="location" required>
+                    <option value="">Select a location…</option>
+                    <option>JD's Skating Rink — Near the main road maxi stand, Arima</option>
+                    <option>River Ranch — Arima (off Calvary Hill)</option>
+                    <option>Rootsyardd (Skallywag) — Chaguaramas (Port Of Spain)</option>
+                    <option>SK868 (South)</option>
+                    <option>Larry Gomes Stadium (Arima)</option>
+                    <option>Canoe Bay Road (Tobago)</option>
+                    <option>Montgomery Grounds (Tobago)</option>
+                    <option>Other / Not sure</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row row-2">
+                <div>
+                  <label>Preferred Days/Times</label>
+                  <input name="date" placeholder="e.g. Tue/Thu 5–7pm or Sat morning" required>
+                </div>
+                <div>
+                  <label>Rental Skates Needed?</label>
+                  <select name="rentals">
+                    <option>No</option>
+                    <option>Yes</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row row-2">
+                <div>
+                  <label>Shoe Size (if rentals)</label>
+                  <input name="size" placeholder="US 6">
+                </div>
+                <div>
+                  <label>Notes (optional)</label>
+                  <input name="message" placeholder="Goals, concerns, access needs">
+                </div>
+              </div>
+
+              <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
+                <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
+                <a
+                  id="learnEmail"
+                  class="btn btn-ghost"
+                  href="mailto:info.theskateguys@gmail.com?subject=TSG%20Learn%20to%20Skate%20Inquiry"
+                >
+                  Email Us
+                </a>
+                <a class="btn btn-ghost" href="tel:+18682766878" aria-label="Call us">Call</a>
+              </div>
+
+              <p class="muted">Prefer a call? We can book you in 60 seconds.</p>
+              <p class="muted">We cap class sizes for safety &amp; personal coaching. If the month is full, we’ll offer a waitlist + free community session invite.</p>
+            </form>
           </div>
-          <div class="card">
-            <strong>Do you accept all ages?</strong>
-            <p class="muted">Yes—kids, teens, adults, and family groups. We teach by skate level.</p>
-          </div>
-          <div class="card">
-            <strong>Do I need my own skates?</strong>
-            <p class="muted">Bring your own skates; otherwise request rental skates and add your shoe size.</p>
-          </div>
-          <div class="card">
-            <strong>How do I pay?</strong>
-            <p class="muted">We’ll confirm your spot and share secure payment options in WhatsApp.</p>
-          </div>
-          <div class="card">
-            <strong>Are classes crowded?</strong>
-            <p class="muted">No—bookings are limited to keep floors safe and coaching personal.</p>
-          </div>
-          <div class="card">
-            <strong>Can I try before joining?</strong>
-            <p class="muted">Yes—ask about our next free Community Meet Up or book a single skate class.</p>
+
+          <div class="stack-12">
+            <div class="card">
+              <strong>Age Groups</strong>
+              <ul class="list">
+                <li>Kids (5–9) • Preteens (10–12) • Teens (13–17) • Adults (18+) • Family</li>
+                <li>Absolute beginners welcome</li>
+              </ul>
+            </div>
+            <div class="card">
+              <strong>Rentals</strong>
+              <p class="muted">Limited sizes available. Rental skates <strong>$60 TTD/hour</strong>. Helmets recommended.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -838,15 +726,15 @@
         WHATSAPP_E164: '18682766878',
         EMAIL: 'info.theskateguys@gmail.com',
       };
-      // When a "Try / Join / Elite" button is clicked, store which path they chose
-document.querySelectorAll('.interest-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const choice = btn.getAttribute('data-interest') || 'Drop-in';
-    const interestField = document.getElementById('interest');
-    if (interestField) interestField.value = choice;
-  });
-});
 
+      // When a "Try / Join / Elite" button is clicked, store which path they chose
+      document.querySelectorAll('.interest-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const choice = btn.getAttribute('data-interest') || 'Drop-in';
+          const interestField = document.getElementById('interest');
+          if (interestField) interestField.value = choice;
+        });
+      });
 
       // Prefill Learn email
       const learnEmail = document.getElementById('learnEmail');
@@ -872,7 +760,7 @@ document.querySelectorAll('.interest-btn').forEach(btn => {
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-      // WhatsApp links
+      // WhatsApp link (header)
       const waUrl = `https://wa.me/${CONTACT.WHATSAPP_E164}`;
       const navWhatsApp = document.getElementById('navWhatsApp');
       if (navWhatsApp) navWhatsApp.href = waUrl;
@@ -882,7 +770,7 @@ document.querySelectorAll('.interest-btn').forEach(btn => {
         window.open(url, '_blank');
       }
 
-      // Learn form
+      // Learn form → WhatsApp compose
       const formLearn = document.getElementById('formLearn');
       if (formLearn) {
         formLearn.addEventListener('submit', function(e){
@@ -906,7 +794,7 @@ document.querySelectorAll('.interest-btn').forEach(btn => {
         });
       }
 
-      // Hire form
+      // Hire form → WhatsApp compose
       const formHire = document.getElementById('formHire');
       if (formHire) {
         formHire.addEventListener('submit', function(e){
@@ -934,7 +822,7 @@ document.querySelectorAll('.interest-btn').forEach(btn => {
         updatedEl.textContent = `Last updated: ${fmt}. Sessions are arranged per coach availability—spots are capped for safety.`;
       }
 
-      // ---- Lite YouTube: swap poster for real player on click/keyboard ----
+      // Lite YouTube: swap poster for real player on click/keyboard
       function mountYouTube(container){
         const id = container.getAttribute('data-youtube-id'); // ID only
         const iframe = document.createElement('iframe');

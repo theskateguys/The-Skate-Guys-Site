@@ -644,6 +644,230 @@
       margin-bottom: 6px;
     }
 
+    /* ── Coach profiles ──────────────────────────────────── */
+    .coaches-grid {
+      display: grid;
+      gap: 20px;
+    }
+    @media (min-width: 640px)  { .coaches-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .coaches-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .coach-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .coach-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.18);
+      background: var(--card-hover);
+    }
+
+    /* Photo area — shows photo if available, gradient avatar if not */
+    .coach-photo {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .coach-avatar-block {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 72px;
+      letter-spacing: .02em;
+      position: relative;
+      overflow: hidden;
+    }
+    .coach-avatar-block::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      opacity: .15;
+    }
+    .cab-cyan  { background: linear-gradient(135deg, rgba(0,245,255,.25), rgba(0,245,255,.05)); color: var(--cyan); }
+    .cab-pink  { background: linear-gradient(135deg, rgba(255,45,107,.25), rgba(255,45,107,.05)); color: var(--pink); }
+    .cab-gold  { background: linear-gradient(135deg, rgba(255,209,102,.25), rgba(255,209,102,.05)); color: var(--gold); }
+
+    .coach-body { padding: 22px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+
+    .coach-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .coach-name {
+      font-family: var(--font-display);
+      font-size: 26px;
+      letter-spacing: .03em;
+      line-height: 1;
+      color: #fff;
+    }
+    .coach-years {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .coach-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .coach-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: .04em;
+    }
+    .ct-cyan { background: rgba(0,245,255,.10); color: var(--cyan); }
+    .ct-pink { background: rgba(255,45,107,.10); color: var(--pink); }
+    .ct-gold { background: rgba(255,209,102,.10); color: var(--gold); }
+
+    .coach-bio {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .coach-fact {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: rgba(255,255,255,.75);
+      line-height: 1.5;
+    }
+    .coach-fact-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── Testimonials ────────────────────────────────────── */
+    .testimonials-grid {
+      display: grid;
+      gap: 16px;
+    }
+    @media (min-width: 640px)  { .testimonials-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+    .tcard {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .tcard:hover {
+      background: var(--card-hover);
+      border-color: rgba(255,255,255,.15);
+      transform: translateY(-2px);
+    }
+    /* subtle quote mark watermark */
+    .tcard::before {
+      content: "\201C";
+      position: absolute;
+      top: -10px; right: 16px;
+      font-family: Georgia, serif;
+      font-size: 100px;
+      line-height: 1;
+      color: rgba(0,245,255,.07);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .tcard-stars {
+      display: flex;
+      gap: 3px;
+    }
+    .tcard-stars span {
+      font-size: 14px;
+      color: var(--gold);
+    }
+
+    .tcard-quote {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.88);
+      flex: 1;
+      font-style: italic;
+    }
+
+    .tcard-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .tcard-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      flex-shrink: 0;
+      border: 1px solid var(--line);
+    }
+    .av-cyan  { background: rgba(0,245,255,.15);  color: var(--cyan); }
+    .av-pink  { background: rgba(255,45,107,.15); color: var(--pink); }
+    .av-gold  { background: rgba(255,209,102,.15);color: var(--gold); }
+    .av-white { background: rgba(255,255,255,.10); color: #fff; }
+
+    .tcard-name  { font-size: 14px; font-weight: 700; color: #fff; }
+    .tcard-role  { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+    /* Featured (larger) testimonial */
+    .tcard-featured {
+      border-color: rgba(0,245,255,.2);
+      background: rgba(0,245,255,.04);
+    }
+    .tcard-featured .tcard-quote { font-size: 16px; }
+
+    /* Rating summary bar */
+    .rating-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .rating-big {
+      font-family: var(--font-display);
+      font-size: 52px;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .rating-stars-lg { display: flex; gap: 4px; }
+    .rating-stars-lg span { font-size: 20px; color: var(--gold); }
+    .rating-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .rating-divider { width: 1px; height: 48px; background: var(--line); margin: 0 4px; }
+    .rating-note { font-size: 13px; color: var(--muted); max-width: 320px; line-height: 1.6; }
+    .rating-note strong { color: #fff; }
+
     /* ── Social strip ────────────────────────────────────── */
     .social-strip {
       display: flex;
@@ -751,8 +975,9 @@
 
         <div class="nav-links">
           <a href="#pricing">Classes</a>
+          <a href="#coaches">Coaches</a>
           <a href="#locations">Locations</a>
-          <a href="#watch">Watch</a>
+          <a href="#testimonials">Reviews</a>
           <a href="#hire">Events</a>
           <a href="#faq">FAQ</a>
         </div>
@@ -769,7 +994,9 @@
       <!-- Mobile drawer -->
       <div class="mobile-menu" id="mobileMenu" role="navigation">
         <a href="#pricing">Classes &amp; Pricing</a>
+        <a href="#coaches">Meet the Coaches</a>
         <a href="#locations">Locations</a>
+        <a href="#testimonials">Reviews</a>
         <a href="#watch">Watch</a>
         <a href="#hire">Events &amp; Hire</a>
         <a href="#faq">FAQ</a>
@@ -994,6 +1221,91 @@
       </div>
     </section>
 
+    <!-- ── Coach Profiles ────────────────────────────────── -->
+    <section id="coaches">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>The Team</div>
+        <h2>Meet Your Coaches</h2>
+        <p class="muted" style="max-width:600px; margin-bottom:32px; font-size:15px;">Real skaters. Real passion. Every coach started where you are — and kept going. They're here to make sure you do too.</p>
+
+        <div class="coaches-grid reveal">
+
+          <!-- Dylon -->
+          <div class="coach-card">
+            <img class="coach-photo" src="assets/coaches/Dylon.jpg" alt="Coach Dylon Le Blanc" loading="lazy">
+            <div class="coach-body">
+              <div class="coach-header">
+                <div class="coach-name">Dylon</div>
+                <div class="coach-years">3 yrs skating</div>
+              </div>
+              <div class="coach-tags">
+                <span class="coach-tag ct-cyan">Beginner Coaching</span>
+                <span class="coach-tag ct-cyan">Dance Skating</span>
+                <span class="coach-tag ct-gold">Speed Skating</span>
+              </div>
+              <p class="coach-bio">Picked up roller skating at 28 and never looked back. Cool, calm, and disciplined — Dylon leads by example both on and off the rink, bringing structure and encouragement to every session he runs.</p>
+              <div class="coach-fact">
+                <span class="coach-fact-icon">⚡</span>
+                A calculated risk-taker who'll go anywhere to skate. If there's a surface and wheels, Dylon's on it.
+              </div>
+            </div>
+          </div>
+
+          <!-- Jevon -->
+          <div class="coach-card">
+            <img class="coach-photo" src="assets/coaches/Jevon.jpg" alt="Coach Jevon Woods" loading="lazy">
+            <div class="coach-body">
+              <div class="coach-header">
+                <div class="coach-name">Jevon</div>
+                <div class="coach-years">1 yr skating</div>
+              </div>
+              <div class="coach-tags">
+                <span class="coach-tag ct-pink">Beginner Coaching</span>
+                <span class="coach-tag ct-pink">Dance Skating</span>
+              </div>
+              <p class="coach-bio">Professional, customer-friendly, and always keeps things light. Jevon has a natural gift for helping adults and teens find their rhythm and build a skating style that feels completely their own.</p>
+              <div class="coach-fact">
+                <span class="coach-fact-icon">🎯</span>
+                Proof that one year is enough to change everything — Jevon went from first-timer to full coach in record time.
+              </div>
+            </div>
+          </div>
+
+          <!-- Shelsea -->
+          <div class="coach-card">
+            <img class="coach-photo" src="assets/coaches/Shelsea.jpg" alt="Coach Shelsea Peters" loading="lazy">
+            <div class="coach-body">
+              <div class="coach-header">
+                <div class="coach-name">Shelsea</div>
+                <div class="coach-years">2 yrs skating</div>
+              </div>
+              <div class="coach-tags">
+                <span class="coach-tag ct-gold">Beginner Coaching</span>
+                <span class="coach-tag ct-gold">Dance Skating</span>
+                <span class="coach-tag ct-cyan">Speed Skating</span>
+              </div>
+              <p class="coach-bio">A confident inline skater who's rolled through Trinidad with energy and purpose. Shelsea is dedicated to showing young skaters that roller skating is more than a hobby — it's a way to navigate life with balance and joy.</p>
+              <div class="coach-fact">
+                <span class="coach-fact-icon">💃</span>
+                Big dancer, big personality. If there's music playing, Shelsea's already moving.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom CTA -->
+        <div style="margin-top:32px; padding:24px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div>
+            <div style="font-weight:700; font-size:15px;">Want to skate with the team?</div>
+            <div class="muted small" style="margin-top:4px">Book a drop-in and you'll be matched with a coach based on your level and location.</div>
+          </div>
+          <a class="btn btn-primary" href="#learn">Book a Class</a>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ── Community Gallery ──────────────────────────────── -->
     <section id="community">
       <div class="wrap">
@@ -1021,6 +1333,130 @@
             <span class="social-icon">💬</span> WhatsApp Community
           </a>
         </div>
+      </div>
+    </section>
+
+    <!-- ── Testimonials ──────────────────────────────────── -->
+    <section id="testimonials">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>What People Say</div>
+        <h2>Real Stories. Real Skaters.</h2>
+
+        <!-- Rating summary -->
+        <div class="rating-bar reveal">
+          <div class="rating-big">5.0</div>
+          <div>
+            <div class="rating-stars-lg">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="rating-label">Community rating</div>
+          </div>
+          <div class="rating-divider"></div>
+          <div class="rating-note">
+            <strong>Replace these with your real reviews.</strong> Collect them via WhatsApp, Instagram DMs, or just ask happy skaters after class — then paste them in here.
+          </div>
+        </div>
+
+        <div class="testimonials-grid reveal">
+
+          <!-- 1 — Parent, featured -->
+          <div class="tcard tcard-featured">
+            <div class="tcard-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="tcard-quote">"My daughter was terrified to put on skates. After one session with The Skate Guys she was gliding across the rink and begging me to come back next week. The coaches are so patient and encouraging — I can't recommend them enough."</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar av-cyan">KR</div>
+              <div>
+                <div class="tcard-name">K. Ramlal</div>
+                <div class="tcard-role">Parent · Arima</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 — Adult beginner -->
+          <div class="tcard">
+            <div class="tcard-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="tcard-quote">"I'm 34 and never skated a day in my life. I expected to fall the whole time — and I did — but in the best way. The coaches made it feel safe and fun. By the end I was skating on my own. Pure vibes."</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar av-pink">DJ</div>
+              <div>
+                <div class="tcard-name">D. Joseph</div>
+                <div class="tcard-role">Adult Beginner · Port of Spain</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 — Teen -->
+          <div class="tcard">
+            <div class="tcard-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="tcard-quote">"My friends and I do the monthly plan and it's literally the highlight of our week. The coaches push you to actually improve, not just skate in circles. And the community sessions are everything."</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar av-gold">TA</div>
+              <div>
+                <div class="tcard-name">T. Alexander</div>
+                <div class="tcard-role">Teen Skater · San Fernando</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 — Corporate hire -->
+          <div class="tcard">
+            <div class="tcard-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="tcard-quote">"We hired them for our company team day and it was the best decision. Everyone from HR to senior management was on the floor laughing and skating. The organisation was seamless and the coaches kept it fun for all levels."</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar av-white">MP</div>
+              <div>
+                <div class="tcard-name">M. Phillip</div>
+                <div class="tcard-role">HR Manager · Corporate Event</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 — Birthday party parent -->
+          <div class="tcard">
+            <div class="tcard-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="tcard-quote">"Booked them for my son's 8th birthday. 15 kids, all different skill levels, and they handled every single one. The kids are still talking about it two months later. Already planning next year's party with them."</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar av-cyan">SC</div>
+              <div>
+                <div class="tcard-name">S. Charles</div>
+                <div class="tcard-role">Parent · Birthday Party · Arima</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 — Tobago skater -->
+          <div class="tcard">
+            <div class="tcard-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="tcard-quote">"Didn't think roller skating was a thing in Tobago — found out about The Skate Guys through Instagram and showed up not knowing what to expect. Left with new skills and new friends. The community is real."</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar av-pink">LF</div>
+              <div>
+                <div class="tcard-name">L. Ferguson</div>
+                <div class="tcard-role">Skater · Tobago</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA under testimonials -->
+        <div style="margin-top: 32px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="#learn">Join the Community</a>
+          <span class="muted small">⭐ Have a story? Tag us <a href="https://instagram.com/the_skateguys" target="_blank" rel="noopener" style="color:var(--cyan)">@the_skateguys</a> on Instagram</span>
+        </div>
+
       </div>
     </section>
 

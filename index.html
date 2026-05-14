@@ -5,500 +5,1090 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/favicon.ico">
   <meta name="description" content="All-ages rollerskating lessons &amp; event hire across Trinidad &amp; Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
-  <meta property="og:title" content="The Skate Guys Hub — Trinidad &amp; Tobago Leading Rollerskate Community">
+  <meta property="og:title" content="The Skate Guys Hub — Trinidad &amp; Tobago's Leading Rollerskate Community">
   <meta property="og:description" content="Small circle. Big progress. Real community.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://your-domain/og-card.jpg">
-  <meta property="og:url" content="https://your-domain/">
+  <meta property="og:image" content="https://the-skate-guys-site.vercel.app/assets/theskateguys-1.png">
+  <meta property="og:url" content="https://the-skate-guys-site.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
   <title>The Skate Guys Hub — Trinidad &amp; Tobago's Leading Rollerskate Community</title>
 
-  <style>
-    :root{
-      /* Brand */
-      --cyan:#00FFFF; --pink:#FF3366;
-      --bg:#0a0a0a; --ink:#ffffff; --muted: rgba(255,255,255,.72);
-      --line: rgba(255,255,255,.12);
-      /* Surfaces */
-      --card-bg: rgba(255,255,255,.05);
-      --field-bg: rgba(255,255,255,.10);
-      /* Layout spacing */
-      --gap: 13px;
-      --gap-lg: 32px;
-      --section-pad: 30px;
-      --section-pad-md: 85px;
-      --card-pad: 40px;
-      --card-pad-lg: 35px;
-      --field-gap: 16px;
-      --field-gap-lg: 22px;
-      --field-py: 14px;
-      --field-px: 14px;
-      --stack-gap-sm: 13px;
-      --stack-gap-md: 13px;
-      --radius: 15px;
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 
-      /* Align glows to the content grid (.wrap) */
-      --wrap: 1100px;     /* must match .wrap max-width */
-      --page-pad: 16px;   /* must match .wrap side padding */
-      --gutter: max((100vw - var(--wrap)) / 2, var(--page-pad));
+  <style>
+    /* ── Tokens ──────────────────────────────────────────── */
+    :root {
+      --cyan:   #00F5FF;
+      --pink:   #FF2D6B;
+      --gold:   #FFD166;
+      --bg:     #080810;
+      --bg2:    #0d0d1a;
+      --ink:    #ffffff;
+      --muted:  rgba(255,255,255,.60);
+      --line:   rgba(255,255,255,.09);
+      --card:   rgba(255,255,255,.04);
+      --card-hover: rgba(255,255,255,.07);
+      --radius: 18px;
+      --wrap:   1120px;
+      --pad:    20px;
+      --gutter: max((100vw - var(--wrap)) / 2, var(--pad));
+
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
     }
 
-    /* -------- Base / layout -------- */
-    html,body{ min-height:100% }
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--ink);
-      background: var(--bg); /* gradients provided by body::before */
-      line-height:1.9;
+    /* ── Reset ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      overflow-x: hidden;
       position: relative;
     }
-    body::before{
-      content:"";
+    a { color: var(--cyan); text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ── Animated mesh background ────────────────────────── */
+    .bg-mesh {
       position: fixed;
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background-image:
-        radial-gradient(600px 380px at center, rgba(0,255,255,.10), rgba(0,0,0,0) 60%),
-        radial-gradient(520px 340px at center, rgba(255,51,102,.10), rgba(0,0,0,0) 55%),
-        linear-gradient(var(--bg), var(--bg));
-      background-repeat: no-repeat;
-      background-position:
-        calc(var(--gutter)) -120px,
-        calc(100vw - var(--gutter)) -80px,
-        0 0;
+      overflow: hidden;
     }
-
-    a{ color: var(--cyan); text-decoration: none }
-    .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 16px }
-
-    header{ position: sticky; top:0; z-index:10; backdrop-filter: blur(8px); background: rgba(0,0,0,.4); border-bottom: 1px solid var(--line) }
-    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:10px; flex-wrap:wrap }
-
-    /* -------- Brand / logo -------- */
-    .brand{ display:flex; align-items:center; gap:10px }
-    .logo{
-      width: clamp(34px, 5.5vw, 56px);
-      height: clamp(34px, 5.5vw, 56px);
+    .bg-mesh::before,
+    .bg-mesh::after,
+    .bg-mesh span {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.18;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    .bg-mesh::before {
+      width: 700px; height: 500px;
+      background: var(--cyan);
+      top: -180px; left: -100px;
+      animation-duration: 20s;
+    }
+    .bg-mesh::after {
+      width: 600px; height: 450px;
+      background: var(--pink);
+      top: -100px; right: -120px;
+      animation-duration: 24s;
+      animation-delay: -8s;
+    }
+    .bg-mesh span {
       display: block;
-      object-fit: contain;
-      image-rendering: auto;
-      border-radius: 10px; /* remove if you don't want rounding */
+      width: 500px; height: 400px;
+      background: var(--gold);
+      bottom: 20%; left: 40%;
+      opacity: 0.08;
+      animation-duration: 28s;
+      animation-delay: -14s;
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(60px, 40px) scale(1.15); }
     }
 
-    /* -------- Header nav links -------- */
-    .nav-links{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
+    /* Noise grain overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: 1;
     }
-    .nav-links a{
+
+    /* ── Layout ──────────────────────────────────────────── */
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--pad); }
+
+    /* ── Header / Nav ────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      background: rgba(8,8,16,.75);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .logo {
+      width: clamp(36px, 5vw, 50px);
+      height: clamp(36px, 5vw, 50px);
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 24px);
+      letter-spacing: .05em;
+      color: #fff;
+    }
+
+    /* Desktop nav links */
+    .nav-links {
+      display: flex;
+      gap: 4px;
+    }
+    .nav-links a {
       color: var(--muted);
-      font-weight:600;
-      padding:8px 10px;
-      border-radius:10px;
-      border:1px solid transparent;
-      transition: background .15s ease, color .15s ease, border-color .15s ease;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: all .18s ease;
     }
-    .nav-links a:hover{
-      color:#fff;
+    .nav-links a:hover {
+      color: #fff;
       background: rgba(255,255,255,.06);
       border-color: var(--line);
     }
 
-    /* Actions (Book + WhatsApp + Call) grouped on the right */
-    .nav-actions{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
+    /* Nav actions */
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+
+    /* Hamburger — mobile only */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 11px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 20px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all .25s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 0 16px;
+      border-top: 1px solid var(--line);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: all .15s ease;
+    }
+    .mobile-menu a:hover { color: #fff; background: rgba(255,255,255,.05); }
+    .mobile-menu .divider { height: 1px; background: var(--line); margin: 6px 0; }
+
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .nav-actions .btn-ghost-sm { display: none; }
+      .hamburger { display: flex; }
     }
 
-    .btn{ display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid transparent; cursor:pointer; transition: transform .15s ease }
-    .btn:hover{ transform: scale(1.02) } .btn:active{ transform: scale(.98) }
-    .btn-primary{ background: var(--cyan); color:#000 }
-    .btn-accent{ background: var(--pink); color:#fff }
-    .btn-ghost{ background: rgba(255,255,255,.06); color:#fff; border-color: var(--line) }
-
-    .hero h1{ font-size: clamp(28px, 6vw, 60px); line-height:1.05; margin: 10px 0 0 }
-    .hero p{ color: var(--muted); max-width: 720px }
-
-    section{ padding: var(--section-pad) 0; border-top: 1px solid var(--line) }
-    @media(min-width:1024px){ section{ padding: var(--section-pad-md) 0 } }
-
-    h2{ font-size: clamp(22px, 3.5vw, 40px); margin: 10px 0 24px }
-    .kicker{ letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6); font-size: 12px; display:flex; align-items:center; gap:10px }
-    .kicker .bar{ width: 32px; height: 1px; background: var(--line) }
-
-    .grid{ display:grid; gap: var(--gap) }
-    @media(min-width: 768px){ .grid{ gap: var(--gap-lg) } .grid-2{ grid-template-columns: 1fr 1fr } .grid-3{ grid-template-columns: repeat(3,1fr) } }
-
-    .card{ border:1px solid var(--line); background: var(--card-bg); border-radius: var(--radius); padding: var(--card-pad); position: relative; overflow: hidden }
-    @media(min-width:1024px){ .card{ padding: var(--card-pad-lg) } }
-
-    .muted{ color: var(--muted) }
-    .list{ list-style: disc; padding-left: 18px }
-    .price{ font-size: 30px; font-weight: 800 } .unit{ font-size: 14px; vertical-align: super; color: var(--muted); margin-left: 2px }
-
-    /* -------- Form spacing -------- */
-    .row{ display:grid; row-gap: var(--field-gap); column-gap: var(--field-gap); }
-    @media (min-width:768px){
-      .row{ row-gap: var(--field-gap-lg); column-gap: 28px; }
-      .row-2{ grid-template-columns: 1fr 1fr; }
+    /* ── Buttons ─────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+      white-space: nowrap;
     }
-    @media (min-width:1080px){ .row{ column-gap: 36px; } }
-    .row > div{ display:grid; gap: 10px }
-    label{ font-size: 13px; color: rgba(255,255,255,.9); margin:0 }
+    .btn:hover  { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0) scale(.98); }
 
-    /* Inputs */
-    input,select,textarea{
-      width:100%;
-      background: var(--field-bg);
-      color:#fff;
-      border:1px solid rgba(255,255,255,.18);
+    .btn-primary {
+      background: var(--cyan);
+      color: #000;
+      box-shadow: 0 0 20px rgba(0,245,255,.25);
+    }
+    .btn-primary:hover { box-shadow: 0 0 32px rgba(0,245,255,.40); }
+
+    .btn-accent {
+      background: var(--pink);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255,45,107,.25);
+    }
+    .btn-accent:hover { box-shadow: 0 0 32px rgba(255,45,107,.40); }
+
+    .btn-ghost {
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      border-color: var(--line);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.10); }
+
+    .btn-sm { padding: 8px 14px; font-size: 13px; }
+
+    /* ── Section base ────────────────────────────────────── */
+    section { padding: 72px 0; border-top: 1px solid var(--line); }
+    @media (max-width: 768px) { section { padding: 48px 0; } }
+
+    /* ── Typography ──────────────────────────────────────── */
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 10px;
+    }
+    .kicker .bar { width: 28px; height: 1px; background: var(--cyan); opacity: .5; }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 10vw, 110px);
+      line-height: .95;
+      letter-spacing: .02em;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: .02em;
+      margin-bottom: 28px;
+    }
+    h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .muted { color: var(--muted); }
+    .small { font-size: 13px; }
+
+    /* ── Chips / badges ──────────────────────────────────── */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,245,255,.3);
+      color: var(--cyan);
+      background: rgba(0,245,255,.07);
+      letter-spacing: .04em;
+    }
+    .chip::before { content: "●"; font-size: 7px; opacity: .7; }
+
+    /* ── Cards ───────────────────────────────────────────── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      background: var(--card-hover);
+      border-color: rgba(255,255,255,.15);
+      transform: translateY(-2px);
+    }
+    .card-glow-cyan::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse at top left, rgba(0,245,255,.08), transparent 65%);
+      pointer-events: none;
+    }
+    .card-glow-pink::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse at top right, rgba(255,45,107,.10), transparent 65%);
+      pointer-events: none;
+    }
+    .card-featured {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 1px var(--pink), 0 0 40px rgba(255,45,107,.12);
+    }
+
+    /* ── Grids ───────────────────────────────────────────── */
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 640px)  { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px)  { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1024px) { .grid { gap: 20px; } }
+
+    /* ── Bullet lists ────────────────────────────────────── */
+    .list { padding-left: 0; }
+    .list li {
+      padding: 5px 0 5px 20px;
+      position: relative;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: 12px;
+    }
+
+    /* ── Price badge ─────────────────────────────────────── */
+    .price-badge {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 42px;
+      line-height: 1;
+      color: #fff;
+    }
+    .price-unit {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .hero {
+      padding: 100px 0 80px;
+      border-top: none;
+    }
+    @media (max-width: 768px) { .hero { padding: 64px 0 56px; } }
+
+    .hero-inner {
+      display: grid;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr auto; }
+    }
+
+    .hero h1 span.accent-cyan { color: var(--cyan); }
+    .hero h1 span.accent-pink { color: var(--pink); }
+
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--muted);
+      max-width: 560px;
+      margin: 18px 0 28px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Hero stat pills */
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 900px) {
+      .hero-stats { flex-direction: row; flex-wrap: wrap; }
+    }
+    .stat-pill {
+      background: var(--card);
+      border: 1px solid var(--line);
       border-radius: 14px;
-      padding: var(--field-py) var(--field-px);
-      min-height: 48px;
-      outline:none;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0) inset;
-      -webkit-appearance: none;
-      appearance: none;
+      padding: 16px 22px;
+      text-align: center;
+      min-width: 110px;
+      transition: border-color .2s;
     }
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(0,255,255,.6);
-      box-shadow: 0 0 0 2px rgba(0,255,255,.25);
+    .stat-pill:hover { border-color: rgba(0,245,255,.3); }
+    .stat-pill .num {
+      font-family: var(--font-display);
+      font-size: 32px;
+      line-height: 1;
+      color: var(--cyan);
+    }
+    .stat-pill .label { font-size: 11px; color: var(--muted); margin-top: 4px; letter-spacing: .06em; text-transform: uppercase; }
+
+    /* ── How it works ────────────────────────────────────── */
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 56px;
+      line-height: 1;
+      color: rgba(0,245,255,.15);
+      margin-bottom: 8px;
     }
 
-    /* Dark popup for selects */
-    select { color-scheme: dark; }
-    select option, select optgroup{ background-color:#101214; color:#fff; }
-    select option:checked, select option:focus{ background-color: rgba(0,255,255,.25); color:#fff; }
+    /* ── Pricing paths ───────────────────────────────────── */
+    .path-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+    .path-tag-cyan  { background: rgba(0,245,255,.12); color: var(--cyan); }
+    .path-tag-pink  { background: rgba(255,45,107,.12); color: var(--pink); }
+    .path-tag-gold  { background: rgba(255,209,102,.12); color: var(--gold); }
 
-    footer{ text-align:center; color: var(--muted); padding: 48px 0; border-top:1px solid var(--line) }
-    .wheel{ width:30px; height:30px; color: rgba(255,255,255,.85) }
-    .stack-8>*+*{ margin-top: var(--stack-gap-sm) }
-    .stack-12>*+*{ margin-top: var(--stack-gap-md) }
-    details#diagnostics { border-top:1px dashed var(--line); padding-top:12px; margin-top:12px }
-    details#diagnostics summary{ cursor:pointer; color: var(--muted) }
+    /* Pricing grid — 3 columns on large */
+    .pricing-grid {
+      display: grid;
+      gap: 20px;
+    }
+    @media (min-width: 900px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
 
-    /* -------- Community gallery -------- */
-    .gallery{
-      display:grid;
-      gap: var(--gap-lg);
-      grid-template-columns: 1fr; /* phones */
+    /* ── Locations ───────────────────────────────────────── */
+    .location-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
     }
-    @media (min-width: 720px){
-      .gallery{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .location-item:last-child { border-bottom: none; }
+    .location-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      margin-top: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px var(--cyan);
     }
-    @media (min-width: 1080px){
-      .gallery{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+
+    /* ── Gallery ─────────────────────────────────────────── */
+    .gallery {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
     }
-    .gallery figure{ margin:0 }
-    .gallery img{
-      width:100%;
-      display:block;
-      aspect-ratio: 4 / 3;
+    @media (min-width: 640px)  { .gallery { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .gallery { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+    .gallery figure { margin: 0; position: relative; overflow: hidden; border-radius: var(--radius); }
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4/3;
       object-fit: cover;
       border-radius: var(--radius);
-      border:1px solid var(--line);
+      border: 1px solid var(--line);
+      transition: transform .4s ease;
     }
-    .pos-top img{    object-position: 50% 18%; }
-    .pos-bottom img{ object-position: 50% 82%; }
-    .pos-left img{   object-position: 20% 50%; }
-    .pos-right img{  object-position: 80% 50%; }
-    .gallery-caption{ padding:10px 2px; color:var(--muted); font-size:14px; }
+    .gallery figure:hover img { transform: scale(1.04); }
+    .gallery figcaption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 12px 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,.7));
+      font-size: 13px;
+      color: rgba(255,255,255,.85);
+      border-radius: 0 0 var(--radius) var(--radius);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .gallery figure:hover figcaption { opacity: 1; }
 
-    /* -------- Lite YouTube visuals -------- */
-    .yt-card { overflow: visible; }
-    .yt-lite{
+    .pos-top img    { object-position: 50% 18%; }
+    .pos-bottom img { object-position: 50% 82%; }
+
+    /* ── YouTube lite ────────────────────────────────────── */
+    .yt-lite {
       position: relative;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16/9;
       border-radius: var(--radius);
-      border:1px solid var(--line);
       overflow: hidden;
-      background:#000;
-      cursor:pointer;
+      background: #000;
+      border: 1px solid var(--line);
+      cursor: pointer;
     }
-    .yt-thumb{
-      position:absolute; inset:0;
-      background-size:cover; background-position:center;
-      filter:brightness(.9);
-      transition:transform .35s ease;
+    .yt-thumb {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(.85);
+      transition: transform .4s ease, filter .3s ease;
     }
-    .yt-lite:hover .yt-thumb{ transform: scale(1.02); }
-    .yt-play{
-      position:absolute; left:50%; top:50%;
-      transform:translate(-50%,-50%);
-      padding:.7rem 1.2rem; border-radius:999px;
-      background:rgba(0,0,0,.55); backdrop-filter: blur(4px);
-      font-weight:700; border:1px solid var(--line);
+    .yt-lite:hover .yt-thumb { transform: scale(1.03); filter: brightness(.7); }
+    .yt-play {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      padding: .8rem 1.4rem;
+      border-radius: 999px;
+      background: rgba(0,0,0,.6);
+      backdrop-filter: blur(8px);
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff;
+      transition: background .2s, transform .2s;
     }
-    .yt-play::before{ content:"▶"; margin-right:8px }
+    .yt-lite:hover .yt-play { background: rgba(0,245,255,.2); transform: translate(-50%,-50%) scale(1.05); }
+    .yt-play::before { content: "▶"; margin-right: 8px; color: var(--cyan); }
+
+    /* ── FAQ ─────────────────────────────────────────────── */
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+      gap: 16px;
+      user-select: none;
+    }
+    .faq-q .icon {
+      font-size: 20px;
+      color: var(--cyan);
+      transition: transform .25s ease;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 14px;
+      color: var(--muted);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .25s ease;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding-top: 10px; }
+
+    /* ── Forms ───────────────────────────────────────────── */
+    .form-row {
+      display: grid;
+      gap: 14px;
+    }
+    @media (min-width: 600px) { .form-row-2 { grid-template-columns: 1fr 1fr; } }
+
+    .field { display: grid; gap: 8px; }
+    label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+
+    input, select, textarea {
+      width: 100%;
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      min-height: 48px;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(0,245,255,.5);
+      box-shadow: 0 0 0 3px rgba(0,245,255,.12);
+    }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.3); }
+    select { color-scheme: dark; }
+    select option { background: #111320; }
+
+    .form-note { font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 4px; }
+    .form-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+
+    /* ── Hire packages ───────────────────────────────────── */
+    .package-card { position: relative; }
+    .package-from {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    /* ── Social strip ────────────────────────────────────── */
+    .social-strip {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: #fff;
+      transition: all .2s ease;
+    }
+    .social-btn:hover { border-color: rgba(0,245,255,.3); background: rgba(0,245,255,.06); color: var(--cyan); }
+    .social-icon { font-size: 16px; }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 56px 0 40px;
+    }
+    .footer-grid {
+      display: grid;
+      gap: 40px;
+    }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: .03em;
+      margin-bottom: 10px;
+    }
+    .footer-tagline { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+    .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .footer-col ul { display: grid; gap: 8px; }
+    .footer-col ul li a { font-size: 14px; color: var(--muted); transition: color .15s; }
+    .footer-col ul li a:hover { color: #fff; }
+
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── Scroll reveal ───────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Divider accent ──────────────────────────────────── */
+    .accent-line {
+      display: inline-block;
+      width: 48px;
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--pink));
+      margin-bottom: 20px;
+    }
+
+    /* ── Utility ─────────────────────────────────────────── */
+    .mt-4  { margin-top: 4px; }
+    .mt-8  { margin-top: 8px; }
+    .mt-12 { margin-top: 12px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .stack > * + * { margin-top: 14px; }
+    .text-cyan { color: var(--cyan); }
+    .text-pink  { color: var(--pink); }
+    .text-gold  { color: var(--gold); }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="wrap nav">
-      <!-- Brand -->
-      <div class="brand">
-        <img class="logo" src="assets/theskateguys-1.png" alt="The Skate Guys logo" loading="eager" decoding="async">
-        <strong>The Skate Guys</strong>
-      </div>
+  <!-- Animated background -->
+  <div class="bg-mesh" aria-hidden="true"><span></span></div>
 
-      <!-- Primary nav links -->
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#try">Try</a>
-        <a href="#join">Join</a>
-        <a href="#elite">Elite</a>
-        <a href="#locations">Locations</a>
+  <!-- ── Header ─────────────────────────────────────────── -->
+  <header>
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <div class="brand">
+          <img class="logo" src="assets/theskateguys-1.png" alt="The Skate Guys logo" loading="eager" decoding="async">
+          <span class="brand-name">The Skate Guys</span>
+        </div>
+
+        <div class="nav-links">
+          <a href="#pricing">Classes</a>
+          <a href="#locations">Locations</a>
+          <a href="#watch">Watch</a>
+          <a href="#hire">Events</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="btn btn-ghost btn-sm btn-ghost-sm" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-primary btn-sm" href="#learn">Book Now</a>
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </nav>
 
-      <!-- Actions -->
-      <div class="nav-actions">
-        <a class="btn btn-primary" id="navBook" href="#try">Book</a>
-        <a class="btn btn-ghost" id="navWhatsApp" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn btn-ghost" href="tel:+18682766878" aria-label="Call us">Call</a>
+      <!-- Mobile drawer -->
+      <div class="mobile-menu" id="mobileMenu" role="navigation">
+        <a href="#pricing">Classes &amp; Pricing</a>
+        <a href="#locations">Locations</a>
+        <a href="#watch">Watch</a>
+        <a href="#hire">Events &amp; Hire</a>
+        <a href="#faq">FAQ</a>
+        <div class="divider"></div>
+        <a href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Us</a>
+        <a href="tel:+18682766878">Call Us</a>
+        <a href="https://instagram.com/the_skateguys" target="_blank" rel="noopener">Instagram @the_skateguys</a>
+        <div class="divider"></div>
+        <a href="#learn" class="btn btn-primary" style="width:100%; margin-top:4px">Book a Class</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
+    <!-- ── Hero ───────────────────────────────────────────── -->
     <section class="hero">
       <div class="wrap">
-        <div class="chips" style="margin-bottom: 9px;">
-          <span class="chip">Beginner Friendly</span>
-          <span class="chip">All Ages</span>
-          <span class="chip">Rentals Available</span>
-        </div>
-        <h1>Learn to roller skate in Trinidad &amp; Tobago</h1>
-        <p>Start with a simple 1-hour drop-in class. Small groups, friendly coaching, safe floors.</p>
-        <div style="margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap">
-          <a class="btn btn-primary" href="#try" aria-label="Start with a drop-in class">Start with a Drop-in</a>
-          <a class="btn btn-ghost" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Help</a>
+        <div class="hero-inner">
+          <div>
+            <div class="chips">
+              <span class="chip">Beginner Friendly</span>
+              <span class="chip">All Ages</span>
+              <span class="chip">Rentals Available</span>
+            </div>
+            <h1>
+              LEARN TO<br>
+              <span class="accent-cyan">ROLL</span> IN<br>
+              <span class="accent-pink">T&amp;T</span>
+            </h1>
+            <p class="hero-sub">Small groups. Real coaching. Safe floors. Join Trinidad &amp; Tobago's most welcoming rollerskate community — whether you're stepping on skates for the very first time or levelling up your style.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#learn">Book a Drop-in — $60 TTD</a>
+              <a class="btn btn-ghost" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Us</a>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-pill">
+              <div class="num">7+</div>
+              <div class="label">Locations</div>
+            </div>
+            <div class="stat-pill">
+              <div class="num">All</div>
+              <div class="label">Ages</div>
+            </div>
+            <div class="stat-pill">
+              <div class="num">$60</div>
+              <div class="label">Drop-in TTD</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- How it works -->
+    <!-- ── How it works ──────────────────────────────────── -->
     <section id="how">
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>How it works</div>
         <h2>Book in 3 steps</h2>
-        <div class="grid grid-3">
-          <div class="card">
-            <strong>1) Tell us when</strong>
-            <p class="muted">Pick your best days/times.</p>
+        <div class="grid grid-3 reveal">
+          <div class="card card-glow-cyan">
+            <div class="step-num">01</div>
+            <h3>Tell us when</h3>
+            <p class="muted small">Fill the form with your preferred days, times, and location. Takes under 2 minutes.</p>
           </div>
           <div class="card">
-            <strong>2) We match a coach</strong>
-            <p class="muted">We confirm availability on WhatsApp.</p>
+            <div class="step-num">02</div>
+            <h3>We match a coach</h3>
+            <p class="muted small">We confirm your spot and coach via WhatsApp — usually within a few hours.</p>
           </div>
+          <div class="card card-glow-pink">
+            <div class="step-num">03</div>
+            <h3>Show up &amp; roll</h3>
+            <p class="muted small">Small groups, beginner-friendly floors. Just bring yourself (rentals available).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Pricing paths ──────────────────────────────────── -->
+    <section id="pricing">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Choose your path</div>
+        <h2>Classes &amp; Plans</h2>
+        <div class="pricing-grid reveal">
+
+          <!-- Drop-in -->
+          <div class="card card-glow-cyan">
+            <div class="path-tag path-tag-cyan">Drop-in</div>
+            <h3>Try a Class</h3>
+            <div class="price-badge">
+              <span class="price-amount">$60</span>
+              <span class="price-unit">TTD / 1 hr</span>
+            </div>
+            <ul class="list mt-12">
+              <li>1-hour small group session</li>
+              <li>All ages &amp; beginner friendly</li>
+              <li>Pick your location &amp; time</li>
+              <li>Rentals available on request</li>
+            </ul>
+            <a class="btn btn-primary mt-24 interest-btn" href="#learn" data-interest="Drop-in" style="width:100%">Book a Drop-in</a>
+          </div>
+
+          <!-- Monthly — featured -->
+          <div class="card card-featured card-glow-pink">
+            <div class="path-tag path-tag-pink">Best Value</div>
+            <h3>Monthly Plan</h3>
+            <div class="price-badge">
+              <span class="price-amount" style="color:var(--pink)">$240</span>
+              <span class="price-unit">TTD / month</span>
+            </div>
+            <p class="muted small mt-8">4 sessions + 1 free. Best for consistent progress.</p>
+            <ul class="list mt-12">
+              <li>5 sessions (4 + 1 free)</li>
+              <li>Priority booking window</li>
+              <li>Progress card &amp; coach feedback</li>
+              <li>Waitlist skip on full months</li>
+            </ul>
+            <a class="btn btn-accent mt-24 interest-btn" href="#learn" data-interest="Monthly" style="width:100%">Join Monthly</a>
+          </div>
+
+          <!-- Elite -->
           <div class="card">
-            <strong>3) Show up &amp; roll</strong>
-            <p class="muted">Small groups • beginner friendly.</p>
+            <div class="path-tag path-tag-gold">Elite</div>
+            <h3>Elite Track</h3>
+            <div class="price-badge">
+              <span class="price-amount" style="color:var(--gold)">POA</span>
+            </div>
+            <p class="muted small mt-8">Focused, fast progress. Invite-based — message us to qualify.</p>
+            <ul class="list mt-12">
+              <li>Members-first booking windows</li>
+              <li>Milestone tracking &amp; coach feedback</li>
+              <li>Smaller groups, focused drills</li>
+              <li>Invite-only community sessions</li>
+            </ul>
+            <a class="btn btn-ghost mt-24 interest-btn" href="#learn" data-interest="Elite" style="width:100%">Request Elite Access</a>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Try -->
-    <section id="try">
-      <div class="wrap">
-        <div class="kicker"><span class="bar"></span>Path 1</div>
-        <h2>Try — Book a Drop-in Class</h2>
-        <div class="card">
-          <p class="muted">First time? Start simple. 1-hour small group. Rentals available.</p>
-          <ul class="list">
-            <li>$60 TTD / 1 hr</li>
-            <li>All ages • Beginner friendly</li>
-            <li>Pick your location &amp; time</li>
-          </ul>
-          <a class="btn btn-primary interest-btn" href="#learn" data-interest="Drop-in">Book a Drop-in</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Join -->
-    <section id="join">
-      <div class="wrap">
-        <div class="kicker"><span class="bar"></span>Path 2</div>
-        <h2>Join — Monthly Plan (4 + 1 Free)</h2>
-        <div class="card" style="outline:2px solid var(--pink)">
-          <p class="muted">Best value for consistent progress. Priority booking + progress card.</p>
-          <ul class="list">
-            <li>$240 TTD / month</li>
-            <li>4 sessions + 1 free</li>
-            <li>Priority booking window</li>
-          </ul>
-          <a class="btn btn-primary interest-btn" href="#learn" data-interest="Monthly">Join Monthly</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Elite -->
-    <section id="elite">
-      <div class="wrap">
-        <div class="kicker"><span class="bar"></span>Path 3</div>
-        <h2>Elite — Upgrade for faster growth</h2>
-        <div class="card">
-          <p class="muted">Smaller groups, focused drills, priority access &amp; extra coaching time.</p>
-          <ul class="list">
-            <li>Members-first booking windows</li>
-            <li>Progress milestones + coach feedback</li>
-            <li>Invite-only community sessions</li>
-          </ul>
-          <a class="btn btn-primary interest-btn" href="#learn" data-interest="Elite">Request Elite</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Watch (Lite YouTube only) -->
+    <!-- ── Watch ──────────────────────────────────────────── -->
     <section id="watch">
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>Watch</div>
         <h2>The vibe in 60 seconds</h2>
-
-        <div class="grid grid-2">
-          <!-- Left: video -->
-          <div class="card yt-card">
-            <div class="yt-lite" data-youtube-id="5t-jL8d3Iq8" aria-label="Play video" role="button" tabindex="0">
+        <div class="grid grid-2 reveal">
+          <div class="card" style="padding:0; overflow:hidden;">
+            <div class="yt-lite" data-youtube-id="5t-jL8d3Iq8" aria-label="Play skating video" role="button" tabindex="0">
               <div class="yt-thumb" style="background-image:url('https://i.ytimg.com/vi/5t-jL8d3Iq8/hqdefault.jpg')"></div>
-              <div class="yt-play">Watch</div>
+              <div class="yt-play">Watch Now</div>
             </div>
-            <p class="muted" style="margin-top:10px">
-              Trouble playing? <a href="https://youtu.be/5t-jL8d3Iq8" target="_blank" rel="noopener">Watch on YouTube</a>.
+            <p class="muted small" style="padding:14px 20px">
+              Trouble playing? <a href="https://youtu.be/5t-jL8d3Iq8" target="_blank" rel="noopener">Watch on YouTube ↗</a>
             </p>
           </div>
-
-          <!-- Right: bullets -->
           <div class="card">
-            <strong>What you’ll see</strong>
-            <ul class="list">
-              <li>Beginner coaching on smooth floors</li>
-              <li>Family-friendly sessions &amp; rentals</li>
+            <div class="accent-line"></div>
+            <h3>What you'll see</h3>
+            <ul class="list mt-12">
+              <li>Beginner coaching on smooth indoor floors</li>
+              <li>Family-friendly sessions &amp; rental skates</li>
               <li>Community meets &amp; fun challenges</li>
+              <li>All skill levels skating together</li>
             </ul>
-            <a class="btn btn-primary" href="#try" style="margin-top:12px">Start with a Drop-in</a>
+            <a class="btn btn-primary mt-24" href="#learn">Start with a Drop-in</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Locations -->
+    <!-- ── Locations ──────────────────────────────────────── -->
     <section id="locations">
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>Where we skate</div>
-        <h2>Locations (Trinidad &amp; Tobago)</h2>
-        <div class="grid grid-2">
-          <div class="card">
-            <strong>Trinidad</strong>
-            <ul class="list">
-              <li>JD's Skating Rink — (Main Road maxi stand), Arima</li>
-              <li>River Ranch — Arima (off Calvary Hill)</li>
-              <li>Rootsyardd (Skallywag) — Chaguaramas (Port of Spain)</li>
-              <li>SK868 — RRM Plaza, San Fernando (South Trinidad)</li>
-              <li>Larry Gomes Stadium — Malabar, Arima</li>
-            </ul>
+        <h2>Locations — Trinidad &amp; Tobago</h2>
+        <div class="grid grid-2 reveal">
+          <div class="card card-glow-cyan">
+            <h3 class="text-cyan" style="margin-bottom:16px">🇹🇹 Trinidad</h3>
+            <div>
+              <div class="location-item">
+                <div class="location-dot"></div>
+                <div><strong style="font-size:14px">JD's Skating Rink</strong><br><span class="muted small">Main Road maxi stand, Arima</span></div>
+              </div>
+              <div class="location-item">
+                <div class="location-dot"></div>
+                <div><strong style="font-size:14px">River Ranch</strong><br><span class="muted small">Arima (off Calvary Hill)</span></div>
+              </div>
+              <div class="location-item">
+                <div class="location-dot"></div>
+                <div><strong style="font-size:14px">Rootsyardd (Skallywag)</strong><br><span class="muted small">Chaguaramas, Port of Spain</span></div>
+              </div>
+              <div class="location-item">
+                <div class="location-dot"></div>
+                <div><strong style="font-size:14px">SK868</strong><br><span class="muted small">RRM Plaza, San Fernando (South)</span></div>
+              </div>
+              <div class="location-item">
+                <div class="location-dot"></div>
+                <div><strong style="font-size:14px">Larry Gomes Stadium</strong><br><span class="muted small">Malabar, Arima</span></div>
+              </div>
+            </div>
           </div>
           <div class="card">
-            <strong>Tobago</strong>
-            <ul class="list">
-              <li>Canoe Bay Road — Tobago</li>
-              <li>Montgomery Grounds — Tobago</li>
-            </ul>
+            <h3 class="text-cyan" style="margin-bottom:16px">🌊 Tobago</h3>
+            <div>
+              <div class="location-item">
+                <div class="location-dot"></div>
+                <div><strong style="font-size:14px">Canoe Bay Road</strong><br><span class="muted small">Tobago</span></div>
+              </div>
+              <div class="location-item">
+                <div class="location-dot"></div>
+                <div><strong style="font-size:14px">Montgomery Grounds</strong><br><span class="muted small">Tobago</span></div>
+              </div>
+            </div>
+            <div class="card" style="margin-top:20px; background: rgba(0,245,255,.05); border-color: rgba(0,245,255,.15);">
+              <p class="small muted">Sessions are arranged per coach availability. Spots are capped for safety and personal coaching. <strong style="color:#fff">WhatsApp us to confirm your location.</strong></p>
+            </div>
           </div>
         </div>
-        <p class="muted" id="updated" style="margin-top:14px">
-          Last updated: 02 Oct 2025. Sessions are arranged per coach availability—spots are capped for safety.
-        </p>
+        <p class="muted small mt-16" id="updated"></p>
       </div>
     </section>
 
-    <!-- Community gallery -->
+    <!-- ── Community Gallery ──────────────────────────────── -->
     <section id="community">
       <div class="wrap">
-        <div class="kicker"><span class="bar"></span>Our Skate Community</div>
-        <h2>Smiles • Progress • Good vibes</h2>
-
-        <div class="gallery">
+        <div class="kicker"><span class="bar"></span>Community</div>
+        <h2>Smiles. Progress. Good vibes.</h2>
+        <div class="gallery reveal">
           <figure>
-            <img src="assets/community/tsg-01.jpg?v=1" alt="JD’s Rink • Arima" loading="lazy" decoding="async">
-            <figcaption class="gallery-caption">Rollerskating • For All Ages</figcaption>
+            <img src="assets/community/tsg-01.jpg?v=1" alt="Rollerskating at JD's Rink, Arima" loading="lazy" decoding="async">
+            <figcaption>Rollerskating · For All Ages</figcaption>
           </figure>
-
           <figure>
-            <img src="assets/community/tsg-02.jpg?v=1" alt="Beginner warm-up" loading="lazy" decoding="async">
-            <figcaption class="gallery-caption">Skate Guys Event</figcaption>
+            <img src="assets/community/tsg-02.jpg?v=1" alt="Skate Guys event session" loading="lazy" decoding="async">
+            <figcaption>Skate Guys Event</figcaption>
           </figure>
-
           <figure>
-            <img src="assets/community/tsg-03.jpg?v=1" alt="Family skate day" loading="lazy" decoding="async">
-            <figcaption class="gallery-caption">Skate Guys Family Day</figcaption>
+            <img src="assets/community/tsg-03.jpg?v=1" alt="Skate Guys family day" loading="lazy" decoding="async">
+            <figcaption>Skate Guys Family Day</figcaption>
           </figure>
+        </div>
+        <div class="social-strip mt-24">
+          <a class="social-btn" href="https://instagram.com/the_skateguys" target="_blank" rel="noopener">
+            <span class="social-icon">📸</span> @the_skateguys on Instagram
+          </a>
+          <a class="social-btn" href="https://wa.me/18682766878" target="_blank" rel="noopener">
+            <span class="social-icon">💬</span> WhatsApp Community
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ── FAQ ────────────────────────────────────────────── -->
     <section id="faq">
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>Quick Answers</div>
         <h2>FAQ</h2>
-        <div class="grid grid-2">
-          <div class="card">
-            <strong>Is it beginner friendly?</strong>
-            <p class="muted">Yes. We teach from first stand-up to advanced dance moves.</p>
+        <div style="max-width: 760px;">
+          <div class="faq-item">
+            <div class="faq-q">Is it beginner friendly? <span class="icon">+</span></div>
+            <div class="faq-a">Yes — we teach from first stand-up to advanced dance moves. No experience needed whatsoever.</div>
           </div>
-          <div class="card">
-            <strong>Do you accept all ages?</strong>
-            <p class="muted">Yes—kids, teens, adults, and family groups. We teach by skate level.</p>
+          <div class="faq-item">
+            <div class="faq-q">Do you accept all ages? <span class="icon">+</span></div>
+            <div class="faq-a">Yes — kids, teens, adults, and family groups are all welcome. We teach by skate level, not age.</div>
           </div>
-          <div class="card">
-            <strong>Do I need my own skates?</strong>
-            <p class="muted">Bring your own skates; otherwise request rental skates and add your shoe size.</p>
+          <div class="faq-item">
+            <div class="faq-q">Do I need my own skates? <span class="icon">+</span></div>
+            <div class="faq-a">Bring your own if you have them. Otherwise request rental skates when booking and include your shoe size — rental skates are $60 TTD/hour.</div>
           </div>
-          <div class="card">
-            <strong>How do I pay?</strong>
-            <p class="muted">We’ll confirm your spot and share secure payment options in WhatsApp.</p>
+          <div class="faq-item">
+            <div class="faq-q">How do I pay? <span class="icon">+</span></div>
+            <div class="faq-a">We'll confirm your spot via WhatsApp and share secure payment options then. Simple and straightforward.</div>
           </div>
-          <div class="card">
-            <strong>Are classes crowded?</strong>
-            <p class="muted">No—bookings are limited to keep floors safe and coaching personal.</p>
+          <div class="faq-item">
+            <div class="faq-q">Are classes crowded? <span class="icon">+</span></div>
+            <div class="faq-a">No — class sizes are capped intentionally to keep floors safe and coaching personal. We'd rather have a waitlist than a crowded rink.</div>
           </div>
-          <div class="card">
-            <strong>Can I try before joining?</strong>
-            <p class="muted">Yes—ask about our next free Community Meet Up or book a single skate class.</p>
+          <div class="faq-item">
+            <div class="faq-q">Can I try before committing to a plan? <span class="icon">+</span></div>
+            <div class="faq-a">Absolutely. Book a single $60 TTD drop-in first. You can also ask about our next free Community Meet Up.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What if the month is full? <span class="icon">+</span></div>
+            <div class="faq-a">We'll add you to the waitlist and send a free community session invite so you can experience the vibe while waiting for a spot.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Hire Us + Packages -->
+    <!-- ── Hire Us ─────────────────────────────────────────── -->
     <section id="hire">
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>Events &amp; Experiences</div>
-        <h2>Hire us (Rental Skates) — Birthdays, Schools, Corporate &amp; Pop-ups</h2>
-        <div class="grid grid-2">
+        <h2>Hire Us — Birthdays, Schools, Corporate &amp; Pop-ups</h2>
+
+        <div class="grid grid-2 reveal">
+          <!-- Hire form -->
           <div class="card">
-            <form id="formHire" class="stack-12">
-              <div class="row row-2">
-                <div>
+            <h3 style="margin-bottom:20px">Request a Quote</h3>
+            <form id="formHire" class="stack">
+              <div class="form-row form-row-2">
+                <div class="field">
                   <label>Full Name</label>
                   <input name="name" placeholder="Your name" required>
                 </div>
-                <div>
+                <div class="field">
                   <label>WhatsApp Number</label>
-                  <input name="phone" id="phoneHire" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
+                  <input name="phone" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
                 </div>
               </div>
-              <div class="row row-2">
-                <div>
+              <div class="form-row form-row-2">
+                <div class="field">
                   <label>Email (optional)</label>
                   <input name="email" type="email" placeholder="you@example.com">
                 </div>
-                <div>
+                <div class="field">
                   <label>Event Type</label>
                   <select name="type">
                     <option>Birthday Party</option>
@@ -510,110 +1100,109 @@
                   </select>
                 </div>
               </div>
-              <div class="row row-2">
-                <div>
-                  <label>Preferred Date/Time</label>
-                  <input name="date" placeholder="Your preferred windows (e.g. Sat 3–6pm or Tue/Thu evenings)">
+              <div class="form-row form-row-2">
+                <div class="field">
+                  <label>Preferred Date / Time</label>
+                  <input name="date" placeholder="e.g. Sat 3–6pm or Tue/Thu evenings">
                 </div>
-                <div>
+                <div class="field">
                   <label>Venue / Address</label>
                   <input name="venue" placeholder="Location or 'Need a venue'">
                 </div>
               </div>
-              <div class="row row-2">
-                <div>
+              <div class="form-row form-row-2">
+                <div class="field">
                   <label>Expected Headcount</label>
                   <input name="headcount" placeholder="e.g. 25">
                 </div>
-                <div>
+                <div class="field">
                   <label>Notes (optional)</label>
-                  <input name="message" placeholder="Vibe, age range, rentals, DJ, games">
+                  <input name="message" placeholder="Vibe, age range, DJ, games…">
                 </div>
               </div>
-              <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
+              <div class="form-actions">
                 <button class="btn btn-accent" type="submit">Send via WhatsApp</button>
-                <a id="hireEmail" class="btn btn-ghost" href="mailto:info.theskateguys@gmail.com?subject=TSG%20Event%20Hire%20Inquiry">Email Us</a>
+                <a id="hireEmail" class="btn btn-ghost" href="mailto:info.theskateguys@gmail.com">Email Us</a>
               </div>
-              <p class="muted">Dates are limited. A booking confirmation &amp; deposit secures your date. Tell us your preferred dates/times and we’ll reach out to confirm. We’ll share packages on reply.</p>
+              <p class="form-note">Dates are limited. A 20% deposit secures your date. We'll share full packages on reply.</p>
             </form>
           </div>
-          <div class="stack-12">
-            <div class="card">
-              <strong>Birthday Party — from $1,500 TTD</strong>
-              <ul class="list">
-                <li>2-Hour experience • Up to 12 skaters</li>
-                <li>2 Coaches • Floor games • Music playlist</li>
-                <li>Rental skates (limited sizes) on request</li>
-                <li>Add-ons: extra hour $450 • photo/drone add-on $300</li>
+
+          <!-- Packages -->
+          <div class="stack">
+            <div class="card package-card">
+              <div class="package-from">from $1,500 <span style="font-size:14px; color:var(--muted); font-family:var(--font-body)">TTD</span></div>
+              <h3>🎂 Birthday Party</h3>
+              <ul class="list mt-8">
+                <li>2-hour experience · up to 12 skaters</li>
+                <li>2 coaches · floor games · music playlist</li>
+                <li>Add-ons: extra hour $450 · photo/drone $300</li>
               </ul>
             </div>
-            <div class="card">
-              <strong>School Programme — from $3,200 TTD</strong>
-              <ul class="list">
-                <li>3-Hour program • Up to 30 students in rotations</li>
-                <li>Safety briefing • Beginner coaching • Mini-challenges</li>
-                <li>Options: Rentals, Certificates, Parent showcase</li>
+            <div class="card package-card">
+              <div class="package-from">from $3,200 <span style="font-size:14px; color:var(--muted); font-family:var(--font-body)">TTD</span></div>
+              <h3>🏫 School Programme</h3>
+              <ul class="list mt-8">
+                <li>3-hour program · up to 30 students</li>
+                <li>Safety briefing · mini-challenges · certificates</li>
               </ul>
             </div>
-            <div class="card">
-              <strong>Corporate Team Day — from $3,750 TTD</strong>
-              <ul class="list">
-                <li>3-hour experience • Up to 25 staff</li>
-                <li>Team relays • Dance-off • Fun skill labs</li>
-                <li>Options: Rentals, MC, Trophies, Media add-on</li>
+            <div class="card package-card">
+              <div class="package-from">from $3,750 <span style="font-size:14px; color:var(--muted); font-family:var(--font-body)">TTD</span></div>
+              <h3>🏢 Corporate Team Day</h3>
+              <ul class="list mt-8">
+                <li>3-hour experience · up to 25 staff</li>
+                <li>Team relays · dance-off · fun skill labs</li>
               </ul>
             </div>
-            <div class="card">
-              <strong>Pop-up Rink / Festival — POA</strong>
-              <ul class="list">
-                <li>Day-rate engagement • Programming &amp; games</li>
-                <li>We integrate with your event schedule</li>
-                <li>Ask about venue requirements &amp; rentals</li>
+            <div class="card package-card">
+              <div class="package-from">POA</div>
+              <h3>🎪 Pop-up Rink / Festival</h3>
+              <ul class="list mt-8">
+                <li>Day-rate engagement · programming &amp; games</li>
+                <li>Integrates with your event schedule</li>
               </ul>
             </div>
-            <div class="card">
-              <strong>Rink Launch Consulting — from $5,500 TTD</strong>
-              <ul class="list">
-                <li>2-Week Launch Sprint: SOPs, staff training, floor rules</li>
-                <li>Opening Weekend programming &amp; marketing scripts</li>
-                <li>Follow-up report &amp; revenue ideas</li>
+            <div class="card package-card">
+              <div class="package-from">from $5,500 <span style="font-size:14px; color:var(--muted); font-family:var(--font-body)">TTD</span></div>
+              <h3>🛹 Rink Launch Consulting</h3>
+              <ul class="list mt-8">
+                <li>2-week sprint: SOPs, staff training, floor rules</li>
+                <li>Opening weekend programming + revenue ideas</li>
               </ul>
             </div>
-            <p class="muted">All packages subject to venue suitability, availability of rental sizes, and a 20% booking deposit. Travel fees may apply outside booking cost.</p>
+            <p class="muted small">All packages subject to venue suitability and a 20% booking deposit. Travel fees may apply.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Learn to Skate Form -->
+    <!-- ── Book Your Spot ─────────────────────────────────── -->
     <section id="learn">
       <div class="wrap">
-        <div class="kicker"><span class="bar"></span>All Ages</div>
-        <h2>Book your spot</h2>
-
-        <div class="grid grid-2">
+        <div class="kicker"><span class="bar"></span>All Ages · All Levels</div>
+        <h2>Book Your Spot</h2>
+        <div class="grid grid-2 reveal">
           <div class="card">
-            <form id="formLearn" class="stack-12">
-              <!-- captures which path they clicked -->
+            <form id="formLearn" class="stack">
               <input type="hidden" name="interest" id="interest" value="Drop-in">
 
-              <div class="row row-2">
-                <div>
+              <div class="form-row form-row-2">
+                <div class="field">
                   <label>Full Name</label>
                   <input name="name" placeholder="Your name" required>
                 </div>
-                <div>
+                <div class="field">
                   <label>WhatsApp Number</label>
-                  <input name="phone" id="phoneLearn" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
+                  <input name="phone" placeholder="868-276-6878" required inputmode="tel" autocomplete="tel">
                 </div>
               </div>
-
-              <div class="row row-2">
-                <div>
+              <div class="form-row form-row-2">
+                <div class="field">
                   <label>Email (optional)</label>
                   <input name="email" type="email" placeholder="you@example.com">
                 </div>
-                <div>
+                <div class="field">
                   <label>Age / Group</label>
                   <select name="age">
                     <option>All Ages</option>
@@ -625,9 +1214,8 @@
                   </select>
                 </div>
               </div>
-
-              <div class="row row-2">
-                <div>
+              <div class="form-row form-row-2">
+                <div class="field">
                   <label>Skill Level</label>
                   <select name="level">
                     <option>Beginner</option>
@@ -636,28 +1224,27 @@
                     <option>Advanced</option>
                   </select>
                 </div>
-                <div>
+                <div class="field">
                   <label>Preferred Location</label>
                   <select name="location" required>
                     <option value="">Select a location…</option>
-                    <option>JD's Skating Rink — Near the main road maxi stand, Arima</option>
-                    <option>River Ranch — Arima (off Calvary Hill)</option>
-                    <option>Rootsyardd (Skallywag) — Chaguaramas (Port Of Spain)</option>
-                    <option>SK868 (South)</option>
-                    <option>Larry Gomes Stadium (Arima)</option>
-                    <option>Canoe Bay Road (Tobago)</option>
-                    <option>Montgomery Grounds (Tobago)</option>
+                    <option>JD's Skating Rink — Arima</option>
+                    <option>River Ranch — Arima</option>
+                    <option>Rootsyardd (Skallywag) — Chaguaramas</option>
+                    <option>SK868 — San Fernando (South)</option>
+                    <option>Larry Gomes Stadium — Arima</option>
+                    <option>Canoe Bay Road — Tobago</option>
+                    <option>Montgomery Grounds — Tobago</option>
                     <option>Other / Not sure</option>
                   </select>
                 </div>
               </div>
-
-              <div class="row row-2">
-                <div>
-                  <label>Preferred Days/Times</label>
+              <div class="form-row form-row-2">
+                <div class="field">
+                  <label>Preferred Days / Times</label>
                   <input name="date" placeholder="e.g. Tue/Thu 5–7pm or Sat morning" required>
                 </div>
-                <div>
+                <div class="field">
                   <label>Rental Skates Needed?</label>
                   <select name="rentals">
                     <option>No</option>
@@ -665,46 +1252,42 @@
                   </select>
                 </div>
               </div>
-
-              <div class="row row-2">
-                <div>
+              <div class="form-row form-row-2">
+                <div class="field">
                   <label>Shoe Size (if rentals)</label>
                   <input name="size" placeholder="US 6">
                 </div>
-                <div>
+                <div class="field">
                   <label>Notes (optional)</label>
                   <input name="message" placeholder="Goals, concerns, access needs">
                 </div>
               </div>
-
-              <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 4px">
+              <div class="form-actions">
                 <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
-                <a
-                  id="learnEmail"
-                  class="btn btn-ghost"
-                  href="mailto:info.theskateguys@gmail.com?subject=TSG%20Learn%20to%20Skate%20Inquiry"
-                >
-                  Email Us
-                </a>
-                <a class="btn btn-ghost" href="tel:+18682766878" aria-label="Call us">Call</a>
+                <a id="learnEmail" class="btn btn-ghost" href="mailto:info.theskateguys@gmail.com">Email Us</a>
+                <a class="btn btn-ghost" href="tel:+18682766878">Call</a>
               </div>
-
-              <p class="muted">Prefer a call? We can book you in 60 seconds.</p>
-              <p class="muted">We cap class sizes for safety &amp; personal coaching. If the month is full, we’ll offer a waitlist + free community session invite.</p>
+              <p class="form-note">Class sizes are capped for safety &amp; personal coaching. If the month is full, we'll offer a waitlist + free community session invite.</p>
             </form>
           </div>
 
-          <div class="stack-12">
-            <div class="card">
-              <strong>Age Groups</strong>
-              <ul class="list">
-                <li>Kids (5–9) • Preteens (10–12) • Teens (13–17) • Adults (18+) • Family</li>
-                <li>Absolute beginners welcome</li>
+          <div class="stack">
+            <div class="card card-glow-cyan">
+              <h3>Age Groups</h3>
+              <ul class="list mt-8">
+                <li>Kids (5–9) · Preteens (10–12) · Teens (13–17)</li>
+                <li>Adults (18+) · Family groups</li>
+                <li>Absolute beginners always welcome</li>
               </ul>
             </div>
             <div class="card">
-              <strong>Rentals</strong>
-              <p class="muted">Limited sizes available. Rental skates <strong>$60 TTD/hour</strong>. Helmets recommended.</p>
+              <h3>Rental Skates</h3>
+              <p class="muted small mt-8">Limited sizes available. Rental skates <strong style="color:#fff">$60 TTD/hour</strong>. Helmets recommended.</p>
+            </div>
+            <div class="card" style="background: rgba(0,245,255,.05); border-color: rgba(0,245,255,.2);">
+              <h3>Prefer a call?</h3>
+              <p class="muted small mt-8">We can book you in 60 seconds over the phone.</p>
+              <a class="btn btn-ghost mt-12" href="tel:+18682766878">📞 Call Us Now</a>
             </div>
           </div>
         </div>
@@ -712,153 +1295,181 @@
     </section>
   </main>
 
+  <!-- ── Footer ─────────────────────────────────────────── -->
   <footer>
-    <div class="wrap">© <span id="year">2025</span> The Skate Guys Hub. All rights reserved.</div>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">The Skate Guys</div>
+          <p class="footer-tagline">Trinidad &amp; Tobago's leading rollerskate community. Small circle. Big progress. Real community.</p>
+          <div class="social-strip">
+            <a class="social-btn" href="https://instagram.com/the_skateguys" target="_blank" rel="noopener">📸 Instagram</a>
+            <a class="social-btn" href="https://wa.me/18682766878" target="_blank" rel="noopener">💬 WhatsApp</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#pricing">Classes &amp; Pricing</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="#watch">Watch</a></li>
+            <li><a href="#hire">Events &amp; Hire</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Us</a></li>
+            <li><a href="tel:+18682766878">+1 868-276-6878</a></li>
+            <li><a href="mailto:info.theskateguys@gmail.com">info.theskateguys@gmail.com</a></li>
+            <li><a href="#learn">Book a Class</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2025</span> The Skate Guys Hub. All rights reserved.</span>
+        <span>Trinidad &amp; Tobago 🇹🇹</span>
+      </div>
+    </div>
   </footer>
 
   <noscript>
-    <div class="wrap" style="padding:16px; color:#ffbdbd">This page uses a little JavaScript to open WhatsApp with your details. Please enable JavaScript or use the email link.</div>
+    <div class="wrap" style="padding:16px; color:#ffbdbd; font-size:14px;">This page uses a little JavaScript to open WhatsApp with your details. Please enable JavaScript or use the email link.</div>
   </noscript>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const CONTACT = {
-        WHATSAPP_E164: '18682766878',
-        EMAIL: 'info.theskateguys@gmail.com',
-      };
+      const WHATSAPP = '18682766878';
+      const EMAIL    = 'info.theskateguys@gmail.com';
+      const waBase   = `https://wa.me/${WHATSAPP}`;
 
-      // When a "Try / Join / Elite" button is clicked, store which path they chose
-      document.querySelectorAll('.interest-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const choice = btn.getAttribute('data-interest') || 'Drop-in';
-          const interestField = document.getElementById('interest');
-          if (interestField) interestField.value = choice;
-        });
-      });
-
-      // Prefill Learn email
-      const learnEmail = document.getElementById('learnEmail');
-      if (learnEmail) {
-        const sub = encodeURIComponent('TSG Learn to Skate Inquiry');
-        const body = encodeURIComponent(
-          `Hi TSG,\n\nI'd like to book a class. Please contact me via WhatsApp or email.\n\nThanks!`
-        );
-        learnEmail.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
-      }
-
-      // Prefill Hire email
-      const hireEmail = document.getElementById('hireEmail');
-      if (hireEmail) {
-        const sub = encodeURIComponent('TSG Event Hire Inquiry');
-        const body = encodeURIComponent(
-          `Hi TSG,\n\nWe'd like to hire you for an event. Please contact us.\n\nThanks!`
-        );
-        hireEmail.href = `mailto:${CONTACT.EMAIL}?subject=${sub}&body=${body}`;
-      }
-
-      // Year
+      /* ── Year ── */
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-      // WhatsApp link (header)
-      const waUrl = `https://wa.me/${CONTACT.WHATSAPP_E164}`;
-      const navWhatsApp = document.getElementById('navWhatsApp');
-      if (navWhatsApp) navWhatsApp.href = waUrl;
-
-      function openWhatsApp(message){
-        const url = `${waUrl}?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
-      }
-
-      // Learn form → WhatsApp compose
-      const formLearn = document.getElementById('formLearn');
-      if (formLearn) {
-        formLearn.addEventListener('submit', function(e){
-          e.preventDefault();
-          const fd = new FormData(e.target);
-          const msg = [
-            'TSG Inquiry: Learn to Skate',
-            `Interest: ${fd.get('interest')||'Drop-in'}`,
-            `Name: ${fd.get('name')||''}`,
-            fd.get('phone') ? `Phone: ${fd.get('phone')}` : '',
-            fd.get('email') ? `Email: ${fd.get('email')}` : '',
-            `Age/Group: ${fd.get('age')}`,
-            `Level: ${fd.get('level')}`,
-            `Preferred Location: ${fd.get('location')}`,
-            `Rental Needed: ${fd.get('rentals')}`,
-            fd.get('size') ? `Shoe Size: ${fd.get('size')}` : '',
-            fd.get('date') ? `Preferred Date/Time: ${fd.get('date')}` : '',
-            fd.get('message') ? `Notes: ${fd.get('message')}` : '',
-          ].filter(Boolean).join('\n');
-          openWhatsApp(msg);
-        });
-      }
-
-      // Hire form → WhatsApp compose
-      const formHire = document.getElementById('formHire');
-      if (formHire) {
-        formHire.addEventListener('submit', function(e){
-          e.preventDefault();
-          const fd = new FormData(e.target);
-          const msg = [
-            `TSG Inquiry: Hire Us — ${fd.get('type')}`,
-            `Name: ${fd.get('name')||''}`,
-            fd.get('phone') ? `Phone: ${fd.get('phone')}` : '',
-            fd.get('email') ? `Email: ${fd.get('email')}` : '',
-            fd.get('venue') ? `Venue: ${fd.get('venue')}` : '',
-            fd.get('date') ? `Date/Time: ${fd.get('date')}` : '',
-            fd.get('headcount') ? `Headcount: ${fd.get('headcount')}` : '',
-            fd.get('message') ? `Notes: ${fd.get('message')}` : '',
-          ].filter(Boolean).join('\n');
-          openWhatsApp(msg);
-        });
-      }
-
-      // Updated stamp
+      /* ── Last updated ── */
       const updatedEl = document.getElementById('updated');
       if (updatedEl) {
         const d = new Date();
-        const fmt = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
-        updatedEl.textContent = `Last updated: ${fmt}. Sessions are arranged per coach availability—spots are capped for safety.`;
+        updatedEl.textContent = `Last updated: ${d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' })}. Sessions are arranged per coach availability — spots are capped for safety.`;
       }
 
-      // Lite YouTube: swap poster for real player on click/keyboard
-      function mountYouTube(container){
-        const id = container.getAttribute('data-youtube-id'); // ID only
-        const iframe = document.createElement('iframe');
-        iframe.setAttribute('allowfullscreen','');
-        iframe.setAttribute('loading','lazy');
-        iframe.setAttribute('title','YouTube video');
-        iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-        // Use privacy-friendly domain
-        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      /* ── Hamburger / mobile menu ── */
+      const hamburger  = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      hamburger?.addEventListener('click', () => {
+        const open = mobileMenu.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open);
+      });
+      // Close on mobile link click
+      mobileMenu?.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', false);
+        });
+      });
 
-        // keep aspect & rounding
+      /* ── Interest buttons ── */
+      document.querySelectorAll('.interest-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = btn.getAttribute('data-interest') || 'Drop-in';
+          const field = document.getElementById('interest');
+          if (field) field.value = val;
+        });
+      });
+
+      /* ── WhatsApp opener ── */
+      function openWhatsApp(msg) {
+        window.open(`${waBase}?text=${encodeURIComponent(msg)}`, '_blank');
+      }
+
+      /* ── Learn form ── */
+      document.getElementById('formLearn')?.addEventListener('submit', e => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const lines = [
+          'TSG Inquiry: Learn to Skate',
+          `Interest: ${fd.get('interest') || 'Drop-in'}`,
+          `Name: ${fd.get('name')}`,
+          fd.get('phone')   ? `Phone: ${fd.get('phone')}` : '',
+          fd.get('email')   ? `Email: ${fd.get('email')}` : '',
+          `Age/Group: ${fd.get('age')}`,
+          `Level: ${fd.get('level')}`,
+          `Location: ${fd.get('location')}`,
+          `Rentals: ${fd.get('rentals')}`,
+          fd.get('size')    ? `Shoe Size: ${fd.get('size')}` : '',
+          fd.get('date')    ? `Preferred Time: ${fd.get('date')}` : '',
+          fd.get('message') ? `Notes: ${fd.get('message')}` : '',
+        ].filter(Boolean).join('\n');
+        openWhatsApp(lines);
+      });
+
+      /* ── Hire form ── */
+      document.getElementById('formHire')?.addEventListener('submit', e => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const lines = [
+          `TSG Inquiry: Hire Us — ${fd.get('type')}`,
+          `Name: ${fd.get('name')}`,
+          fd.get('phone')     ? `Phone: ${fd.get('phone')}` : '',
+          fd.get('email')     ? `Email: ${fd.get('email')}` : '',
+          fd.get('venue')     ? `Venue: ${fd.get('venue')}` : '',
+          fd.get('date')      ? `Date/Time: ${fd.get('date')}` : '',
+          fd.get('headcount') ? `Headcount: ${fd.get('headcount')}` : '',
+          fd.get('message')   ? `Notes: ${fd.get('message')}` : '',
+        ].filter(Boolean).join('\n');
+        openWhatsApp(lines);
+      });
+
+      /* ── Prefill email links ── */
+      const learnEmail = document.getElementById('learnEmail');
+      if (learnEmail) learnEmail.href = `mailto:${EMAIL}?subject=${encodeURIComponent('TSG Learn to Skate Inquiry')}&body=${encodeURIComponent('Hi TSG,\n\nI\'d like to book a class. Please contact me.\n\nThanks!')}`;
+
+      const hireEmail = document.getElementById('hireEmail');
+      if (hireEmail) hireEmail.href = `mailto:${EMAIL}?subject=${encodeURIComponent('TSG Event Hire Inquiry')}&body=${encodeURIComponent('Hi TSG,\n\nWe\'d like to hire you for an event. Please contact us.\n\nThanks!')}`;
+
+      /* ── FAQ accordion ── */
+      document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+          const item = q.closest('.faq-item');
+          const wasOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+          if (!wasOpen) item.classList.add('open');
+        });
+      });
+
+      /* ── YouTube lite ── */
+      function mountYT(el) {
+        const id = el.getAttribute('data-youtube-id');
         const wrap = document.createElement('div');
-        wrap.style.aspectRatio = '16/9';
-        wrap.style.width = '100%';
-        wrap.style.borderRadius = 'var(--radius)';
-        wrap.style.overflow = 'hidden';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = '0';
+        wrap.style.cssText = 'aspect-ratio:16/9;width:100%;';
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.style.cssText = 'width:100%;height:100%;border:0;';
         wrap.appendChild(iframe);
-
-        container.replaceWith(wrap);
+        el.replaceWith(wrap);
       }
+      document.addEventListener('click', e => { const el = e.target.closest('.yt-lite'); if (el) mountYT(el); });
+      document.addEventListener('keydown', e => {
+        const el = e.target.closest?.('.yt-lite');
+        if (el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); mountYT(el); }
+      });
 
-      // Delegated click + keyboard activation
-      document.addEventListener('click', (e) => {
-        const el = e.target.closest('.yt-lite');
-        if (el) mountYouTube(el);
-      });
-      document.addEventListener('keydown', (e) => {
-        const el = e.target.closest && e.target.closest('.yt-lite');
-        if ((e.key === 'Enter' || e.key === ' ') && el) {
-          e.preventDefault();
-          mountYouTube(el);
-        }
-      });
+      /* ── Scroll reveal ── */
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 60);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
   </script>
 </body>

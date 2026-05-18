@@ -834,6 +834,242 @@
     }
     .coach-fact-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
 
+    /* ── Progression Roadmap ─────────────────────────────── */
+    .roadmap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Vertical connector line */
+    .roadmap::before {
+      content: "";
+      position: absolute;
+      left: 35px;
+      top: 70px;
+      bottom: 70px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--cyan), var(--pink), var(--gold));
+      opacity: .3;
+      border-radius: 2px;
+    }
+    @media (min-width: 900px) {
+      .roadmap::before { left: 50%; transform: translateX(-50%); top: 80px; bottom: 80px; }
+    }
+
+    .roadmap-step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 32px;
+    }
+    .roadmap-step:last-child { padding-bottom: 0; }
+
+    @media (min-width: 900px) {
+      .roadmap-step { gap: 0; align-items: center; }
+      .roadmap-step:nth-child(odd)  { flex-direction: row; }
+      .roadmap-step:nth-child(even) { flex-direction: row-reverse; }
+    }
+
+    /* Level badge (the circle in the middle) */
+    .roadmap-badge {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      border: 2px solid;
+      position: relative;
+      z-index: 1;
+      gap: 2px;
+    }
+    .roadmap-badge .badge-icon { font-size: 22px; line-height: 1; }
+    .roadmap-badge .badge-num  { font-size: 11px; font-weight: 700; letter-spacing: .08em; opacity: .8; }
+
+    .badge-cyan {
+      background: rgba(0,245,255,.12);
+      border-color: rgba(0,245,255,.4);
+      color: var(--cyan);
+      box-shadow: 0 0 24px rgba(0,245,255,.15);
+    }
+    .badge-pink {
+      background: rgba(255,45,107,.12);
+      border-color: rgba(255,45,107,.4);
+      color: var(--pink);
+      box-shadow: 0 0 24px rgba(255,45,107,.15);
+    }
+    .badge-gold {
+      background: rgba(255,209,102,.12);
+      border-color: rgba(255,209,102,.4);
+      color: var(--gold);
+      box-shadow: 0 0 24px rgba(255,209,102,.15);
+    }
+
+    @media (min-width: 900px) {
+      .roadmap-badge {
+        width: 90px; height: 90px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .roadmap-badge .badge-icon { font-size: 28px; }
+    }
+
+    /* Card on each side */
+    .roadmap-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      flex: 1;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .roadmap-card:hover {
+      background: var(--card-hover);
+      transform: translateY(-2px);
+    }
+    @media (min-width: 900px) {
+      .roadmap-step:nth-child(odd)  .roadmap-card { margin-right: calc(45px + 24px); margin-left: 0; }
+      .roadmap-step:nth-child(even) .roadmap-card { margin-left:  calc(45px + 24px); margin-right: 0; }
+    }
+
+    .roadmap-level-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .rlt-cyan { background: rgba(0,245,255,.10); color: var(--cyan); }
+    .rlt-pink { background: rgba(255,45,107,.10); color: var(--pink); }
+    .rlt-gold { background: rgba(255,209,102,.10); color: var(--gold); }
+
+    .roadmap-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: .03em;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .roadmap-skills {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .roadmap-skill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,.82);
+    }
+    .skill-check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+    .sc-cyan { background: rgba(0,245,255,.15); color: var(--cyan); }
+    .sc-pink { background: rgba(255,45,107,.15); color: var(--pink); }
+    .sc-gold { background: rgba(255,209,102,.15); color: var(--gold); }
+
+    /* Bottom CTA strip */
+    .roadmap-cta {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 24px 28px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    /* ── Referral ─────────────────────────────────────────── */
+    .referral-banner {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid rgba(0,245,255,.25);
+      background: linear-gradient(135deg, rgba(0,245,255,.07) 0%, rgba(255,45,107,.07) 100%);
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .referral-banner::before {
+      content: "🛼";
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 140px;
+      opacity: .06;
+      pointer-events: none;
+      user-select: none;
+    }
+    .referral-amount {
+      font-family: var(--font-display);
+      font-size: 64px;
+      line-height: 1;
+      color: var(--cyan);
+      margin-bottom: 4px;
+    }
+    .referral-label {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .referral-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+      min-width: 220px;
+    }
+    .referral-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,.85);
+    }
+    .referral-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(0,245,255,.15);
+      border: 1px solid rgba(0,245,255,.3);
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
     /* ── Testimonials ────────────────────────────────────── */
     .testimonials-grid {
       display: grid;
@@ -1055,10 +1291,10 @@
 
         <div class="nav-links">
           <a href="#pricing">Classes</a>
+          <a href="#progression">Progress</a>
           <a href="#schedule">Schedule</a>
           <a href="#coaches">Coaches</a>
           <a href="#locations">Locations</a>
-          <a href="#testimonials">Reviews</a>
           <a href="#hire">Events</a>
           <a href="#faq">FAQ</a>
         </div>
@@ -1075,10 +1311,12 @@
       <!-- Mobile drawer -->
       <div class="mobile-menu" id="mobileMenu" role="navigation">
         <a href="#pricing">Classes &amp; Pricing</a>
+        <a href="#progression">Progression System</a>
         <a href="#schedule">Session Schedule</a>
         <a href="#coaches">Meet the Coaches</a>
         <a href="#locations">Locations</a>
         <a href="#testimonials">Reviews</a>
+        <a href="#referral">Refer a Friend 💸</a>
         <a href="#watch">Watch</a>
         <a href="#hire">Events &amp; Hire</a>
         <a href="#faq">FAQ</a>
@@ -1367,6 +1605,119 @@
       </div>
     </section>
 
+    <!-- ── Progression Roadmap ───────────────────────────── -->
+    <section id="progression">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Your Journey</div>
+        <h2>The Skate Guys Progression System</h2>
+        <p class="muted" style="max-width:600px; margin-bottom:40px; font-size:15px;">Every skater starts at zero. This is the path — from first stand-up to full confidence on wheels. Your coach tracks your progress at every level.</p>
+
+        <div class="roadmap reveal">
+
+          <!-- Level 1 — Beginner -->
+          <div class="roadmap-step">
+            <div class="roadmap-badge badge-cyan">
+              <span class="badge-icon">🛼</span>
+              <span class="badge-num">LVL 1</span>
+            </div>
+            <div class="roadmap-card">
+              <div class="roadmap-level-tag rlt-cyan">Level 1</div>
+              <div class="roadmap-title">Beginner</div>
+              <div class="roadmap-skills">
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-cyan">✓</div>
+                  How to stand confidently on skates
+                </div>
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-cyan">✓</div>
+                  How to roll — finding your balance and momentum
+                </div>
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-cyan">✓</div>
+                  How to stop safely — the foundation of everything
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level 2 — Intermediate -->
+          <div class="roadmap-step">
+            <div class="roadmap-badge badge-pink">
+              <span class="badge-icon">⚡</span>
+              <span class="badge-num">LVL 2</span>
+            </div>
+            <div class="roadmap-card">
+              <div class="roadmap-level-tag rlt-pink">Level 2</div>
+              <div class="roadmap-title">Intermediate</div>
+              <div class="roadmap-skills">
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-pink">✓</div>
+                  Rolling comfortably — smooth, controlled movement
+                </div>
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-pink">✓</div>
+                  Learning to jump — lift, land, and keep rolling
+                </div>
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-pink">✓</div>
+                  Advanced stops — full control at speed
+                </div>
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-pink">✓</div>
+                  Crossovers — turning with power and flow
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level 3 — Advanced -->
+          <div class="roadmap-step">
+            <div class="roadmap-badge badge-gold">
+              <span class="badge-icon">👑</span>
+              <span class="badge-num">LVL 3</span>
+            </div>
+            <div class="roadmap-card">
+              <div class="roadmap-level-tag rlt-gold">Level 3</div>
+              <div class="roadmap-title">Advanced Skater</div>
+              <div class="roadmap-skills">
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-gold">✓</div>
+                  Flow &amp; technique — skating becomes second nature
+                </div>
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-gold">✓</div>
+                  Skating backwards — full confidence in both directions
+                </div>
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-gold">✓</div>
+                  Speed skating — power, posture, and control at pace
+                </div>
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-gold">✓</div>
+                  Dance skating — expression, rhythm, and style on wheels
+                </div>
+                <div class="roadmap-skill">
+                  <div class="skill-check sc-gold">✓</div>
+                  Calculated risk — knowing what you can and can't do as a skater, and skating smart
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="roadmap-cta reveal">
+          <div>
+            <div style="font-weight:700; font-size:15px;">Not sure where you are on the ladder?</div>
+            <div class="muted small" style="margin-top:4px">Tell us your experience when you book — your coach will place you in the right level from session one.</div>
+          </div>
+          <a class="btn btn-primary" href="#learn">Book Your First Class</a>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ── Locations ──────────────────────────────────────── -->
     <section id="locations">
       <div class="wrap">
@@ -1533,6 +1884,9 @@
           <a class="social-btn" href="https://wa.me/18682766878" target="_blank" rel="noopener">
             <span class="social-icon">💬</span> WhatsApp Us
           </a>
+          <a class="social-btn" href="https://share.google/EWWeMXIOVaBFXXAlJ" target="_blank" rel="noopener">
+            <span class="social-icon">⭐</span> Leave us a Google Review
+          </a>
         </div>
       </div>
     </section>
@@ -1556,6 +1910,10 @@
           <div class="rating-note">
             <strong>Replace these with your real reviews.</strong> Collect them via WhatsApp, Instagram DMs, or just ask happy skaters after class — then paste them in here.
           </div>
+          <div class="rating-divider"></div>
+          <a class="social-btn" href="https://share.google/EWWeMXIOVaBFXXAlJ" target="_blank" rel="noopener" style="white-space:nowrap">
+            ⭐ Review us on Google
+          </a>
         </div>
 
         <div class="testimonials-grid reveal">
@@ -1657,6 +2015,48 @@
           <a class="btn btn-primary" href="#learn">Join the Community</a>
           <span class="muted small">⭐ Have a story? Tag us <a href="https://instagram.com/the_skateguys" target="_blank" rel="noopener" style="color:var(--cyan)">@the_skateguys</a> on Instagram</span>
         </div>
+
+      </div>
+    </section>
+
+    <!-- ── Referral ───────────────────────────────────────── -->
+    <section id="referral">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Spread the Love</div>
+        <h2>Refer a Friend. Roll for Less.</h2>
+
+        <div class="referral-banner reveal">
+          <!-- Amount -->
+          <div style="flex-shrink:0; text-align:center;">
+            <div class="referral-amount">$20</div>
+            <div class="referral-label">TTD off your next class</div>
+          </div>
+
+          <!-- Steps -->
+          <div class="referral-steps">
+            <div class="referral-step">
+              <div class="referral-step-num">1</div>
+              <div>Bring a friend to any class or recommend us via WhatsApp</div>
+            </div>
+            <div class="referral-step">
+              <div class="referral-step-num">2</div>
+              <div>Your friend books and attends their first session</div>
+            </div>
+            <div class="referral-step">
+              <div class="referral-step-num">3</div>
+              <div>You get <strong style="color:var(--cyan)">$20 TTD off</strong> your very next class — automatically</div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start; flex-shrink:0;">
+            <a class="btn btn-primary" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%20want%20to%20refer%20a%20friend%20and%20claim%20my%20%2420%20TTD%20discount." target="_blank" rel="noopener">Refer via WhatsApp</a>
+            <p class="muted small" style="max-width:200px; line-height:1.5;">No forms. Just message us your friend's name when they book.</p>
+          </div>
+        </div>
+
+        <!-- Fine print -->
+        <p class="muted small mt-16">Discount applied to your next paid drop-in or monthly session after your friend attends their first class. One referral credit per friend. No expiry — it rolls over to your next session automatically.</p>
 
       </div>
     </section>
@@ -1905,6 +2305,7 @@
                 <a class="btn btn-ghost" href="tel:+18682766878">Call</a>
               </div>
               <p class="form-note">Class sizes are capped for safety &amp; personal coaching. If the month is full, we'll offer a waitlist + free community session invite.</p>
+              <p class="form-note" style="margin-top:8px; padding:10px 14px; background:rgba(0,245,255,.05); border:1px solid rgba(0,245,255,.15); border-radius:10px;">🛼 <strong style="color:var(--cyan)">Know someone who'd love this?</strong> Refer a friend and get <strong style="color:#fff">$20 TTD off</strong> your next class. <a href="#referral" style="color:var(--cyan)">See how it works ↓</a></p>
             </form>
           </div>
 
@@ -1943,6 +2344,7 @@
             <a class="social-btn" href="https://instagram.com/the_skateguys" target="_blank" rel="noopener">📸 Instagram</a>
             <a class="social-btn" href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">🛼 Join Community</a>
             <a class="social-btn" href="https://wa.me/18682766878" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="social-btn" href="https://share.google/EWWeMXIOVaBFXXAlJ" target="_blank" rel="noopener">⭐ Google Reviews</a>
           </div>
         </div>
         <div class="footer-col">
@@ -1962,6 +2364,7 @@
             <li><a href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Us</a></li>
             <li><a href="tel:+18682766878">+1 868-276-6878</a></li>
             <li><a href="mailto:info.theskateguys@gmail.com">info.theskateguys@gmail.com</a></li>
+            <li><a href="https://share.google/EWWeMXIOVaBFXXAlJ" target="_blank" rel="noopener">⭐ Google Reviews</a></li>
             <li><a href="#learn">Book a Class</a></li>
           </ul>
         </div>

@@ -834,6 +834,134 @@
     }
     .coach-fact-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
 
+    /* ── Summer Banner ───────────────────────────────────── */
+    #summer-banner {
+      background: linear-gradient(90deg, rgba(255,209,102,.15), rgba(255,45,107,.15), rgba(0,245,255,.10));
+      border-bottom: 1px solid rgba(255,209,102,.25);
+      padding: 10px 16px;
+      text-align: center;
+      position: relative;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    #summer-banner.hidden { display: none; }
+    .summer-banner-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      max-width: var(--wrap);
+      margin: 0 auto;
+    }
+    .summer-banner-text { color: rgba(255,255,255,.9); }
+    .summer-banner-text strong { color: var(--gold); }
+    .summer-banner-close {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 6px;
+      border-radius: 6px;
+      transition: color .15s, background .15s;
+    }
+    .summer-banner-close:hover { color: #fff; background: rgba(255,255,255,.08); }
+
+    /* ── Seasonal Section ────────────────────────────────── */
+    .season-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,209,102,.25);
+      background: linear-gradient(135deg, rgba(255,209,102,.08) 0%, rgba(255,45,107,.08) 50%, rgba(0,245,255,.06) 100%);
+      padding: 48px 40px;
+    }
+    @media (max-width: 640px) { .season-card { padding: 32px 24px; } }
+
+    /* decorative sun */
+    .season-card::before {
+      content: "☀️";
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      font-size: 180px;
+      opacity: .06;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .season-inner {
+      display: grid;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (min-width: 768px) { .season-inner { grid-template-columns: 1fr auto; } }
+
+    .season-heading {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: .02em;
+      margin-bottom: 12px;
+    }
+    .season-heading .sun { color: var(--gold); }
+    .season-heading .hot { color: var(--pink); }
+
+    .season-perks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 24px;
+    }
+    .season-perk {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,209,102,.3);
+      background: rgba(255,209,102,.08);
+      color: var(--gold);
+    }
+
+    .season-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    @media (min-width: 768px) { .season-aside { align-items: flex-end; } }
+
+    .season-countdown {
+      text-align: center;
+      background: rgba(0,0,0,.3);
+      border: 1px solid rgba(255,209,102,.2);
+      border-radius: 14px;
+      padding: 18px 24px;
+    }
+    .season-countdown-num {
+      font-family: var(--font-display);
+      font-size: 42px;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .season-countdown-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-top: 4px;
+    }
+
     /* ── Progression Roadmap ─────────────────────────────── */
     .roadmap {
       position: relative;
@@ -1281,6 +1409,17 @@
   <div class="bg-mesh" aria-hidden="true"><span></span></div>
 
   <!-- ── Header ─────────────────────────────────────────── -->
+  <!-- ── Event Banner ───────────────────────────────────── -->
+  <div id="summer-banner">
+    <div class="summer-banner-inner">
+      <span class="summer-banner-text">
+        🪩 <strong>Skate &amp; Disco Vybz — Sunday 24 May</strong> · Doors open 5PM · JD's Skating Rink, Arima · Best Dressed wins $300 Cash 🏆
+      </span>
+      <a class="btn btn-sm" href="#event" style="background:var(--pink); color:#fff; padding:6px 14px; font-size:12px;">Get Tickets</a>
+    </div>
+    <button class="summer-banner-close" id="bannerClose" aria-label="Dismiss banner">✕</button>
+  </div>
+
   <header>
     <div class="wrap">
       <nav class="nav" aria-label="Primary">
@@ -1290,6 +1429,7 @@
         </div>
 
         <div class="nav-links">
+          <a href="#event">🪩 Event</a>
           <a href="#pricing">Classes</a>
           <a href="#progression">Progress</a>
           <a href="#schedule">Schedule</a>
@@ -1310,6 +1450,7 @@
 
       <!-- Mobile drawer -->
       <div class="mobile-menu" id="mobileMenu" role="navigation">
+        <a href="#event">🪩 Skate &amp; Disco Vybz — May 24</a>
         <a href="#pricing">Classes &amp; Pricing</a>
         <a href="#progression">Progression System</a>
         <a href="#schedule">Session Schedule</a>
@@ -1345,11 +1486,12 @@
             <h1>
               LEARN TO<br>
               <span class="accent-cyan">ROLL</span> IN<br>
-              <span class="accent-pink">T&amp;T</span>
+              <span class="accent-pink">TRINIDAD</span><br>
+              <span style="font-size:clamp(32px,5vw,70px); color:var(--muted);">&amp; TOBAGO</span>
             </h1>
-            <p class="hero-sub">Small groups. Real coaching. Safe floors. Join Trinidad &amp; Tobago's most welcoming rollerskate community — whether you're stepping on skates for the very first time or levelling up your style.</p>
+            <p class="hero-sub">Small groups. Real coaching. Safe floors. Join the leading rollerskate community in Trinidad &amp; Tobago — whether you're stepping on skates for the very first time or levelling up your style.</p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#learn">Book a Drop-in — $60 TTD</a>
+              <a class="btn btn-primary" href="#learn">Book a Drop-in — $60 TTD (Trinidad & Tobago Dollars)</a>
               <a class="btn btn-ghost" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Us</a>
               <a class="btn btn-ghost" href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">🛼 Join Community</a>
             </div>
@@ -1369,6 +1511,76 @@
               <div class="label">Drop-in TTD</div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skate & Disco Vybz Event ──────────────────────── -->
+    <section id="event">
+      <div class="wrap">
+        <div class="season-card reveal" style="border-color:rgba(255,45,107,.35); background:linear-gradient(135deg, rgba(255,45,107,.10) 0%, rgba(128,0,255,.10) 50%, rgba(0,245,255,.08) 100%);">
+
+          <!-- decorative disco ball -->
+          <div style="position:absolute; right:-10px; top:-10px; font-size:160px; opacity:.07; pointer-events:none; user-select:none; line-height:1;">🪩</div>
+
+          <div class="season-inner">
+            <div>
+              <div class="kicker" style="margin-bottom:12px; color:var(--pink);"><span class="bar" style="background:var(--pink)"></span>Sunday 24 May 2026 · Arima, Trinidad</div>
+
+              <div class="season-heading">
+                <span style="color:var(--pink)">SKATE</span> <span style="color:#fff">&amp;</span><br>
+                <span style="color:var(--cyan)">DISCO</span> <span style="color:var(--gold)">VYBZ</span>
+              </div>
+
+              <p class="muted" style="max-width:520px; font-size:15px; margin-bottom:16px;">
+                The biggest skate event of the season. Roll out in your best disco fit, compete for prizes, and skate the night away at JD's Skating Rink, Arima. Teens &amp; adults welcome. No alcohol.
+              </p>
+
+              <!-- Event details pills -->
+              <div class="season-perks" style="margin-bottom:20px;">
+                <span class="season-perk" style="border-color:rgba(255,45,107,.3); background:rgba(255,45,107,.08); color:var(--pink);">🚪 Doors 5:00 PM</span>
+                <span class="season-perk" style="border-color:rgba(255,45,107,.3); background:rgba(255,45,107,.08); color:var(--pink);">🎉 Main Vybz 6–8 PM</span>
+                <span class="season-perk" style="border-color:rgba(255,209,102,.3); background:rgba(255,209,102,.08); color:var(--gold);">🏆 Best Dressed $300 Cash</span>
+                <span class="season-perk" style="border-color:rgba(0,245,255,.3); background:rgba(0,245,255,.08); color:var(--cyan);">🛼 Skate Rentals $45</span>
+                <span class="season-perk" style="border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:#fff;">🎭 Door Prizes · Best Dressed · Dance-Off</span>
+              </div>
+
+              <!-- Ticket options -->
+              <div class="grid grid-3" style="gap:12px; margin-bottom:24px; max-width:600px;">
+                <div style="background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:16px; text-align:center;">
+                  <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px;">Entry</div>
+                  <div style="font-family:var(--font-display); font-size:28px; color:#fff; line-height:1;">$10</div>
+                  <div style="font-size:11px; color:var(--muted); margin-top:4px;">Adults</div>
+                  <div style="font-family:var(--font-display); font-size:22px; color:var(--muted); line-height:1; margin-top:6px;">$5</div>
+                  <div style="font-size:11px; color:var(--muted); margin-top:2px;">Kids</div>
+                </div>
+                <div style="background:rgba(255,45,107,.08); border:1px solid rgba(255,45,107,.3); border-radius:14px; padding:16px; text-align:center;">
+                  <div style="font-size:11px; color:var(--pink); text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px;">Disco Pass</div>
+                  <div style="font-family:var(--font-display); font-size:28px; color:var(--pink); line-height:1;">$10</div>
+                  <div style="font-size:11px; color:var(--muted); margin-top:4px; line-height:1.4;">Entry + Competition<br>+ Best Dressed</div>
+                </div>
+                <div style="background:rgba(255,209,102,.08); border:1px solid rgba(255,209,102,.35); border-radius:14px; padding:16px; text-align:center; position:relative; overflow:hidden;">
+                  <div style="position:absolute; top:6px; right:6px; font-size:9px; font-weight:700; letter-spacing:.08em; background:var(--gold); color:#000; padding:2px 6px; border-radius:4px;">BEST VALUE</div>
+                  <div style="font-size:11px; color:var(--gold); text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px;">Glow Pass</div>
+                  <div style="font-family:var(--font-display); font-size:28px; color:var(--gold); line-height:1;">$20</div>
+                  <div style="font-size:11px; color:var(--muted); margin-top:4px; line-height:1.4;">Everything +<br>Glow Kit*</div>
+                </div>
+              </div>
+              <p style="font-size:11px; color:var(--muted); margin-bottom:20px;">*Glow Kit includes glow sticks, shades &amp; glow bands — while stocks last. All prices in Trinidad &amp; Tobago Dollars (TTD).</p>
+
+              <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a class="btn btn-accent" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20get%20tickets%20for%20Skate%20%26%20Disco%20Vybz%20on%20May%2024." target="_blank" rel="noopener" style="box-shadow:0 0 28px rgba(255,45,107,.35);">🎟 Get Tickets via WhatsApp</a>
+                <a class="btn btn-ghost" href="tel:+18682766878">📞 Call 276-6878</a>
+              </div>
+            </div>
+
+            <!-- Flyer image -->
+            <div class="season-aside">
+              <img src="assets/events/disco-flyer.png" alt="Skate & Disco Vybz Event Flyer" loading="lazy"
+                style="width:100%; max-width:260px; border-radius:16px; border:1px solid rgba(255,45,107,.3); box-shadow:0 0 40px rgba(255,45,107,.2);">
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1403,6 +1615,7 @@
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>Choose your path</div>
         <h2>Classes &amp; Plans</h2>
+        <p class="muted small" style="margin-bottom:24px;">All prices in Trinidad &amp; Tobago Dollars (TTD). Approx. 6.8 TTD = 1 USD.</p>
         <div class="pricing-grid reveal">
 
           <!-- Drop-in -->
@@ -1729,7 +1942,7 @@
             <div>
               <div class="location-item">
                 <div class="location-dot"></div>
-                <div><strong style="font-size:14px">JD's Skating Rink</strong><br><span class="muted small">Main Road maxi stand, Arima</span></div>
+                <div><strong style="font-size:14px">JD's Skating Rink</strong><br><span class="muted small">Main Road (near the bus terminal), Arima</span></div>
               </div>
               <div class="location-item">
                 <div class="location-dot"></div>
@@ -2385,6 +2598,17 @@
       const WHATSAPP = '18682766878';
       const EMAIL    = 'info.theskateguys@gmail.com';
       const waBase   = `https://wa.me/${WHATSAPP}`;
+
+      /* ── Summer banner dismiss ── */
+      const banner = document.getElementById('summer-banner');
+      const bannerClose = document.getElementById('bannerClose');
+      if (sessionStorage.getItem('bannerDismissed')) banner?.classList.add('hidden');
+      bannerClose?.addEventListener('click', () => {
+        banner.classList.add('hidden');
+        sessionStorage.setItem('bannerDismissed', '1');
+      });
+
+      /* ── Event countdown (not used in current section but kept for future) ── */
 
       /* ── Year ── */
       const yearEl = document.getElementById('year');

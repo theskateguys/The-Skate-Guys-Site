@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="Shop The Skate Guys merch — T-shirts, hoodies, bucket hats, keychains and more. Representing Trinidad & Tobago's leading rollerskate community. Ships worldwide.">
+  <meta property="og:title" content="TSG Merch Drop — The Skate Guys">
+  <meta property="og:description" content="Wear the community. New drops from T&T's leading rollerskate brand.">
+  <meta property="og:image" content="https://the-skate-guys-site.vercel.app/logo.png">
+  <meta property="og:url" content="https://the-skate-guys-site.vercel.app/merch">
+  <title>TSG Merch Drop — The Skate Guys</title>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Store","name":"The Skate Guys Merch Store","url":"https://the-skate-guys-site.vercel.app/merch","currenciesAccepted":"TTD, USD","areaServed":"Worldwide"}
+  </script>
+
+  <script async src="https://plausible.io/js/pa-sQG05hL6gHUFDK_mvEuf0.js"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan:  #00F5FF;
+      --pink:  #FF2D6B;
+      --gold:  #FFD166;
+      --bg:    #050508;
+      --ink:   #ffffff;
+      --muted: rgba(255,255,255,.55);
+      --line:  rgba(255,255,255,.08);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--ink); overflow-x: hidden; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Scanline overlay ── */
+    body::before {
+      content: "";
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px);
+    }
+
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+    /* ── Top bar ── */
+    .top-bar {
+      background: var(--cyan);
+      color: #000;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 8px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .top-bar-track {
+      display: inline-flex;
+      gap: 48px;
+      animation: marquee 22s linear infinite;
+      will-change: transform;
+    }
+    .top-bar-track span { flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── Nav ── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(5,5,8,.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0; gap: 12px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-logo  { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; background: rgba(0,245,255,.1); }
+    .nav-name  { font-family: var(--font-display); font-size: 20px; letter-spacing: .05em; color: #fff; white-space: nowrap; }
+    .nav-badge {
+      font-size: 9px; font-weight: 800; letter-spacing: .15em;
+      background: var(--pink); color: #fff; padding: 2px 7px;
+      border-radius: 4px; text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2px; }
+    .nav-links a { font-size: 13px; color: var(--muted); padding: 6px 10px; border-radius: 8px; transition: color .1s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-links a.active { color: var(--cyan); }
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 18px; border-radius: 10px; font-family: var(--font-body); font-size: 13px; font-weight: 700; border: 1px solid transparent; cursor: pointer; transition: transform .08s, box-shadow .08s; white-space: nowrap; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--cyan); color: #000; box-shadow: 0 0 16px rgba(0,245,255,.2); }
+    .btn-ghost   { background: rgba(255,255,255,.06); color: #fff; border-color: var(--line); }
+    .btn-gold    { background: var(--gold); color: #000; }
+    .btn-pink    { background: var(--pink); color: #fff; box-shadow: 0 0 16px rgba(255,45,107,.2); }
+    .btn-sm { padding: 7px 14px; font-size: 12px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; cursor: pointer; }
+    .hamburger span { display: block; width: 18px; height: 2px; background: #fff; border-radius: 2px; transition: all .15s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav { display: none; flex-direction: column; gap: 4px; padding: 12px 0 16px; border-top: 1px solid var(--line); }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: var(--muted); font-size: 14px; padding: 9px 12px; border-radius: 8px; }
+    .mobile-nav a:hover { color: #fff; background: rgba(255,255,255,.04); }
+    .mobile-nav .sep { height: 1px; background: var(--line); margin: 6px 0; }
+    @media (max-width: 780px) { .nav-links { display: none; } .hide-mob { display: none; } .hamburger { display: flex; } }
+
+    /* ── Page hero ── */
+    .merch-hero {
+      padding: 80px 0 64px;
+      border-bottom: 1px solid var(--line);
+      position: relative; overflow: hidden;
+    }
+    .merch-hero::after {
+      content: "MERCH";
+      position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(140px, 20vw, 240px);
+      line-height: 1;
+      color: rgba(255,255,255,.025);
+      pointer-events: none; user-select: none;
+      letter-spacing: .05em;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: .3em;
+      text-transform: uppercase; color: var(--cyan);
+      margin-bottom: 16px;
+    }
+    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--cyan); }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 11vw, 130px);
+      line-height: .9; letter-spacing: .02em;
+      margin-bottom: 20px;
+    }
+    .hero-title .line-pink { color: var(--pink); display: block; }
+    .hero-title .line-cyan { color: var(--cyan); display: block; }
+    .hero-desc { font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.65; margin-bottom: 32px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex; gap: 32px; flex-wrap: wrap;
+      margin-top: 48px; padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+    .stat { }
+    .stat-num { font-family: var(--font-display); font-size: 36px; line-height: 1; }
+    .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-top: 2px; }
+
+    /* ── Filter ── */
+    .filter-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 0 20px; gap: 12px; flex-wrap: wrap;
+      border-bottom: 1px solid var(--line);
+    }
+    .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filter-pill {
+      font-size: 12px; font-weight: 700; padding: 6px 16px;
+      border: 1px solid var(--line); border-radius: 999px;
+      color: var(--muted); cursor: pointer; background: transparent;
+      font-family: var(--font-body); letter-spacing: .04em;
+      transition: all .1s;
+    }
+    .filter-pill:hover { color: #fff; border-color: rgba(255,255,255,.2); }
+    .filter-pill.active { background: var(--ink); color: #000; border-color: var(--ink); }
+    .filter-count { font-size: 12px; color: var(--muted); }
+
+    /* ── Bento product grid ── */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 260px;
+      gap: 3px;
+      margin-top: 3px;
+    }
+
+    /* Featured = 5 cols x 2 rows */
+    .p-feat  { grid-column: span 5; grid-row: span 2; }
+    /* Standard = 4 cols x 2 rows */
+    .p-std   { grid-column: span 4; grid-row: span 2; }
+    /* Wide = 7 cols x 1 row */
+    .p-wide  { grid-column: span 7; grid-row: span 1; }
+    /* Small = 3 cols x 1 row */
+    .p-sm    { grid-column: span 3; grid-row: span 1; }
+    /* Half = 6 cols x 1 row */
+    .p-half  { grid-column: span 6; grid-row: span 1; }
+    /* Third = 4 cols x 1 row */
+    .p-third { grid-column: span 4; grid-row: span 1; }
+
+    @media (max-width: 900px) {
+      .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 320px; gap: 2px; }
+      .p-feat, .p-std, .p-wide, .p-sm, .p-half, .p-third { grid-column: span 1; grid-row: span 1; }
+      .p-feat { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      .bento { grid-template-columns: 1fr; grid-auto-rows: 300px; }
+      .p-feat { grid-column: span 1; }
+    }
+
+    /* ── Product card ── */
+    .pcard {
+      position: relative; overflow: hidden;
+      background: #0c0c12; cursor: pointer;
+    }
+    .pcard-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .pcard-img-contain { object-fit: contain; object-position: center; background: #111; }
+    .pcard-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 72px; background: #0c0c12;
+    }
+    .pcard:hover .pcard-img { transform: scale(1.06); }
+
+    /* Overlay — always visible at bottom */
+    .pcard-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.3) 45%, transparent 70%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 18px 20px;
+      transition: background .3s;
+    }
+    .pcard:hover .pcard-overlay { background: linear-gradient(to top, rgba(0,0,0,.95) 0%, rgba(0,0,0,.5) 55%, rgba(0,0,0,.1) 80%); }
+
+    .pcard-cat {
+      font-size: 9px; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--cyan);
+      margin-bottom: 4px;
+    }
+    .pcard-name {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 28px);
+      line-height: 1; letter-spacing: .03em;
+      color: #fff; margin-bottom: 6px;
+    }
+    .pcard-desc {
+      font-size: 12px; color: rgba(255,255,255,.65);
+      line-height: 1.5;
+      max-height: 0; overflow: hidden;
+      transition: max-height .3s ease, opacity .3s ease;
+      opacity: 0;
+    }
+    .pcard:hover .pcard-desc { max-height: 60px; opacity: 1; }
+
+    .pcard-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; margin-top: 8px;
+    }
+    .pcard-price {
+      font-family: var(--font-display);
+      font-size: 24px; color: var(--gold); line-height: 1;
+    }
+    .pcard-price-sub { font-size: 11px; color: var(--muted); font-family: var(--font-body); display: block; margin-top: 1px; }
+
+    .pcard-btn {
+      background: var(--cyan); color: #000;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 7px 14px; border-radius: 6px;
+      border: none; cursor: pointer;
+      transform: translateY(8px); opacity: 0;
+      transition: transform .25s ease, opacity .25s ease;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .pcard:hover .pcard-btn { transform: translateY(0); opacity: 1; }
+
+    /* Tags on cards */
+    .pcard-tag {
+      position: absolute; top: 14px; left: 14px;
+      font-size: 9px; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 4px;
+      z-index: 2;
+    }
+    .pt-custom  { background: var(--gold); color: #000; }
+    .pt-limited { background: var(--pink); color: #fff; }
+    .pt-new     { background: var(--cyan); color: #000; }
+    .pt-soon    { background: rgba(255,255,255,.15); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+
+    /* ── Info strip ── */
+    .info-strip {
+      display: grid; gap: 2px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 3px;
+    }
+    @media (max-width: 560px) { .info-strip { grid-template-columns: 1fr; } }
+    .info-cell {
+      background: #0c0c12;
+      padding: 22px 24px;
+      display: flex; gap: 14px; align-items: center;
+    }
+    .info-icon { font-size: 22px; flex-shrink: 0; }
+    .info-label { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .info-sub   { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Custom print section ── */
+    .custom-section {
+      margin-top: 48px;
+      background: #0c0c12;
+      border: 1px solid rgba(255,209,102,.2);
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+    }
+    @media (min-width: 768px) { .custom-section { grid-template-columns: 1fr 1fr; } }
+    .custom-left {
+      padding: 40px;
+      display: flex; flex-direction: column; justify-content: center; gap: 16px;
+    }
+    .custom-right {
+      background: linear-gradient(135deg, rgba(255,209,102,.08), rgba(255,45,107,.06));
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px; font-size: 96px; line-height: 1;
+    }
+    .custom-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); }
+    .custom-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 52px); line-height: 1; letter-spacing: .02em; }
+    .custom-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .custom-items { display: flex; flex-direction: column; gap: 8px; }
+    .custom-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,.8); }
+    .custom-item::before { content: "→"; color: var(--gold); font-size: 11px; }
+
+    /* ── Elite strip ── */
+    .elite-row {
+      margin-top: 3px;
+      background: #0c0c12;
+      padding: 22px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .elite-row-left { display: flex; align-items: center; gap: 14px; }
+    .elite-crown { font-size: 28px; }
+    .elite-text { font-size: 14px; color: rgba(255,255,255,.85); }
+    .elite-text strong { color: var(--gold); }
+
+    /* ── Email bar ── */
+    .email-bar {
+      margin-top: 48px;
+      background: linear-gradient(90deg, rgba(0,245,255,.06), rgba(255,45,107,.06));
+      border: 1px solid rgba(0,245,255,.12);
+      border-radius: 14px;
+      padding: 28px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+    }
+    .email-bar h3 { font-family: var(--font-display); font-size: 24px; letter-spacing: .03em; margin-bottom: 3px; }
+    .email-bar p { font-size: 13px; color: var(--muted); }
+    .email-form { display: flex; gap: 8px; flex-wrap: wrap; min-width: 280px; }
+    .email-form input {
+      flex: 1; min-width: 180px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      border-radius: 10px; padding: 11px 16px;
+      color: #fff; font-family: var(--font-body); font-size: 14px; outline: none;
+    }
+    .email-form input::placeholder { color: rgba(255,255,255,.3); }
+
+    /* ── Footer ── */
+    .site-footer { margin-top: 64px; border-top: 1px solid var(--line); padding: 40px 0 28px; }
+    .footer-inner { display: grid; gap: 40px; }
+    @media (min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+    .footer-brand { font-family: var(--font-display); font-size: 26px; letter-spacing: .04em; margin-bottom: 8px; }
+    .footer-tag { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: grid; gap: 8px; }
+    .footer-col ul li a { font-size: 13px; color: var(--muted); transition: color .1s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-bottom { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--muted); }
+    .social-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .s-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: 600; border: 1px solid var(--line); background: rgba(255,255,255,.04); color: #fff; transition: all .1s; }
+    .s-btn:hover { border-color: rgba(0,245,255,.3); color: var(--cyan); }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Marquee top bar ── -->
+  <div class="top-bar" role="banner" aria-label="Store announcement">
+    <div class="top-bar-track" aria-hidden="true">
+      <span>🛼 FREE LOCAL DELIVERY ON ORDERS OVER $500 TTD</span>
+      <span>✏️ CUSTOM NAME PRINTING AVAILABLE</span>
+      <span>🌍 SHIPS WORLDWIDE VIA SHOPIFY</span>
+      <span>👑 TSG ELITE MEMBERS GET EXCLUSIVE DISCOUNTS</span>
+      <span>🛼 FREE LOCAL DELIVERY ON ORDERS OVER $500 TTD</span>
+      <span>✏️ CUSTOM NAME PRINTING AVAILABLE</span>
+      <span>🌍 SHIPS WORLDWIDE VIA SHOPIFY</span>
+      <span>👑 TSG ELITE MEMBERS GET EXCLUSIVE DISCOUNTS</span>
+    </div>
+  </div>
+
+  <!-- ── Nav ── -->
+  <nav class="site-nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="logo.png" alt="The Skate Guys logo">
+          <span class="nav-name">The Skate Guys</span>
+          <span class="nav-badge">Store</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#pricing">Classes</a>
+          <a href="merch.html" class="active">Merch</a>
+          <a href="elite.html">Elite</a>
+          <a href="index.html#locations">Locations</a>
+          <a href="index.html#hire">Hire</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="btn btn-ghost btn-sm hide-mob" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-primary btn-sm" href="https://theskateguys.myshopify.com" target="_blank" rel="noopener">🛒 Shop Now</a>
+          <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#pricing">Classes &amp; Pricing</a>
+        <a href="merch.html">🛒 Merch Store</a>
+        <a href="elite.html">👑 TSG Elite</a>
+        <a href="index.html#locations">Locations</a>
+        <a href="index.html#hire">Events &amp; Hire</a>
+        <div class="sep"></div>
+        <a href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">🛼 Join Community</a>
+        <a href="https://wa.me/18682766878" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="merch-hero">
+    <div class="wrap">
+      <div class="hero-eyebrow">New Collection Available</div>
+      <h1 class="hero-title">
+        <span>WEAR</span>
+        <span class="line-pink">THE</span>
+        <span class="line-cyan">CULTURE</span>
+      </h1>
+      <p class="hero-desc">Official TSG merch. Representing Trinidad &amp; Tobago's leading rollerskate community — on the rink, on the road, and worldwide.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://theskateguys.myshopify.com" target="_blank" rel="noopener">🛒 Shop Full Collection</a>
+        <a class="btn btn-ghost" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20order%20some%20merch." target="_blank" rel="noopener">Order via WhatsApp</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num" style="color:var(--cyan);">10</div>
+          <div class="stat-label">Products</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" style="color:var(--pink);">$20</div>
+          <div class="stat-label">Starts from TTD</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" style="color:var(--gold);">T&T</div>
+          <div class="stat-label">+ Worldwide Shipping</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Products ── -->
+  <main>
+    <div class="wrap">
+
+      <!-- Filter -->
+      <div class="filter-row">
+        <div class="filter-pills" id="filterBar">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="tshirt">T-Shirts</button>
+          <button class="filter-pill" data-filter="hoodie">Hoodies</button>
+          <button class="filter-pill" data-filter="headwear">Headwear</button>
+          <button class="filter-pill" data-filter="accessory">Accessories</button>
+        </div>
+        <span class="filter-count" id="filterCount">10 items</span>
+      </div>
+
+    </div>
+
+    <!-- Bento grid — full bleed with thin wrap -->
+    <div style="padding: 0 20px; max-width: 1200px; margin: 0 auto;">
+
+      <div class="bento" id="productGrid">
+
+        <!-- 1. TSG Classic Tee — featured (5 cols × 2 rows) -->
+        <div class="pcard p-feat" data-cat="tshirt">
+          <span class="pcard-tag pt-custom">✏️ Custom Print</span>
+          <img class="pcard-img" src="assets/merch/tee-classic.jpg" alt="TSG Classic Tee" loading="lazy">
+          <div class="pcard-overlay">
+            <div class="pcard-cat">T-Shirt · Bestseller</div>
+            <div class="pcard-name">TSG Classic Tee</div>
+            <div class="pcard-desc">The signature roller skate logo tee. Lightweight, breathable — the piece that started it all.</div>
+            <div class="pcard-footer">
+              <div>
+                <div class="pcard-price">$160</div>
+                <span class="pcard-price-sub">TTD · Sizes XS–3XL</span>
+              </div>
+              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Bucket Hat — standard (4 cols × 2 rows) -->
+        <div class="pcard p-std" data-cat="headwear">
+          <img class="pcard-img" src="assets/merch/bucket-hat.jpg" alt="TSG Community Bucket Hat" loading="lazy">
+          <div class="pcard-overlay">
+            <div class="pcard-cat">Headwear</div>
+            <div class="pcard-name">TSG Bucket Hat</div>
+            <div class="pcard-desc">Neon logo on all-black. The hat that says you're part of the circle.</div>
+            <div class="pcard-footer">
+              <div>
+                <div class="pcard-price">$80</div>
+                <span class="pcard-price-sub">TTD · One size</span>
+              </div>
+              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Hoodie Solid SK8 — standard (3 cols × 1 row, wide) -->
+        <div class="pcard p-wide" data-cat="hoodie">
+          <span class="pcard-tag pt-custom">✏️ Custom Print</span>
+          <img class="pcard-img product-img-contain" src="assets/merch/hoodie-solid-sk8.jpg" alt="Solid With SK8 Hoodie" loading="lazy" style="object-fit:contain; background:#111;">
+          <div class="pcard-overlay">
+            <div class="pcard-cat">Hoodie · Statement Piece</div>
+            <div class="pcard-name">Solid With SK8</div>
+            <div class="pcard-desc">Community logo front. "Solid With SK8" on the back. QR sleeve.</div>
+            <div class="pcard-footer">
+              <div>
+                <div class="pcard-price">$350+</div>
+                <span class="pcard-price-sub">TTD · Multiple sizes</span>
+              </div>
+              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Keychain — small -->
+        <div class="pcard p-sm" data-cat="accessory">
+          <span class="pcard-tag pt-new">🔥 Hot</span>
+          <img class="pcard-img" src="assets/merch/keychain.jpg" alt="TSG Acrylic Keychain" loading="lazy">
+          <div class="pcard-overlay">
+            <div class="pcard-cat">Accessory</div>
+            <div class="pcard-name">TSG Keychain</div>
+            <div class="pcard-footer">
+              <div>
+                <div class="pcard-price">$20</div>
+                <span class="pcard-price-sub">TTD</span>
+              </div>
+              <button class="pcard-btn" onclick="shop()">Buy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Hoodie Therapy — half -->
+        <div class="pcard p-half" data-cat="hoodie">
+          <img class="pcard-img" src="assets/merch/hoodie-therapy.png" alt="Rollerskate Because Therapy Hoodie" loading="lazy" style="object-fit:contain; background:#111;">
+          <div class="pcard-overlay">
+            <div class="pcard-cat">Hoodie</div>
+            <div class="pcard-name">Rollerskate Because Therapy</div>
+            <div class="pcard-desc">"Rollerskate because Therapy = 💸"</div>
+            <div class="pcard-footer">
+              <div>
+                <div class="pcard-price">$350+</div>
+                <span class="pcard-price-sub">TTD</span>
+              </div>
+              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Proud Skate Mom — half -->
+        <div class="pcard p-half" data-cat="tshirt">
+          <img class="pcard-img" src="assets/merch/tee-skate-mom.jpg" alt="Proud Skate Mom T-Shirt" loading="lazy">
+          <div class="pcard-overlay">
+            <div class="pcard-cat">T-Shirt</div>
+            <div class="pcard-name">Proud Skate Mom</div>
+            <div class="pcard-desc">For the parents holding it down on the sideline.</div>
+            <div class="pcard-footer">
+              <div>
+                <div class="pcard-price">$160</div>
+                <span class="pcard-price-sub">TTD</span>
+              </div>
+              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Hoodie F8 — third -->
+        <div class="pcard p-third" data-cat="hoodie">
+          <img class="pcard-img" src="assets/merch/hoodie-f8.png" alt="Rollersk8 With F8 Hoodie" loading="lazy" style="object-fit:contain; background:#111;">
+          <div class="pcard-overlay">
+            <div class="pcard-cat">Hoodie</div>
+            <div class="pcard-name">Rollersk8 With F8</div>
+            <div class="pcard-footer">
+              <div><div class="pcard-price">$350+</div><span class="pcard-price-sub">TTD</span></div>
+              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Hoodie Running Sucks — third -->
+        <div class="pcard p-third" data-cat="hoodie">
+          <img class="pcard-img" src="assets/merch/hoodie-running.png" alt="I Skate Because Running Sucks Hoodie" loading="lazy" style="object-fit:contain; background:#111;">
+          <div class="pcard-overlay">
+            <div class="pcard-cat">Hoodie</div>
+            <div class="pcard-name">Running Sucks</div>
+            <div class="pcard-footer">
+              <div><div class="pcard-price">$350+</div><span class="pcard-price-sub">TTD</span></div>
+              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Christmas Tee — third -->
+        <div class="pcard p-third" data-cat="tshirt">
+          <span class="pcard-tag pt-limited">Limited</span>
+          <img class="pcard-img" src="assets/merch/tee-christmas.png" alt="Keep Skat-ing Christmas Tee" loading="lazy" style="object-fit:contain; background:#000;">
+          <div class="pcard-overlay">
+            <div class="pcard-cat">T-Shirt · Limited</div>
+            <div class="pcard-name">Keep Skat-ing!</div>
+            <div class="pcard-footer">
+              <div><div class="pcard-price">$160</div><span class="pcard-price-sub">TTD</span></div>
+              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Socks — half -->
+        <div class="pcard p-half" data-cat="accessory">
+          <span class="pcard-tag pt-soon">Coming Soon</span>
+          <div class="pcard-placeholder">🧦</div>
+          <div class="pcard-overlay">
+            <div class="pcard-cat">Accessory · Coming Soon</div>
+            <div class="pcard-name">TSG Community Socks</div>
+            <div class="pcard-desc">Branded crew socks. Register interest via WhatsApp.</div>
+            <div class="pcard-footer">
+              <div><div class="pcard-price">$35</div><span class="pcard-price-sub">TTD</span></div>
+              <button class="pcard-btn" onclick="notify()">Notify Me</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Info strip -->
+      <div class="info-strip">
+        <div class="info-cell">
+          <span class="info-icon">🇹🇹</span>
+          <div>
+            <div class="info-label">Local T&T Delivery</div>
+            <div class="info-sub">Via your local printer. Fast, affordable, direct.</div>
+          </div>
+        </div>
+        <div class="info-cell">
+          <span class="info-icon">🌍</span>
+          <div>
+            <div class="info-label">Ships Worldwide</div>
+            <div class="info-sub">International orders fulfilled via our Shopify store.</div>
+          </div>
+        </div>
+        <div class="info-cell">
+          <span class="info-icon">💬</span>
+          <div>
+            <div class="info-label">Order via WhatsApp</div>
+            <div class="info-sub">Message us directly — fastest route for T&T orders.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Elite strip -->
+      <div class="elite-row">
+        <div class="elite-row-left">
+          <span class="elite-crown">👑</span>
+          <div class="elite-text"><strong>TSG Elite members get exclusive discounts</strong> on all merch — codes shared in the Elite community group after joining.</div>
+        </div>
+        <a class="btn btn-gold btn-sm" href="elite.html">Join Elite →</a>
+      </div>
+
+      <!-- Custom print section -->
+      <div class="custom-section">
+        <div class="custom-left">
+          <div class="custom-eyebrow">Personalise It</div>
+          <div class="custom-title">CUSTOM<br>NAME<br>PRINTING</div>
+          <div class="custom-desc">Add your name, nickname, or a custom message to select items. Available on tees and hoodies — just let us know when ordering.</div>
+          <div class="custom-items">
+            <div class="custom-item">TSG Classic Tee</div>
+            <div class="custom-item">Proud Skate Mom Tee</div>
+            <div class="custom-item">Solid With SK8 Hoodie</div>
+          </div>
+          <div style="margin-top: 20px;">
+            <a class="btn btn-gold" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20add%20custom%20name%20printing%20to%20my%20order." target="_blank" rel="noopener">Order Custom Print</a>
+          </div>
+        </div>
+        <div class="custom-right">✏️</div>
+      </div>
+
+      <!-- Email bar -->
+      <div class="email-bar">
+        <div>
+          <h3>🛼 First Dibs</h3>
+          <p>New drops, restocks and exclusive community deals.</p>
+        </div>
+        <form class="email-form" id="emailForm">
+          <input type="email" placeholder="your@email.com" required>
+          <button class="btn btn-primary btn-sm" type="submit">Notify Me</button>
+        </form>
+      </div>
+
+      <p style="font-size: 11px; color: var(--muted); margin-top: 16px; text-align: center;">All prices in Trinidad &amp; Tobago Dollars (TTD). Approx. 6.8 TTD = 1 USD.</p>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">The Skate Guys</div>
+          <div class="footer-tag">Trinidad &amp; Tobago's leading rollerskate community.</div>
+          <div class="social-row">
+            <a class="s-btn" href="https://instagram.com/the_skateguys" target="_blank" rel="noopener">📸 Instagram</a>
+            <a class="s-btn" href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">🛼 Community</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#pricing">Classes</a></li>
+            <li><a href="elite.html">TSG Elite</a></li>
+            <li><a href="index.html#hire">Events &amp; Hire</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Us</a></li>
+            <li><a href="tel:+18682766878">+1 868-276-6878</a></li>
+            <li><a href="mailto:info.theskateguys@gmail.com">Email Us</a></li>
+            <li><a href="https://share.google/EWWeMXIOVaBFXXAlJ" target="_blank" rel="noopener">⭐ Google Reviews</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> The Skate Guys Hub. All rights reserved.</span>
+        <span>Trinidad &amp; Tobago 🇹🇹</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const WA = '18682766878';
+    const waBase = `https://wa.me/${WA}`;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function shop() { window.open('https://theskateguys.myshopify.com', '_blank'); }
+    function notify() { window.open(`${waBase}?text=${encodeURIComponent("Hi TSG! I'd like to be notified when the TSG Community Socks are available.")}`, '_blank'); }
+
+    // Hamburger
+    const hbg = document.getElementById('hamburger');
+    const mob = document.getElementById('mobileNav');
+    hbg?.addEventListener('click', () => {
+      const o = mob.classList.toggle('open');
+      hbg.classList.toggle('open', o);
+      hbg.setAttribute('aria-expanded', o);
+    });
+    mob?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mob.classList.remove('open'); hbg.classList.remove('open'); hbg.setAttribute('aria-expanded', false);
+    }));
+
+    // Filter
+    let activeFilter = 'all';
+    document.getElementById('filterBar')?.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-pill');
+      if (!btn) return;
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.getAttribute('data-filter');
+      let count = 0;
+      document.querySelectorAll('.pcard').forEach(c => {
+        const show = activeFilter === 'all' || c.getAttribute('data-cat') === activeFilter;
+        c.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+      document.getElementById('filterCount').textContent = `${count} item${count !== 1 ? 's' : ''}`;
+    });
+
+    // Email
+    document.getElementById('emailForm')?.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = e.target.querySelector('input').value;
+      window.open(`${waBase}?text=${encodeURIComponent(`Hi TSG! I'd like first dibs on new merch drops. My email: ${email}`)}`, '_blank');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSG Elite Membership | The Skate Guys Hub</title>
+<meta name="description" content="TSG Elite — a commitment membership for skaters who take growth seriously. Skills, structure, community. Quarter, 6-month and year plans available.">
+<meta property="og:title" content="TSG Elite Membership | The Skate Guys">
+<meta property="og:description" content="1 free class/month, 50% off merch, priority event access, YouTube progress check-ins and more. Lock in your plan today.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050508;--bg2:#08080f;--card:#0d0d18;--card2:#12121f;
+  --cyan:#00F5FF;--pink:#FF2D6B;--gold:#FFD166;
+  --text:#f4f4f8;--muted:#9090aa;--line:rgba(255,255,255,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(55% 45% at 10% 0%,rgba(255,45,107,.12),transparent 60%),radial-gradient(50% 40% at 92% 8%,rgba(0,245,255,.10),transparent 60%),radial-gradient(65% 55% at 50% 105%,rgba(255,209,102,.06),transparent 70%);}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 80% 60% at 50% 20%,#000 0%,transparent 100%);}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.02em;line-height:.95}
+.grad{background:linear-gradient(110deg,var(--pink) 30%,var(--cyan) 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cyan{color:var(--cyan)}.pink{color:var(--pink)}.gold{color:var(--gold)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);background:rgba(5,5,8,.80);border-bottom:1px solid var(--line);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;letter-spacing:.05em}
+.logo .s{color:var(--pink)}.logo .g{color:var(--cyan)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--text)}.nav-links a.active{color:var(--cyan)}
+.nav-cta{font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.52rem 1.1rem;border-radius:50px;background:var(--pink);color:#fff;box-shadow:0 0 18px rgba(255,45,107,.4);transition:transform .2s,box-shadow .2s;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(255,45,107,.65)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:6px}
+.burger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+
+/* BUTTONS */
+.btn{font-family:'DM Sans',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.04em;text-transform:uppercase;padding:.95rem 1.9rem;border-radius:50px;cursor:pointer;border:2px solid transparent;display:inline-flex;align-items:center;gap:.5rem;transition:transform .2s,box-shadow .2s,background .2s;}
+.btn-primary{background:linear-gradient(110deg,var(--pink),#ff5c90);color:#fff;box-shadow:0 0 28px rgba(255,45,107,.4)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 44px rgba(255,45,107,.7)}
+.btn-ghost{background:transparent;border-color:rgba(0,245,255,.45);color:var(--cyan)}
+.btn-ghost:hover{background:rgba(0,245,255,.1);transform:translateY(-3px)}
+.btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* SECTIONS */
+section{padding:76px 0;position:relative}
+.sec-tag{display:block;font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.sec-head{text-align:center;max-width:700px;margin:0 auto 3.2rem}
+.sec-head h2{font-size:clamp(2.2rem,5.5vw,3.8rem);margin-bottom:1rem}
+.sec-head p{color:var(--muted);font-size:1.02rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* HERO */
+.hero{padding:80px 0 68px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,245,255,.3);border-radius:50px;padding:.4rem 1.1rem;margin-bottom:1.7rem;background:rgba(0,245,255,.05);}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--pink);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.hero h1{font-size:clamp(3.2rem,10vw,7.5rem);margin-bottom:1rem;text-shadow:0 0 60px rgba(255,45,107,.2)}
+.hero .sub{max-width:660px;margin:0 auto .9rem;font-size:clamp(1.05rem,2.4vw,1.3rem);color:#cccce0;font-weight:500}
+.hero .clarify{max-width:580px;margin:0 auto 2.2rem;font-size:.95rem;color:var(--muted)}
+.hero .clarify strong{color:var(--text)}
+.hero-note{margin-top:1.4rem;font-size:.82rem;color:var(--muted)}
+.hero-note strong{color:var(--cyan)}
+
+/* THREE LANES */
+.lanes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.lane{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:2rem 1.6rem;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.lane:hover{transform:translateY(-6px)}
+.lane .bar{position:absolute;top:0;left:0;right:0;height:3px}
+.lane-free .bar{background:var(--cyan)}
+.lane-paid .bar{background:var(--gold)}
+.lane-elite{border-color:rgba(255,45,107,.35);background:linear-gradient(160deg,rgba(255,45,107,.07),var(--card) 60%)}
+.lane-elite .bar{background:linear-gradient(90deg,var(--pink),var(--cyan))}
+.lane-elite:hover{border-color:rgba(255,45,107,.6);box-shadow:0 8px 40px rgba(255,45,107,.18)}
+.lane .l-badge{font-size:.63rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;display:block}
+.lane-elite .l-badge{color:var(--pink)}
+.lane h3{font-size:1.95rem;margin-bottom:.3rem}
+.lane .l-price{font-size:.82rem;font-weight:700;letter-spacing:.04em;margin-bottom:.9rem}
+.fp{color:var(--cyan)}.pp{color:var(--gold)}.ep{color:var(--pink)}
+.lane .l-desc{font-size:.88rem;color:var(--muted);margin-bottom:1.2rem;min-height:2.5rem}
+.lane ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.6rem}
+.lane li{font-size:.86rem;color:#c8c8dc;padding-left:1.4rem;position:relative}
+.lane li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%}
+.lane-free li::before{background:var(--cyan)}.lane-paid li::before{background:var(--gold)}.lane-elite li::before{background:var(--pink)}
+.l-cta{display:block;text-align:center;font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:.82rem;border-radius:50px;transition:.2s;}
+.lane-free .l-cta{border:1.5px solid rgba(0,245,255,.45);color:var(--cyan)}.lane-free .l-cta:hover{background:rgba(0,245,255,.1)}
+.lane-paid .l-cta{border:1.5px solid rgba(255,209,102,.45);color:var(--gold)}.lane-paid .l-cta:hover{background:rgba(255,209,102,.1)}
+.lane-elite .l-cta{background:var(--pink);color:#fff;box-shadow:0 0 20px rgba(255,45,107,.4)}.lane-elite .l-cta:hover{transform:translateY(-2px);box-shadow:0 0 32px rgba(255,45,107,.65)}
+.lane .l-note{font-size:.73rem;color:var(--muted);margin-top:.8rem;text-align:center;font-style:italic}
+
+/* MEANS */
+.means{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.means-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.means-copy h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:1.4rem}
+.means-copy p{color:#c8c8dc;font-size:1rem;margin-bottom:1rem}
+.isnot-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.isnot-box{border-radius:16px;padding:1.5rem;border:1px solid var(--line)}
+.box-yes{background:rgba(0,245,255,.05);border-color:rgba(0,245,255,.22)}
+.box-no{background:rgba(255,45,107,.05);border-color:rgba(255,45,107,.22)}
+.isnot-box h4{font-family:'DM Sans';font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem}
+.box-yes h4{color:var(--cyan)}.box-no h4{color:var(--pink)}
+.isnot-box ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.isnot-box li{font-size:.85rem;color:#c8c8dc;padding-left:1.5rem;position:relative}
+.box-yes li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700}
+.box-no li::before{content:"✕";position:absolute;left:0;color:var(--pink);font-weight:700}
+
+/* PERKS */
+.perks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.perk{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.6rem 1.2rem;text-align:center;transition:transform .22s,border-color .22s,box-shadow .22s;}
+.perk:hover{transform:translateY(-5px);border-color:rgba(255,45,107,.35);box-shadow:0 8px 30px rgba(255,45,107,.12)}
+.perk .pico{font-size:1.9rem;margin-bottom:.8rem;display:block}
+.perk h4{font-family:'DM Sans';font-weight:700;font-size:.92rem;margin-bottom:.4rem;color:var(--text)}
+.perk p{font-size:.8rem;color:var(--muted);line-height:1.45}
+.avail{display:inline-block;margin-top:.7rem;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .65rem;border-radius:50px;}
+.avail-sure{background:rgba(0,245,255,.12);color:var(--cyan);border:1px solid rgba(0,245,255,.3)}
+.avail-when{background:rgba(255,209,102,.1);color:var(--gold);border:1px solid rgba(255,209,102,.28)}
+.perk-star{border-color:rgba(0,245,255,.28);background:linear-gradient(160deg,rgba(0,245,255,.06),var(--card))}
+
+/* PLANS */
+.plans{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-bottom:1.6rem}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:2.2rem 1.8rem;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;text-align:center;}
+.plan:hover{transform:translateY(-7px)}
+.plan .p-bar{position:absolute;top:0;left:0;right:0;height:4px}
+.plan-q .p-bar{background:var(--cyan)}.plan-s .p-bar{background:var(--gold)}
+.plan-y{border-color:rgba(255,45,107,.4);background:linear-gradient(160deg,rgba(255,45,107,.09),var(--card) 55%)}
+.plan-y .p-bar{background:linear-gradient(90deg,var(--pink),var(--gold))}
+.plan-y:hover{border-color:rgba(255,45,107,.65);box-shadow:0 10px 50px rgba(255,45,107,.2)}
+.plan .p-badge{font-size:.67rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.5rem;display:block;color:var(--muted)}
+.plan-y .p-badge{color:var(--pink)}
+.plan .p-label{font-size:clamp(1.8rem,3vw,2.2rem);margin-bottom:.15rem}
+.plan .p-sub{font-size:.8rem;color:var(--muted);margin-bottom:1.2rem}
+.plan .p-price{font-family:'Bebas Neue';font-size:clamp(3.5rem,6vw,4.8rem);line-height:.9;color:#fff;margin-bottom:.3rem}
+.plan .p-price sup{font-size:1.2rem;color:var(--muted)}
+.plan .p-ttd{font-size:.85rem;color:var(--muted);margin-bottom:.8rem}
+.plan .p-save{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border-radius:50px;margin-bottom:1.5rem;}
+.plan-q .p-save{background:rgba(0,245,255,.12);color:var(--cyan);border:1px solid rgba(0,245,255,.3)}
+.plan-s .p-save{background:rgba(255,209,102,.12);color:var(--gold);border:1px solid rgba(255,209,102,.3)}
+.plan-y .p-save{background:rgba(255,45,107,.15);color:var(--pink);border:1px solid rgba(255,45,107,.35)}
+.plan .p-cta{display:block;font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;padding:.88rem;border-radius:50px;transition:.2s;margin-bottom:.9rem;}
+.plan-q .p-cta{border:1.5px solid rgba(0,245,255,.45);color:var(--cyan)}.plan-q .p-cta:hover{background:rgba(0,245,255,.1)}
+.plan-s .p-cta{border:1.5px solid rgba(255,209,102,.45);color:var(--gold)}.plan-s .p-cta:hover{background:rgba(255,209,102,.1)}
+.plan-y .p-cta{background:var(--pink);color:#fff;box-shadow:0 0 22px rgba(255,45,107,.45)}.plan-y .p-cta:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(255,45,107,.7)}
+.plan .p-note{font-size:.75rem;color:var(--muted);line-height:1.4;font-style:italic}
+.plan .best-tag{position:absolute;top:18px;right:-28px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--pink);color:#fff;padding:.3rem 2.6rem;transform:rotate(30deg);box-shadow:0 0 14px rgba(255,45,107,.5);}
+.split-note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.5rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap;}
+.split-note .s-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.split-note p{font-size:.9rem;color:#c8c8dc}.split-note strong{color:var(--text)}
+
+/* FUNDS */
+.funds-chips{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-bottom:2rem}
+.f-chip{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem .9rem;text-align:center;font-size:.83rem;color:#c8c8dc;font-weight:500;transition:.2s;}
+.f-chip:hover{border-color:rgba(255,209,102,.38);color:var(--text)}
+.f-chip .fi{display:block;font-size:1.4rem;margin-bottom:.45rem}
+.funds-disc{text-align:center;max-width:620px;margin:0 auto;font-size:.95rem;color:var(--gold);font-weight:600;padding:1.2rem 1.5rem;border:1px solid rgba(255,209,102,.28);border-radius:14px;background:rgba(255,209,102,.05);}
+
+/* RECOGNITION */
+.recog{background:var(--bg2);border-top:1px solid var(--line);text-align:center}
+.recog-box{max-width:740px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:3rem 2rem;}
+.recog-box .ico{font-size:2.4rem;margin-bottom:1rem}
+.recog-box h2{font-size:clamp(1.9rem,4.5vw,2.9rem);margin-bottom:1.2rem}
+.recog-box p{color:#c8c8dc;font-size:1rem;max-width:540px;margin:0 auto 1rem}
+.recog-box .small{font-size:.83rem;color:var(--muted)}
+
+/* FINAL CTA */
+.finalcta{text-align:center;padding:90px 0}
+.finalcta h2{font-size:clamp(2.5rem,6.5vw,4.5rem);margin-bottom:1.2rem}
+.finalcta p{color:var(--muted);max-width:500px;margin:0 auto 2.2rem;font-size:1.02rem}
+.wa-cta{margin-top:2rem;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.5rem 2rem;display:inline-block;}
+.wa-cta .wa-label{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.wa-cta .wa-num{font-family:'Bebas Neue';font-size:2.4rem;color:var(--cyan);letter-spacing:.06em}
+.wa-cta .wa-msg{font-size:.85rem;color:var(--muted)}.wa-cta .wa-msg strong{color:var(--pink)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:54px 0 30px;background:var(--bg2)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.foot-logo{font-family:'Bebas Neue';font-size:1.9rem;letter-spacing:.05em;margin-bottom:.9rem}
+.foot-desc{color:var(--muted);font-size:.88rem;max-width:280px}
+.foot-col h5{font-family:'DM Sans';font-weight:700;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text);margin-bottom:1rem}
+.foot-col a{display:block;color:var(--muted);font-size:.86rem;margin-bottom:.6rem;transition:color .2s}
+.foot-col a:hover{color:var(--cyan)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-bottom p{color:var(--muted);font-size:.78rem}
+.foot-socials{display:flex;gap:1.2rem}
+.foot-socials a{color:var(--muted);font-size:.76rem;font-weight:700;letter-spacing:.05em;transition:color .2s}
+.foot-socials a:hover{color:var(--pink)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .lanes-grid,.plans-grid,.perks-grid{grid-template-columns:1fr}
+  .means-wrap{grid-template-columns:1fr;gap:2.2rem}
+  .funds-chips{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr;gap:1.8rem}
+}
+@media(max-width:680px){
+  .nav-links{position:fixed;top:68px;left:0;right:0;flex-direction:column;gap:0;background:rgba(5,5,8,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:1rem 22px 1.5rem;transform:translateY(-160%);transition:transform .35s;}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{padding:.8rem 0;width:100%;border-bottom:1px solid var(--line)}
+  .nav-links .nav-cta{margin-top:.8rem;text-align:center}
+  .burger{display:flex}
+  .isnot-grid{grid-template-columns:1fr}
+  .split-note{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo">THE <span class="s">SKATE</span> <span class="g">GUYS</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#community">Community</a>
+      <a href="merch.html">Merch</a>
+      <a href="elite.html" class="active">Elite</a>
+      <a href="#plans" class="nav-cta">Get Elite</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Commitment Membership &bull; Structure &bull; Progress</span>
+    <h1 class="reveal">TSG<br><span class="grad">ELITE</span></h1>
+    <p class="sub reveal">For skaters who take growth seriously — skills, confidence and community.</p>
+    <p class="clarify reveal"><strong>The WhatsApp community stays free.</strong> Elite is a paid commitment membership for members who are serious about growing, showing up and supporting the movement with structure behind them.</p>
+    <div class="btn-row reveal">
+      <a href="#plans" class="btn btn-primary">Choose Your Plan &#8594;</a>
+      <a href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener" class="btn btn-ghost">Join Free Community</a>
+    </div>
+    <p class="hero-note reveal">Monthly option no longer available. <strong>Plans only — lock in and commit.</strong></p>
+  </div>
+</header>
+
+<section id="lanes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Know the Difference</span>
+      <h2>Three Lanes. <span class="grad">No Confusion.</span></h2>
+      <p>Everything The Skate Guys offers falls into one of three lanes. Pick what fits where you are right now.</p>
+    </div>
+    <div class="lanes-grid">
+      <div class="lane lane-free reveal">
+        <div class="bar"></div>
+        <span class="l-badge">Always Free</span>
+        <h3>Free Community</h3>
+        <div class="l-price fp">$0 &#8212; Free Forever</div>
+        <p class="l-desc">For connection, updates and staying part of the movement.</p>
+        <ul>
+          <li>WhatsApp community access</li>
+          <li>Skate session &amp; event announcements</li>
+          <li>Class &amp; activity info</li>
+          <li>General encouragement</li>
+          <li>Connection to the movement</li>
+        </ul>
+        <a href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener" class="l-cta">Join Free Community</a>
+      </div>
+      <div class="lane lane-paid reveal">
+        <div class="bar"></div>
+        <span class="l-badge">Pay Per Activity</span>
+        <h3>Classes &amp; Events</h3>
+        <div class="l-price pp">Priced Per Session</div>
+        <p class="l-desc">For active skating experiences and hands-on training.</p>
+        <ul>
+          <li>Skate classes &amp; workshops</li>
+          <li>Events &amp; special sessions</li>
+          <li>Trips &amp; meet-ups</li>
+          <li>Structured skate opportunities</li>
+        </ul>
+        <a href="index.html#events" class="l-cta">View Upcoming Sessions</a>
+        <p class="l-note">Open to all community members. Costs vary per activity.</p>
+      </div>
+      <div class="lane lane-elite reveal">
+        <div class="bar"></div>
+        <span class="l-badge">Commitment Membership</span>
+        <h3>TSG Elite</h3>
+        <div class="l-price ep">From $225 TTD / 3 months</div>
+        <p class="l-desc">For members serious about growth, structure and showing up.</p>
+        <ul>
+          <li>1 Free Skate Class per month*</li>
+          <li>50% off all TSG Merch</li>
+          <li>Priority booking + free event entry</li>
+          <li>Monthly content class</li>
+          <li>YouTube progress check-ins</li>
+        </ul>
+        <a href="#plans" class="l-cta">See Elite Plans</a>
+        <p class="l-note">*Subject to coach availability across T&amp;T</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="means">
+  <div class="wrap means-wrap">
+    <div class="means-copy reveal">
+      <span class="sec-tag">The Mindset</span>
+      <h2>Elite Means <span class="pink">Commitment</span>,<br>Not Status.</h2>
+      <p>Elite doesn't mean you're better than anyone else. It means you're serious enough about your skating to invest in your own growth and back the movement at the same time.</p>
+      <p>You show up. You put in the work. You build with discipline, consistency and purpose. Elite gives you the structure to do that with real support behind you.</p>
+    </div>
+    <div class="isnot-grid reveal">
+      <div class="isnot-box box-yes">
+        <h4>Elite Is</h4>
+        <ul>
+          <li>A paid commitment membership</li>
+          <li>Structure &amp; accountability</li>
+          <li>Real perks for real commitment</li>
+          <li>Backing the movement</li>
+          <li>A path for serious skaters</li>
+        </ul>
+      </div>
+      <div class="isnot-box box-no">
+        <h4>Elite Is Not</h4>
+        <ul>
+          <li>Paid access to the free chat</li>
+          <li>Unlimited free everything</li>
+          <li>A guaranteed leadership role</li>
+          <li>Monthly auto-pay subscription</li>
+          <li>Control over TSG decisions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="perks">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">What You Get</span>
+      <h2>Everything Included in <span class="cyan">Elite</span></h2>
+      <p>Every perk is honest. Anything that depends on scheduling or availability is clearly marked.</p>
+    </div>
+    <div class="perks-grid">
+      <div class="perk perk-star reveal">
+        <span class="pico">&#x1F6FC;</span>
+        <h4>1 Free Skate Class / Month</h4>
+        <p>One free class per month for the duration of your plan.</p>
+        <span class="avail avail-when">Subject to coach availability T&amp;T</span>
+      </div>
+      <div class="perk reveal">
+        <span class="pico">&#x1F6CD;&#xFE0F;</span>
+        <h4>50% Off All TSG Merch</h4>
+        <p>Half price on every item in the TSG store for your full plan duration.</p>
+        <span class="avail avail-sure">Confirmed</span>
+      </div>
+      <div class="perk reveal">
+        <span class="pico">&#x1F3DF;&#xFE0F;</span>
+        <h4>Priority Booking + Free Event Entry</h4>
+        <p>First access to book and free entry to TSG events during your plan.</p>
+        <span class="avail avail-sure">Confirmed</span>
+      </div>
+      <div class="perk reveal">
+        <span class="pico">&#x1F4F1;</span>
+        <h4>WhatsApp Support + Check-ins</h4>
+        <p>Direct WhatsApp access for support, questions and regular check-ins.</p>
+        <span class="avail avail-sure">Confirmed</span>
+      </div>
+      <div class="perk reveal">
+        <span class="pico">&#x1F393;</span>
+        <h4>Monthly Content Class</h4>
+        <p>A dedicated content class every month focused on skills and growth.</p>
+        <span class="avail avail-sure">Confirmed</span>
+      </div>
+      <div class="perk reveal">
+        <span class="pico">&#x1F3AF;</span>
+        <h4>Skill Challenges</h4>
+        <p>Regular challenges to keep you progressing and focused on development.</p>
+        <span class="avail avail-sure">Confirmed</span>
+      </div>
+      <div class="perk reveal">
+        <span class="pico">&#x1F91D;</span>
+        <h4>Members-Only Link-Ups</h4>
+        <p>Exclusive Elite member skate sessions and link-ups.</p>
+        <span class="avail avail-when">When scheduled</span>
+      </div>
+      <div class="perk reveal">
+        <span class="pico">&#x1F3AC;</span>
+        <h4>YouTube Progress Check-ins</h4>
+        <p>Your skating progress featured and reviewed through YouTube content.</p>
+        <span class="avail avail-sure">Confirmed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plans" class="plans">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Choose Your Plan</span>
+      <h2>Lock In. <span class="grad">Commit. Grow.</span></h2>
+      <p>Longer plans save you more. Monthly is no longer available. Pick a plan and go all in.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan plan-q reveal">
+        <div class="p-bar"></div>
+        <span class="p-badge">Starter Commitment</span>
+        <div class="p-label">QUARTER</div>
+        <div class="p-sub">3 Months</div>
+        <div class="p-price"><sup>$</sup>225</div>
+        <div class="p-ttd">TTD total</div>
+        <span class="p-save">6% off monthly rate</span>
+        <a href="https://tally.so/r/eq6xOx" target="_blank" rel="noopener" class="p-cta">Get Quarter Plan</a>
+        <p class="p-note">Split-pay available: $120 now + $105 within 7 days</p>
+      </div>
+      <div class="plan plan-s reveal">
+        <div class="p-bar"></div>
+        <span class="p-badge">Most Popular</span>
+        <div class="p-label">6 MONTHS</div>
+        <div class="p-sub">Half Year</div>
+        <div class="p-price"><sup>$</sup>410</div>
+        <div class="p-ttd">TTD total</div>
+        <span class="p-save">14% off monthly rate</span>
+        <a href="https://tally.so/r/eq6xOx" target="_blank" rel="noopener" class="p-cta">Get 6-Month Plan</a>
+        <p class="p-note">Full payment on sign-up</p>
+      </div>
+      <div class="plan plan-y reveal">
+        <div class="p-bar"></div>
+        <div class="best-tag">Best Value</div>
+        <span class="p-badge">Maximum Commitment</span>
+        <div class="p-label">YEAR</div>
+        <div class="p-sub">12 Months</div>
+        <div class="p-price"><sup>$</sup>770</div>
+        <div class="p-ttd">TTD total</div>
+        <span class="p-save">20% off monthly rate</span>
+        <a href="https://tally.so/r/eq6xOx" target="_blank" rel="noopener" class="p-cta">Get Year Plan</a>
+        <p class="p-note">Full payment on sign-up &middot; Best value</p>
+      </div>
+    </div>
+    <div class="split-note reveal">
+      <span class="s-label">Split Pay</span>
+      <p>Quarter plan only &#8212; <strong>$120 now</strong> + <strong>$105 within 7 days</strong>. Message us on WhatsApp to arrange.</p>
+      <a href="https://wa.me/18682766878?text=ELITE" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:.65rem 1.4rem;font-size:.8rem">WhatsApp to Arrange</a>
+    </div>
+  </div>
+</section>
+
+<section id="funds">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Where It Goes</span>
+      <h2>What Your Plan <span class="gold">Helps Build</span></h2>
+      <p>Your Elite membership helps The Skate Guys keep building with structure, consistency and purpose across Trinidad &amp; Tobago.</p>
+    </div>
+    <div class="funds-chips">
+      <div class="f-chip reveal"><span class="fi">&#x1F3AA;</span>Event materials</div>
+      <div class="f-chip reveal"><span class="fi">&#x1F6FC;</span>Skate maintenance</div>
+      <div class="f-chip reveal"><span class="fi">&#x1F9BA;</span>Safety supplies</div>
+      <div class="f-chip reveal"><span class="fi">&#x1F4A7;</span>Water &amp; basic supplies</div>
+      <div class="f-chip reveal"><span class="fi">&#x1F6E0;&#xFE0F;</span>Admin &amp; org tools</div>
+      <div class="f-chip reveal"><span class="fi">&#x1F4F8;</span>Content &amp; promotion</div>
+      <div class="f-chip reveal"><span class="fi">&#x1F9D2;</span>Youth community support</div>
+      <div class="f-chip reveal"><span class="fi">&#x1F4C5;</span>Future classes &amp; events</div>
+    </div>
+    <p class="funds-disc reveal">Your membership helps us build. It does not buy ownership, control or guaranteed benefits outside what is listed in your plan.</p>
+  </div>
+</section>
+
+<section class="recog">
+  <div class="wrap">
+    <div class="recog-box reveal">
+      <div class="ico">&#x1F6FC;&#x1F497;</div>
+      <h2>Supported by Members Who<br><span class="grad">Believe in the Movement</span></h2>
+      <p>Every Elite member is part of something bigger. Your commitment helps The Skate Guys keep building safer, better and more organized skating experiences across Trinidad &amp; Tobago.</p>
+      <p class="small">A named supporter wall is coming &#8212; added only for members who give permission through the registration form.</p>
+    </div>
+  </div>
+</section>
+
+<section class="finalcta">
+  <div class="wrap">
+    <h2 class="reveal">Ready to Go <span class="grad">All In?</span></h2>
+    <p class="reveal">Pick your plan, lock in your commitment and grow with The Skate Guys Elite.</p>
+    <div class="btn-row reveal">
+      <a href="#plans" class="btn btn-primary">Choose Your Plan &#8594;</a>
+      <a href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener" class="btn btn-ghost">Join Free Community</a>
+    </div>
+    <div class="reveal">
+      <div class="wa-cta">
+        <div class="wa-label">WhatsApp to Join</div>
+        <div class="wa-num">(868) 276 6878</div>
+        <div class="wa-msg">Message: <strong>"ELITE"</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">THE <span class="s">SKATE</span> <span class="g">GUYS</span></div>
+        <p class="foot-desc">Trinidad &amp; Tobago's leading rollerskate community. Skate. Connect. Grow. Build the movement together.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="index.html">Home</a>
+        <a href="index.html#community">Community</a>
+        <a href="merch.html">Merch Store</a>
+        <a href="elite.html">Elite</a>
+      </div>
+      <div class="foot-col">
+        <h5>Connect</h5>
+        <a href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp +1 868-276-6878</a>
+        <a href="mailto:info.theskateguys@gmail.com">info.theskateguys@gmail.com</a>
+        <a href="https://www.instagram.com/the_skateguys" target="_blank" rel="noopener">Instagram @the_skateguys</a>
+        <a href="https://www.tiktok.com/@theskateguys" target="_blank" rel="noopener">TikTok @theskateguys</a>
+        <a href="https://www.youtube.com/@theskateguystrinidad" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; 2026 The Skate Guys Ltd. All rights reserved. Trinidad &amp; Tobago.</p>
+      <div class="foot-socials">
+        <a href="https://www.instagram.com/the_skateguys" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="https://www.tiktok.com/@theskateguys" target="_blank" rel="noopener">TIKTOK</a>
+        <a href="https://www.youtube.com/@theskateguystrinidad" target="_blank" rel="noopener">YOUTUBE</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('in'),Number(e.target.dataset.d)||0);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  el.dataset.d=(i%5)*80;
+  io.observe(el);
+});
+</script>
+</body>
+</html>

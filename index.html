@@ -1491,6 +1491,209 @@
     .social-btn:hover { border-color: rgba(0,245,255,.3); background: rgba(0,245,255,.06); color: var(--cyan); }
     .social-icon { font-size: 16px; }
 
+    /* ── Email capture bar ───────────────────────────────── */
+    .email-bar {
+      background: linear-gradient(90deg, rgba(0,245,255,.08), rgba(255,45,107,.08));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0;
+    }
+    .email-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .email-bar-text h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: .03em;
+      margin-bottom: 2px;
+    }
+    .email-bar-text p { font-size: 13px; color: var(--muted); margin: 0; }
+    .email-bar-form {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      flex: 1;
+      max-width: 440px;
+    }
+    .email-bar-form input {
+      flex: 1;
+      min-width: 200px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      padding: 11px 16px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .1s;
+    }
+    .email-bar-form input:focus { border-color: rgba(0,245,255,.5); }
+    .email-bar-form input::placeholder { color: rgba(255,255,255,.35); }
+
+    /* ── Merch section ───────────────────────────────────── */
+    .merch-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 500px)  { .merch-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px)  { .merch-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1100px) { .merch-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .merch-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform .1s ease, border-color .1s ease, background .1s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .merch-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,245,255,.25);
+      background: var(--card-hover);
+    }
+    .merch-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      background: rgba(255,255,255,.04);
+    }
+    .merch-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      background: rgba(255,255,255,.03);
+    }
+    .merch-body {
+      padding: 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .merch-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .merch-name { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.3; }
+    .merch-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .merch-price {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--cyan);
+      margin-top: 4px;
+    }
+    .merch-price span { font-size: 12px; color: var(--muted); font-family: var(--font-body); }
+
+    .merch-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-top: 4px;
+      width: fit-content;
+    }
+    .merch-tag-custom { background: rgba(255,209,102,.12); color: var(--gold); border: 1px solid rgba(255,209,102,.3); }
+    .merch-tag-new    { background: rgba(255,45,107,.12);  color: var(--pink);  border: 1px solid rgba(255,45,107,.3); }
+
+    /* ── Elite section ───────────────────────────────────── */
+    .elite-hero {
+      background: linear-gradient(135deg, rgba(255,209,102,.08) 0%, rgba(255,45,107,.06) 50%, rgba(0,245,255,.06) 100%);
+      border: 1px solid rgba(255,209,102,.2);
+      border-radius: var(--radius);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 640px) { .elite-hero { padding: 24px 20px; } }
+    .elite-hero::before {
+      content: "👑";
+      position: absolute;
+      right: -10px; top: -10px;
+      font-size: 160px;
+      opacity: .05;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .elite-tiers {
+      display: grid;
+      gap: 16px;
+    }
+    @media (min-width: 768px) { .elite-tiers { grid-template-columns: repeat(3, 1fr); } }
+
+    .elite-tier {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform .1s ease, border-color .1s ease;
+    }
+    .elite-tier:hover { transform: translateY(-2px); }
+    .elite-tier-featured {
+      border-color: var(--gold);
+      box-shadow: 0 0 32px rgba(255,209,102,.1);
+      background: rgba(255,209,102,.04);
+    }
+
+    .elite-tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      width: fit-content;
+    }
+    .etb-bronze { background: rgba(205,127,50,.15); color: #cd7f32; }
+    .etb-gold   { background: rgba(255,209,102,.15); color: var(--gold); }
+    .etb-elite  { background: rgba(0,245,255,.15); color: var(--cyan); }
+
+    .elite-tier-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: .03em;
+      line-height: 1;
+    }
+    .elite-tier-price {
+      font-family: var(--font-display);
+      font-size: 36px;
+      line-height: 1;
+    }
+    .elite-perks { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .elite-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,.82);
+    }
+    .elite-perk-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
     /* ── Footer ──────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--line);
@@ -1595,10 +1798,11 @@
         <div class="nav-links">
           <a href="#event">Event</a>
           <a href="#pricing">Classes</a>
-          <a href="#progression">Progress</a>
+          <a href="merch.html">Merch</a>
+          <a href="elite.html">Elite</a>
           <a href="#coaches">Coaches</a>
           <a href="#locations">Locations</a>
-          <a href="#hire">Events</a>
+          <a href="#hire">Hire</a>
           <a href="#faq">FAQ</a>
         </div>
 
@@ -1615,6 +1819,8 @@
       <div class="mobile-menu" id="mobileMenu" role="navigation">
         <a href="#event">🪩 Skate &amp; Disco Vybz — May 24</a>
         <a href="#pricing">Classes &amp; Pricing</a>
+        <a href="merch.html">🛒 Merch Store</a>
+        <a href="elite.html">👑 TSG Elite</a>
         <a href="#progression">Progression System</a>
         <a href="#coaches">Meet the Coaches</a>
         <a href="#locations">Locations &amp; Schedule</a>
@@ -1674,6 +1880,22 @@
         </div>
       </div>
     </section>
+
+    <!-- ── Email Capture Bar ──────────────────────────────── -->
+    <div class="email-bar">
+      <div class="wrap">
+        <div class="email-bar-inner">
+          <div class="email-bar-text">
+            <h3>🛼 Get First Dibs</h3>
+            <p>New merch drops, events &amp; community news — straight to your inbox.</p>
+          </div>
+          <form class="email-bar-form" id="emailCaptureForm">
+            <input type="email" placeholder="your@email.com" required aria-label="Email address">
+            <button class="btn btn-primary btn-sm" type="submit">Notify Me</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!-- ── Event Section (auto-swaps after May 24) ──────────── -->
 
@@ -2267,6 +2489,50 @@
       </div>
     </section>
 
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── Merch & Elite Teasers ─────────────────────────── -->
+    <section id="merch-elite">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>More from TSG</div>
+        <h2>Merch &amp; Elite</h2>
+        <div class="grid grid-2 reveal">
+
+          <!-- Merch teaser -->
+          <div class="card card-glow-cyan" style="position:relative; overflow:hidden;">
+            <div style="position:absolute; right:-10px; top:-10px; font-size:120px; opacity:.06; pointer-events:none; user-select:none; line-height:1;">🛒</div>
+            <div class="kicker" style="margin-bottom:10px;"><span class="bar"></span>The Store</div>
+            <div style="font-family:var(--font-display); font-size:38px; line-height:1; margin-bottom:10px;">TSG <span style="color:var(--cyan)">MERCH</span></div>
+            <p class="muted small" style="margin-bottom:16px;">T-shirts, hoodies, bucket hats, keychains and more. Wear the community — ships locally and worldwide.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+              <span style="font-size:12px; background:rgba(0,245,255,.08); border:1px solid rgba(0,245,255,.2); border-radius:999px; padding:4px 12px; color:var(--cyan);">T-Shirts from $160 TTD</span>
+              <span style="font-size:12px; background:rgba(0,245,255,.08); border:1px solid rgba(0,245,255,.2); border-radius:999px; padding:4px 12px; color:var(--cyan);">Hoodies from $350 TTD</span>
+              <span style="font-size:12px; background:rgba(0,245,255,.08); border:1px solid rgba(0,245,255,.2); border-radius:999px; padding:4px 12px; color:var(--cyan);">✏️ Custom Name Print</span>
+            </div>
+            <a class="btn btn-primary" href="merch.html">🛒 Shop Merch</a>
+          </div>
+
+          <!-- Elite teaser -->
+          <div class="card" style="position:relative; overflow:hidden; border-color:rgba(255,209,102,.25); background:rgba(255,209,102,.04);">
+            <div style="position:absolute; right:-10px; top:-10px; font-size:120px; opacity:.06; pointer-events:none; user-select:none; line-height:1;">👑</div>
+            <div class="kicker" style="margin-bottom:10px; color:var(--gold);"><span class="bar" style="background:var(--gold);"></span>Membership</div>
+            <div style="font-family:var(--font-display); font-size:38px; line-height:1; margin-bottom:10px;">TSG <span style="color:var(--gold)">ELITE</span></div>
+            <p class="muted small" style="margin-bottom:16px;">A commitment membership for skaters serious about growth — 1 free class/month, 50% off merch, priority booking, YouTube check-ins and more.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+              <span style="font-size:12px; background:rgba(255,209,102,.08); border:1px solid rgba(255,209,102,.25); border-radius:999px; padding:4px 12px; color:var(--gold);">From $225 TTD / 3 months</span>
+              <span style="font-size:12px; background:rgba(255,209,102,.08); border:1px solid rgba(255,209,102,.25); border-radius:999px; padding:4px 12px; color:var(--gold);">👑 Exclusive Perks</span>
+            </div>
+            <a class="btn btn-gold" href="elite.html" style="background:var(--gold); color:#000; box-shadow:0 0 20px rgba(255,209,102,.25);">👑 Learn About Elite</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
     <!-- ── Testimonials ──────────────────────────────────── -->
     <section id="testimonials">
       <div class="wrap">
@@ -2748,8 +3014,9 @@
           <h4>Quick Links</h4>
           <ul>
             <li><a href="#pricing">Classes &amp; Pricing</a></li>
+            <li><a href="merch.html">Merch Store</a></li>
+            <li><a href="elite.html">TSG Elite</a></li>
             <li><a href="#locations">Locations</a></li>
-            <li><a href="#watch">Watch</a></li>
             <li><a href="#hire">Events &amp; Hire</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
@@ -2825,6 +3092,15 @@
       });
 
       /* ── Event countdown (not used in current section but kept for future) ── */
+
+      /* ── Email capture bar ── */
+      document.getElementById('emailCaptureForm')?.addEventListener('submit', e => {
+        e.preventDefault();
+        const email = e.target.querySelector('input[type="email"]').value;
+        const msg = `Hi TSG! I'd like to get first dibs on new merch drops and events. My email: ${email}`;
+        window.open(`${waBase}?text=${encodeURIComponent(msg)}`, '_blank');
+        e.target.reset();
+      });
 
       /* ── Year ── */
       const yearEl = document.getElementById('year');

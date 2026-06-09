@@ -81,14 +81,14 @@
     "@context": "https://schema.org",
     "@type": "Event",
     "name": "Pop-Up Skate Class — Lowlands Mall Tobago",
-    "description": "The Skate Guys pop-up rollerskate class at Lowlands Mall, Tobago. 3 days of beginner-friendly classes open to all ages. Rental skates included. $60 TTD per session.",
-    "startDate": "2026-05-29T15:00:00-04:00",
-    "endDate": "2026-05-31T17:00:00-04:00",
+    "description": "Quick tutorial skate sessions for adults and kids at Lowlands Mall in front of Movie Towne, Tobago. $50 TTD with rental skates, $40 TTD with own skates. 1 free water per student.",
+    "startDate": "2026-06-26T15:00:00-04:00",
+    "endDate": "2026-06-28T18:00:00-04:00",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": {
       "@type": "Place",
-      "name": "Lowlands Mall",
+      "name": "Lowlands Mall (In front of Movie Towne)",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Lowlands",
@@ -102,14 +102,24 @@
       "name": "The Skate Guys Hub",
       "url": "https://the-skate-guys-site.vercel.app"
     },
-    "offers": {
-      "@type": "Offer",
-      "name": "Skate Class (Rental Included)",
-      "price": "60",
-      "priceCurrency": "TTD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://wa.me/18682766878"
-    }
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "With Rental Skates",
+        "price": "50",
+        "priceCurrency": "TTD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://wa.me/18682766878"
+      },
+      {
+        "@type": "Offer",
+        "name": "With Own Skates",
+        "price": "40",
+        "priceCurrency": "TTD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://wa.me/18682766878"
+      }
+    ]
   }
   </script>
 
@@ -1773,17 +1783,17 @@
   <div id="summer-banner">
     <div class="ticker-wrap">
       <div class="ticker-track" id="tickerTrack">
-        <span class="ticker-item">🪩 <strong>Skate &amp; Disco Vybz — Sunday 24 May</strong> · Doors open 5PM · JD's Skating Rink, Arima · Best Dressed wins $300 Cash 🏆</span>
+        <span class="ticker-item">🏃 <strong>Lambeau Family Day — Sat 20 June</strong> · Lambeau Recreational Grounds, Tobago · Free Roller Skates · Skate Guys will be there!</span>
         <span class="ticker-sep">★</span>
-        <span class="ticker-item">🛼 Teens &amp; Adults Welcome · No Alcohol · Disco Pass $10 · Glow Pass $20</span>
+        <span class="ticker-item">🛼 <strong>Pop-Up Skate Class — Jun 26, 27 &amp; 28</strong> · Lowlands Mall, Tobago · $50 TTD with rentals · $40 TTD own skates · 3–6 PM daily</span>
         <span class="ticker-sep">★</span>
-        <span class="ticker-item">🪩 <strong>Skate &amp; Disco Vybz — Sunday 24 May</strong> · Doors open 5PM · JD's Skating Rink, Arima · Best Dressed wins $300 Cash 🏆</span>
+        <span class="ticker-item">🏃 <strong>Lambeau Family Day — Sat 20 June</strong> · Lambeau Recreational Grounds, Tobago · Free Roller Skates · Skate Guys will be there!</span>
         <span class="ticker-sep">★</span>
-        <span class="ticker-item">🛼 Teens &amp; Adults Welcome · No Alcohol · Disco Pass $10 · Glow Pass $20</span>
+        <span class="ticker-item">🛼 <strong>Pop-Up Skate Class — Jun 26, 27 &amp; 28</strong> · Lowlands Mall, Tobago · $50 TTD with rentals · $40 TTD own skates · 3–6 PM daily</span>
         <span class="ticker-sep">★</span>
       </div>
     </div>
-    <a class="ticker-cta" id="tickerCta" href="#event">Get Tickets</a>
+    <a class="ticker-cta" id="tickerCta" href="#events" style="background:var(--pink); color:#fff;">See Events</a>
     <button class="summer-banner-close" id="bannerClose" aria-label="Dismiss banner">✕</button>
   </div>
 
@@ -1796,7 +1806,7 @@
         </div>
 
         <div class="nav-links">
-          <a href="#event">Event</a>
+          <a href="#events">Events</a>
           <a href="#pricing">Classes</a>
           <a href="merch.html">Merch</a>
           <a href="elite.html">Elite</a>
@@ -1817,7 +1827,7 @@
 
       <!-- Mobile drawer -->
       <div class="mobile-menu" id="mobileMenu" role="navigation">
-        <a href="#event">🪩 Skate &amp; Disco Vybz — May 24</a>
+        <a href="#events">🛼 Upcoming Events</a>
         <a href="#pricing">Classes &amp; Pricing</a>
         <a href="merch.html">🛒 Merch Store</a>
         <a href="elite.html">👑 TSG Elite</a>
@@ -1897,115 +1907,58 @@
       </div>
     </div>
 
-    <!-- ── Event Section (auto-swaps after May 24) ──────────── -->
 
-    <!-- DISCO EVENT (visible until May 24) -->
-    <section id="event" id="event-disco">
+    <!-- ── Upcoming Events ───────────────────────────────── -->
+    <section id="events">
       <div class="wrap">
-        <div class="season-card reveal" style="border-color:rgba(255,45,107,.35); background:linear-gradient(135deg, rgba(255,45,107,.10) 0%, rgba(128,0,255,.10) 50%, rgba(0,245,255,.08) 100%);">
-          <div style="position:absolute; right:-10px; top:-10px; font-size:160px; opacity:.07; pointer-events:none; user-select:none; line-height:1;">🪩</div>
-          <div class="season-inner">
-            <div>
-              <div class="kicker" style="margin-bottom:12px; color:var(--pink);"><span class="bar" style="background:var(--pink)"></span>Sunday 24 May 2026 · Arima, Trinidad</div>
-              <div class="season-heading">
-                <span style="color:var(--pink)">SKATE</span> <span style="color:#fff">&amp;</span><br>
-                <span style="color:var(--cyan)">DISCO</span> <span style="color:var(--gold)">VYBZ</span>
-              </div>
-              <p class="muted" style="max-width:520px; font-size:15px; margin-bottom:16px;">The biggest skate event of the season. Roll out in your best disco fit, compete for prizes, and skate the night away at JD's Skating Rink, Arima. Teens &amp; adults welcome. No alcohol.</p>
-              <div class="season-perks" style="margin-bottom:20px;">
-                <span class="season-perk" style="border-color:rgba(255,45,107,.3); background:rgba(255,45,107,.08); color:var(--pink);">🚪 Doors 5:00 PM</span>
-                <span class="season-perk" style="border-color:rgba(255,45,107,.3); background:rgba(255,45,107,.08); color:var(--pink);">🎉 Main Vybz 6–8 PM</span>
-                <span class="season-perk" style="border-color:rgba(255,209,102,.3); background:rgba(255,209,102,.08); color:var(--gold);">🏆 Best Dressed $300 Cash</span>
-                <span class="season-perk" style="border-color:rgba(0,245,255,.3); background:rgba(0,245,255,.08); color:var(--cyan);">🛼 Skate Rentals $45</span>
-                <span class="season-perk" style="border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:#fff;">🎭 Door Prizes · Best Dressed · Dance-Off</span>
-              </div>
-              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; max-width:620px;">
-                <div style="background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); border-radius:16px; padding:20px 16px; text-align:center; display:flex; flex-direction:column; gap:8px;">
-                  <div style="font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--muted);">Entry</div>
-                  <div style="font-family:var(--font-display); font-size:40px; color:#fff; line-height:1;">$10</div>
-                  <div style="font-size:12px; color:var(--muted);">Adults</div>
-                  <div style="width:32px; height:1px; background:var(--line); margin:0 auto;"></div>
-                  <div style="font-family:var(--font-display); font-size:30px; color:rgba(255,255,255,.6); line-height:1;">$5</div>
-                  <div style="font-size:12px; color:var(--muted);">Kids</div>
-                </div>
-                <div style="background:rgba(255,45,107,.10); border:1px solid rgba(255,45,107,.35); border-radius:16px; padding:20px 16px; text-align:center; display:flex; flex-direction:column; gap:8px;">
-                  <div style="font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--pink);">Disco Pass</div>
-                  <div style="font-family:var(--font-display); font-size:40px; color:var(--pink); line-height:1;">$10</div>
-                  <div style="width:32px; height:1px; background:rgba(255,45,107,.3); margin:0 auto;"></div>
-                  <div style="font-size:12px; color:var(--muted); line-height:1.5;">Entry<br>+ Competition<br>+ Best Dressed</div>
-                </div>
-                <div style="background:rgba(255,209,102,.10); border:2px solid rgba(255,209,102,.45); border-radius:16px; padding:20px 16px; text-align:center; display:flex; flex-direction:column; gap:8px; position:relative;">
-                  <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--gold); color:#000; font-size:9px; font-weight:800; letter-spacing:.12em; padding:3px 10px; border-radius:999px; white-space:nowrap;">★ BEST VALUE</div>
-                  <div style="font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-top:6px;">Glow Pass</div>
-                  <div style="font-family:var(--font-display); font-size:40px; color:var(--gold); line-height:1;">$20</div>
-                  <div style="width:32px; height:1px; background:rgba(255,209,102,.3); margin:0 auto;"></div>
-                  <div style="font-size:12px; color:var(--muted); line-height:1.5;">Everything<br>+ Glow Kit*</div>
-                </div>
-              </div>
-              <p style="font-size:11px; color:var(--muted); margin-bottom:20px; line-height:1.6;">*Glow Kit includes glow sticks, shades &amp; glow bands — while stocks last. All prices in Trinidad &amp; Tobago Dollars (TTD).</p>
-              <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                <a class="btn btn-accent" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20get%20tickets%20for%20Skate%20%26%20Disco%20Vybz%20on%20May%2024." target="_blank" rel="noopener" style="box-shadow:0 0 28px rgba(255,45,107,.35);">🎟 Get Tickets via WhatsApp</a>
-                <a class="btn btn-ghost" href="tel:+18682766878">📞 Call 276-6878</a>
-              </div>
-            </div>
-            <div class="season-aside">
-              <img src="assets/events/disco-flyer.png" alt="Skate & Disco Vybz Event Flyer" loading="lazy" style="width:100%; max-width:260px; border-radius:16px; border:1px solid rgba(255,45,107,.3); box-shadow:0 0 40px rgba(255,45,107,.2);">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="kicker"><span class="bar"></span>What's Coming Up</div>
+        <h2>Upcoming Events</h2>
+        <div class="grid grid-2 reveal">
 
-    <!-- LOWLANDS POPUP (hidden until after May 24) -->
-    <section id="event-lowlands" style="display:none;">
-      <div class="wrap">
-        <div class="season-card reveal" style="border-color:rgba(0,245,255,.3); background:linear-gradient(135deg, rgba(0,245,255,.08) 0%, rgba(255,45,107,.06) 100%);">
-          <div style="position:absolute; right:-10px; top:-10px; font-size:160px; opacity:.06; pointer-events:none; user-select:none; line-height:1;">🛼</div>
-          <div class="season-inner">
-            <div>
-              <div class="kicker" style="margin-bottom:12px; color:var(--cyan);"><span class="bar"></span>29 · 30 · 31 May 2026 · Tobago</div>
-              <div class="season-heading">
-                <span style="color:var(--cyan)">POP-UP</span><br>
-                <span style="color:#fff">SKATE</span> <span style="color:var(--pink)">CLASS</span>
-              </div>
-              <p class="muted" style="max-width:520px; font-size:15px; margin-bottom:16px;">The Skate Guys are coming to Lowlands Mall, Tobago — 3 days of beginner-friendly rollerskate classes open to all ages. Rental skates included. No experience needed.</p>
-              <div class="season-perks" style="margin-bottom:20px;">
-                <span class="season-perk" style="border-color:rgba(0,245,255,.3); background:rgba(0,245,255,.08); color:var(--cyan);">📅 Thu 29 May · 3:00–6:00 PM</span>
-                <span class="season-perk" style="border-color:rgba(0,245,255,.3); background:rgba(0,245,255,.08); color:var(--cyan);">📅 Fri 30 May · 3:00–6:00 PM</span>
-                <span class="season-perk" style="border-color:rgba(255,45,107,.3); background:rgba(255,45,107,.08); color:var(--pink);">📅 Sat 31 May · 3:00–5:00 PM</span>
-                <span class="season-perk" style="border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:#fff;">📍 Lowlands Mall, Tobago</span>
-                <span class="season-perk" style="border-color:rgba(255,209,102,.3); background:rgba(255,209,102,.08); color:var(--gold);">🛼 Rental Skates Included</span>
-                <span class="season-perk" style="border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:#fff;">👨‍👩‍👧 All Ages Welcome</span>
-              </div>
-              <div style="display:inline-flex; align-items:baseline; gap:8px; background:rgba(0,245,255,.08); border:1px solid rgba(0,245,255,.25); border-radius:14px; padding:14px 22px; margin-bottom:24px;">
-                <span style="font-family:var(--font-display); font-size:48px; color:var(--cyan); line-height:1;">$60</span>
-                <div>
-                  <div style="font-size:13px; color:var(--muted);">TTD per session</div>
-                  <div style="font-size:12px; color:var(--cyan);">Rental skates included</div>
-                </div>
-              </div>
-              <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                <a class="btn btn-primary" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20book%20a%20spot%20at%20the%20Lowlands%20Mall%20Pop-Up%20Skate%20Class%20in%20Tobago." target="_blank" rel="noopener" style="box-shadow:0 0 28px rgba(0,245,255,.25);">🛼 Book via WhatsApp</a>
-                <a class="btn btn-ghost" href="tel:+18682766878">📞 Call 276-6878</a>
-              </div>
+          <!-- Lambeau Family Day -->
+          <div class="card" style="border-color:rgba(255,45,107,.25); background:linear-gradient(135deg, rgba(255,45,107,.08), rgba(255,209,102,.05)); position:relative; overflow:hidden;">
+            <div style="position:absolute; right:-10px; top:-10px; font-size:120px; opacity:.06; pointer-events:none; user-select:none; line-height:1;">🏃</div>
+            <div class="kicker" style="margin-bottom:10px; color:var(--pink);"><span class="bar" style="background:var(--pink)"></span>Saturday 20 June 2026 · Tobago</div>
+            <div style="font-family:var(--font-display); font-size:clamp(26px,4vw,40px); line-height:1; margin-bottom:10px;">2ND ANNUAL <span style="color:var(--pink)">LAMBEAU DAY</span></div>
+            <p class="muted small" style="margin-bottom:14px;">Harvest Gawd presents a full family day at Lambeau Recreational Grounds — and The Skate Guys Community will be there with FREE roller skates!</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+              <span style="font-size:11px; background:rgba(255,45,107,.1); border:1px solid rgba(255,45,107,.25); border-radius:999px; padding:4px 10px; color:var(--pink);">🕙 10:00 AM</span>
+              <span style="font-size:11px; background:rgba(255,45,107,.1); border:1px solid rgba(255,45,107,.25); border-radius:999px; padding:4px 10px; color:var(--pink);">📍 Lambeau Rec Grounds</span>
+              <span style="font-size:11px; background:rgba(255,209,102,.1); border:1px solid rgba(255,209,102,.25); border-radius:999px; padding:4px 10px; color:var(--gold);">🛼 FREE Roller Skates</span>
+              <span style="font-size:11px; background:rgba(255,209,102,.1); border:1px solid rgba(255,209,102,.25); border-radius:999px; padding:4px 10px; color:var(--gold);">⚽ 5 vs 5 Football</span>
+              <span style="font-size:11px; background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:999px; padding:4px 10px; color:#fff;">Sack Race · Tug-of-War · Face Painting</span>
             </div>
-            <div class="season-aside">
-              <div style="display:flex; flex-direction:column; gap:12px;">
-                <div style="background:rgba(0,0,0,.3); border:1px solid rgba(0,245,255,.2); border-radius:14px; padding:20px 28px; text-align:center;">
-                  <div style="font-family:var(--font-display); font-size:48px; color:var(--cyan); line-height:1;">3</div>
-                  <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-top:4px;">Days of Classes</div>
-                </div>
-                <div style="background:rgba(0,0,0,.3); border:1px solid rgba(255,45,107,.2); border-radius:14px; padding:16px 20px; text-align:center;">
-                  <div style="font-family:var(--font-display); font-size:32px; color:var(--pink); line-height:1;">Tobago</div>
-                  <div style="font-size:11px; color:var(--muted); margin-top:4px;">Lowlands Mall</div>
-                </div>
-                <div style="background:rgba(0,0,0,.3); border:1px solid rgba(255,209,102,.2); border-radius:14px; padding:16px 20px; text-align:center;">
-                  <div style="font-family:var(--font-display); font-size:32px; color:var(--gold); line-height:1;">All Ages</div>
-                  <div style="font-size:11px; color:var(--muted); margin-top:4px;">Kids · Teens · Adults</div>
-                </div>
-              </div>
+            <div style="background:rgba(0,245,255,.05); border:1px solid rgba(0,245,255,.15); border-radius:10px; padding:10px 14px; margin-bottom:16px;">
+              <p class="small" style="color:rgba(255,255,255,.85);">🛼 <strong style="color:var(--cyan)">The Skate Guys Community will be there!</strong> Come out, bring your family and roll with us.</p>
             </div>
+            <a class="btn btn-accent" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20know%20more%20about%20Lambeau%20Family%20Day%20on%20June%2020." target="_blank" rel="noopener">Find Out More</a>
           </div>
+
+          <!-- Lowlands Pop-Up -->
+          <div class="card card-glow-cyan" style="position:relative; overflow:hidden;">
+            <div style="position:absolute; right:-10px; top:-10px; font-size:120px; opacity:.06; pointer-events:none; user-select:none; line-height:1;">🛼</div>
+            <div class="kicker" style="margin-bottom:10px;"><span class="bar"></span>Jun 26 · 27 · 28 · 3–6 PM · Tobago</div>
+            <div style="font-family:var(--font-display); font-size:clamp(26px,4vw,40px); line-height:1; margin-bottom:10px;"><span style="color:var(--cyan)">POP-UP</span> SKATE CLASS</div>
+            <p class="muted small" style="margin-bottom:14px;">Quick tutorial sessions for adults and kids at Lowlands Mall, in front of Movie Towne. 3 days, all skill levels, rental skates available.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+              <span style="font-size:11px; background:rgba(0,245,255,.1); border:1px solid rgba(0,245,255,.25); border-radius:999px; padding:4px 10px; color:var(--cyan);">📅 Jun 26, 27 &amp; 28</span>
+              <span style="font-size:11px; background:rgba(0,245,255,.1); border:1px solid rgba(0,245,255,.25); border-radius:999px; padding:4px 10px; color:var(--cyan);">🕒 3:00 – 6:00 PM</span>
+              <span style="font-size:11px; background:rgba(0,245,255,.1); border:1px solid rgba(0,245,255,.25); border-radius:999px; padding:4px 10px; color:var(--cyan);">📍 Lowlands Mall, Tobago</span>
+              <span style="font-size:11px; background:rgba(255,209,102,.1); border:1px solid rgba(255,209,102,.25); border-radius:999px; padding:4px 10px; color:var(--gold);">💧 1 Free Water Per Student</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+              <div style="background:rgba(0,0,0,.3); border:1px solid rgba(0,245,255,.2); border-radius:12px; padding:14px; text-align:center;">
+                <div style="font-family:var(--font-display); font-size:30px; color:var(--cyan); line-height:1;">$50</div>
+                <div style="font-size:11px; color:var(--muted); margin-top:3px;">TTD · With Rental Skates</div>
+              </div>
+              <div style="background:rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:14px; text-align:center;">
+                <div style="font-family:var(--font-display); font-size:30px; color:#fff; line-height:1;">$40</div>
+                <div style="font-size:11px; color:var(--muted); margin-top:3px;">TTD · Own Skates</div>
+              </div>
+            </div>
+            <a class="btn btn-primary" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20book%20a%20spot%20at%20the%20Lowlands%20Mall%20Pop-Up%20Skate%20Class." target="_blank" rel="noopener">🛼 Book via WhatsApp</a>
+          </div>
+
         </div>
       </div>
     </section>
@@ -3050,37 +3003,7 @@
       const EMAIL    = 'info.theskateguys@gmail.com';
       const waBase   = `https://wa.me/${WHATSAPP}`;
 
-      /* ── Auto-swap event after May 24 2026 ── */
-      const discoSection    = document.getElementById('event');
-      const lowlandsSection = document.getElementById('event-lowlands');
-      const tickerTrack     = document.getElementById('tickerTrack');
-      const tickerCta       = document.getElementById('tickerCta');
-      const discoEnd        = new Date('2026-05-25T00:00:00-04:00'); // midnight after May 24 T&T time
-
-      if (new Date() >= discoEnd) {
-        /* Show Lowlands, hide Disco */
-        if (discoSection)    discoSection.style.display    = 'none';
-        if (lowlandsSection) lowlandsSection.style.display = '';
-        /* Swap ticker content */
-        if (tickerTrack) {
-          tickerTrack.innerHTML = `
-            <span class="ticker-item">🛼 <strong>Pop-Up Skate Class — Lowlands Mall, Tobago</strong> · 29, 30 &amp; 31 May · $60 TTD includes rental skates</span>
-            <span class="ticker-sep">★</span>
-            <span class="ticker-item">📅 Thu 29 May · 3–6PM | Fri 30 May · 3–6PM | Sat 31 May · 3–5PM · All ages welcome 🇹🇹</span>
-            <span class="ticker-sep">★</span>
-            <span class="ticker-item">🛼 <strong>Pop-Up Skate Class — Lowlands Mall, Tobago</strong> · 29, 30 &amp; 31 May · $60 TTD includes rental skates</span>
-            <span class="ticker-sep">★</span>
-            <span class="ticker-item">📅 Thu 29 May · 3–6PM | Fri 30 May · 3–6PM | Sat 31 May · 3–5PM · All ages welcome 🇹🇹</span>
-            <span class="ticker-sep">★</span>
-          `;
-        }
-        if (tickerCta) {
-          tickerCta.textContent = 'Book Now';
-          tickerCta.style.background = 'var(--cyan)';
-          tickerCta.style.color = '#000';
-          tickerCta.href = '#event-lowlands';
-        }
-      }
+      /* ── Event countdown (not used in current section but kept for future) ── */
 
       /* ── Summer banner dismiss ── */
       const banner = document.getElementById('summer-banner');

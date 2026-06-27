@@ -2,46 +2,6 @@
 // you want them to appear on the site.
 window.TSG_EVENTS = [
   {
-    id: "lambeau-family-day-2026",
-    title: "2nd Annual Lambeau Day",
-    shortTitle: "Lambeau Family Day",
-    dateLabel: "Saturday 20 June 2026",
-    timeLabel: "10:00 AM",
-    regionLabel: "Tobago",
-    locationLabel: "Lambeau Recreational Grounds",
-    description: "Harvest Gawd presents a full family day at Lambeau Recreational Grounds, and The Skate Guys Community will be there with free roller skates.",
-    image: "assets/events/lambeau-day.jpg.jpeg",
-    imageAlt: "Lambeau Family Day flyer",
-    theme: "pink",
-    marker: "TSG",
-    tags: [
-      "10:00 AM",
-      "Lambeau Rec Grounds",
-      "Free roller skates",
-      "5 vs 5 football",
-      "Sack race, tug-of-war and face painting"
-    ],
-    callout: "The Skate Guys Community will be there. Bring your family and roll with us.",
-    ctaLabel: "Find Out More",
-    whatsappText: "Hi TSG! I'd like to know more about Lambeau Family Day on June 20.",
-    tickerText: "Sat 20 June - Lambeau Recreational Grounds, Tobago - Free roller skates - Skate Guys will be there!",
-    schema: {
-      startDate: "2026-06-20T10:00:00-04:00",
-      endDate: "2026-06-20T18:00:00-04:00",
-      placeName: "Lambeau Recreational Grounds",
-      addressLocality: "Lambeau",
-      addressRegion: "Tobago",
-      addressCountry: "TT",
-      offers: [
-        {
-          name: "Community Activity",
-          price: "0",
-          priceCurrency: "TTD"
-        }
-      ]
-    }
-  },
-  {
     id: "lowlands-popup-skate-class-2026",
     title: "Pop-Up Skate Class",
     shortTitle: "Pop-Up Skate Class",

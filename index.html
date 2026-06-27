@@ -75,56 +75,11 @@
   }
   </script>
 
-  <!-- ── Event Schema — Lowlands Mall Pop-Up ── -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "Pop-Up Skate Class — Lowlands Mall Tobago",
-    "description": "Quick tutorial skate sessions for adults and kids at Lowlands Mall in front of Movie Towne, Tobago. $50 TTD with rental skates, $40 TTD with own skates. 1 free water per student.",
-    "startDate": "2026-06-26T15:00:00-04:00",
-    "endDate": "2026-06-28T18:00:00-04:00",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "location": {
-      "@type": "Place",
-      "name": "Lowlands Mall (In front of Movie Towne)",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lowlands",
-        "addressRegion": "Tobago",
-        "addressCountry": "TT"
-      }
-    },
-    "image": "https://the-skate-guys-site.vercel.app/logo.png",
-    "organizer": {
-      "@type": "Organization",
-      "name": "The Skate Guys Hub",
-      "url": "https://the-skate-guys-site.vercel.app"
-    },
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "With Rental Skates",
-        "price": "50",
-        "priceCurrency": "TTD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://wa.me/18682766878"
-      },
-      {
-        "@type": "Offer",
-        "name": "With Own Skates",
-        "price": "40",
-        "priceCurrency": "TTD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://wa.me/18682766878"
-      }
-    ]
-  }
-  </script>
+  <script id="event-schema" type="application/ld+json"></script>
 
   <!-- ── Analytics (Plausible — privacy friendly, no cookie banner needed) ── -->
   <script async src="https://plausible.io/js/pa-sQG05hL6gHUFDK_mvEuf0.js"></script>
+  <script src="assets/events/events-data.js"></script>
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
@@ -1040,6 +995,109 @@
     }
     .summer-banner-close:hover { color: #fff; background: rgba(255,255,255,.08); }
 
+    /* Data-driven event cards */
+    .event-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .event-card::before {
+      content: attr(data-marker);
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      font-family: var(--font-display);
+      font-size: 96px;
+      line-height: 1;
+      color: #fff;
+      opacity: .05;
+      pointer-events: none;
+      user-select: none;
+    }
+    .event-card-cyan {
+      border-color: rgba(0,245,255,.25);
+      background: linear-gradient(135deg, rgba(0,245,255,.08), rgba(255,255,255,.04));
+    }
+    .event-card-pink {
+      border-color: rgba(255,45,107,.25);
+      background: linear-gradient(135deg, rgba(255,45,107,.08), rgba(255,209,102,.05));
+    }
+    .event-card img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+    .event-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px,4vw,40px);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .event-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+    .event-tag {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 4px 10px;
+      color: #fff;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+    }
+    .event-card-cyan .event-tag {
+      background: rgba(0,245,255,.10);
+      border-color: rgba(0,245,255,.25);
+      color: var(--cyan);
+    }
+    .event-card-pink .event-tag {
+      background: rgba(255,45,107,.10);
+      border-color: rgba(255,45,107,.25);
+      color: var(--pink);
+    }
+    .event-price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .event-price {
+      background: rgba(0,0,0,.3);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+    .event-price-amount {
+      font-family: var(--font-display);
+      font-size: 30px;
+      line-height: 1;
+      color: var(--cyan);
+    }
+    .event-price-label {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 3px;
+    }
+    .event-callout {
+      background: rgba(0,245,255,.05);
+      border: 1px solid rgba(0,245,255,.15);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      color: rgba(255,255,255,.85);
+    }
+    .event-empty {
+      grid-column: 1 / -1;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      color: var(--muted);
+    }
+
     /* ── Seasonal Section ────────────────────────────────── */
     .season-card {
       position: relative;
@@ -1913,7 +1971,7 @@
       <div class="wrap">
         <div class="kicker"><span class="bar"></span>What's Coming Up</div>
         <h2>Upcoming Events</h2>
-        <div class="grid grid-2 reveal">
+        <div class="grid grid-2 reveal" id="eventsGrid">
 
           <!-- Lambeau Family Day -->
           <div class="card" style="border-color:rgba(255,45,107,.25); background:linear-gradient(135deg, rgba(255,45,107,.08), rgba(255,209,102,.05)); position:relative; overflow:hidden;">
@@ -3004,6 +3062,120 @@
       const WHATSAPP = '18682766878';
       const EMAIL    = 'info.theskateguys@gmail.com';
       const waBase   = `https://wa.me/${WHATSAPP}`;
+
+      const events = Array.isArray(window.TSG_EVENTS) ? window.TSG_EVENTS : [];
+
+      function escapeHtml(value) {
+        return String(value ?? '').replace(/[&<>"']/g, char => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        }[char]));
+      }
+
+      function renderTicker() {
+        const track = document.getElementById('tickerTrack');
+        const banner = document.getElementById('summer-banner');
+        const tickerEvents = events.filter(event => event.tickerText);
+        if (!track || !banner) return;
+        if (!tickerEvents.length) {
+          banner.classList.add('hidden');
+          return;
+        }
+
+        track.innerHTML = [...tickerEvents, ...tickerEvents].map(event => `
+          <span class="ticker-item"><strong>${escapeHtml(event.shortTitle || event.title)}</strong> - ${escapeHtml(event.tickerText)}</span>
+          <span class="ticker-sep">*</span>
+        `).join('');
+      }
+
+      function eventAccent(event) {
+        return event.theme === 'pink' ? 'var(--pink)' : 'var(--cyan)';
+      }
+
+      function renderEvents() {
+        const grid = document.getElementById('eventsGrid');
+        if (!grid) return;
+        if (!events.length) {
+          grid.innerHTML = '<div class="event-empty">No upcoming events are listed right now. Check back soon or message us on WhatsApp.</div>';
+          return;
+        }
+
+        grid.innerHTML = events.map(event => {
+          const theme = event.theme === 'pink' ? 'pink' : 'cyan';
+          const tags = (event.tags || []).map(tag => `<span class="event-tag">${escapeHtml(tag)}</span>`).join('');
+          const prices = (event.priceCards || []).map(price => `
+            <div class="event-price">
+              <div class="event-price-amount">${escapeHtml(price.amount)}</div>
+              <div class="event-price-label">${escapeHtml(price.label)}</div>
+            </div>
+          `).join('');
+          const priceBlock = prices ? `<div class="event-price-grid">${prices}</div>` : '';
+          const calloutBlock = event.callout ? `<div class="event-callout small">${escapeHtml(event.callout)}</div>` : '';
+          const ctaHref = `${waBase}?text=${encodeURIComponent(event.whatsappText || `Hi TSG! I'd like to know more about ${event.title}.`)}`;
+
+          return `
+            <div class="card event-card event-card-${theme}" data-marker="${escapeHtml(event.marker || 'TSG')}">
+              <img src="${escapeHtml(event.image)}" alt="${escapeHtml(event.imageAlt || event.title)}" loading="lazy" decoding="async">
+              <div class="kicker" style="margin-bottom:10px; color:${eventAccent(event)};"><span class="bar" style="background:${eventAccent(event)}"></span>${escapeHtml(event.dateLabel)} · ${escapeHtml(event.regionLabel)}</div>
+              <div class="event-title">${escapeHtml(event.title)}</div>
+              <p class="muted small">${escapeHtml(event.description)}</p>
+              <div class="event-tags">${tags}</div>
+              ${priceBlock}
+              ${calloutBlock}
+              <a class="btn ${theme === 'pink' ? 'btn-accent' : 'btn-primary'}" href="${ctaHref}" target="_blank" rel="noopener">${escapeHtml(event.ctaLabel || 'Message Us')}</a>
+            </div>
+          `;
+        }).join('');
+      }
+
+      function renderEventSchema() {
+        const schemaEl = document.getElementById('event-schema');
+        if (!schemaEl || !events.length) return;
+
+        const eventSchemas = events.filter(event => event.schema).map(event => ({
+          '@context': 'https://schema.org',
+          '@type': 'Event',
+          name: event.title,
+          description: event.description,
+          startDate: event.schema.startDate,
+          endDate: event.schema.endDate,
+          eventStatus: 'https://schema.org/EventScheduled',
+          eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+          location: {
+            '@type': 'Place',
+            name: event.schema.placeName || event.locationLabel,
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: event.schema.addressLocality,
+              addressRegion: event.schema.addressRegion,
+              addressCountry: event.schema.addressCountry
+            }
+          },
+          image: `https://the-skate-guys-site.vercel.app/${event.image}`,
+          organizer: {
+            '@type': 'Organization',
+            name: 'The Skate Guys Hub',
+            url: 'https://the-skate-guys-site.vercel.app'
+          },
+          offers: (event.schema.offers || []).map(offer => ({
+            '@type': 'Offer',
+            name: offer.name,
+            price: offer.price,
+            priceCurrency: offer.priceCurrency || 'TTD',
+            availability: 'https://schema.org/InStock',
+            url: waBase
+          }))
+        }));
+
+        schemaEl.textContent = JSON.stringify(eventSchemas.length === 1 ? eventSchemas[0] : eventSchemas);
+      }
+
+      renderTicker();
+      renderEvents();
+      renderEventSchema();
 
       /* ── Event countdown (not used in current section but kept for future) ── */
 

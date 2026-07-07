@@ -21,3 +21,35 @@ window.TSG_UPDATES = [
     tickerText: "Class bookings open - Starter Pass, Beginner Bootcamp and Academy Monthly available"
   }
 ];
+
+// The homepage keeps its branded CSS artwork until the real Canoe Bay photo is present.
+// Add the optimized image to this exact path: assets/hero/canoe-bay-team.webp
+(() => {
+  const photoPath = 'assets/hero/canoe-bay-team.webp';
+  const photo = new Image();
+
+  photo.onload = () => {
+    const heroArt = document.querySelector('.hero-art');
+    if (!heroArt) return;
+
+    const motionStyle = document.createElement('style');
+    motionStyle.textContent = `
+      .hero-art.hero-art-photo {
+        background-image: linear-gradient(180deg, rgba(5,5,8,.03) 18%, rgba(5,5,8,.42) 100%), url('${photoPath}') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+      }
+      .hero-art.hero-art-photo::before { display: none !important; }
+      .hero-art.hero-art-photo::after {
+        background: linear-gradient(180deg, transparent 35%, rgba(5,5,8,.24) 100%) !important;
+      }
+    `;
+    document.head.appendChild(motionStyle);
+
+    heroArt.classList.add('hero-art-photo');
+    heroArt.querySelector('.hero-wheel')?.remove();
+    heroArt.querySelector('.hero-logo')?.remove();
+  };
+
+  photo.src = photoPath;
+})();

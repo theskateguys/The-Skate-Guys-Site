@@ -24,47 +24,35 @@ window.TSG_UPDATES = [
 
 // Load the real Canoe Bay team image only on the homepage.
 (() => {
-  const heroParts = Array.from({ length: 12 }, (_, index) => `assets/hero/canoe-bay-part-${index + 1}.js`);
+  const heroScript = document.createElement('script');
+  heroScript.src = 'assets/hero/canoe-bay-team.js';
 
-  const loadPart = index => {
-    if (index >= heroParts.length) {
-      const heroData = Array.isArray(window.TSG_CANOEBAY_PARTS)
-        ? window.TSG_CANOEBAY_PARTS.join('')
-        : '';
+  heroScript.onload = () => {
+    if (!window.TSG_CANOEBAY_B64) return;
 
-      if (!heroData) return;
-      window.TSG_CANOEBAY_HERO = `data:image/webp;base64,${heroData}`;
+    const encoded = window.TSG_CANOEBAY_B64.replace(/-/g, '+').replace(/_/g, '/');
+    const photo = new Image();
+    photo.onload = () => {
+      const heroArt = document.querySelector('.hero-art');
+      if (!heroArt) return;
 
-      const photo = new Image();
-      photo.onload = () => {
-        const heroArt = document.querySelector('.hero-art');
-        if (!heroArt) return;
-
-        const photoStyle = document.createElement('style');
-        photoStyle.textContent = `
-          .hero-art.hero-art-photo {
-            background-image: linear-gradient(180deg, rgba(5,5,8,.04) 14%, rgba(5,5,8,.42) 100%), url('${window.TSG_CANOEBAY_HERO}') !important;
-            background-size: cover !important;
-            background-position: center center !important;
-          }
-          .hero-art.hero-art-photo::before { display: none !important; }
-          .hero-art.hero-art-photo::after { background: linear-gradient(180deg, transparent 35%, rgba(5,5,8,.25) 100%) !important; }
-        `;
-        document.head.appendChild(photoStyle);
-        heroArt.classList.add('hero-art-photo');
-        heroArt.querySelector('.hero-wheel')?.remove();
-        heroArt.querySelector('.hero-logo')?.remove();
-      };
-      photo.src = window.TSG_CANOEBAY_HERO;
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = heroParts[index];
-    script.onload = () => loadPart(index + 1);
-    script.onerror = () => {};
-    document.head.appendChild(script);
+      const photoStyle = document.createElement('style');
+      photoStyle.textContent = `
+        .hero-art.hero-art-photo {
+          background-image: linear-gradient(180deg, rgba(5,5,8,.04) 14%, rgba(5,5,8,.42) 100%), url('${photo.src}') !important;
+          background-size: cover !important;
+          background-position: center center !important;
+        }
+        .hero-art.hero-art-photo::before { display: none !important; }
+        .hero-art.hero-art-photo::after { background: linear-gradient(180deg, transparent 35%, rgba(5,5,8,.25) 100%) !important; }
+      `;
+      document.head.appendChild(photoStyle);
+      heroArt.classList.add('hero-art-photo');
+      heroArt.querySelector('.hero-wheel')?.remove();
+      heroArt.querySelector('.hero-logo')?.remove();
+    };
+    photo.src = `data:image/webp;base64,${encoded}`;
   };
 
-  loadPart(0);
+  document.head.appendChild(heroScript);
 })();

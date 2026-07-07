@@ -1928,6 +1928,17 @@
     .text-cyan { color: var(--cyan); }
     .text-pink  { color: var(--pink); }
     .text-gold  { color: var(--gold); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+      .ticker-track { animation: none !important; transform: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
   </style>
 </head>
 
@@ -1972,7 +1983,7 @@
         <div class="nav-actions">
           <a class="btn btn-ghost btn-sm btn-ghost-sm" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
           <a class="btn btn-primary btn-sm" href="book.html">Book a Class</a>
-          <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
         </div>
@@ -2021,8 +2032,7 @@
             <p class="hero-sub">Small groups. Real coaching. Safe floors. Join the leading rollerskate community in Trinidad &amp; Tobago — whether you're stepping on skates for the very first time or levelling up your style.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="book.html">Book a Class</a>
-              <a class="btn btn-ghost" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp Us</a>
-              <a class="btn btn-ghost" href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">🛼 Join Community</a>
+              <a class="btn btn-ghost" href="#events">See Upcoming Events</a>
             </div>
           </div>
 
@@ -2083,18 +2093,7 @@
         <div class="kicker"><span class="bar"></span>Latest Updates</div>
         <h2>Fresh From TSG</h2>
         <div class="updates-grid reveal" id="updatesGrid">
-          <article class="update-card update-card-pink">
-            <div class="update-meta"><span class="update-pill">Merch Drop</span><span>July 2026</span></div>
-            <div class="update-title">Classic T-Shirt is live</div>
-            <p class="update-body">The limited edition community Classic T-Shirt is now in the merch store for $160 TTD.</p>
-            <a class="btn btn-primary btn-sm" href="merch.html">Shop the T-Shirt</a>
-          </article>
-          <article class="update-card">
-            <div class="update-meta"><span class="update-pill">Class Booking</span><span>July 2026</span></div>
-            <div class="update-title">Class package bookings are open</div>
-            <p class="update-body">Choose your package, send your details, and TSG will confirm availability for Trinidad or Tobago.</p>
-            <a class="btn btn-ghost btn-sm" href="book.html">Book a Class</a>
-          </article>
+          <div class="event-empty">Latest updates load here when JavaScript is available.</div>
         </div>
       </div>
     </section>
@@ -2175,10 +2174,10 @@
             <div class="path-tag path-tag-cyan">Starter Pass</div>
             <h3>First Time</h3>
             <div class="price-badge">
-              <span class="price-amount">$130</span>
+              <span class="price-amount">$140</span>
               <span class="price-unit">TTD</span>
             </div>
-            <p class="muted small mt-8">2 skate classes. Ideal for anyone just getting started.</p>
+            <p class="muted small mt-8">2 skate classes over 10 days. Ideal for anyone just getting started.</p>
             <ul class="list mt-12">
               <li>2 coached sessions</li>
               <li>Rental skates included</li>
@@ -2194,12 +2193,12 @@
             <div class="path-tag path-tag-pink" style="background:rgba(255,45,107,.15); color:var(--pink);">Bootcamp</div>
             <h3>Fast Results</h3>
             <div class="price-badge">
-              <span class="price-amount" style="color:var(--pink)">$195</span>
+              <span class="price-amount" style="color:var(--pink)">$260</span>
               <span class="price-unit">TTD</span>
             </div>
-            <p class="muted small mt-8">3 skate classes. Fastest way to build real confidence on wheels.</p>
+            <p class="muted small mt-8">4 skate classes over 14 days. Fastest way to build real confidence on wheels.</p>
             <ul class="list mt-12">
-              <li>3 coached sessions</li>
+              <li>4 coached sessions</li>
               <li>Rental skates included</li>
               <li>Progress tracked Level 0–2</li>
               <li>1 free water per class</li>
@@ -2213,10 +2212,10 @@
             <div class="path-tag path-tag-gold">Academy Monthly</div>
             <h3>Steady Progress</h3>
             <div class="price-badge">
-              <span class="price-amount" style="color:var(--gold)">$260</span>
+              <span class="price-amount" style="color:var(--gold)">$280</span>
               <span class="price-unit">TTD</span>
             </div>
-            <p class="muted small mt-8">4 skate classes. Best for consistent growth and skill development.</p>
+            <p class="muted small mt-8">4 skate classes over 30 days. Best for consistent growth and skill development.</p>
             <ul class="list mt-12">
               <li>4 coached sessions</li>
               <li>Rental skates included</li>
@@ -2231,8 +2230,8 @@
 
         <!-- Referral nudge -->
         <div style="margin-top:16px; padding:14px 18px; background:rgba(0,245,255,.05); border:1px solid rgba(0,245,255,.15); border-radius:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-          <p class="small muted">🛼 <strong style="color:#fff">Know someone who'd love this?</strong> Refer a friend and get <strong style="color:var(--cyan)">$20 TTD off</strong> your next class — just message us their name when they book.</p>
-          <a class="btn btn-ghost btn-sm" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%20want%20to%20refer%20a%20friend%20and%20claim%20my%20%2420%20TTD%20discount." target="_blank" rel="noopener">Refer Now</a>
+          <p class="small muted">🛼 <strong style="color:#fff">Know someone who'd love this?</strong> Bring them along and message us their name when they book so we can place you in the right group.</p>
+          <a class="btn btn-ghost btn-sm" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%20want%20to%20bring%20a%20friend%20to%20class." target="_blank" rel="noopener">Message Us</a>
         </div>
 
       </div>
@@ -2608,7 +2607,7 @@
             <div style="position:absolute; right:-10px; top:-10px; font-size:120px; opacity:.06; pointer-events:none; user-select:none; line-height:1;">🛒</div>
             <div class="kicker" style="margin-bottom:10px;"><span class="bar"></span>The Store</div>
             <div style="font-family:var(--font-display); font-size:38px; line-height:1; margin-bottom:10px;">TSG <span style="color:var(--cyan)">MERCH</span></div>
-            <p class="muted small" style="margin-bottom:16px;">T-shirts, hoodies, bucket hats, keychains and more. Wear the community — ships locally and worldwide.</p>
+            <p class="muted small" style="margin-bottom:16px;">T-shirts, hoodies, bucket hats, keychains and more. Wear the community and order through the TSG store or WhatsApp.</p>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
               <span style="font-size:12px; background:rgba(0,245,255,.08); border:1px solid rgba(0,245,255,.2); border-radius:999px; padding:4px 12px; color:var(--cyan);">T-Shirts from $160 TTD</span>
               <span style="font-size:12px; background:rgba(0,245,255,.08); border:1px solid rgba(0,245,255,.2); border-radius:999px; padding:4px 12px; color:var(--cyan);">Hoodies from $350 TTD</span>
@@ -2786,7 +2785,7 @@
 
         <!-- CTA under testimonials -->
         <div style="margin-top: 32px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-          <a class="btn btn-primary" href="#learn">Join the Community</a>
+          <a class="btn btn-primary" href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">Join the Community</a>
           <span class="muted small">⭐ Have a story? Tag us <a href="https://instagram.com/the_skateguys" target="_blank" rel="noopener" style="color:var(--cyan)">@the_skateguys</a> on Instagram</span>
         </div>
 
@@ -3058,7 +3057,7 @@
               </div>
 
               <p class="form-note" style="margin-top:8px;">Class sizes are capped for safety &amp; personal coaching. If the month is full, we'll offer a waitlist + free community session invite.</p>
-              <p class="form-note" style="margin-top:8px; padding:10px 14px; background:rgba(0,245,255,.05); border:1px solid rgba(0,245,255,.15); border-radius:10px;">🛼 <strong style="color:var(--cyan)">Know someone who'd love this?</strong> Refer a friend and get <strong style="color:#fff">$20 TTD off</strong> your next class. <a href="#referral" style="color:var(--cyan)">See how it works ↓</a></p>
+              <p class="form-note" style="margin-top:8px; padding:10px 14px; background:rgba(0,245,255,.05); border:1px solid rgba(0,245,255,.15); border-radius:10px;">🛼 <strong style="color:var(--cyan)">Bringing someone with you?</strong> Add their name in the notes so TSG can confirm the right class group.</p>
             </form>
           </div>
 

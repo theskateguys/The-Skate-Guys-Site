@@ -153,7 +153,13 @@
       padding: 14px;
       cursor: pointer;
     }
-    .package-card input { position: absolute; opacity: 0; pointer-events: none; }
+    .package-card input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
     .package-card:has(input:checked) {
       border-color: rgba(0,245,255,.55);
       box-shadow: 0 0 0 1px rgba(0,245,255,.18), 0 0 24px rgba(0,245,255,.10);
@@ -204,6 +210,14 @@
       padding: 18px 0 28px;
       font-size: 12px;
     }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -217,6 +231,7 @@
         <a href="index.html">Home</a>
         <a href="merch.html">Merch</a>
         <a href="elite.html">Elite</a>
+        <a href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
       </div>
       <a class="btn btn-pink" href="book.html">Book a Class</a>
     </div>
@@ -238,17 +253,17 @@
           <label class="package-card">
             <input type="radio" name="packageChoice" value="Starter Pass: 2 classes / 10 days / $140 TTD" checked form="bookingForm">
             <div class="pkg-top"><span class="pkg-name">Starter Pass</span><span class="pkg-price">$140</span></div>
-            <div class="pkg-meta">2 classes / 10 days / TTD</div>
+            <div class="pkg-meta">2 classes / 10 days / $140 TTD</div>
           </label>
           <label class="package-card">
             <input type="radio" name="packageChoice" value="Beginner Bootcamp: 4 classes / 14 days / $260 TTD" form="bookingForm">
             <div class="pkg-top"><span class="pkg-name">Beginner Bootcamp</span><span class="pkg-price">$260</span></div>
-            <div class="pkg-meta">4 classes / 14 days / TTD</div>
+            <div class="pkg-meta">4 classes / 14 days / $260 TTD</div>
           </label>
           <label class="package-card">
             <input type="radio" name="packageChoice" value="Academy Monthly: 4 classes / 30 days / $280 TTD" form="bookingForm">
             <div class="pkg-top"><span class="pkg-name">Academy Monthly</span><span class="pkg-price">$280</span></div>
-            <div class="pkg-meta">4 classes / 30 days / TTD</div>
+            <div class="pkg-meta">4 classes / 30 days / $280 TTD</div>
           </label>
         </div>
       </section>
@@ -259,6 +274,11 @@
           <label>
             Name
             <input name="name" autocomplete="name" required>
+          </label>
+
+          <label>
+            WhatsApp number
+            <input name="phone" autocomplete="tel" inputmode="tel" placeholder="868-276-6878" required>
           </label>
 
           <div class="field-grid">
@@ -340,6 +360,7 @@
         'TSG Booking Request',
         '',
         `Name: ${data.get('name')}`,
+        `WhatsApp number: ${data.get('phone')}`,
         `Adult or child: ${data.get('skaterType')}`,
         `Location: ${data.get('location')}`,
         `Package: ${data.get('packageSelect')}`,

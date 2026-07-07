@@ -11,12 +11,13 @@ window.TSG_UPDATES = [
     tickerText: "Classic T-Shirt now available - $160 TTD - limited edition community gear"
   },
   {
-    type: "Event Recap",
-    dateLabel: "June 2026",
-    title: "Lowlands Pop-Up wrapped",
-    body: "The Lowlands Mall pop-up class is complete. Thanks to everyone who came out, rolled with us, and helped grow the Tobago skate community.",
+    type: "Class Booking",
+    dateLabel: "July 2026",
+    title: "Class package bookings are open",
+    body: "Choose your package, send your details, and TSG will confirm availability for Trinidad or Tobago.",
     ctaLabel: "Book a Class",
-    href: "#learn",
-    theme: "cyan"
+    href: "book.html",
+    theme: "cyan",
+    tickerText: "Class bookings open - Starter Pass, Beginner Bootcamp and Academy Monthly available"
   }
 ];

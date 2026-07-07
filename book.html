@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="assets/theskateguys-1.png">
+  <title>Book a Skate Class</title>
+  <meta name="description" content="Book a Skate Guys class in Trinidad or Tobago. Choose your class package and send a WhatsApp booking request.">
+  <meta property="og:title" content="Book a Skate Class | The Skate Guys">
+  <meta property="og:description" content="Choose your class, send your request, and TSG will confirm availability.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://the-skate-guys-site.vercel.app/assets/theskateguys-1.png">
+  <meta property="og:url" content="https://the-skate-guys-site.vercel.app/book.html">
+  <link rel="canonical" href="https://the-skate-guys-site.vercel.app/book.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050508;
+      --panel: #0d0d18;
+      --panel2: #121220;
+      --cyan: #00F5FF;
+      --pink: #FF2D6B;
+      --gold: #FFD166;
+      --ink: #fff;
+      --muted: rgba(255,255,255,.64);
+      --line: rgba(255,255,255,.10);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255,45,107,.16), transparent 34%),
+        radial-gradient(circle at 92% 6%, rgba(0,245,255,.14), transparent 32%),
+        var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(100%, 1120px); margin: 0 auto; padding: 0 18px; }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5,5,8,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 64px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 23px;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .brand img { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; }
+    .nav-links { display: none; gap: 12px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 700; }
+    .nav-links a:hover { color: var(--ink); }
+    @media (min-width: 760px) { .nav-links { display: flex; } }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .12s, box-shadow .12s, border-color .12s;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--cyan);
+      color: #001014;
+      box-shadow: 0 0 18px rgba(0,245,255,.24);
+    }
+    .btn-pink {
+      background: var(--pink);
+      color: #fff;
+      box-shadow: 0 0 18px rgba(255,45,107,.28);
+    }
+    .hero { padding: 36px 0 18px; }
+    .eyebrow {
+      display: inline-flex;
+      color: var(--cyan);
+      border: 1px solid rgba(0,245,255,.24);
+      background: rgba(0,245,255,.06);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 15vw, 96px);
+      line-height: .92;
+      letter-spacing: .02em;
+      max-width: 780px;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin-top: 16px;
+      font-size: 16px;
+    }
+    .layout {
+      display: grid;
+      gap: 18px;
+      padding: 18px 0 48px;
+    }
+    @media (min-width: 900px) {
+      .layout { grid-template-columns: .9fr 1.1fr; align-items: start; }
+    }
+    .packages, .form-card {
+      background: rgba(13,13,24,.88);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 31px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .package-list { display: grid; gap: 10px; }
+    .package-card {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel2);
+      padding: 14px;
+      cursor: pointer;
+    }
+    .package-card input { position: absolute; opacity: 0; pointer-events: none; }
+    .package-card:has(input:checked) {
+      border-color: rgba(0,245,255,.55);
+      box-shadow: 0 0 0 1px rgba(0,245,255,.18), 0 0 24px rgba(0,245,255,.10);
+    }
+    .pkg-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .pkg-name { font-weight: 800; color: #fff; }
+    .pkg-price {
+      font-family: var(--font-display);
+      color: var(--gold);
+      font-size: 30px;
+      line-height: 1;
+    }
+    .pkg-meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    form { display: grid; gap: 14px; }
+    label { display: grid; gap: 7px; color: rgba(255,255,255,.86); font-size: 13px; font-weight: 700; }
+    input, select {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(0,0,0,.28);
+      color: var(--ink);
+      padding: 10px 12px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      outline: none;
+    }
+    select option { color: #111; }
+    input:focus, select:focus { border-color: rgba(0,245,255,.65); box-shadow: 0 0 0 3px rgba(0,245,255,.10); }
+    .field-grid { display: grid; gap: 12px; }
+    @media (min-width: 640px) { .field-grid { grid-template-columns: 1fr 1fr; } }
+    .note {
+      border: 1px solid rgba(255,209,102,.22);
+      background: rgba(255,209,102,.08);
+      color: rgba(255,255,255,.82);
+      border-radius: 12px;
+      padding: 13px;
+      font-size: 13px;
+    }
+    .submit { width: 100%; margin-top: 2px; min-height: 52px; font-size: 14px; }
+    .footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 18px 0 28px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html">
+        <img src="logo.png" alt="The Skate Guys logo">
+        <span>The Skate Guys</span>
+      </a>
+      <div class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="merch.html">Merch</a>
+        <a href="elite.html">Elite</a>
+      </div>
+      <a class="btn btn-pink" href="book.html">Book a Class</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Trinidad & Tobago Skate Classes</div>
+        <h1>Ready to Roll? Book Your Skate Class.</h1>
+        <p>Choose your class, send your request, and TSG will confirm availability.</p>
+      </div>
+    </section>
+
+    <div class="wrap layout">
+      <section class="packages" aria-labelledby="packagesTitle">
+        <h2 class="section-title" id="packagesTitle">Choose Your Package</h2>
+        <div class="package-list">
+          <label class="package-card">
+            <input type="radio" name="packageChoice" value="Starter Pass: 2 classes / 10 days / $140 TTD" checked form="bookingForm">
+            <div class="pkg-top"><span class="pkg-name">Starter Pass</span><span class="pkg-price">$140</span></div>
+            <div class="pkg-meta">2 classes / 10 days / TTD</div>
+          </label>
+          <label class="package-card">
+            <input type="radio" name="packageChoice" value="Beginner Bootcamp: 4 classes / 14 days / $260 TTD" form="bookingForm">
+            <div class="pkg-top"><span class="pkg-name">Beginner Bootcamp</span><span class="pkg-price">$260</span></div>
+            <div class="pkg-meta">4 classes / 14 days / TTD</div>
+          </label>
+          <label class="package-card">
+            <input type="radio" name="packageChoice" value="Academy Monthly: 4 classes / 30 days / $280 TTD" form="bookingForm">
+            <div class="pkg-top"><span class="pkg-name">Academy Monthly</span><span class="pkg-price">$280</span></div>
+            <div class="pkg-meta">4 classes / 30 days / TTD</div>
+          </label>
+        </div>
+      </section>
+
+      <section class="form-card" aria-labelledby="bookingTitle">
+        <h2 class="section-title" id="bookingTitle">Send Your Request</h2>
+        <form id="bookingForm">
+          <label>
+            Name
+            <input name="name" autocomplete="name" required>
+          </label>
+
+          <div class="field-grid">
+            <label>
+              Adult or child
+              <select name="skaterType" required>
+                <option value="">Select one</option>
+                <option>Adult</option>
+                <option>Child</option>
+              </select>
+            </label>
+            <label>
+              Location
+              <select name="location" required>
+                <option value="">Select one</option>
+                <option>Trinidad</option>
+                <option>Tobago</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Package
+            <select name="packageSelect" required>
+              <option>Starter Pass: 2 classes / 10 days / $140 TTD</option>
+              <option>Beginner Bootcamp: 4 classes / 14 days / $260 TTD</option>
+              <option>Academy Monthly: 4 classes / 30 days / $280 TTD</option>
+            </select>
+          </label>
+
+          <div class="field-grid">
+            <label>
+              Rental skates needed
+              <select name="rentals" required>
+                <option value="">Select one</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>
+              Preferred day/time
+              <input name="preferredTime" placeholder="Example: Saturday morning" required>
+            </label>
+          </div>
+
+          <p class="note">Rentals included. Booking required. Classes run once the minimum group is confirmed.</p>
+          <button class="btn btn-primary submit" type="submit">Send Booking Request on WhatsApp</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">The Skate Guys Hub · Trinidad & Tobago</div>
+  </footer>
+
+  <script>
+    const WHATSAPP = '18682766878';
+    const form = document.getElementById('bookingForm');
+    const packageRadios = document.querySelectorAll('input[name="packageChoice"]');
+    const packageSelect = form.elements.packageSelect;
+
+    packageRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (radio.checked) packageSelect.value = radio.value;
+      });
+    });
+
+    packageSelect.addEventListener('change', () => {
+      packageRadios.forEach(radio => {
+        radio.checked = radio.value === packageSelect.value;
+      });
+    });
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const lines = [
+        'TSG Booking Request',
+        '',
+        `Name: ${data.get('name')}`,
+        `Adult or child: ${data.get('skaterType')}`,
+        `Location: ${data.get('location')}`,
+        `Package: ${data.get('packageSelect')}`,
+        `Rental skates needed: ${data.get('rentals')}`,
+        `Preferred day/time: ${data.get('preferredTime')}`,
+        '',
+        'Please confirm availability.'
+      ];
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+    });
+  </script>
+</body>
+</html>

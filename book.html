@@ -1,361 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="assets/theskateguys-1.png">
-  <title>Book a Skate Class</title>
-  <meta name="description" content="Book a Skate Guys class in Trinidad or Tobago. Choose your class package and send a WhatsApp booking request.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050508">
+  <title>Book a Skate Class | The Skate Guys</title>
+  <meta name="description" content="Choose your TSG skate package, send a short booking request and confirm your class on WhatsApp.">
   <meta property="og:title" content="Book a Skate Class | The Skate Guys">
-  <meta property="og:description" content="Choose your class, send your request, and TSG will confirm availability.">
+  <meta property="og:description" content="Choose your class, send your details and get your booking confirmed on WhatsApp.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://the-skate-guys-site.vercel.app/assets/theskateguys-1.png">
-  <meta property="og:url" content="https://the-skate-guys-site.vercel.app/book.html">
   <link rel="canonical" href="https://the-skate-guys-site.vercel.app/book.html">
+  <link rel="icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #050508;
-      --panel: #0d0d18;
-      --panel2: #121220;
-      --cyan: #00F5FF;
-      --pink: #FF2D6B;
-      --gold: #FFD166;
-      --ink: #fff;
-      --muted: rgba(255,255,255,.64);
-      --line: rgba(255,255,255,.10);
-      --font-display: 'Bebas Neue', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      min-height: 100vh;
-      font-family: var(--font-body);
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255,45,107,.16), transparent 34%),
-        radial-gradient(circle at 92% 6%, rgba(0,245,255,.14), transparent 32%),
-        var(--bg);
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(100%, 1120px); margin: 0 auto; padding: 0 18px; }
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(5,5,8,.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      min-height: 64px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-display);
-      font-size: 23px;
-      letter-spacing: .04em;
-      white-space: nowrap;
-    }
-    .brand img { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; }
-    .nav-links { display: none; gap: 12px; align-items: center; }
-    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 700; }
-    .nav-links a:hover { color: var(--ink); }
-    @media (min-width: 760px) { .nav-links { display: flex; } }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      border: 0;
-      border-radius: 10px;
-      padding: 10px 16px;
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: transform .12s, box-shadow .12s, border-color .12s;
-      white-space: nowrap;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: var(--cyan);
-      color: #001014;
-      box-shadow: 0 0 18px rgba(0,245,255,.24);
-    }
-    .btn-pink {
-      background: var(--pink);
-      color: #fff;
-      box-shadow: 0 0 18px rgba(255,45,107,.28);
-    }
-    .hero { padding: 36px 0 18px; }
-    .eyebrow {
-      display: inline-flex;
-      color: var(--cyan);
-      border: 1px solid rgba(0,245,255,.24);
-      background: rgba(0,245,255,.06);
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-    h1 {
-      font-family: var(--font-display);
-      font-size: clamp(48px, 15vw, 96px);
-      line-height: .92;
-      letter-spacing: .02em;
-      max-width: 780px;
-    }
-    .hero p {
-      color: var(--muted);
-      max-width: 650px;
-      margin-top: 16px;
-      font-size: 16px;
-    }
-    .layout {
-      display: grid;
-      gap: 18px;
-      padding: 18px 0 48px;
-    }
-    @media (min-width: 900px) {
-      .layout { grid-template-columns: .9fr 1.1fr; align-items: start; }
-    }
-    .packages, .form-card {
-      background: rgba(13,13,24,.88);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 31px;
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-    .package-list { display: grid; gap: 10px; }
-    .package-card {
-      display: block;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--panel2);
-      padding: 14px;
-      cursor: pointer;
-    }
-    .package-card input {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      opacity: 0;
-      pointer-events: none;
-    }
-    .package-card:has(input:checked) {
-      border-color: rgba(0,245,255,.55);
-      box-shadow: 0 0 0 1px rgba(0,245,255,.18), 0 0 24px rgba(0,245,255,.10);
-    }
-    .pkg-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-    .pkg-name { font-weight: 800; color: #fff; }
-    .pkg-price {
-      font-family: var(--font-display);
-      color: var(--gold);
-      font-size: 30px;
-      line-height: 1;
-    }
-    .pkg-meta {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 4px;
-    }
-    form { display: grid; gap: 14px; }
-    label { display: grid; gap: 7px; color: rgba(255,255,255,.86); font-size: 13px; font-weight: 700; }
-    input, select {
-      width: 100%;
-      min-height: 46px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: rgba(0,0,0,.28);
-      color: var(--ink);
-      padding: 10px 12px;
-      font-family: var(--font-body);
-      font-size: 15px;
-      outline: none;
-    }
-    select option { color: #111; }
-    input:focus, select:focus { border-color: rgba(0,245,255,.65); box-shadow: 0 0 0 3px rgba(0,245,255,.10); }
-    .field-grid { display: grid; gap: 12px; }
-    @media (min-width: 640px) { .field-grid { grid-template-columns: 1fr 1fr; } }
-    .note {
-      border: 1px solid rgba(255,209,102,.22);
-      background: rgba(255,209,102,.08);
-      color: rgba(255,255,255,.82);
-      border-radius: 12px;
-      padding: 13px;
-      font-size: 13px;
-    }
-    .submit { width: 100%; margin-top: 2px; min-height: 52px; font-size: 14px; }
-    .footer {
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      padding: 18px 0 28px;
-      font-size: 12px;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-      }
-    }
+    :root{--bg:#050508;--panel:#11111b;--panel2:#171722;--ink:#f8f8fb;--muted:#aaaabb;--line:rgba(255,255,255,.12);--cyan:#00f5ff;--pink:#ff2d6b;--gold:#ffd166;--wrap:min(1060px,calc(100% - 32px));--display:'Bebas Neue',sans-serif;--body:'DM Sans',sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100vh;background:radial-gradient(680px 400px at 0 0,rgba(255,45,107,.16),transparent 65%),radial-gradient(620px 400px at 100% 4%,rgba(0,245,255,.13),transparent 66%),var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:var(--wrap);margin:auto}
+    .header{position:sticky;top:0;z-index:9;background:rgba(5,5,8,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:9px;font:25px/1 var(--display);letter-spacing:.04em}
+    .brand img{width:37px;height:37px;object-fit:contain;border-radius:9px}
+    .links{display:flex;gap:18px}
+    .links a{font-size:13px;color:var(--muted);font-weight:700}
+    .links a:hover{color:#fff}
+    .btn{display:inline-flex;justify-content:center;align-items:center;min-height:46px;padding:11px 17px;border:1px solid transparent;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .primary{background:var(--cyan);color:#001014;box-shadow:0 0 24px rgba(0,245,255,.25)}
+    .secondary{background:rgba(255,255,255,.05);color:#fff;border-color:var(--line)}
+    .hero{padding:56px 0 24px}
+    .eyebrow{display:inline-flex;padding:7px 11px;border-radius:999px;border:1px solid rgba(0,245,255,.25);background:rgba(0,245,255,.06);color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.02em;line-height:.9}
+    h1{font-size:clamp(56px,10vw,100px);margin:17px 0}
+    .hero p{max-width:650px;color:#d1d1dd;font-size:17px}
+    .trust{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+    .trust span{font-size:12px;font-weight:700;color:var(--muted)}
+    .trust span:before{content:'*';color:var(--cyan);margin-right:6px}
+    .layout{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;padding:24px 0 52px}
+    .panel{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(16,16,26,.86)}
+    .panel h2{font-size:37px;margin-bottom:7px}
+    .panel-intro{font-size:13px;color:var(--muted);margin-bottom:16px}
+    .packages{display:grid;gap:10px}
+    .package{display:block;padding:15px;border:1px solid var(--line);border-radius:13px;background:var(--panel2);cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+    .package:hover{transform:translateY(-2px);border-color:rgba(0,245,255,.35)}
+    .package input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+    .package:has(input:checked){border-color:rgba(0,245,255,.72);box-shadow:0 0 0 1px rgba(0,245,255,.22),0 0 25px rgba(0,245,255,.10)}
+    .package-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+    .package-name{font-weight:800}
+    .price{font:31px/1 var(--display);color:var(--gold)}
+    .package p{font-size:13px;color:var(--muted);margin-top:5px}
+    .recommended{display:inline-block;margin-top:8px;padding:4px 7px;border-radius:999px;background:rgba(255,45,107,.11);color:var(--pink);font-size:10px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+    .help{margin-top:14px;font-size:13px;color:var(--muted)}
+    .help a{color:var(--cyan);font-weight:800}
+    .form{display:grid;gap:13px}
+    label{display:grid;gap:7px;font-size:13px;font-weight:800;color:#e1e1e8}
+    input,select{width:100%;min-height:47px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.22);color:#fff;font-size:15px;outline:none}
+    select option{color:#111}
+    input:focus,select:focus{border-color:rgba(0,245,255,.74);box-shadow:0 0 0 3px rgba(0,245,255,.10)}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .note{padding:13px;border:1px solid rgba(255,209,102,.24);border-radius:12px;background:rgba(255,209,102,.08);font-size:13px;color:#e0e0e7}
+    .note strong{color:var(--gold)}
+    .submit{width:100%;min-height:55px;font-size:15px}
+    .under-submit{text-align:center;color:var(--muted);font-size:12px}
+    .under-submit a{color:var(--cyan);font-weight:800}
+    .how{padding:0 0 58px}
+    .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .how-item{padding:18px;border-left:2px solid var(--cyan);background:rgba(255,255,255,.025)}
+    .how-item:nth-child(2){border-color:var(--pink)}
+    .how-item:nth-child(3){border-color:var(--gold)}
+    .how-item b{display:block;font:38px/1 var(--display);margin-bottom:8px}
+    .how-item p{font-size:13px;color:var(--muted)}
+    footer{padding:24px 0 38px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+    @media(max-width:850px){.layout{grid-template-columns:1fr}.how-grid{grid-template-columns:1fr}.links{display:none}}
+    @media(max-width:550px){:root{--wrap:min(100% - 28px,1060px)}.hero{padding-top:43px}.nav .btn{display:none}.two{grid-template-columns:1fr}h1{font-size:clamp(58px,17vw,80px)}.layout{padding-bottom:35px}.panel{padding:17px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
-  <nav class="site-nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="index.html">
-        <img src="logo.png" alt="The Skate Guys logo">
-        <span>The Skate Guys</span>
-      </a>
-      <div class="nav-links" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="merch.html">Merch</a>
-        <a href="elite.html">Elite</a>
-        <a href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-      <a class="btn btn-pink" href="book.html">Book a Class</a>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html"><img src="logo.png" alt="The Skate Guys logo"><span>The Skate Guys</span></a>
+      <nav class="links" aria-label="Primary navigation"><a href="index.html">Home</a><a href="merch.html">Merch</a><a href="elite.html">Elite</a></nav>
+      <a class="btn secondary" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
     </div>
-  </nav>
-
+  </header>
   <main>
     <section class="hero">
       <div class="wrap">
-        <div class="eyebrow">Trinidad & Tobago Skate Classes</div>
-        <h1>Ready to Roll? Book Your Skate Class.</h1>
-        <p>Choose your class, send your request, and TSG will confirm availability.</p>
+        <span class="eyebrow">Trinidad &amp; Tobago skate classes</span>
+        <h1>READY TO ROLL?<br>BOOK YOUR CLASS.</h1>
+        <p>Choose your package, send only the details needed and TSG will confirm availability with you on WhatsApp.</p>
+        <div class="trust"><span>Rentals included</span><span>Kids and adults</span><span>No online payment needed to request a slot</span></div>
       </div>
     </section>
-
     <div class="wrap layout">
-      <section class="packages" aria-labelledby="packagesTitle">
-        <h2 class="section-title" id="packagesTitle">Choose Your Package</h2>
-        <div class="package-list">
-          <label class="package-card">
-            <input type="radio" name="packageChoice" value="Starter Pass: 2 classes / 10 days / $140 TTD" checked form="bookingForm">
-            <div class="pkg-top"><span class="pkg-name">Starter Pass</span><span class="pkg-price">$140</span></div>
-            <div class="pkg-meta">2 classes / 10 days / $140 TTD</div>
-          </label>
-          <label class="package-card">
-            <input type="radio" name="packageChoice" value="Beginner Bootcamp: 4 classes / 14 days / $260 TTD" form="bookingForm">
-            <div class="pkg-top"><span class="pkg-name">Beginner Bootcamp</span><span class="pkg-price">$260</span></div>
-            <div class="pkg-meta">4 classes / 14 days / $260 TTD</div>
-          </label>
-          <label class="package-card">
-            <input type="radio" name="packageChoice" value="Academy Monthly: 4 classes / 30 days / $280 TTD" form="bookingForm">
-            <div class="pkg-top"><span class="pkg-name">Academy Monthly</span><span class="pkg-price">$280</span></div>
-            <div class="pkg-meta">4 classes / 30 days / $280 TTD</div>
-          </label>
+      <section class="panel" aria-labelledby="packageTitle">
+        <h2 id="packageTitle">CHOOSE YOUR PACKAGE</h2>
+        <p class="panel-intro">Start where you are. Pick one package only; your choice is sent directly with the booking request.</p>
+        <div class="packages">
+          <label class="package"><input type="radio" name="packageChoice" value="Starter Pass: 2 classes / 10 days / $140 TTD" checked form="bookingForm"><div class="package-top"><span class="package-name">Starter Pass</span><span class="price">$140</span></div><p>2 classes / 10 days / $140 TTD</p><span class="recommended">Good first step</span></label>
+          <label class="package"><input type="radio" name="packageChoice" value="Beginner Bootcamp: 4 classes / 14 days / $260 TTD" form="bookingForm"><div class="package-top"><span class="package-name">Beginner Bootcamp</span><span class="price">$260</span></div><p>4 classes / 14 days / $260 TTD</p></label>
+          <label class="package"><input type="radio" name="packageChoice" value="Academy Monthly: 4 classes / 30 days / $280 TTD" form="bookingForm"><div class="package-top"><span class="package-name">Academy Monthly</span><span class="price">$280</span></div><p>4 classes / 30 days / $280 TTD</p></label>
         </div>
+        <p class="help">Not sure which package fits? <a href="https://wa.me/18682766878?text=Hi%20TSG%2C%20I%20am%20new%20to%20skating%20and%20need%20help%20choosing%20a%20class." target="_blank" rel="noopener">Ask TSG on WhatsApp.</a></p>
       </section>
-
-      <section class="form-card" aria-labelledby="bookingTitle">
-        <h2 class="section-title" id="bookingTitle">Send Your Request</h2>
-        <form id="bookingForm">
-          <label>
-            Name
-            <input name="name" autocomplete="name" required>
-          </label>
-
-          <label>
-            WhatsApp number
-            <input name="phone" autocomplete="tel" inputmode="tel" placeholder="868-276-6878" required>
-          </label>
-
-          <div class="field-grid">
-            <label>
-              Adult or child
-              <select name="skaterType" required>
-                <option value="">Select one</option>
-                <option>Adult</option>
-                <option>Child</option>
-              </select>
-            </label>
-            <label>
-              Location
-              <select name="location" required>
-                <option value="">Select one</option>
-                <option>Trinidad</option>
-                <option>Tobago</option>
-              </select>
-            </label>
+      <section class="panel" aria-labelledby="formTitle">
+        <h2 id="formTitle">SEND YOUR REQUEST</h2>
+        <p class="panel-intro">This is a booking request, not a payment. TSG confirms the correct class and next step with you.</p>
+        <form class="form" id="bookingForm">
+          <label>Name<input name="name" autocomplete="name" required></label>
+          <label>WhatsApp number<input name="phone" autocomplete="tel" inputmode="tel" placeholder="868-276-6878" required></label>
+          <div class="two">
+            <label>Adult or child<select name="skaterType" required><option value="">Select one</option><option>Adult</option><option>Child</option></select></label>
+            <label>Location<select name="location" required><option value="">Select one</option><option>Trinidad</option><option>Tobago</option></select></label>
           </div>
-
-          <label>
-            Package
-            <select name="packageSelect" required>
-              <option>Starter Pass: 2 classes / 10 days / $140 TTD</option>
-              <option>Beginner Bootcamp: 4 classes / 14 days / $260 TTD</option>
-              <option>Academy Monthly: 4 classes / 30 days / $280 TTD</option>
-            </select>
-          </label>
-
-          <div class="field-grid">
-            <label>
-              Rental skates needed
-              <select name="rentals" required>
-                <option value="">Select one</option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-            </label>
-            <label>
-              Preferred day/time
-              <input name="preferredTime" placeholder="Example: Saturday morning" required>
-            </label>
+          <div class="two">
+            <label>Rental skates needed<select name="rentals" required><option value="">Select one</option><option>Yes</option><option>No</option></select></label>
+            <label>Preferred day or time<input name="preferredTime" placeholder="Example: Saturday morning" required></label>
           </div>
-
-          <p class="note">Rentals included. Booking required. Classes run once the minimum group is confirmed.</p>
-          <button class="btn btn-primary submit" type="submit">Send Booking Request on WhatsApp</button>
+          <p class="note"><strong>Rentals included.</strong> Booking is required. Classes run once the minimum group is confirmed.</p>
+          <button class="btn primary submit" type="submit">Send Booking Request on WhatsApp</button>
+          <p class="under-submit">Prefer a quick question first? <a href="https://wa.me/18682766878" target="_blank" rel="noopener">Message TSG directly.</a></p>
         </form>
       </section>
     </div>
+    <section class="how">
+      <div class="wrap">
+        <div class="how-grid">
+          <article class="how-item"><b>01</b><p>Choose the package that matches where you are now.</p></article>
+          <article class="how-item"><b>02</b><p>Send the key details through the short form.</p></article>
+          <article class="how-item"><b>03</b><p>Get availability confirmation and roll with TSG.</p></article>
+        </div>
+      </div>
+    </section>
   </main>
-
-  <footer class="footer">
-    <div class="wrap">The Skate Guys Hub · Trinidad & Tobago</div>
-  </footer>
-
+  <footer><div class="wrap">The Skate Guys Ltd · Trinidad &amp; Tobago</div></footer>
   <script>
-    const WHATSAPP = '18682766878';
     const form = document.getElementById('bookingForm');
-    const packageRadios = document.querySelectorAll('input[name="packageChoice"]');
-    const packageSelect = form.elements.packageSelect;
-
-    packageRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        if (radio.checked) packageSelect.value = radio.value;
-      });
-    });
-
-    packageSelect.addEventListener('change', () => {
-      packageRadios.forEach(radio => {
-        radio.checked = radio.value === packageSelect.value;
-      });
-    });
-
     form.addEventListener('submit', event => {
       event.preventDefault();
       const data = new FormData(form);
+      const selected = document.querySelector('input[name="packageChoice"]:checked');
       const lines = [
         'TSG Booking Request',
         '',
@@ -363,13 +151,13 @@
         `WhatsApp number: ${data.get('phone')}`,
         `Adult or child: ${data.get('skaterType')}`,
         `Location: ${data.get('location')}`,
-        `Package: ${data.get('packageSelect')}`,
+        `Package: ${selected?.value || ''}`,
         `Rental skates needed: ${data.get('rentals')}`,
         `Preferred day/time: ${data.get('preferredTime')}`,
         '',
         'Please confirm availability.'
       ];
-      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+      window.open(`https://wa.me/18682766878?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
     });
   </script>
 </body>

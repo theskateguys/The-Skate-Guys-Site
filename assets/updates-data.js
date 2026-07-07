@@ -30,7 +30,8 @@ window.TSG_UPDATES = [
   heroScript.onload = () => {
     if (!window.TSG_CANOEBAY_B64) return;
 
-    const encoded = window.TSG_CANOEBAY_B64.replace(/-/g, '+').replace(/_/g, '/');
+    const raw = window.TSG_CANOEBAY_B64.replace(/-/g, '+').replace(/_/g, '/');
+    const encoded = raw + '='.repeat((4 - (raw.length % 4)) % 4);
     const photo = new Image();
     photo.onload = () => {
       const heroArt = document.querySelector('.hero-art');

@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="assets/theskateguys-1.png">
   <meta name="description" content="All-ages rollerskating lessons &amp; event hire across Trinidad &amp; Tobago. Small groups, beginner-friendly coaching, rentals available. Book on WhatsApp.">
   <meta property="og:title" content="The Skate Guys Hub — Trinidad &amp; Tobago's Leading Rollerskate Community">
   <meta property="og:description" content="Small circle. Big progress. Real community.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://the-skate-guys-site.vercel.app/logo.png">
+  <meta property="og:image" content="https://the-skate-guys-site.vercel.app/assets/theskateguys-1.png">
   <meta property="og:url" content="https://the-skate-guys-site.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="google-site-verification" content="VC0Kjooc8qVD1MITZbp1WDWsaym7lkRzx-WJlYzQhEM" />
+  <link rel="canonical" href="https://the-skate-guys-site.vercel.app/">
   <title>The Skate Guys Hub — Trinidad &amp; Tobago's Leading Rollerskate Community</title>
 
   <!-- ── Local Business Schema ── -->
@@ -80,6 +81,7 @@
   <!-- ── Analytics (Plausible — privacy friendly, no cookie banner needed) ── -->
   <script async src="https://plausible.io/js/pa-sQG05hL6gHUFDK_mvEuf0.js"></script>
   <script src="assets/events/events-data.js"></script>
+  <script src="assets/updates-data.js"></script>
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
@@ -1098,6 +1100,103 @@
       color: var(--muted);
     }
 
+    /* Homepage merch spotlight */
+    .merch-spotlight {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255,45,107,.08), rgba(0,245,255,.05));
+    }
+    .merch-spotlight-inner {
+      display: grid;
+      gap: 24px;
+      align-items: center;
+    }
+    @media (min-width: 780px) {
+      .merch-spotlight-inner { grid-template-columns: minmax(260px, 420px) 1fr; }
+    }
+    .merch-spotlight-media {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: #0b0b12;
+    }
+    .merch-spotlight-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .merch-spotlight-copy h2 { margin-bottom: 10px; }
+    .merch-price-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 14px 0 20px;
+    }
+    .merch-price {
+      font-family: var(--font-display);
+      font-size: 42px;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .merch-note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Latest updates */
+    .latest-updates { padding-top: 64px; }
+    .updates-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    @media (min-width: 760px) {
+      .updates-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .update-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      padding: 18px;
+    }
+    .update-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .update-pill {
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: rgba(0,245,255,.10);
+      color: var(--cyan);
+    }
+    .update-card-pink .update-pill {
+      background: rgba(255,45,107,.12);
+      color: var(--pink);
+    }
+    .update-title {
+      font-family: var(--font-display);
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .update-body {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
     /* ── Seasonal Section ────────────────────────────────── */
     .season-card {
       position: relative;
@@ -1841,13 +1940,13 @@
   <div id="summer-banner">
     <div class="ticker-wrap">
       <div class="ticker-track" id="tickerTrack">
-        <span class="ticker-item">🛼 <strong>Pop-Up Skate Class — Jun 26, 27 &amp; 28</strong> · Lowlands Mall, Tobago · $50 TTD with rentals · $40 TTD own skates · 3–6 PM daily</span>
+        <span class="ticker-item"><strong>Classic T-Shirt</strong> · Now available in the merch store · $160 TTD · Limited edition community gear</span>
         <span class="ticker-sep">★</span>
-        <span class="ticker-item">🛼 <strong>Pop-Up Skate Class — Jun 26, 27 &amp; 28</strong> · Lowlands Mall, Tobago · $50 TTD with rentals · $40 TTD own skates · 3–6 PM daily</span>
+        <span class="ticker-item"><strong>Classic T-Shirt</strong> · Now available in the merch store · $160 TTD · Limited edition community gear</span>
         <span class="ticker-sep">★</span>
       </div>
     </div>
-    <a class="ticker-cta" id="tickerCta" href="#events" style="background:var(--pink); color:#fff;">See Events</a>
+    <a class="ticker-cta" id="tickerCta" href="#updates" style="background:var(--pink); color:#fff;">Latest Updates</a>
     <button class="summer-banner-close" id="bannerClose" aria-label="Dismiss banner">✕</button>
   </div>
 
@@ -1945,6 +2044,24 @@
       </div>
     </section>
 
+    <section class="merch-spotlight" aria-labelledby="merchSpotlightTitle">
+      <div class="wrap merch-spotlight-inner">
+        <div class="merch-spotlight-media">
+          <img src="assets/merch/classic-tshirt-community.jpg" alt="Classic T-Shirt community gear promo" loading="lazy" decoding="async">
+        </div>
+        <div class="merch-spotlight-copy">
+          <div class="kicker"><span class="bar"></span>Latest Merch Drop</div>
+          <h2 id="merchSpotlightTitle">Classic T-Shirt</h2>
+          <p class="muted">Limited edition collectible community gear with the signature Skate Guys look.</p>
+          <div class="merch-price-row">
+            <div class="merch-price">$160</div>
+            <div class="merch-note">TTD · Classic T-shirt · Community drop</div>
+          </div>
+          <a class="btn btn-primary" href="merch.html">Shop Merch</a>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Email Capture Bar ──────────────────────────────── -->
     <div class="email-bar">
       <div class="wrap">
@@ -1961,6 +2078,26 @@
       </div>
     </div>
 
+    <section class="latest-updates" id="updates">
+      <div class="wrap">
+        <div class="kicker"><span class="bar"></span>Latest Updates</div>
+        <h2>Fresh From TSG</h2>
+        <div class="updates-grid reveal" id="updatesGrid">
+          <article class="update-card update-card-pink">
+            <div class="update-meta"><span class="update-pill">Merch Drop</span><span>July 2026</span></div>
+            <div class="update-title">Classic T-Shirt is live</div>
+            <p class="update-body">The limited edition community Classic T-Shirt is now in the merch store for $160 TTD.</p>
+            <a class="btn btn-primary btn-sm" href="merch.html">Shop the T-Shirt</a>
+          </article>
+          <article class="update-card">
+            <div class="update-meta"><span class="update-pill">Event Recap</span><span>June 2026</span></div>
+            <div class="update-title">Lowlands Pop-Up wrapped</div>
+            <p class="update-body">Thanks to everyone who came out, rolled with us, and helped grow the Tobago skate community.</p>
+            <a class="btn btn-ghost btn-sm" href="#learn">Book a Class</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- ── Upcoming Events ───────────────────────────────── -->
     <section id="events">
@@ -1969,31 +2106,7 @@
         <h2>Upcoming Events</h2>
         <div class="grid grid-2 reveal" id="eventsGrid">
 
-          <!-- Lowlands Pop-Up -->
-          <div class="card card-glow-cyan" style="position:relative; overflow:hidden;">
-            <div style="position:absolute; right:-10px; top:-10px; font-size:120px; opacity:.06; pointer-events:none; user-select:none; line-height:1;">🛼</div>
-            <img src="assets/events/popup-lowlands.jpg.jpg" alt="Pop-Up Skate Class Lowlands Mall flyer" loading="lazy" style="width:100%; border-radius:12px; margin-bottom:16px; object-fit:cover; max-height:280px;">
-            <div class="kicker" style="margin-bottom:10px;"><span class="bar"></span>Jun 26 · 27 · 28 · 3–6 PM · Tobago</div>
-            <div style="font-family:var(--font-display); font-size:clamp(26px,4vw,40px); line-height:1; margin-bottom:10px;"><span style="color:var(--cyan)">POP-UP</span> SKATE CLASS</div>
-            <p class="muted small" style="margin-bottom:14px;">Quick tutorial sessions for adults and kids at Lowlands Mall, in front of Movie Towne. 3 days, all skill levels, rental skates available.</p>
-            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
-              <span style="font-size:11px; background:rgba(0,245,255,.1); border:1px solid rgba(0,245,255,.25); border-radius:999px; padding:4px 10px; color:var(--cyan);">📅 Jun 26, 27 &amp; 28</span>
-              <span style="font-size:11px; background:rgba(0,245,255,.1); border:1px solid rgba(0,245,255,.25); border-radius:999px; padding:4px 10px; color:var(--cyan);">🕒 3:00 – 6:00 PM</span>
-              <span style="font-size:11px; background:rgba(0,245,255,.1); border:1px solid rgba(0,245,255,.25); border-radius:999px; padding:4px 10px; color:var(--cyan);">📍 Lowlands Mall, Tobago</span>
-              <span style="font-size:11px; background:rgba(255,209,102,.1); border:1px solid rgba(255,209,102,.25); border-radius:999px; padding:4px 10px; color:var(--gold);">💧 1 Free Water Per Student</span>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
-              <div style="background:rgba(0,0,0,.3); border:1px solid rgba(0,245,255,.2); border-radius:12px; padding:14px; text-align:center;">
-                <div style="font-family:var(--font-display); font-size:30px; color:var(--cyan); line-height:1;">$50</div>
-                <div style="font-size:11px; color:var(--muted); margin-top:3px;">TTD · With Rental Skates</div>
-              </div>
-              <div style="background:rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:14px; text-align:center;">
-                <div style="font-family:var(--font-display); font-size:30px; color:#fff; line-height:1;">$40</div>
-                <div style="font-size:11px; color:var(--muted); margin-top:3px;">TTD · Own Skates</div>
-              </div>
-            </div>
-            <a class="btn btn-primary" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20book%20a%20spot%20at%20the%20Lowlands%20Mall%20Pop-Up%20Skate%20Class." target="_blank" rel="noopener">🛼 Book via WhatsApp</a>
-          </div>
+          <div class="event-empty">No upcoming events are listed right now. Check back soon or message us on WhatsApp.</div>
 
         </div>
       </div>
@@ -3040,6 +3153,7 @@
       const waBase   = `https://wa.me/${WHATSAPP}`;
 
       const events = Array.isArray(window.TSG_EVENTS) ? window.TSG_EVENTS : [];
+      const updates = Array.isArray(window.TSG_UPDATES) ? window.TSG_UPDATES : [];
 
       function escapeHtml(value) {
         return String(value ?? '').replace(/[&<>"']/g, char => ({
@@ -3054,15 +3168,31 @@
       function renderTicker() {
         const track = document.getElementById('tickerTrack');
         const banner = document.getElementById('summer-banner');
+        const tickerCta = document.getElementById('tickerCta');
         const tickerEvents = events.filter(event => event.tickerText);
+        const tickerUpdates = updates.filter(update => update.tickerText);
+        const tickerItems = tickerEvents.length
+          ? tickerEvents.map(event => ({
+              title: event.shortTitle || event.title,
+              text: event.tickerText
+            }))
+          : tickerUpdates.map(update => ({
+              title: update.title,
+              text: update.tickerText
+            }));
         if (!track || !banner) return;
-        if (!tickerEvents.length) {
+        if (!tickerItems.length) {
           banner.classList.add('hidden');
           return;
         }
 
-        track.innerHTML = [...tickerEvents, ...tickerEvents].map(event => `
-          <span class="ticker-item"><strong>${escapeHtml(event.shortTitle || event.title)}</strong> - ${escapeHtml(event.tickerText)}</span>
+        if (tickerCta) {
+          tickerCta.href = tickerEvents.length ? '#events' : '#updates';
+          tickerCta.textContent = tickerEvents.length ? 'See Events' : 'Latest Updates';
+        }
+
+        track.innerHTML = [...tickerItems, ...tickerItems].map(item => `
+          <span class="ticker-item"><strong>${escapeHtml(item.title)}</strong> - ${escapeHtml(item.text)}</span>
           <span class="ticker-sep">*</span>
         `).join('');
       }
@@ -3149,9 +3279,32 @@
         schemaEl.textContent = JSON.stringify(eventSchemas.length === 1 ? eventSchemas[0] : eventSchemas);
       }
 
+      function renderUpdates() {
+        const grid = document.getElementById('updatesGrid');
+        if (!grid) return;
+        if (!updates.length) {
+          grid.innerHTML = '<div class="event-empty">No recent updates are listed right now.</div>';
+          return;
+        }
+
+        grid.innerHTML = updates.map(update => {
+          const theme = update.theme === 'pink' ? 'pink' : 'cyan';
+          const buttonClass = theme === 'pink' ? 'btn-accent' : 'btn-ghost';
+          return `
+            <article class="update-card update-card-${theme}">
+              <div class="update-meta"><span class="update-pill">${escapeHtml(update.type)}</span><span>${escapeHtml(update.dateLabel)}</span></div>
+              <div class="update-title">${escapeHtml(update.title)}</div>
+              <p class="update-body">${escapeHtml(update.body)}</p>
+              <a class="btn ${buttonClass} btn-sm" href="${escapeHtml(update.href)}">${escapeHtml(update.ctaLabel || 'Read More')}</a>
+            </article>
+          `;
+        }).join('');
+      }
+
       renderTicker();
       renderEvents();
       renderEventSchema();
+      renderUpdates();
 
       /* ── Event countdown (not used in current section but kept for future) ── */
 

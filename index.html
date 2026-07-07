@@ -528,6 +528,74 @@
     }
     .stat-pill .label { font-size: 10px; color: var(--muted); margin-top: 3px; letter-spacing: .06em; text-transform: uppercase; }
 
+    /* Proof band */
+    .trust-proof {
+      padding: 38px 0 46px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(0,245,255,.05), rgba(255,45,107,.04)),
+        rgba(255,255,255,.015);
+    }
+    .trust-proof-inner {
+      display: grid;
+      gap: 24px;
+      align-items: center;
+    }
+    @media (min-width: 860px) {
+      .trust-proof-inner { grid-template-columns: minmax(240px, 420px) 1fr; }
+    }
+    .trust-proof-media {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      min-height: 260px;
+    }
+    .trust-proof-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+    }
+    .trust-proof-media img:first-child { object-position: center top; }
+    .trust-proof-copy { max-width: 680px; }
+    .trust-proof-copy h2 { margin-bottom: 10px; }
+    .trust-proof-copy .lead {
+      color: rgba(255,255,255,.78);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .trust-quote {
+      border-left: 3px solid var(--cyan);
+      padding-left: 16px;
+      margin: 18px 0;
+      color: rgba(255,255,255,.84);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .trust-quote strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .trust-proof-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    @media (max-width: 520px) {
+      .trust-proof-media { grid-template-columns: 1fr; }
+      .trust-proof-media img { min-height: 220px; }
+    }
+
     /* ── How it works ────────────────────────────────────── */
     .step-num {
       font-family: var(--font-display);
@@ -2049,6 +2117,29 @@
               <div class="num">$60</div>
               <div class="label">inc. Rentals TTD</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-proof" aria-labelledby="trustProofTitle">
+      <div class="wrap trust-proof-inner">
+        <div class="trust-proof-media">
+          <img src="assets/coaches/Dylon.webp" alt="Coach Dylon from The Skate Guys" loading="lazy" decoding="async">
+          <img src="assets/community/tsg-01.jpg?v=1" alt="The Skate Guys community skating together" loading="lazy" decoding="async">
+        </div>
+        <div class="trust-proof-copy">
+          <div class="kicker"><span class="bar"></span>Real People. Real Coaching.</div>
+          <h2 id="trustProofTitle">Skate with the team behind the movement.</h2>
+          <p class="lead">Before anyone books, they should feel who they are rolling with. TSG is not a faceless class listing - it is coaches, community, patience, safety, and people who remember what the first session feels like.</p>
+          <blockquote class="trust-quote">
+            "This community is the best choice I could have made. The people here make me feel valued and appreciated, help me with skate moves, and give real advice and honest feedback."
+            <strong>Alaina Toussaint · Community Member</strong>
+          </blockquote>
+          <div class="trust-proof-actions">
+            <a class="btn btn-primary" href="book.html">Book a Class</a>
+            <a class="btn btn-ghost" href="#coaches">Meet the Coaches</a>
+            <a class="btn btn-ghost" href="#testimonials">Read Reviews</a>
           </div>
         </div>
       </div>

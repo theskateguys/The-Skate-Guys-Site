@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Temporary TSG logo bucket hat mockup</title>
+  <desc id="desc">Black bucket hat mockup with The Skate Guys logo patch.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#070710"/>
+      <stop offset="1" stop-color="#111220"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="26" stdDeviation="26" flood-color="#000" flood-opacity=".58"/>
+    </filter>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <circle cx="665" cy="215" r="180" fill="#ff2d6b" opacity=".08"/>
+  <path d="M286 314c21-88 74-132 164-132s143 44 164 132l32 139H254Z" fill="#151720" stroke="#313448" stroke-width="8" filter="url(#shadow)"/>
+  <path d="M232 450c73 44 145 65 218 65s145-21 218-65c66 51 102 104 108 159-95 60-204 90-326 90s-231-30-326-90c6-55 42-108 108-159Z" fill="#0b0c12" stroke="#2a2d3d" stroke-width="8"/>
+  <rect x="348" y="388" width="204" height="118" rx="22" fill="#050508" stroke="#00f5ff" stroke-opacity=".35"/>
+  <image href="../logo.png" x="372" y="405" width="156" height="84" preserveAspectRatio="xMidYMid meet"/>
+  <text x="450" y="752" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="800" fill="#ffffff" letter-spacing="4">BUCKET HAT MOCKUP</text>
+</svg>

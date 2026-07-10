@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/favicon.ico">
-  <meta name="description" content="Shop The Skate Guys merch — T-shirts, hoodies, bucket hats, keychains and more. Representing Trinidad & Tobago's leading rollerskate community. Ships worldwide.">
+  <link rel="icon" type="image/png" href="assets/theskateguys-1.png">
+  <meta name="description" content="Shop The Skate Guys merch — T-shirts, hoodies, bucket hats, keychains and more from Trinidad & Tobago's leading rollerskate community.">
   <meta property="og:title" content="TSG Merch Drop — The Skate Guys">
   <meta property="og:description" content="Wear the community. New drops from T&T's leading rollerskate brand.">
   <meta property="og:image" content="https://the-skate-guys-site.vercel.app/logo.png">
@@ -12,7 +12,7 @@
   <title>TSG Merch Drop — The Skate Guys</title>
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Store","name":"The Skate Guys Merch Store","url":"https://the-skate-guys-site.vercel.app/merch","currenciesAccepted":"TTD, USD","areaServed":"Worldwide"}
+  {"@context":"https://schema.org","@type":"Store","name":"The Skate Guys Merch Store","url":"https://the-skate-guys-site.vercel.app/merch","currenciesAccepted":"TTD"}
   </script>
 
   <script async src="https://plausible.io/js/pa-sQG05hL6gHUFDK_mvEuf0.js"></script>
@@ -113,6 +113,7 @@
     .mobile-nav a:hover { color: #fff; background: rgba(255,255,255,.04); }
     .mobile-nav .sep { height: 1px; background: var(--line); margin: 6px 0; }
     @media (max-width: 780px) { .nav-links { display: none; } .hide-mob { display: none; } .hamburger { display: flex; } }
+    @media (max-width: 420px) { .nav-actions .btn-primary { display: none; } }
 
     /* ── Page hero ── */
     .merch-hero {
@@ -356,7 +357,7 @@
     }
     .email-bar h3 { font-family: var(--font-display); font-size: 24px; letter-spacing: .03em; margin-bottom: 3px; }
     .email-bar p { font-size: 13px; color: var(--muted); }
-    .email-form { display: flex; gap: 8px; flex-wrap: wrap; min-width: 280px; }
+    .email-form { display: flex; gap: 8px; flex-wrap: wrap; min-width: 0; }
     .email-form input {
       flex: 1; min-width: 180px;
       background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
@@ -364,6 +365,11 @@
       color: #fff; font-family: var(--font-body); font-size: 14px; outline: none;
     }
     .email-form input::placeholder { color: rgba(255,255,255,.3); }
+    @media (max-width: 420px) {
+      .email-form { width: 100%; }
+      .email-form input { min-width: 0; }
+      .email-form .btn { width: 100%; }
+    }
 
     /* ── Footer ── */
     .site-footer { margin-top: 64px; border-top: 1px solid var(--line); padding: 40px 0 28px; }
@@ -379,6 +385,16 @@
     .social-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .s-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: 600; border: 1px solid var(--line); background: rgba(255,255,255,.04); color: #fff; transition: all .1s; }
     .s-btn:hover { border-color: rgba(0,245,255,.3); color: var(--cyan); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+      .top-bar-track { animation: none !important; transform: none !important; }
+    }
   </style>
 </head>
 
@@ -387,14 +403,14 @@
   <!-- ── Marquee top bar ── -->
   <div class="top-bar" role="banner" aria-label="Store announcement">
     <div class="top-bar-track" aria-hidden="true">
-      <span>🛼 FREE LOCAL DELIVERY ON ORDERS OVER $500 TTD</span>
+      <span>🛼 OFFICIAL TSG COMMUNITY GEAR</span>
       <span>✏️ CUSTOM NAME PRINTING AVAILABLE</span>
-      <span>🌍 SHIPS WORLDWIDE VIA SHOPIFY</span>
-      <span>👑 TSG ELITE MEMBERS GET EXCLUSIVE DISCOUNTS</span>
-      <span>🛼 FREE LOCAL DELIVERY ON ORDERS OVER $500 TTD</span>
+      <span>💬 ORDER THROUGH SHOPIFY OR WHATSAPP</span>
+      <span>👑 TSG ELITE MEMBERS GET FIRST ACCESS</span>
+      <span>🛼 OFFICIAL TSG COMMUNITY GEAR</span>
       <span>✏️ CUSTOM NAME PRINTING AVAILABLE</span>
-      <span>🌍 SHIPS WORLDWIDE VIA SHOPIFY</span>
-      <span>👑 TSG ELITE MEMBERS GET EXCLUSIVE DISCOUNTS</span>
+      <span>💬 ORDER THROUGH SHOPIFY OR WHATSAPP</span>
+      <span>👑 TSG ELITE MEMBERS GET FIRST ACCESS</span>
     </div>
   </div>
 
@@ -420,7 +436,7 @@
         <div class="nav-actions">
           <a class="btn btn-ghost btn-sm hide-mob" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
           <a class="btn btn-primary btn-sm" href="book.html">Book a Class</a>
-          <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
       </div>
 
@@ -448,7 +464,7 @@
         <span class="line-pink">THE</span>
         <span class="line-cyan">CULTURE</span>
       </h1>
-      <p class="hero-desc">Official TSG merch. Representing Trinidad &amp; Tobago's leading rollerskate community — on the rink, on the road, and worldwide.</p>
+      <p class="hero-desc">Official TSG merch. Representing Trinidad &amp; Tobago's leading rollerskate community — on the rink, on the road, and in the movement.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="https://theskateguys.myshopify.com" target="_blank" rel="noopener">🛒 Shop Full Collection</a>
         <a class="btn btn-ghost" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20order%20some%20merch." target="_blank" rel="noopener">Order via WhatsApp</a>
@@ -463,8 +479,8 @@
           <div class="stat-label">Starts from TTD</div>
         </div>
         <div class="stat">
-          <div class="stat-num" style="color:var(--gold);">T&T</div>
-          <div class="stat-label">+ Worldwide Shipping</div>
+          <div class="stat-num" style="color:var(--gold);">TSG</div>
+          <div class="stat-label">Order options</div>
         </div>
       </div>
     </div>
@@ -513,7 +529,7 @@
 
         <!-- 2. Bucket Hat — standard (4 cols × 2 rows) -->
         <div class="pcard p-std" data-cat="headwear">
-          <img class="pcard-img" src="assets/merch/bucket-hat.jpg" alt="TSG Community Bucket Hat" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-bucket-hat-logo.svg" alt="Temporary TSG Community Bucket Hat logo mockup" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Headwear</div>
             <div class="pcard-name">TSG Bucket Hat</div>
@@ -531,7 +547,7 @@
         <!-- 3. Hoodie Solid SK8 — standard (3 cols × 1 row, wide) -->
         <div class="pcard p-wide" data-cat="hoodie">
           <span class="pcard-tag pt-custom">✏️ Custom Print</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/hoodie-solid-sk8.jpg" alt="Solid With SK8 Hoodie" loading="lazy" style="object-fit:contain; background:#111;">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Solid With SK8 hoodie logo mockup" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie · Statement Piece</div>
             <div class="pcard-name">Solid With SK8</div>
@@ -549,7 +565,7 @@
         <!-- 4. Keychain — small -->
         <div class="pcard p-sm" data-cat="accessory">
           <span class="pcard-tag pt-new">🔥 Hot</span>
-          <img class="pcard-img" src="assets/merch/keychain.jpg" alt="TSG Acrylic Keychain" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-keychain-logo.svg" alt="Temporary TSG Acrylic Keychain logo mockup" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Accessory</div>
             <div class="pcard-name">TSG Keychain</div>
@@ -565,7 +581,7 @@
 
         <!-- 5. Hoodie Therapy — half -->
         <div class="pcard p-half" data-cat="hoodie">
-          <img class="pcard-img" src="assets/merch/hoodie-therapy.png" alt="Rollerskate Because Therapy Hoodie" loading="lazy" style="object-fit:contain; background:#111;">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Rollerskate Because Therapy hoodie logo mockup" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie</div>
             <div class="pcard-name">Rollerskate Because Therapy</div>
@@ -582,7 +598,7 @@
 
         <!-- 6. Proud Skate Mom — half -->
         <div class="pcard p-half" data-cat="tshirt">
-          <img class="pcard-img" src="assets/merch/tee-skate-mom.jpg" alt="Proud Skate Mom T-Shirt" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Proud Skate Mom T-shirt logo mockup" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt</div>
             <div class="pcard-name">Proud Skate Mom</div>
@@ -599,7 +615,7 @@
 
         <!-- 7. Hoodie F8 — third -->
         <div class="pcard p-third" data-cat="hoodie">
-          <img class="pcard-img" src="assets/merch/hoodie-f8.png" alt="Rollersk8 With F8 Hoodie" loading="lazy" style="object-fit:contain; background:#111;">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Rollersk8 With F8 hoodie logo mockup" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie</div>
             <div class="pcard-name">Rollersk8 With F8</div>
@@ -612,7 +628,7 @@
 
         <!-- 8. Hoodie Running Sucks — third -->
         <div class="pcard p-third" data-cat="hoodie">
-          <img class="pcard-img" src="assets/merch/hoodie-running.png" alt="I Skate Because Running Sucks Hoodie" loading="lazy" style="object-fit:contain; background:#111;">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary I Skate Because Running Sucks hoodie logo mockup" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie</div>
             <div class="pcard-name">Running Sucks</div>
@@ -626,7 +642,7 @@
         <!-- 9. Christmas Tee — third -->
         <div class="pcard p-third" data-cat="tshirt">
           <span class="pcard-tag pt-limited">Limited</span>
-          <img class="pcard-img" src="assets/merch/tee-christmas.png" alt="Keep Skat-ing Christmas Tee" loading="lazy" style="object-fit:contain; background:#000;">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Keep Skat-ing Christmas tee logo mockup" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt · Limited</div>
             <div class="pcard-name">Keep Skat-ing!</div>
@@ -640,7 +656,7 @@
         <!-- 10. Socks — half -->
         <div class="pcard p-half" data-cat="accessory">
           <span class="pcard-tag pt-soon">Coming Soon</span>
-          <div class="pcard-placeholder">🧦</div>
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-socks-logo.svg" alt="Temporary TSG Community Socks logo mockup" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Accessory · Coming Soon</div>
             <div class="pcard-name">TSG Community Socks</div>
@@ -659,15 +675,15 @@
         <div class="info-cell">
           <span class="info-icon">🇹🇹</span>
           <div>
-            <div class="info-label">Local T&T Delivery</div>
-            <div class="info-sub">Via your local printer. Fast, affordable, direct.</div>
+            <div class="info-label">Local T&T Orders</div>
+            <div class="info-sub">Message TSG directly for current merch ordering details.</div>
           </div>
         </div>
         <div class="info-cell">
           <span class="info-icon">🌍</span>
           <div>
-            <div class="info-label">Ships Worldwide</div>
-            <div class="info-sub">International orders fulfilled via our Shopify store.</div>
+            <div class="info-label">Shopify Store</div>
+            <div class="info-sub">Use the store link to see current product options.</div>
           </div>
         </div>
         <div class="info-cell">
@@ -710,7 +726,7 @@
       <div class="email-bar">
         <div>
           <h3>🛼 First Dibs</h3>
-          <p>New drops, restocks and exclusive community deals.</p>
+          <p>New drops, restocks and community gear updates.</p>
         </div>
         <form class="email-form" id="emailForm">
           <input type="email" placeholder="your@email.com" required>

@@ -358,13 +358,15 @@
     .email-bar h3 { font-family: var(--font-display); font-size: 24px; letter-spacing: .03em; margin-bottom: 3px; }
     .email-bar p { font-size: 13px; color: var(--muted); }
     .email-form { display: flex; gap: 8px; flex-wrap: wrap; min-width: 0; }
-    .email-form input {
+    .email-form input,.email-form select {
       flex: 1; min-width: 180px;
       background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
       border-radius: 10px; padding: 11px 16px;
       color: #fff; font-family: var(--font-body); font-size: 14px; outline: none;
     }
+    .email-form select option { color: #111; }
     .email-form input::placeholder { color: rgba(255,255,255,.3); }
+    .email-form .lead-consent,.email-form .lead-privacy,.email-form .lead-status { flex: 1 0 100%; }
     @media (max-width: 420px) {
       .email-form { width: 100%; }
       .email-form input { min-width: 0; }
@@ -396,6 +398,7 @@
       .top-bar-track { animation: none !important; transform: none !important; }
     }
   </style>
+  <link rel="stylesheet" href="assets/lead-capture.css">
 </head>
 
 <body>
@@ -728,9 +731,13 @@
           <h3>🛼 First Dibs</h3>
           <p>New drops, restocks and community gear updates.</p>
         </div>
-        <form class="email-form" id="emailForm">
-          <input type="email" placeholder="your@email.com" required>
+        <form class="email-form" id="emailForm" data-tsg-lead-form data-lead-type="email" data-tags="merch_lead">
+          <input type="email" name="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" required>
+          <select name="location" aria-label="Location" required><option value="">Your island</option><option>Trinidad</option><option>Tobago</option></select>
           <button class="btn btn-primary btn-sm" type="submit">Notify Me</button>
+          <label class="lead-consent"><input type="checkbox" name="marketingConsent" required><span>I agree to receive TSG merch, class, event and Elite updates by email. I can unsubscribe at any time.</span></label>
+          <p class="lead-privacy">We may measure anonymous website activity. Personal details are collected only when you submit this form.</p>
+          <p class="lead-status" data-form-status aria-live="polite"></p>
         </form>
       </div>
 
@@ -777,6 +784,8 @@
     </div>
   </footer>
 
+  <script src="assets/lead-config.js"></script>
+  <script src="assets/lead-capture.js"></script>
   <script>
     const WA = '18682766878';
     const waBase = `https://wa.me/${WA}`;
@@ -812,14 +821,6 @@
         if (show) count++;
       });
       document.getElementById('filterCount').textContent = `${count} item${count !== 1 ? 's' : ''}`;
-    });
-
-    // Email
-    document.getElementById('emailForm')?.addEventListener('submit', e => {
-      e.preventDefault();
-      const email = e.target.querySelector('input').value;
-      window.open(`${waBase}?text=${encodeURIComponent(`Hi TSG! I'd like first dibs on new merch drops. My email: ${email}`)}`, '_blank');
-      e.target.reset();
     });
   </script>
 </body>

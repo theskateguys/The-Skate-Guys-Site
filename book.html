@@ -78,6 +78,7 @@
     @media(max-width:550px){:root{--wrap:min(100% - 28px,1060px)}.hero{padding-top:43px}.nav .btn{display:none}.two{grid-template-columns:1fr}h1{font-size:clamp(58px,17vw,80px)}.layout{padding-bottom:35px}.panel{padding:17px}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
   </style>
+  <link rel="stylesheet" href="assets/lead-capture.css">
 </head>
 <body>
   <header class="header">
@@ -110,9 +111,10 @@
       <section class="panel" aria-labelledby="formTitle">
         <h2 id="formTitle">SEND YOUR REQUEST</h2>
         <p class="panel-intro">This is a booking request, not a payment. TSG confirms the correct class and next step with you.</p>
-        <form class="form" id="bookingForm">
+        <form class="form" id="bookingForm" data-tsg-lead-form data-lead-type="booking" data-tags="class_lead">
           <label>Name<input name="name" autocomplete="name" required></label>
           <label>WhatsApp number<input name="phone" autocomplete="tel" inputmode="tel" placeholder="868-276-6878" required></label>
+          <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
           <div class="two">
             <label>Adult or child<select name="skaterType" required><option value="">Select one</option><option>Adult</option><option>Child</option></select></label>
             <label>Location<select name="location" required><option value="">Select one</option><option>Trinidad</option><option>Tobago</option></select></label>
@@ -122,11 +124,28 @@
             <label>Preferred day or time<input name="preferredTime" placeholder="Example: Saturday morning" required></label>
           </div>
           <p class="note"><strong>Rentals included.</strong> Booking is required. Classes run once the minimum group is confirmed.</p>
-          <button class="btn primary submit" type="submit">Send Booking Request on WhatsApp</button>
+          <label class="lead-consent booking-consent"><input type="checkbox" name="marketingConsent"><span>Yes, add me to occasional TSG class, event, merch and Elite updates. I can unsubscribe at any time. This is optional and does not affect my booking request.</span></label>
+          <p class="lead-privacy">We may measure anonymous website activity. Personal details are collected only when you submit this form. Booking details are used to handle your request; marketing messages are sent only when you opt in.</p>
+          <button class="btn primary submit" type="submit">Save Request &amp; Continue to WhatsApp</button>
+          <p class="booking-status" data-form-status aria-live="polite"></p>
+          <div class="booking-success" data-booking-success hidden><strong>Your request is captured.</strong><p>Your details and Lead ID are ready. Use the button below to send them to the TSG team and confirm availability.</p><a class="btn primary" data-whatsapp-link href="#" target="_blank" rel="noopener">Open WhatsApp to Finish</a></div>
           <p class="under-submit">Prefer a quick question first? <a href="https://wa.me/18682766878" target="_blank" rel="noopener">Message TSG directly.</a></p>
         </form>
       </section>
     </div>
+    <section class="lead-capture-band" aria-labelledby="bookingEmailTitle">
+      <div class="wrap lead-capture-inner">
+        <div class="lead-capture-copy"><span class="eyebrow">Not ready to choose?</span><h2 id="bookingEmailTitle">GET THE WEEKLY<br>TSG ROLL-UP.</h2><p>Classes, upcoming sessions, merch updates, Elite reminders and one useful skating tip, once a week.</p></div>
+        <form class="lead-capture-form" data-tsg-lead-form data-lead-type="email" data-tags="class_lead">
+          <input type="email" name="email" autocomplete="email" placeholder="Your email address" aria-label="Email address" required>
+          <select name="location" aria-label="Location" required><option value="">Your island</option><option>Trinidad</option><option>Tobago</option></select>
+          <button class="btn primary lead-submit" type="submit">Join Updates</button>
+          <label class="lead-consent"><input type="checkbox" name="marketingConsent" required><span>I agree to receive TSG class, event, merch and Elite updates by email. I can unsubscribe at any time.</span></label>
+          <p class="lead-privacy">We may measure anonymous website activity. Personal details are collected only when you submit this form.</p>
+          <p class="lead-status" data-form-status aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
     <section class="how">
       <div class="wrap">
         <div class="how-grid">
@@ -138,27 +157,7 @@
     </section>
   </main>
   <footer><div class="wrap">The Skate Guys Ltd · Trinidad &amp; Tobago</div></footer>
-  <script>
-    const form = document.getElementById('bookingForm');
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      const data = new FormData(form);
-      const selected = document.querySelector('input[name="packageChoice"]:checked');
-      const lines = [
-        'TSG Booking Request',
-        '',
-        `Name: ${data.get('name')}`,
-        `WhatsApp number: ${data.get('phone')}`,
-        `Adult or child: ${data.get('skaterType')}`,
-        `Location: ${data.get('location')}`,
-        `Package: ${selected?.value || ''}`,
-        `Rental skates needed: ${data.get('rentals')}`,
-        `Preferred day/time: ${data.get('preferredTime')}`,
-        '',
-        'Please confirm availability.'
-      ];
-      window.open(`https://wa.me/18682766878?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
-    });
-  </script>
+  <script src="assets/lead-config.js"></script>
+  <script src="assets/lead-capture.js"></script>
 </body>
 </html>

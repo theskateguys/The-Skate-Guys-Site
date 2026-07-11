@@ -171,6 +171,7 @@
     @media(max-width:620px){:root{--wrap:min(100% - 28px,1140px)}.nav{min-height:66px}.brand{font-size:22px}.brand img{width:34px;height:34px}.nav-actions .btn{display:none}.hero{padding:45px 0 30px}.entry-inner{gap:15px;transform:translateY(12px)}.entry-logo{width:210px;height:210px}.entry-title{font-size:64px}.entry-copy{font-size:13px}.intro-logo-sweep{width:280px;height:280px}.intro-lockup{margin-bottom:12px}h1{font-size:clamp(56px,17vw,78px)}.hero-actions .btn{width:100%}.hero-actions .btn-secondary{display:none}.hero-photo,.hero-photo img{min-height:290px;border-radius:18px}.hero-intro .hero-photo{clip-path:inset(0 0 0 100% round 18px)}.trust-items{gap:14px}.trust-item{font-size:10px}.paths,.proof-grid,.coach-grid,.reviews{grid-template-columns:1fr}.path-card{min-height:225px}.section-head h2{font-size:48px}section{padding:54px 0}.hire-card{padding:28px 22px}.footer-grid{grid-template-columns:1fr}.footer-bottom{padding-bottom:64px}.trust-media{grid-template-columns:1fr}.trust-media img{height:230px}.reassurance{display:grid;gap:6px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.entry-gate,.hero:before,.hero:after,.intro-logo-sweep{display:none!important}.hero-intro .intro-lockup,.hero-intro .eyebrow,.hero-intro .headline-line,.hero-intro .hero-copy,.hero-intro .hero-actions,.hero-intro .reassurance,.hero-intro .hero-photo,.hero-intro .hero-sticker,.reveal{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}}
   </style>
+  <link rel="stylesheet" href="assets/lead-capture.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -291,6 +292,19 @@
         <div class="hire-card reveal"><div><div class="kicker">Schools &middot; camps &middot; birthdays &middot; corporate days</div><h2>BRING TSG<br>TO YOUR EVENT.</h2><p>Need a roller-skating experience for a school, birthday, camp, company team day or community event? Send the date, location and group size so we can discuss the right setup.</p></div><a class="btn btn-secondary" href="https://wa.me/18682766878?text=Hi%20TSG%2C%20I%20want%20to%20enquire%20about%20bringing%20TSG%20to%20an%20event.%0A%0AName%3A%0AType%20of%20event%3A%0ALocation%3A%0APreferred%20date%3A%0AEstimated%20number%20of%20skaters%3A" target="_blank" rel="noopener">Bring TSG to My Event</a></div>
       </div>
     </section>
+    <section class="lead-capture-band" aria-labelledby="homeEmailTitle">
+      <div class="wrap lead-capture-inner">
+        <div class="lead-capture-copy reveal"><div class="kicker">Stay in the loop</div><h2 id="homeEmailTitle">YOUR WEEKLY<br>TSG ROLL-UP.</h2><p>Upcoming classes, the next event, merch drops, Elite reminders and one useful skating tip. One clear update, once a week.</p></div>
+        <form class="lead-capture-form reveal" data-tsg-lead-form data-lead-type="email" data-tags="class_lead,event_lead">
+          <input type="email" name="email" autocomplete="email" placeholder="Your email address" aria-label="Email address" required>
+          <select name="location" aria-label="Location" required><option value="">Your island</option><option>Trinidad</option><option>Tobago</option></select>
+          <button class="btn btn-primary lead-submit" type="submit">Join Updates</button>
+          <label class="lead-consent"><input type="checkbox" name="marketingConsent" required><span>I agree to receive TSG class, event, merch and Elite updates by email. I can unsubscribe at any time.</span></label>
+          <p class="lead-privacy">We may measure anonymous website activity. Personal details are collected only when you submit this form.</p>
+          <p class="lead-status" data-form-status aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
   </main>
   <footer>
     <div class="wrap">
@@ -301,6 +315,8 @@
   <div class="sticky-book" id="stickyBook" hidden><a class="btn btn-primary" href="book.html">Book a Class</a></div>
   </div>
   <script src="assets/updates-data.js"></script>
+  <script src="assets/lead-config.js"></script>
+  <script src="assets/lead-capture.js"></script>
   <script>
     const html = document.documentElement;
     const introStorageKey = 'tsgIntroEnteredAt';

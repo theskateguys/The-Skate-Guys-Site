@@ -135,3 +135,13 @@ Do not describe the system as tracking all customers personally. The booking for
 ## Fallback Behavior
 
 If the Apps Script endpoint is not connected, times out, or fails, the page still opens WhatsApp with the pre-filled booking request. That keeps the customer journey moving while protecting the lead-capture system from blocking bookings.
+
+## Duplicate Prevention
+
+The Apps Script checks `Lead ID` before appending rows. If the same Lead ID already exists in `Leads`, the script returns:
+
+```json
+{"ok":true,"status":"duplicate_ignored"}
+```
+
+For booking leads, it also checks `Bookings` and `Follow Up Status` before appending to those tabs. This keeps browser retries and repeated form submissions from creating duplicate lead, booking, or follow-up rows.

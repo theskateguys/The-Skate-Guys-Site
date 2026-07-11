@@ -71,15 +71,20 @@ function doPost(event) {
     validateLead_(lead);
 
     const lock = LockService.getScriptLock();
+    let result;
     lock.waitLock(10000);
     try {
-      saveLead_(lead);
+      result = saveLead_(lead);
     } finally {
       lock.releaseLock();
     }
 
+    if (result.status === 'duplicate_ignored') {
+      return jsonResponse_({ok: true, leadId: lead.leadId, status: 'duplicate_ignored'});
+    }
+
     sendLeadConfirmation_(lead);
-    return jsonResponse_({ok: true, leadId: lead.leadId, status: lead.status});
+    return jsonResponse_({ok: true, leadId: lead.leadId, status: result.status});
   } catch (error) {
     console.error(error);
     return jsonResponse_({ok: false, error: String(error.message || error)});
@@ -89,6 +94,11 @@ function doPost(event) {
 function saveLead_(lead) {
   const spreadsheet = getSpreadsheet_();
   const leadsSheet = ensureSheet_(spreadsheet, TSG_SHEETS.leads);
+
+  if (hasLeadId_(leadsSheet, 'Lead ID', lead.leadId)) {
+    return {status: 'duplicate_ignored'};
+  }
+
   leadsSheet.appendRow([
     lead.timestamp, lead.leadId, lead.name, lead.whatsapp, lead.email, lead.location,
     lead.skaterType, lead.package, lead.rentalsNeeded, lead.preferredTime, lead.sourcePage,
@@ -98,19 +108,24 @@ function saveLead_(lead) {
 
   if (lead.leadType === 'booking') {
     const bookingsSheet = ensureSheet_(spreadsheet, TSG_SHEETS.bookings);
-    bookingsSheet.appendRow([
-      lead.timestamp, lead.leadId, lead.name, lead.whatsapp, lead.email, lead.location,
-      lead.skaterType, lead.package, lead.rentalsNeeded, lead.preferredTime, lead.sourcePage,
-      lead.marketingConsent, lead.whatsappOpened, lead.status, lead.tags, lead.notes
-    ]);
+    if (!hasLeadId_(bookingsSheet, 'Lead ID', lead.leadId)) {
+      bookingsSheet.appendRow([
+        lead.timestamp, lead.leadId, lead.name, lead.whatsapp, lead.email, lead.location,
+        lead.skaterType, lead.package, lead.rentalsNeeded, lead.preferredTime, lead.sourcePage,
+        lead.marketingConsent, lead.whatsappOpened, lead.status, lead.tags, lead.notes
+      ]);
+    }
     appendFollowUp_(spreadsheet, lead);
   }
 
   if (lead.email && lead.marketingConsent === 'Yes') upsertSubscriber_(spreadsheet, lead);
+  return {status: lead.status};
 }
 
 function appendFollowUp_(spreadsheet, lead) {
   const sheet = ensureSheet_(spreadsheet, TSG_SHEETS.followUp);
+  if (hasLeadId_(sheet, 'Lead ID', lead.leadId)) return;
+
   const created = new Date(lead.timestamp);
   const reminderDue = new Date(created.getTime() + TSG_CONFIG.reminderHours * 60 * 60 * 1000);
   sheet.appendRow([
@@ -128,6 +143,17 @@ function upsertSubscriber_(spreadsheet, lead) {
 
   if (index === -1) sheet.appendRow(row);
   else sheet.getRange(index + 2, 1, 1, row.length).setValues([row]);
+}
+
+function hasLeadId_(sheet, headerName, leadId) {
+  if (!sheet || !leadId || sheet.getLastRow() < 2) return false;
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getDisplayValues()[0];
+  const column = headers.indexOf(headerName) + 1;
+  if (column < 1) return false;
+
+  const submittedId = String(leadId).trim();
+  const ids = sheet.getRange(2, column, sheet.getLastRow() - 1, 1).getDisplayValues().flat();
+  return ids.some(id => String(id).trim() === submittedId);
 }
 
 function markWhatsAppOpened_(leadId) {

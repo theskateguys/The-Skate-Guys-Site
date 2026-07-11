@@ -2,9 +2,11 @@
   'use strict';
 
   const config = window.TSG_LEAD_CONFIG || {};
-  const endpoint = String(config.endpoint || '').trim();
+  const rawEndpoint = String(config.endpoint || '').trim();
+  const endpoint = /^https?:\/\//i.test(rawEndpoint) && !/PASTE_GOOGLE_APPS_SCRIPT/i.test(rawEndpoint) ? rawEndpoint : '';
   const whatsappNumber = String(config.whatsappNumber || '18682766878');
   const requestTimeoutMs = Number(config.requestTimeoutMs || 9000);
+  const whatsappAutoOpenDelayMs = Number(config.whatsappAutoOpenDelayMs || 1100);
   const queueKey = 'tsgLeadRetryQueueV1';
 
   const getQueue = () => {
@@ -66,6 +68,7 @@
   };
 
   const submitPayload = async payload => {
+    if (!endpoint) return {state: 'not_configured'};
     try {
       await postPayload(payload);
       return {state: 'success'};
@@ -171,6 +174,14 @@
     node.textContent = text;
   };
 
+  const openWhatsApp = (url, leadId) => {
+    if (!url) return;
+    recordWhatsAppOpened(leadId);
+    const opened = window.open(url, '_blank');
+    if (opened) opened.opener = null;
+    else window.location.href = url;
+  };
+
   const handleForm = form => {
     hydrateTrackingFields(form);
     const status = form.querySelector('[data-form-status]');
@@ -194,9 +205,11 @@
       form.classList.add('is-complete');
 
       if (result.state === 'success') {
-        setStatus(status, 'success', isBooking ? 'Request saved. Open WhatsApp below to finish your booking.' : 'You are on the TSG update list.');
+        setStatus(status, 'success', isBooking ? 'Request saved. WhatsApp is opening so you can finish your booking.' : 'You are on the TSG update list.');
+      } else if (result.state === 'not_configured') {
+        setStatus(status, 'queued', isBooking ? 'Google Sheet capture is not connected yet. WhatsApp is opening so your request can still continue.' : 'The update form is not connected yet. Please try again soon.');
       } else {
-        setStatus(status, 'queued', isBooking ? 'Request saved for secure retry. Open WhatsApp below to finish.' : 'You are saved for sync and will be added when the connection returns.');
+        setStatus(status, 'queued', isBooking ? 'Sheet save could not be confirmed. WhatsApp is opening so your request can still continue.' : 'You are saved for sync and will be added when the connection returns.');
       }
 
       if (button) button.textContent = isBooking ? 'Request captured' : 'You are on the list';
@@ -210,6 +223,7 @@
           link.addEventListener('click', () => recordWhatsAppOpened(payload.leadId), {once: true});
         }
         if (success) success.hidden = false;
+        window.setTimeout(() => openWhatsApp(whatsappUrl, payload.leadId), whatsappAutoOpenDelayMs);
       } else {
         form.reset();
       }

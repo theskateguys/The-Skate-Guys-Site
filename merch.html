@@ -120,9 +120,13 @@
       padding: 80px 0 64px;
       border-bottom: 1px solid var(--line);
       position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,45,107,.16), transparent 30%),
+        radial-gradient(circle at 78% 20%, rgba(0,245,255,.16), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.03), transparent 70%);
     }
     .merch-hero::after {
-      content: "MERCH";
+      content: "DROP";
       position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
       font-family: var(--font-display);
       font-size: clamp(140px, 20vw, 240px);
@@ -140,14 +144,16 @@
     .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--cyan); }
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(56px, 11vw, 130px);
+      font-size: clamp(54px, 10vw, 118px);
       line-height: .9; letter-spacing: .02em;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
+      max-width: 780px;
     }
     .hero-title .line-pink { color: var(--pink); display: block; }
     .hero-title .line-cyan { color: var(--cyan); display: block; }
-    .hero-desc { font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.65; margin-bottom: 32px; }
+    .hero-desc { font-size: 17px; color: rgba(255,255,255,.72); max-width: 590px; line-height: 1.65; margin-bottom: 32px; }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-ctas .btn { min-height: 46px; }
     .hero-stats {
       display: flex; gap: 32px; flex-wrap: wrap;
       margin-top: 48px; padding-top: 28px;
@@ -160,28 +166,35 @@
     /* ── Filter ── */
     .filter-row {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 24px 0 20px; gap: 12px; flex-wrap: wrap;
+      padding: 28px 0 22px; gap: 12px; flex-wrap: wrap;
       border-bottom: 1px solid var(--line);
     }
-    .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
     .filter-pill {
-      font-size: 12px; font-weight: 700; padding: 6px 16px;
+      min-height: 36px;
+      font-size: 12px; font-weight: 700; padding: 7px 16px;
       border: 1px solid var(--line); border-radius: 999px;
       color: var(--muted); cursor: pointer; background: transparent;
       font-family: var(--font-body); letter-spacing: .04em;
       transition: all .1s;
     }
     .filter-pill:hover { color: #fff; border-color: rgba(255,255,255,.2); }
-    .filter-pill.active { background: var(--ink); color: #000; border-color: var(--ink); }
+    .filter-pill.active { background: linear-gradient(90deg, var(--cyan), var(--pink)); color: #000; border-color: transparent; }
     .filter-count { font-size: 12px; color: var(--muted); }
+
+    .product-shell {
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     /* ── Bento product grid ── */
     .bento {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 260px;
-      gap: 3px;
-      margin-top: 3px;
+      grid-auto-rows: 280px;
+      gap: 14px;
+      margin-top: 16px;
     }
 
     /* Featured = 5 cols x 2 rows */
@@ -198,12 +211,12 @@
     .p-third { grid-column: span 4; grid-row: span 1; }
 
     @media (max-width: 900px) {
-      .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 320px; gap: 2px; }
+      .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 340px; gap: 12px; }
       .p-feat, .p-std, .p-wide, .p-sm, .p-half, .p-third { grid-column: span 1; grid-row: span 1; }
       .p-feat { grid-column: span 2; }
     }
     @media (max-width: 560px) {
-      .bento { grid-template-columns: 1fr; grid-auto-rows: 300px; }
+      .bento { grid-template-columns: 1fr; grid-auto-rows: 360px; gap: 14px; }
       .p-feat { grid-column: span 1; }
     }
 
@@ -211,6 +224,9 @@
     .pcard {
       position: relative; overflow: hidden;
       background: #0c0c12; cursor: pointer;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.22);
     }
     .pcard-img {
       width: 100%; height: 100%;
@@ -218,7 +234,12 @@
       display: block;
       transition: transform .5s ease;
     }
-    .pcard-img-contain { object-fit: contain; object-position: center; background: #111; }
+    .pcard-img-contain {
+      object-fit: contain; object-position: center;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(255,255,255,.08), transparent 32%),
+        linear-gradient(135deg, #08080d, #12121a 55%, #07070b);
+    }
     .pcard-placeholder {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
@@ -229,9 +250,9 @@
     /* Overlay — always visible at bottom */
     .pcard-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.3) 45%, transparent 70%);
+      background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.44) 48%, rgba(0,0,0,.08) 78%);
       display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 18px 20px;
+      padding: 22px;
       transition: background .3s;
     }
     .pcard:hover .pcard-overlay { background: linear-gradient(to top, rgba(0,0,0,.95) 0%, rgba(0,0,0,.5) 55%, rgba(0,0,0,.1) 80%); }
@@ -250,15 +271,15 @@
     .pcard-desc {
       font-size: 12px; color: rgba(255,255,255,.65);
       line-height: 1.5;
-      max-height: 0; overflow: hidden;
+      max-height: 64px; overflow: hidden;
       transition: max-height .3s ease, opacity .3s ease;
-      opacity: 0;
+      opacity: .9;
     }
-    .pcard:hover .pcard-desc { max-height: 60px; opacity: 1; }
+    .pcard:hover .pcard-desc { max-height: 72px; opacity: 1; }
 
     .pcard-footer {
       display: flex; align-items: center; justify-content: space-between;
-      gap: 8px; margin-top: 8px;
+      gap: 10px; margin-top: 12px;
     }
     .pcard-price {
       font-family: var(--font-display);
@@ -270,24 +291,29 @@
       background: var(--cyan); color: #000;
       font-size: 11px; font-weight: 800;
       letter-spacing: .08em; text-transform: uppercase;
-      padding: 7px 14px; border-radius: 6px;
+      min-height: 40px;
+      padding: 10px 16px; border-radius: 999px;
       border: none; cursor: pointer;
-      transform: translateY(8px); opacity: 0;
+      transform: translateY(0); opacity: 1;
       transition: transform .25s ease, opacity .25s ease;
       white-space: nowrap; flex-shrink: 0;
     }
-    .pcard:hover .pcard-btn { transform: translateY(0); opacity: 1; }
+    .pcard:hover .pcard-btn { transform: translateY(-1px); }
 
     /* Tags on cards */
     .pcard-tag {
       position: absolute; top: 14px; left: 14px;
       font-size: 9px; font-weight: 800; letter-spacing: .12em;
-      text-transform: uppercase; padding: 4px 10px; border-radius: 4px;
+      text-transform: uppercase; padding: 5px 11px; border-radius: 999px;
       z-index: 2;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
     .pt-custom  { background: var(--gold); color: #000; }
     .pt-limited { background: var(--pink); color: #fff; }
     .pt-new     { background: var(--cyan); color: #000; }
+    .pt-best    { background: #fff; color: #000; }
+    .pt-wear    { background: rgba(0,245,255,.16); color: var(--cyan); border: 1px solid rgba(0,245,255,.32); }
+    .pt-skater  { background: rgba(255,45,107,.18); color: #fff; border: 1px solid rgba(255,45,107,.38); }
     .pt-soon    { background: rgba(255,255,255,.15); color: #fff; border: 1px solid rgba(255,255,255,.2); }
 
     /* ── Info strip ── */
@@ -305,6 +331,173 @@
     .info-icon { font-size: 22px; flex-shrink: 0; }
     .info-label { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 2px; }
     .info-sub   { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+    /* How to order */
+    .how-order {
+      margin-top: 18px;
+      padding: 30px;
+      border: 1px solid rgba(0,245,255,.14);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(0,245,255,.08), rgba(255,45,107,.05)),
+        #0c0c12;
+      display: grid;
+      gap: 22px;
+    }
+    .how-order-head {
+      display: grid;
+      gap: 8px;
+      max-width: 720px;
+    }
+    .how-order-kicker {
+      color: var(--cyan);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+    .how-order h2 {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: .95;
+      letter-spacing: .02em;
+    }
+    .how-order p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .order-steps {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .order-step {
+      min-height: 100%;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      background: rgba(5,5,8,.68);
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+    .order-step-num {
+      font-family: var(--font-display);
+      font-size: 30px;
+      line-height: 1;
+      color: var(--pink);
+    }
+    .order-step h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: .03em;
+    }
+    .order-step .btn {
+      justify-self: start;
+      margin-top: 4px;
+      min-height: 42px;
+    }
+
+    /* Find your size */
+    .size-guide {
+      margin-top: 18px;
+      padding: 30px;
+      border: 1px solid rgba(255,45,107,.16);
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255,45,107,.12), transparent 28%),
+        linear-gradient(135deg, rgba(255,45,107,.06), rgba(0,245,255,.05)),
+        #0c0c12;
+      display: grid;
+      gap: 22px;
+    }
+    .size-guide-head {
+      display: grid;
+      gap: 8px;
+      max-width: 760px;
+    }
+    .size-guide-kicker {
+      color: var(--pink);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+    .size-guide h2 {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: .95;
+      letter-spacing: .02em;
+    }
+    .size-guide p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .size-chart-wrap {
+      overflow-x: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      background: rgba(5,5,8,.72);
+    }
+    .size-chart {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 13px;
+    }
+    .size-chart th,
+    .size-chart td {
+      padding: 15px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      vertical-align: top;
+    }
+    .size-chart th {
+      color: var(--cyan);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.035);
+    }
+    .size-chart tr:last-child td { border-bottom: 0; }
+    .size-chart .size-label {
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 26px;
+      line-height: 1;
+      letter-spacing: .03em;
+    }
+    .size-note {
+      display: grid;
+      gap: 14px;
+      padding: 20px;
+      border: 1px solid rgba(0,245,255,.14);
+      border-radius: 14px;
+      background: rgba(0,245,255,.055);
+    }
+    .size-note strong { color: #fff; }
+    .size-note .btn {
+      justify-self: start;
+      min-height: 42px;
+    }
+    .size-order-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .size-order-step {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      background: rgba(5,5,8,.7);
+      display: grid;
+      gap: 8px;
+    }
+    .size-order-step span {
+      color: var(--cyan);
+      font-family: var(--font-display);
+      font-size: 26px;
+      line-height: 1;
+    }
+    .size-order-step strong {
+      color: #fff;
+      font-size: 13px;
+    }
 
     /* ── Custom print section ── */
     .custom-section {
@@ -371,6 +564,84 @@
       .email-form { width: 100%; }
       .email-form input { min-width: 0; }
       .email-form .btn { width: 100%; }
+    }
+
+    @media (max-width: 700px) {
+      .merch-hero { padding: 62px 0 46px; }
+      .hero-title { font-size: clamp(50px, 17vw, 82px); }
+      .hero-desc { font-size: 15px; max-width: 100%; }
+      .hero-ctas .btn { width: 100%; min-height: 48px; }
+      .hero-stats { gap: 18px; margin-top: 34px; padding-top: 22px; }
+      .stat { min-width: calc(50% - 12px); }
+      .filter-row { padding: 22px 0 18px; }
+      .filter-pills {
+        width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        scrollbar-width: thin;
+      }
+      .filter-pill {
+        flex: 0 0 auto;
+        min-height: 42px;
+        padding: 9px 17px;
+      }
+      .product-shell { padding: 0 14px; }
+      .pcard { border-radius: 16px; }
+      .pcard-overlay { padding: 20px; }
+      .pcard-name { font-size: 30px; }
+      .pcard-desc { max-height: none; opacity: 1; font-size: 13px; }
+      .pcard-footer { align-items: flex-end; }
+      .pcard-btn { min-height: 44px; padding-inline: 18px; }
+      .info-strip { margin-top: 16px; gap: 10px; }
+      .info-cell { border-radius: 14px; padding: 20px; }
+      .how-order { margin-top: 16px; padding: 22px; border-radius: 16px; }
+      .order-steps { grid-template-columns: 1fr; }
+      .order-step { padding: 20px; }
+      .order-step .btn { width: 100%; }
+      .size-guide { margin-top: 16px; padding: 22px; border-radius: 16px; }
+      .size-chart-wrap { overflow-x: hidden; border: 0; background: transparent; }
+      .size-chart,
+      .size-chart tbody,
+      .size-chart tr,
+      .size-chart td { display: block; width: 100%; }
+      .size-chart thead { display: none; }
+      .size-chart tr {
+        margin-bottom: 12px;
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 14px;
+        background: rgba(5,5,8,.72);
+        overflow: hidden;
+      }
+      .size-chart td {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 13px 15px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+        font-size: 13px;
+      }
+      .size-chart td::before {
+        content: attr(data-label);
+        color: var(--cyan);
+        flex: 0 0 92px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+      .size-chart tr td:last-child { border-bottom: 0; }
+      .size-chart .size-label { font-size: 30px; }
+      .size-note .btn { width: 100%; }
+      .size-order-steps { grid-template-columns: 1fr; }
+      .size-order-step { padding: 18px 20px; }
+      .elite-row { margin-top: 16px; border-radius: 14px; padding: 20px; }
+      .elite-row-left { align-items: flex-start; }
+      .custom-section { margin-top: 38px; border-radius: 16px; }
+      .custom-left { padding: 28px 22px; }
+      .custom-right { display: none; }
+      .email-bar { margin-top: 38px; padding: 22px; align-items: stretch; }
+      .email-form input,.email-form select { min-width: 100%; }
     }
 
     /* ── Footer ── */
@@ -461,16 +732,16 @@
   <!-- ── Hero ── -->
   <section class="merch-hero">
     <div class="wrap">
-      <div class="hero-eyebrow">New Collection Available</div>
-      <h1 class="hero-title">
-        <span>WEAR</span>
-        <span class="line-pink">THE</span>
-        <span class="line-cyan">CULTURE</span>
+      <div class="hero-eyebrow">Skatewear / Community Gear</div>
+      <h1 class="hero-title" aria-label="THE SKATE GUYS MERCH DROP">
+        <span>THE SKATE GUYS</span>
+        <span class="line-pink">MERCH</span>
+        <span class="line-cyan">DROP</span>
       </h1>
-      <p class="hero-desc">Official TSG merch. Representing Trinidad &amp; Tobago's leading rollerskate community — on the rink, on the road, and in the movement.</p>
+      <p class="hero-desc">Skate-ready streetwear for class days, rink nights, road moves, and everyday community wear across Trinidad &amp; Tobago.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://theskateguys.myshopify.com" target="_blank" rel="noopener">🛒 Shop Full Collection</a>
-        <a class="btn btn-ghost" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20order%20some%20merch." target="_blank" rel="noopener">Order via WhatsApp</a>
+        <a class="btn btn-primary" href="https://theskateguys.myshopify.com" target="_blank" rel="noopener">Shop the Drop</a>
+        <a class="btn btn-ghost" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20order%20some%20merch." target="_blank" rel="noopener">Order on WhatsApp</a>
       </div>
       <div class="hero-stats">
         <div class="stat">
@@ -508,18 +779,18 @@
     </div>
 
     <!-- Bento grid — full bleed with thin wrap -->
-    <div style="padding: 0 20px; max-width: 1200px; margin: 0 auto;">
+    <div class="product-shell">
 
       <div class="bento" id="productGrid">
 
         <!-- 1. Classic T-Shirt — featured (5 cols × 2 rows) -->
         <div class="pcard p-feat" data-cat="tshirt">
-          <span class="pcard-tag pt-custom">✏️ Custom Print</span>
+          <span class="pcard-tag pt-best">Best Seller</span>
           <img class="pcard-img product-img-contain" src="assets/merch/classic-tshirt-community.jpg" alt="Classic T-Shirt community gear promo" loading="lazy" style="object-fit:contain; background:#111;">
           <div class="pcard-overlay">
-            <div class="pcard-cat">T-Shirt · Classic</div>
-            <div class="pcard-name">Classic T-Shirt</div>
-            <div class="pcard-desc">Limited edition collectible community gear with the signature Skate Guys look.</div>
+            <div class="pcard-cat">T-Shirt / Community Drop</div>
+            <div class="pcard-name">TSG Community Tee</div>
+            <div class="pcard-desc">The main logo tee for class days, rink nights, and showing up with the crew.</div>
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$160</div>
@@ -532,11 +803,12 @@
 
         <!-- 2. Bucket Hat — standard (4 cols × 2 rows) -->
         <div class="pcard p-std" data-cat="headwear">
+          <span class="pcard-tag pt-wear">Everyday Wear</span>
           <img class="pcard-img product-img-contain" src="assets/merch/mockup-bucket-hat-logo.svg" alt="Temporary TSG Community Bucket Hat logo mockup" loading="lazy">
           <div class="pcard-overlay">
-            <div class="pcard-cat">Headwear</div>
-            <div class="pcard-name">TSG Bucket Hat</div>
-            <div class="pcard-desc">Neon logo on all-black. The hat that says you're part of the circle.</div>
+            <div class="pcard-cat">Headwear / All-Black</div>
+            <div class="pcard-name">Circle Logo Bucket Hat</div>
+            <div class="pcard-desc">Low-key shade with the neon TSG mark for sessions, pop-ups, and roadwear.</div>
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$80</div>
@@ -549,12 +821,12 @@
 
         <!-- 3. Hoodie Solid SK8 — standard (3 cols × 1 row, wide) -->
         <div class="pcard p-wide" data-cat="hoodie">
-          <span class="pcard-tag pt-custom">✏️ Custom Print</span>
+          <span class="pcard-tag pt-new">New Drop</span>
           <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Solid With SK8 hoodie logo mockup" loading="lazy">
           <div class="pcard-overlay">
-            <div class="pcard-cat">Hoodie · Statement Piece</div>
-            <div class="pcard-name">Solid With SK8</div>
-            <div class="pcard-desc">Community logo front. "Solid With SK8" on the back. QR sleeve.</div>
+            <div class="pcard-cat">Hoodie / Statement Piece</div>
+            <div class="pcard-name">Solid With SK8 Hoodie</div>
+            <div class="pcard-desc">A heavier community piece with logo-front energy and custom back-print options.</div>
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$350+</div>
@@ -567,28 +839,29 @@
 
         <!-- 4. Keychain — small -->
         <div class="pcard p-sm" data-cat="accessory">
-          <span class="pcard-tag pt-new">🔥 Hot</span>
+          <span class="pcard-tag pt-skater">For Skaters</span>
           <img class="pcard-img product-img-contain" src="assets/merch/mockup-keychain-logo.svg" alt="Temporary TSG Acrylic Keychain logo mockup" loading="lazy">
           <div class="pcard-overlay">
-            <div class="pcard-cat">Accessory</div>
-            <div class="pcard-name">TSG Keychain</div>
+            <div class="pcard-cat">Accessory / Daily Carry</div>
+            <div class="pcard-name">TSG Pocket Keychain</div>
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$20</div>
                 <span class="pcard-price-sub">TTD</span>
               </div>
-              <button class="pcard-btn" onclick="shop()">Buy</button>
+              <button class="pcard-btn" onclick="shop()">Shop</button>
             </div>
           </div>
         </div>
 
         <!-- 5. Hoodie Therapy — half -->
         <div class="pcard p-half" data-cat="hoodie">
+          <span class="pcard-tag pt-limited">Limited Run</span>
           <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Rollerskate Because Therapy hoodie logo mockup" loading="lazy">
           <div class="pcard-overlay">
-            <div class="pcard-cat">Hoodie</div>
-            <div class="pcard-name">Rollerskate Because Therapy</div>
-            <div class="pcard-desc">"Rollerskate because Therapy = 💸"</div>
+            <div class="pcard-cat">Hoodie / Mood Piece</div>
+            <div class="pcard-name">Therapy Roll Hoodie</div>
+            <div class="pcard-desc">For the skaters who know a good roll can change the whole day.</div>
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$350+</div>
@@ -601,11 +874,12 @@
 
         <!-- 6. Proud Skate Mom — half -->
         <div class="pcard p-half" data-cat="tshirt">
+          <span class="pcard-tag pt-wear">Everyday Wear</span>
           <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Proud Skate Mom T-shirt logo mockup" loading="lazy">
           <div class="pcard-overlay">
-            <div class="pcard-cat">T-Shirt</div>
-            <div class="pcard-name">Proud Skate Mom</div>
-            <div class="pcard-desc">For the parents holding it down on the sideline.</div>
+            <div class="pcard-cat">T-Shirt / Family Crew</div>
+            <div class="pcard-name">Skate Mom Tee</div>
+            <div class="pcard-desc">For the parents and supporters holding down every practice and event.</div>
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$160</div>
@@ -618,10 +892,12 @@
 
         <!-- 7. Hoodie F8 — third -->
         <div class="pcard p-third" data-cat="hoodie">
+          <span class="pcard-tag pt-skater">For Skaters</span>
           <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Rollersk8 With F8 hoodie logo mockup" loading="lazy">
           <div class="pcard-overlay">
-            <div class="pcard-cat">Hoodie</div>
-            <div class="pcard-name">Rollersk8 With F8</div>
+            <div class="pcard-cat">Hoodie / Skate Phrase</div>
+            <div class="pcard-name">F8 Roll Hoodie</div>
+            <div class="pcard-desc">A wordplay piece for skaters who like the message loud and clean.</div>
             <div class="pcard-footer">
               <div><div class="pcard-price">$350+</div><span class="pcard-price-sub">TTD</span></div>
               <button class="pcard-btn" onclick="shop()">Buy Now</button>
@@ -631,10 +907,12 @@
 
         <!-- 8. Hoodie Running Sucks — third -->
         <div class="pcard p-third" data-cat="hoodie">
+          <span class="pcard-tag pt-new">New Drop</span>
           <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary I Skate Because Running Sucks hoodie logo mockup" loading="lazy">
           <div class="pcard-overlay">
-            <div class="pcard-cat">Hoodie</div>
-            <div class="pcard-name">Running Sucks</div>
+            <div class="pcard-cat">Hoodie / Streetwear</div>
+            <div class="pcard-name">Skate Over Running Hoodie</div>
+            <div class="pcard-desc">Warm, playful, and built for people who would rather roll than run.</div>
             <div class="pcard-footer">
               <div><div class="pcard-price">$350+</div><span class="pcard-price-sub">TTD</span></div>
               <button class="pcard-btn" onclick="shop()">Buy Now</button>
@@ -644,11 +922,12 @@
 
         <!-- 9. Christmas Tee — third -->
         <div class="pcard p-third" data-cat="tshirt">
-          <span class="pcard-tag pt-limited">Limited</span>
+          <span class="pcard-tag pt-limited">Limited Run</span>
           <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Keep Skat-ing Christmas tee logo mockup" loading="lazy">
           <div class="pcard-overlay">
-            <div class="pcard-cat">T-Shirt · Limited</div>
-            <div class="pcard-name">Keep Skat-ing!</div>
+            <div class="pcard-cat">T-Shirt / Seasonal</div>
+            <div class="pcard-name">Holiday Roll Tee</div>
+            <div class="pcard-desc">A seasonal skate tee for festive sessions and community meetups.</div>
             <div class="pcard-footer">
               <div><div class="pcard-price">$160</div><span class="pcard-price-sub">TTD</span></div>
               <button class="pcard-btn" onclick="shop()">Buy Now</button>
@@ -661,9 +940,9 @@
           <span class="pcard-tag pt-soon">Coming Soon</span>
           <img class="pcard-img product-img-contain" src="assets/merch/mockup-socks-logo.svg" alt="Temporary TSG Community Socks logo mockup" loading="lazy">
           <div class="pcard-overlay">
-            <div class="pcard-cat">Accessory · Coming Soon</div>
-            <div class="pcard-name">TSG Community Socks</div>
-            <div class="pcard-desc">Branded crew socks. Register interest via WhatsApp.</div>
+            <div class="pcard-cat">Accessory / Coming Soon</div>
+            <div class="pcard-name">Community Crew Socks</div>
+            <div class="pcard-desc">Branded crew socks for rink fits. Register interest via WhatsApp.</div>
             <div class="pcard-footer">
               <div><div class="pcard-price">$35</div><span class="pcard-price-sub">TTD</span></div>
               <button class="pcard-btn" onclick="notify()">Notify Me</button>
@@ -698,6 +977,100 @@
         </div>
       </div>
 
+      <!-- How to order -->
+      <section class="how-order" aria-labelledby="howOrderTitle">
+        <div class="how-order-head">
+          <div class="how-order-kicker">How to Order</div>
+          <h2 id="howOrderTitle">PICK YOUR ORDER LANE.</h2>
+          <p>Use Shopify when you are ready to check out online. Use WhatsApp when you want sizing help, stock checks, custom orders, or local delivery and pickup details before you buy.</p>
+        </div>
+        <div class="order-steps">
+          <div class="order-step">
+            <span class="order-step-num">01</span>
+            <h3>Shopify checkout</h3>
+            <p>Browse the current drop and complete your order through the online store when the item, size, and price are already clear.</p>
+            <a class="btn btn-primary btn-sm" href="https://theskateguys.myshopify.com" target="_blank" rel="noopener">Shop the Drop</a>
+          </div>
+          <div class="order-step">
+            <span class="order-step-num">02</span>
+            <h3>WhatsApp support</h3>
+            <p>Message TSG for sizing, stock checks, custom name prints, bulk questions, and Trinidad &amp; Tobago delivery or pickup coordination.</p>
+            <a class="btn btn-ghost btn-sm" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20help%20ordering%20merch." target="_blank" rel="noopener">Order on WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Find your size -->
+      <section class="size-guide" aria-labelledby="sizeGuideTitle">
+        <div class="size-guide-head">
+          <div class="size-guide-kicker">Find Your Size</div>
+          <h2 id="sizeGuideTitle">FIND YOUR SIZE.</h2>
+          <p>Use this quick guide for TSG tees and hoodie fits. Measurements are in inches and are meant to help you choose a comfortable everyday fit.</p>
+        </div>
+
+        <div class="size-chart-wrap">
+          <table class="size-chart">
+            <thead>
+              <tr>
+                <th scope="col">Size</th>
+                <th scope="col">Chest</th>
+                <th scope="col">Length</th>
+                <th scope="col">Best for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="size-label" data-label="Size">XS</td>
+                <td data-label="Chest">32&ndash;34 in</td>
+                <td data-label="Length">25&ndash;26 in</td>
+                <td data-label="Best for">small teens / petite adults</td>
+              </tr>
+              <tr>
+                <td class="size-label" data-label="Size">S</td>
+                <td data-label="Chest">35&ndash;37 in</td>
+                <td data-label="Length">27&ndash;28 in</td>
+                <td data-label="Best for">slim adults</td>
+              </tr>
+              <tr>
+                <td class="size-label" data-label="Size">M</td>
+                <td data-label="Chest">38&ndash;40 in</td>
+                <td data-label="Length">28&ndash;29 in</td>
+                <td data-label="Best for">regular fit</td>
+              </tr>
+              <tr>
+                <td class="size-label" data-label="Size">L</td>
+                <td data-label="Chest">41&ndash;43 in</td>
+                <td data-label="Length">29&ndash;30 in</td>
+                <td data-label="Best for">relaxed fit</td>
+              </tr>
+              <tr>
+                <td class="size-label" data-label="Size">XL</td>
+                <td data-label="Chest">44&ndash;46 in</td>
+                <td data-label="Length">30&ndash;31 in</td>
+                <td data-label="Best for">bigger relaxed fit</td>
+              </tr>
+              <tr>
+                <td class="size-label" data-label="Size">2XL</td>
+                <td data-label="Chest">47&ndash;50 in</td>
+                <td data-label="Length">31&ndash;32 in</td>
+                <td data-label="Best for">oversized fit</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="size-note">
+          <p><strong>Not sure what size to choose?</strong> Message us your height, usual T-shirt size, and whether you want a regular or oversized fit. We&rsquo;ll help you choose.</p>
+          <a class="btn btn-ghost btn-sm" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20help%20choosing%20my%20merch%20size." target="_blank" rel="noopener">Message for Sizing Help</a>
+        </div>
+
+        <div class="size-order-steps" aria-label="Simple merch order steps">
+          <div class="size-order-step"><span>01</span><strong>Choose your item</strong></div>
+          <div class="size-order-step"><span>02</span><strong>Pick your size</strong></div>
+          <div class="size-order-step"><span>03</span><strong>Message us or checkout online</strong></div>
+        </div>
+      </section>
+
       <!-- Elite strip -->
       <div class="elite-row">
         <div class="elite-row-left">
@@ -714,8 +1087,8 @@
           <div class="custom-title">CUSTOM<br>NAME<br>PRINTING</div>
           <div class="custom-desc">Add your name, nickname, or a custom message to select items. Available on tees and hoodies — just let us know when ordering.</div>
           <div class="custom-items">
-            <div class="custom-item">Classic T-Shirt</div>
-            <div class="custom-item">Proud Skate Mom Tee</div>
+            <div class="custom-item">TSG Community Tee</div>
+            <div class="custom-item">Skate Mom Tee</div>
             <div class="custom-item">Solid With SK8 Hoodie</div>
           </div>
           <div style="margin-top: 20px;">

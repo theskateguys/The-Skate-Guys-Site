@@ -1,48 +1,36 @@
-# The Skate Guys Website Cleanup Audit
+# The Skate Guys Site Audit Report
 
-**Branch:** `audit/tsg-site-cleanup-july-2026`  
-**Audit date:** July 7, 2026  
-**Scope:** `index.html`, `book.html`, `elite.html`, `merch.html`, `assets/updates-data.js`, `assets/events/events-data.js`, and hero-image assets.
+Branch: `codex/tsg-site-audit`
+Date: 2026-07-07
 
-## Current direction
+## Issues Found
 
-The recent redesign moved the site in the right direction:
+| Severity | File | Exact Issue | User Impact | Proposed Fix |
+| --- | --- | --- | --- | --- |
+| Critical | `index.html` | Homepage class package prices and durations conflict with the required business rules and with `book.html`: Starter Pass shows `$130`, Bootcamp shows `$195 / 3 classes`, Academy Monthly shows `$260`. | Visitors may choose or dispute the wrong package and price before booking. | Update homepage package cards to Starter Pass `2 classes / 10 days / $140 TTD`, Beginner Bootcamp `4 classes / 14 days / $260 TTD`, Academy Monthly `4 classes / 30 days / $280 TTD`. |
+| High | `merch.html` | Product cards reference missing local images: `bucket-hat.jpg`, `hoodie-solid-sk8.jpg`, `keychain.jpg`, `hoodie-therapy.png`, `tee-skate-mom.jpg`, `hoodie-f8.png`, `hoodie-running.png`, and `tee-christmas.png`. | The merch page renders broken image icons across most product cards. | Use the committed `classic-tshirt-community.jpg` where available and convert missing-image products to styled placeholders until real assets are committed. |
+| High | `merch.html`, `index.html` | Shipping/worldwide claims appear in metadata, hero copy, stats, info strip, and homepage merch teaser without support in the current business rules. | Unsupported claims can mislead customers about fulfillment and availability. | Remove worldwide/free-delivery shipping claims and replace with neutral WhatsApp/Shopify ordering language. |
+| High | `merch.html` | Discount/deal claims appear in the merch top bar and email capture copy (`exclusive discounts`, `exclusive community deals`). | Violates the instruction not to make unsupported discount claims and risks conflicting offers. | Remove discount/deal language without replacing it with another merch discount. |
+| High | `index.html` | Homepage referral CTA advertises `$20 TTD off` discount, including a prefilled WhatsApp message requesting the discount. | Unsupported discount claim can create customer service friction. | Remove the discount/referral promo or rewrite as a neutral “bring a friend” prompt with no discount. |
+| High | `index.html` | The homepage “Join the Community” CTA under testimonials points to `#learn`, a booking form, not the community/WhatsApp action. | Users trying to join the community are sent to the wrong section. | Point the CTA to the WhatsApp community link or change the label to match the destination. |
+| Medium | `index.html` | A note links to `#referral`, but no element with `id="referral"` exists. | Clicking the link does nothing, especially confusing on mobile. | Remove the missing anchor reference or add a real referral section only if the offer is confirmed. |
+| Medium | `index.html` | Homepage contains duplicate hardcoded updates/events markup and JS-rendered update/event logic. | More maintenance risk and possible stale content if JS data changes. | Keep the data-driven render path and leave a clean fallback only where needed. |
+| Medium | `index.html` | `assets/hero/canoe-bay-team.js` and `assets/hero/` do not exist in this checkout, and the homepage currently has no Canoe Bay hero image to refactor. | The requested hero-image refactor cannot be safely completed without the real committed source photo. | Do not invent imagery. Add a documented blocker; when the real Canoe Bay group photo is supplied, commit it as a normal image and render it with `<picture>`/`<img>`. |
+| Medium | `merch.html` | The favicon points to `/favicon.ico`, which is not present. | Browser requests a missing asset. | Reuse the committed PNG favicon path used by other pages. |
+| Medium | `book.html` | Package card metadata omits the price unit after the slash pattern (`2 classes / 10 days / TTD`). | Booking choices are less clear on mobile and less consistent with the business rules. | Show full package metadata, including `$140 TTD`, `$260 TTD`, and `$280 TTD`. |
+| Medium | `book.html` | The booking form does not collect a WhatsApp/phone number even though TSG confirms bookings by WhatsApp. | Staff receive incomplete booking context if WhatsApp does not expose the sender clearly. | Add a required WhatsApp number field and include it in the generated message. |
+| Medium | `elite.html` | Mobile menu button updates visual state only; it does not expose `aria-expanded` or a controlled menu relationship. | Screen reader and keyboard users receive less accurate navigation state. | Add `aria-expanded`, `aria-controls`, and toggled state on the burger button. |
+| Medium | `index.html`, `elite.html`, `merch.html` | Animated ticker/reveal/pulse behavior has no `prefers-reduced-motion` fallback. | Motion-sensitive users may have a worse experience. | Add reduced-motion CSS to disable marquee, pulse, reveal transitions, and hover motion. |
+| Low | `book.html` | The Book page navigation is thinner than the other pages and omits direct WhatsApp/mobile menu options. | Users on the booking page have fewer escape routes if they need help. | Keep the simple booking page, but add a visible WhatsApp help link. |
+| Low | `index.html`, `book.html`, `elite.html`, `merch.html` | Some buttons and links use icon/emoji-prefixed text inconsistently across pages. | The experience feels less consistent and can create noisy accessible names. | Normalize the highest-value CTAs around “Book a Class”, “See Upcoming Events”, “WhatsApp Us”, and “Join Community”. |
+| Low | `assets/events/events-data.js` | Events data is empty, and the homepage correctly shows the empty state. | No expired events were found, but TSG must manually add upcoming events when confirmed. | Leave empty state in place and avoid inventing event details. |
 
-- The homepage is now a decision page with **Book a Class** as its main action.
-- The booking journey has fewer steps and sends a structured enquiry to WhatsApp.
-- The homepage does not show an expired public event.
-- A real Canoe Bay community photo has been added as homepage proof.
+## Safe Fixes Planned
 
-## Findings
-
-| Severity | File(s) | Issue | Visitor impact | Required fix |
-|---|---|---|---|---|
-| High | `assets/updates-data.js`, `assets/hero/canoe-bay-team.js` | The Canoe Bay hero photo is loaded as an encoded WebP string inside JavaScript, then injected as a CSS background. | The image cannot be cached as a normal media file, is harder to maintain, and does not provide normal image semantics or responsive source handling. | Replace with a normal optimized asset at `assets/hero/canoe-bay-team.webp` and render it with `<picture>` / `<img>` plus an overlay. Remove the encoded-image loader after confirming the normal asset works. |
-| High | `merch.html` | The merch metadata and information strip claim worldwide shipping / Shopify fulfilment and local-printer delivery. These claims require current operational confirmation. | Visitors can expect delivery options that may not be active. | Remove or rewrite as a neutral WhatsApp order-confirmation process until fulfilment rules are confirmed. Update Schema.org metadata to match. |
-| Medium | `elite.html` | Navigation and footer links still point to `index.html#community`, but the new homepage has no `community` section. | Visitors are dropped at the top of the homepage instead of reaching the WhatsApp community. | Replace with the official WhatsApp community URL or add a dedicated community page later. |
-| Medium | `index.html`, `assets/updates-data.js` | The hero container still has an accessibility label for branded wheel artwork even though it is replaced by a real group photo when the loader runs. Hero image loading logic is also mixed into the updates data file. | The page description is inaccurate for assistive technology and the content model is harder to maintain. | Give the real photo an accurate alt/accessible description and move hero media logic into the homepage or a dedicated script. |
-| Medium | `merch.html` | Product catalogue includes fulfilment language and items that may need live stock confirmation. | Customers can ask for unavailable items or assume old prices are active. | Confirm inventory, price, sizing and availability before the next merch campaign. Keep only confirmed products as active purchase items. |
-| Low | `assets/updates-data.js` | `tickerText` fields remain even though the redesigned homepage no longer renders a ticker. | Minor maintenance clutter. | Remove unused fields after confirming no other page reads them. |
-| Low | `index.html`, `elite.html`, `merch.html` | Visual system and navigation structures are not yet fully unified across pages. | The site feels like several good pages rather than one polished system. | Standardize navigation, footer, button states and mobile menu behaviour after the core cleanup. |
-
-## Verification notes
-
-- The booking form has one package selector, required fields, and a structured WhatsApp handoff.
-- `assets/events/events-data.js` is currently empty, so there is no active event card being pulled from that file.
-- Current reviewed Elite page source does not show a live **50% off merch** benefit. A repository-wide text check should still be run locally in Codex before merge to ensure no obsolete phrase remains in any unreviewed file.
-
-## Manual decisions required from TSG
-
-1. Confirm the real merch delivery policy: Tobago, Trinidad, pickup, local delivery, international delivery, Shopify fulfilment, or WhatsApp-only ordering.
-2. Confirm which products are currently in stock and available for immediate order.
-3. Upload the final standard WebP hero file to `assets/hero/canoe-bay-team.webp` so the encoded-image workaround can be removed.
-4. Confirm whether the current Elite percentage-saving language should remain or be rewritten as commitment-plan language.
-
-## Acceptance criteria before merge
-
-- No `index.html#community` links remain unless that section exists.
-- No unverified shipping or fulfilment claim remains.
-- The hero photo loads from a normal image asset, has an accurate accessible description, and keeps the existing text overlay readable.
-- No live `50% off merch` reference remains anywhere in the repository.
-- Homepage, booking, Elite and merch pages are checked at 320px, 375px, 390px, 768px, 1024px and 1440px.
-- A link and console-error check passes.
+- Correct class-package prices and duration copy.
+- Remove unsupported merch shipping, discount, and deal claims.
+- Fix the broken `#referral` link and misleading community CTA.
+- Replace missing merch image references with accessible placeholders or committed images.
+- Improve booking form completeness and package metadata.
+- Add reduced-motion fallbacks and small navigation accessibility improvements.
+- Document the Canoe Bay hero image blocker instead of using stock or AI-generated people.

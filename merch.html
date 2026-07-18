@@ -222,40 +222,130 @@
 
     /* ── Product card ── */
     .pcard {
-      position: relative; overflow: hidden;
+      position: relative; overflow: hidden; isolation: isolate;
       background: #0c0c12; cursor: pointer;
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 18px;
       box-shadow: 0 18px 50px rgba(0,0,0,.22);
+      --stage-accent: rgba(0,245,255,.2);
+      --stage-accent-2: rgba(255,45,107,.15);
+      --product-pad-x: 48px;
+      --product-pad-top: 46px;
+      --product-pad-bottom: 138px;
+      --product-focus: center 38%;
+      --shadow-bottom: 116px;
+    }
+    .pcard::before {
+      content: "";
+      position: absolute; inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 18% 12%, var(--stage-accent), transparent 34%),
+        radial-gradient(circle at 84% 10%, var(--stage-accent-2), transparent 32%),
+        radial-gradient(ellipse at 50% 36%, rgba(255,255,255,.12), transparent 34%),
+        linear-gradient(155deg, #07070b 0%, #101018 52%, #050507 100%);
+    }
+    .pcard::after {
+      content: "";
+      position: absolute;
+      left: 13%; right: 13%; bottom: var(--shadow-bottom);
+      height: 18px;
+      z-index: 0;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,.7), transparent 72%);
+      filter: blur(4px);
+      opacity: .84;
     }
     .pcard-img {
       width: 100%; height: 100%;
       object-fit: cover; object-position: center;
       display: block;
-      transition: transform .5s ease;
+      position: relative;
+      z-index: 1;
+      transition: transform .55s ease, filter .55s ease;
+      will-change: transform;
     }
-    .pcard-img-contain {
-      object-fit: contain; object-position: center;
-      background:
-        radial-gradient(circle at 50% 38%, rgba(255,255,255,.08), transparent 32%),
-        linear-gradient(135deg, #08080d, #12121a 55%, #07070b);
+    .product-img-contain {
+      box-sizing: border-box;
+      object-fit: contain; object-position: var(--product-focus);
+      padding: var(--product-pad-top) var(--product-pad-x) var(--product-pad-bottom);
+      background: transparent !important;
+      filter: drop-shadow(0 18px 22px rgba(0,0,0,.45));
     }
+    .visual-tee {
+      --stage-accent: rgba(0,245,255,.24);
+      --stage-accent-2: rgba(255,45,107,.18);
+      --product-pad-x: 58px;
+      --product-pad-top: 50px;
+      --product-pad-bottom: 150px;
+      --product-focus: center 36%;
+      --shadow-bottom: 128px;
+    }
+    .visual-hat {
+      --stage-accent: rgba(255,45,107,.2);
+      --stage-accent-2: rgba(0,245,255,.2);
+      --product-pad-x: 62px;
+      --product-pad-top: 62px;
+      --product-pad-bottom: 150px;
+      --product-focus: center 35%;
+      --shadow-bottom: 130px;
+    }
+    .visual-hoodie {
+      --stage-accent: rgba(0,245,255,.22);
+      --stage-accent-2: rgba(255,45,107,.18);
+      --product-pad-x: 44px;
+      --product-pad-top: 36px;
+      --product-pad-bottom: 130px;
+      --product-focus: center 34%;
+    }
+    .visual-accessory {
+      --stage-accent: rgba(255,45,107,.22);
+      --stage-accent-2: rgba(0,245,255,.18);
+      --product-pad-x: 36px;
+      --product-pad-top: 42px;
+      --product-pad-bottom: 112px;
+      --product-focus: center 36%;
+      --shadow-bottom: 96px;
+    }
+    .visual-socks {
+      --stage-accent: rgba(0,245,255,.2);
+      --stage-accent-2: rgba(255,45,107,.16);
+      --product-pad-x: 62px;
+      --product-pad-top: 42px;
+      --product-pad-bottom: 132px;
+      --product-focus: center 34%;
+      --shadow-bottom: 112px;
+    }
+    .p-wide.visual-hoodie { --product-pad-x: 78px; --product-pad-top: 24px; --product-pad-bottom: 104px; --shadow-bottom: 88px; }
+    .p-half.visual-hoodie { --product-pad-x: 52px; --product-pad-top: 34px; --product-pad-bottom: 124px; --shadow-bottom: 106px; }
+    .p-third.visual-hoodie { --product-pad-x: 34px; --product-pad-top: 34px; --product-pad-bottom: 126px; --shadow-bottom: 104px; }
+    .p-half.visual-tee { --product-pad-x: 58px; --product-pad-top: 42px; --product-pad-bottom: 128px; --shadow-bottom: 108px; }
+    .p-third.visual-tee { --product-pad-x: 40px; --product-pad-top: 34px; --product-pad-bottom: 124px; --shadow-bottom: 104px; }
     .pcard-placeholder {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
       font-size: 72px; background: #0c0c12;
     }
-    .pcard:hover .pcard-img { transform: scale(1.06); }
+    .pcard:hover .pcard-img {
+      transform: scale(1.035) translateY(-5px);
+      filter: drop-shadow(0 24px 28px rgba(0,0,0,.5));
+    }
 
     /* Overlay — always visible at bottom */
     .pcard-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.44) 48%, rgba(0,0,0,.08) 78%);
+      z-index: 3;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.94) 0%, rgba(0,0,0,.5) 48%, rgba(0,0,0,.08) 78%),
+        radial-gradient(circle at 14% 86%, rgba(0,245,255,.12), transparent 28%);
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 22px;
       transition: background .3s;
     }
-    .pcard:hover .pcard-overlay { background: linear-gradient(to top, rgba(0,0,0,.95) 0%, rgba(0,0,0,.5) 55%, rgba(0,0,0,.1) 80%); }
+    .pcard:hover .pcard-overlay {
+      background:
+        linear-gradient(to top, rgba(0,0,0,.96) 0%, rgba(0,0,0,.54) 55%, rgba(0,0,0,.1) 80%),
+        radial-gradient(circle at 14% 86%, rgba(255,45,107,.14), transparent 30%);
+    }
 
     .pcard-cat {
       font-size: 9px; font-weight: 700; letter-spacing: .2em;
@@ -305,7 +395,7 @@
       position: absolute; top: 14px; left: 14px;
       font-size: 9px; font-weight: 800; letter-spacing: .12em;
       text-transform: uppercase; padding: 5px 11px; border-radius: 999px;
-      z-index: 2;
+      z-index: 4;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
     .pt-custom  { background: var(--gold); color: #000; }
@@ -609,6 +699,15 @@
       }
       .product-shell { padding: 0 14px; }
       .pcard { border-radius: 16px; }
+      .pcard::after { left: 18%; right: 18%; }
+      .product-img-contain {
+        --product-pad-x: 44px;
+        --product-pad-top: 40px;
+        --product-pad-bottom: 146px;
+      }
+      .visual-hat { --product-pad-x: 54px; --product-pad-top: 54px; }
+      .visual-accessory { --product-pad-x: 42px; --product-pad-top: 48px; --product-pad-bottom: 124px; }
+      .visual-socks { --product-pad-x: 58px; --product-pad-bottom: 138px; }
       .pcard-overlay { padding: 20px; }
       .pcard-name { font-size: 30px; }
       .pcard-desc { max-height: none; opacity: 1; font-size: 13px; }
@@ -806,9 +905,9 @@
       <div class="bento" id="productGrid">
 
         <!-- 1. Classic T-Shirt — featured (5 cols × 2 rows) -->
-        <div class="pcard p-feat" data-cat="tshirt">
+        <div class="pcard p-feat visual-tee" data-cat="tshirt">
           <span class="pcard-tag pt-best">Best Seller</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/classic-tshirt-community.jpg" alt="Classic T-Shirt community gear promo" loading="lazy" style="object-fit:contain; background:#111;">
+          <img class="pcard-img product-img-contain" src="assets/merch/classic-tshirt-community.jpg" alt="Black The Skate Guys Community logo T-shirt mockup for class days and rink nights" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt / Community Drop</div>
             <div class="pcard-name">TSG Community Tee</div>
@@ -824,9 +923,9 @@
         </div>
 
         <!-- 2. Bucket Hat — standard (4 cols × 2 rows) -->
-        <div class="pcard p-std" data-cat="headwear">
+        <div class="pcard p-std visual-hat" data-cat="headwear">
           <span class="pcard-tag pt-wear">Everyday Wear</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-bucket-hat-logo.svg" alt="Temporary TSG Community Bucket Hat logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-bucket-hat-logo.svg" alt="Black bucket hat mockup with the neon The Skate Guys community logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Headwear / All-Black</div>
             <div class="pcard-name">Circle Logo Bucket Hat</div>
@@ -842,9 +941,9 @@
         </div>
 
         <!-- 3. Hoodie Solid SK8 — standard (3 cols × 1 row, wide) -->
-        <div class="pcard p-wide" data-cat="hoodie">
+        <div class="pcard p-wide visual-hoodie" data-cat="hoodie">
           <span class="pcard-tag pt-new">New Drop</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Solid With SK8 hoodie logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Black Solid With SK8 hoodie mockup with The Skate Guys logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie / Statement Piece</div>
             <div class="pcard-name">Solid With SK8 Hoodie</div>
@@ -860,9 +959,9 @@
         </div>
 
         <!-- 4. Keychain — small -->
-        <div class="pcard p-sm" data-cat="accessory">
+        <div class="pcard p-sm visual-accessory" data-cat="accessory">
           <span class="pcard-tag pt-skater">For Skaters</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-keychain-logo.svg" alt="Temporary TSG Acrylic Keychain logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-keychain-logo.svg" alt="The Skate Guys acrylic keychain mockup with neon community logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Accessory / Daily Carry</div>
             <div class="pcard-name">TSG Pocket Keychain</div>
@@ -877,9 +976,9 @@
         </div>
 
         <!-- 5. Hoodie Therapy — half -->
-        <div class="pcard p-half" data-cat="hoodie">
+        <div class="pcard p-half visual-hoodie" data-cat="hoodie">
           <span class="pcard-tag pt-limited">Limited Run</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Rollerskate Because Therapy hoodie logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Black Therapy Roll hoodie mockup with The Skate Guys community mark" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie / Mood Piece</div>
             <div class="pcard-name">Therapy Roll Hoodie</div>
@@ -895,9 +994,9 @@
         </div>
 
         <!-- 6. Proud Skate Mom — half -->
-        <div class="pcard p-half" data-cat="tshirt">
+        <div class="pcard p-half visual-tee" data-cat="tshirt">
           <span class="pcard-tag pt-wear">Everyday Wear</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Proud Skate Mom T-shirt logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Black Skate Mom T-shirt mockup with The Skate Guys logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt / Family Crew</div>
             <div class="pcard-name">Skate Mom Tee</div>
@@ -913,9 +1012,9 @@
         </div>
 
         <!-- 7. Hoodie F8 — third -->
-        <div class="pcard p-third" data-cat="hoodie">
+        <div class="pcard p-third visual-hoodie" data-cat="hoodie">
           <span class="pcard-tag pt-skater">For Skaters</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Rollersk8 With F8 hoodie logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Black F8 Roll hoodie mockup with neon The Skate Guys logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie / Skate Phrase</div>
             <div class="pcard-name">F8 Roll Hoodie</div>
@@ -928,9 +1027,9 @@
         </div>
 
         <!-- 8. Hoodie Running Sucks — third -->
-        <div class="pcard p-third" data-cat="hoodie">
+        <div class="pcard p-third visual-hoodie" data-cat="hoodie">
           <span class="pcard-tag pt-new">New Drop</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary I Skate Because Running Sucks hoodie logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Black Skate Over Running hoodie mockup with neon The Skate Guys logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie / Streetwear</div>
             <div class="pcard-name">Skate Over Running Hoodie</div>
@@ -943,9 +1042,9 @@
         </div>
 
         <!-- 9. Christmas Tee — third -->
-        <div class="pcard p-third" data-cat="tshirt">
+        <div class="pcard p-third visual-tee" data-cat="tshirt">
           <span class="pcard-tag pt-limited">Limited Run</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Keep Skat-ing Christmas tee logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Black Holiday Roll T-shirt mockup with neon The Skate Guys logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt / Seasonal</div>
             <div class="pcard-name">Holiday Roll Tee</div>
@@ -958,9 +1057,9 @@
         </div>
 
         <!-- 10. Socks — half -->
-        <div class="pcard p-half" data-cat="accessory">
+        <div class="pcard p-half visual-socks" data-cat="accessory">
           <span class="pcard-tag pt-soon">Coming Soon</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-socks-logo.svg" alt="Temporary TSG Community Socks logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-socks-logo.svg" alt="Black The Skate Guys crew socks mockup with neon community logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Accessory / Coming Soon</div>
             <div class="pcard-name">Community Crew Socks</div>

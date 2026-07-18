@@ -551,7 +551,7 @@
     .email-bar h3 { font-family: var(--font-display); font-size: 24px; letter-spacing: .03em; margin-bottom: 3px; }
     .email-bar p { font-size: 13px; color: var(--muted); }
     .email-form { display: flex; gap: 8px; flex-wrap: wrap; min-width: 0; }
-    .email-form input,.email-form select {
+    .email-form input:not([type="checkbox"]),.email-form select {
       flex: 1; min-width: 180px;
       background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
       border-radius: 10px; padding: 11px 16px;
@@ -560,6 +560,27 @@
     .email-form select option { color: #111; }
     .email-form input::placeholder { color: rgba(255,255,255,.3); }
     .email-form .lead-consent,.email-form .lead-privacy,.email-form .lead-status { flex: 1 0 100%; }
+    .email-form .lead-consent {
+      display: flex !important;
+      align-items: flex-start;
+      gap: 10px !important;
+      margin: 2px 0 0;
+    }
+    .email-form .lead-consent input[type="checkbox"] {
+      flex: 0 0 18px;
+      width: 18px !important;
+      height: 18px !important;
+      min-width: 18px !important;
+      min-height: 18px !important;
+      margin: 1px 0 0 !important;
+      padding: 0 !important;
+    }
+    .email-form .lead-consent span {
+      display: block;
+      flex: 1 1 auto;
+      min-width: 0;
+      line-height: 1.5;
+    }
     @media (max-width: 420px) {
       .email-form { width: 100%; }
       .email-form input { min-width: 0; }
@@ -641,7 +662,8 @@
       .custom-left { padding: 28px 22px; }
       .custom-right { display: none; }
       .email-bar { margin-top: 38px; padding: 22px; align-items: stretch; }
-      .email-form input,.email-form select { min-width: 100%; }
+      .email-form input:not([type="checkbox"]),.email-form select { min-width: 100%; }
+      .email-form .lead-consent { align-items: flex-start; }
     }
 
     /* ── Footer ── */

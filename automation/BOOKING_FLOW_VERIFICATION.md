@@ -1,0 +1,33 @@
+# Single-session booking verification
+
+Branch prepared locally for review. No website or Apps Script production deployment was performed. `assets/lead-config.js` retains the existing endpoint unchanged.
+
+## Checks performed
+
+- `node automation/check-lead-flow.mjs`: HTML references, duplicate IDs, inline/shared JavaScript syntax and lead-script inclusion passed.
+- `node automation/check-booking-system.mjs`: in-memory Apps Script service tests passed. Covers participant storage, solo bookings, optional email, opt-in subscribers, rejected incomplete rental/guardian details, invalid dates/times, duplicate retries, partial-write repair, existing/reordered/extra columns, and status transitions.
+- Playwright CLI with `automation/check-booking-browser.js`: actual Chromium browser against a local static server. Submissions go to an intercepted `.invalid` endpoint; WhatsApp navigation is intercepted too. The production endpoint is never used by this test.
+- Booking screenshots inspected at 390px, 768px and 1440px. No horizontal overflow at those widths. Branding and the existing responsive two-column/stacked layout remain.
+- Browser checks cover required contact fields, phone validation and recovery, rental-size/system requirements, all seven sizing systems, under-18 guardian requirements, adult/own-skate hidden fields, optional consent/email interaction, one-person bookings, message contents and attribution, opaque delivery, simulated network failure and timeout, retained values, enabled retries, same-ID retries including refresh, and new IDs after changed details.
+- Homepage dynamic update copy checked in the browser: TT$80 offer appears and the old Starter/Bootcamp/Academy offer text is absent. Homepage mobile overflow check passed. Booking-page newsletter remains usable and reports unverified delivery accurately.
+- No uncaught JavaScript page errors occurred during the passing browser run. Deliberately aborted mock requests can produce expected browser network-error console entries; these are not successful submissions.
+- Confirmed/Paid statuses tested in Leads, Bookings and Follow Up Status individually. WhatsApp-open tracking and due reminder runs preserved them and sent no reminder. Replied was also protected against unanswered-request reminders. New Lead can advance to WhatsApp Opened, then Follow Up Needed once.
+- `git diff --check` passed for the booking changes.
+
+## Reproduce
+
+From the repository root, run the two Node commands above. For browser checks, start a static server on 127.0.0.1:4188 (for example, `python -m http.server 4188 --bind 127.0.0.1`), then:
+
+```text
+npx --package @playwright/cli playwright-cli -s=tsg-booking open http://127.0.0.1:4188/book.html
+npx --package @playwright/cli playwright-cli -s=tsg-booking run-code --filename automation/check-booking-browser.js
+npx --package @playwright/cli playwright-cli -s=tsg-booking close
+```
+
+Review screenshots are generated under `output/playwright/`; browser CLI artifacts under `.playwright-cli/`. These generated files are not part of the review commit. The browser fixture date is January 5, 2027; update it to a future date when reproducing later.
+
+## Still requires separate operational acceptance
+
+These are mocked integration tests, **not a verified Google Sheets save**. No real email was sent and no actual WhatsApp message was sent. Before release, use a copied/test Sheet and test Apps Script deployment to inspect actual rows, authorization, quotas and confirmation mail; test WhatsApp on a real mobile device and send the message manually. Follow the coordinated deployment steps in `GOOGLE_SHEETS_LEAD_CAPTURE_SETUP.md`.
+
+TSG must review unspecified late cancellation/no-show, weather/venue/TSG cancellation, credit transfer and calendar-month edge cases. No fees, refund exceptions, deposit amount or automatic payment behavior have been invented.

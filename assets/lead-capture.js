@@ -1,236 +1,207 @@
 (() => {
   'use strict';
-
   const config = window.TSG_LEAD_CONFIG || {};
   const rawEndpoint = String(config.endpoint || '').trim();
-  const endpoint = /^https?:\/\//i.test(rawEndpoint) && !/PASTE_GOOGLE_APPS_SCRIPT/i.test(rawEndpoint) ? rawEndpoint : '';
+  const endpoint = /^https:\/\//i.test(rawEndpoint) && !/PASTE_GOOGLE_APPS_SCRIPT/i.test(rawEndpoint) ? rawEndpoint : '';
   const whatsappNumber = String(config.whatsappNumber || '18682766878');
-  const requestTimeoutMs = Number(config.requestTimeoutMs || 9000);
-  const whatsappAutoOpenDelayMs = Number(config.whatsappAutoOpenDelayMs || 1100);
-  const queueKey = 'tsgLeadRetryQueueV1';
-
-  const getQueue = () => {
-    try { return JSON.parse(localStorage.getItem(queueKey) || '[]'); }
-    catch { return []; }
-  };
-
-  const setQueue = leads => {
-    try { localStorage.setItem(queueKey, JSON.stringify(leads.slice(-50))); }
-    catch { /* Storage can be disabled; the form still keeps its WhatsApp handoff. */ }
-  };
-
-  const createLeadId = () => {
-    const time = Date.now().toString(36).toUpperCase();
-    const random = Math.random().toString(36).slice(2, 7).toUpperCase();
-    return `TSG-${time}-${random}`;
-  };
-
-  const sourcePage = () => {
-    const page = location.pathname.split('/').pop() || 'index.html';
-    return `${page}${location.hash || ''}`;
-  };
+  const offer = 'Single session: TT$80 per person / 75 minutes / skate rental included';
 
   const attribution = () => {
     const params = new URLSearchParams(location.search);
     return {
-      sourcePage: sourcePage(),
-      utmSource: params.get('utm_source') || '',
-      utmCampaign: params.get('utm_campaign') || '',
-      utmMedium: params.get('utm_medium') || '',
-      referrer: document.referrer || ''
+      sourcePage: `${location.pathname.split('/').pop() || 'index.html'}${location.hash || ''}`,
+      utmSource: params.get('utm_source') || '', utmCampaign: params.get('utm_campaign') || '',
+      utmMedium: params.get('utm_medium') || '', referrer: document.referrer || ''
     };
   };
 
   const postPayload = async payload => {
-    if (!endpoint) throw new Error('Lead endpoint is not connected yet.');
-
+    if (!endpoint) return 'not_configured';
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), requestTimeoutMs);
+    const timeout = setTimeout(() => controller.abort(), Number(config.requestTimeoutMs || 9000));
     try {
+      // An opaque response cannot prove that Apps Script accepted or stored the data.
       await fetch(endpoint, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {'Content-Type': 'text/plain;charset=utf-8'},
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-        keepalive: true
+        method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain;charset=utf-8'},
+        body: JSON.stringify(payload), signal: controller.signal
       });
-    } finally {
-      clearTimeout(timeout);
-    }
-  };
-
-  const queuePayload = payload => {
-    const queue = getQueue();
-    const withoutDuplicate = queue.filter(item => item.leadId !== payload.leadId);
-    withoutDuplicate.push(payload);
-    setQueue(withoutDuplicate);
-  };
-
-  const submitPayload = async payload => {
-    if (!endpoint) return {state: 'not_configured'};
-    try {
-      await postPayload(payload);
-      return {state: 'success'};
-    } catch (error) {
-      queuePayload(payload);
-      return {state: 'queued', error};
-    }
-  };
-
-  const syncQueue = async () => {
-    if (!endpoint || !navigator.onLine) return;
-    const queue = getQueue();
-    if (!queue.length) return;
-
-    const remaining = [];
-    for (const payload of queue) {
-      try { await postPayload(payload); }
-      catch { remaining.push(payload); }
-    }
-    setQueue(remaining);
+      return 'unverified';
+    } catch { return 'failed'; }
+    finally { clearTimeout(timeout); }
   };
 
   const recordWhatsAppOpened = leadId => {
     if (!endpoint) return;
-    const payload = JSON.stringify({action: 'whatsapp_opened', leadId});
-    try {
-      const blob = new Blob([payload], {type: 'text/plain;charset=utf-8'});
-      if (navigator.sendBeacon?.(endpoint, blob)) return;
-    } catch { /* Fall through to fetch. */ }
-    fetch(endpoint, {method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: payload, keepalive: true}).catch(() => {});
+    fetch(endpoint, {
+      method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: JSON.stringify({action: 'whatsapp_opened', leadId}), keepalive: true
+    }).catch(() => {});
+  };
+
+  const initParticipants = form => {
+    const container = form.querySelector('[data-participants]');
+    if (!container) return;
+    const count = form.elements.namedItem('participantCount');
+    const template = document.getElementById('participantTemplate');
+    // Keep removed rows in memory so changing the count back does not erase details.
+    const rows = [];
+    const render = () => {
+      if (!count.validity.valid) return;
+      const total = Number(count.value);
+      while (rows.length < total) {
+        const row = template.content.firstElementChild.cloneNode(true);
+        const index = rows.length;
+        row.querySelector('[data-participant-number]').textContent = index + 1;
+        row.querySelectorAll('[data-field]').forEach(input => { input.name = `participant${index}_${input.dataset.field}`; });
+        rows.push(row);
+      }
+      rows.forEach((row, index) => { if (index < total) container.append(row); else row.remove(); });
+    };
+    count.addEventListener('input', render);
+    container.addEventListener('input', event => {
+      const row = event.target.closest('.participant');
+      const age = row.querySelector('[data-field="age"]');
+      const rental = row.querySelector('[data-field="rentals"]').value === 'Yes';
+      const child = age.value !== '' && Number(age.value) < 18;
+      [['[data-rental-size]', rental], ['[data-guardian]', child]].forEach(([selector, enabled]) => {
+        const group = row.querySelector(selector);
+        group.hidden = !enabled;
+        group.querySelectorAll('input,select').forEach(input => { input.disabled = !enabled; input.required = enabled; });
+      });
+    });
+    const parts = new Intl.DateTimeFormat('en', {timeZone: 'America/Port_of_Spain', year: 'numeric', month: '2-digit', day: '2-digit'}).formatToParts(new Date());
+    const datePart = name => parts.find(part => part.type === name).value;
+    form.elements.namedItem('preferredDate').min = `${datePart('year')}-${datePart('month')}-${datePart('day')}`;
+    render();
+  };
+
+  const payloadFromForm = form => {
+    const data = new FormData(form);
+    const get = name => String(data.get(name) || '').trim();
+    const isBooking = form.dataset.leadType === 'booking';
+    const participants = isBooking ? [...form.querySelectorAll('.participant')].map(row => {
+      const field = name => row.querySelector(`[data-field="${name}"]`).value.trim();
+      const rentals = field('rentals');
+      const age = Number(field('age'));
+      return {
+        age, experience: field('experience'), rentals,
+        skateSize: rentals === 'Yes' ? field('skateSize') : '', sizeSystem: rentals === 'Yes' ? field('sizeSystem') : '',
+        guardianName: age < 18 ? field('guardianName') : '', guardianPhone: age < 18 ? field('guardianPhone') : ''
+      };
+    }) : [];
+    return {
+      action: 'lead_submit', leadType: isBooking ? 'booking' : 'email',
+      name: get('name'), whatsapp: get('phone'), email: get('email').toLowerCase(),
+      location: get('location'), package: isBooking ? offer : '',
+      preferredArea: get('preferredArea'), preferredDate: get('preferredDate'), preferredTime: get('preferredTime'),
+      participantCount: participants.length, participants,
+      skaterType: [...new Set(participants.map(p => p.age < 18 ? 'Child' : 'Adult'))].join(', '),
+      rentalsNeeded: participants.some(p => p.rentals === 'Yes') ? 'Yes' : 'No',
+      marketingConsent: data.get('marketingConsent') === 'on' ? 'Yes' : 'No', ...attribution(),
+      tags: [...new Set([...(form.dataset.tags || '').split(',').filter(Boolean), get('location').toLowerCase()])].filter(Boolean).join(',')
+    };
   };
 
   const makeWhatsAppUrl = payload => {
     const lines = [
-      'TSG Booking Request',
-      `Lead ID: ${payload.leadId}`,
-      '',
-      `Name: ${payload.name}`,
-      `WhatsApp number: ${payload.whatsapp}`,
-      `Email: ${payload.email}`,
-      `Adult or child: ${payload.skaterType}`,
-      `Location: ${payload.location}`,
-      `Package: ${payload.package}`,
-      `Rental skates needed: ${payload.rentalsNeeded}`,
-      `Preferred day/time: ${payload.preferredTime}`,
-      '',
-      'Please confirm availability.'
+      'TSG Booking Request (not confirmed)', `Lead ID: ${payload.leadId}`,
+      `Contact: ${payload.name}`, `WhatsApp: ${payload.whatsapp}`, `Email: ${payload.email || 'Not provided'}`,
+      `Island: ${payload.location}`, `Preferred area: ${payload.preferredArea}`,
+      `Preferred date/time: ${payload.preferredDate} ${payload.preferredTime} (Trinidad & Tobago time)`,
+      payload.package, `Participants: ${payload.participantCount}`,
+      ...payload.participants.map((p, index) => [
+        `Participant ${index + 1}: age ${p.age}; ${p.experience}; rentals ${p.rentals}`,
+        p.rentals === 'Yes' ? `Skate size: ${p.skateSize} (${p.sizeSystem})` : 'Bringing own skates',
+        p.age < 18 ? `Guardian: ${p.guardianName}; WhatsApp: ${p.guardianPhone}` : ''
+      ].filter(Boolean).join('\n')),
+      `Marketing consent: ${payload.marketingConsent}`, `Source: ${payload.sourcePage}`,
+      `UTM source: ${payload.utmSource || '-'}`, `UTM campaign: ${payload.utmCampaign || '-'}`,
+      `Submitted: ${payload.timestamp}`, '',
+      'Please check coach, location and skate availability before payment. Deposit preferred; payment on arrival by arrangement.',
+      'Rescheduling: at least 24 hours notice. Credit rather than refunds; credit valid for one calendar month from the original scheduled session date.',
+      'Please clarify late cancellation, no-show and TSG cancellation arrangements.'
     ];
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
   };
 
-  const hydrateTrackingFields = form => {
-    const values = attribution();
-    Object.entries(values).forEach(([name, value]) => {
-      let field = form.elements.namedItem(name);
-      if (!field) {
-        field = document.createElement('input');
-        field.type = 'hidden';
-        field.name = name;
-        form.append(field);
-      }
-      field.value = value;
-    });
-  };
-
-  const payloadFromForm = form => {
-    hydrateTrackingFields(form);
-    const data = new FormData(form);
-    const selectedPackage = document.querySelector('input[name="packageChoice"]:checked');
-    const locationValue = String(data.get('location') || '');
-    const baseTags = String(form.dataset.tags || '').split(',').map(tag => tag.trim()).filter(Boolean);
-    if (locationValue) baseTags.push(locationValue.toLowerCase());
-
-    return {
-      action: 'lead_submit',
-      timestamp: new Date().toISOString(),
-      leadId: createLeadId(),
-      leadType: form.dataset.leadType || 'email',
-      name: String(data.get('name') || '').trim(),
-      whatsapp: String(data.get('phone') || '').trim(),
-      email: String(data.get('email') || '').trim().toLowerCase(),
-      location: locationValue,
-      skaterType: String(data.get('skaterType') || ''),
-      package: String(selectedPackage?.value || data.get('package') || ''),
-      rentalsNeeded: String(data.get('rentals') || ''),
-      preferredTime: String(data.get('preferredTime') || '').trim(),
-      sourcePage: String(data.get('sourcePage') || sourcePage()),
-      utmSource: String(data.get('utmSource') || ''),
-      utmCampaign: String(data.get('utmCampaign') || ''),
-      utmMedium: String(data.get('utmMedium') || ''),
-      referrer: String(data.get('referrer') || ''),
-      marketingConsent: data.get('marketingConsent') === 'on' ? 'Yes' : 'No',
-      whatsappOpened: 'No',
-      status: 'New Lead',
-      notes: '',
-      tags: [...new Set(baseTags)].join(',')
-    };
-  };
-
-  const setStatus = (node, state, text) => {
-    if (!node) return;
-    node.dataset.state = state;
-    node.textContent = text;
-  };
-
-  const openWhatsApp = (url, leadId) => {
-    if (!url) return;
-    recordWhatsAppOpened(leadId);
-    const opened = window.open(url, '_blank');
-    if (opened) opened.opener = null;
-    else window.location.href = url;
-  };
-
   const handleForm = form => {
-    hydrateTrackingFields(form);
+    initParticipants(form);
     const status = form.querySelector('[data-form-status]');
     const button = form.querySelector('[type="submit"]');
-    const defaultLabel = button?.textContent || 'Submit';
-
+    const defaultLabel = button.textContent;
+    const success = form.querySelector('[data-booking-success]');
+    const link = form.querySelector('[data-whatsapp-link]');
+    let lastSignature = '';
+    let submittedPayload;
+    let busy = false;
+    if (link) link.addEventListener('click', () => { if (submittedPayload) recordWhatsAppOpened(submittedPayload.leadId); });
+    form.addEventListener('input', event => {
+      event.target.setCustomValidity?.('');
+      if (success) success.hidden = true;
+      if (status) status.textContent = '';
+    });
     form.addEventListener('submit', async event => {
       event.preventDefault();
+      if (busy) return;
+      form.querySelectorAll('input[required]').forEach(input => {
+        input.setCustomValidity(input.value.trim() ? '' : 'Please complete this field.');
+      });
+      form.querySelectorAll('input[type="tel"]:not(:disabled)').forEach(input => {
+        const digits = input.value.replace(/\D/g, '');
+        input.setCustomValidity(digits.length >= 7 && digits.length <= 15 ? '' : 'Enter a WhatsApp number with 7 to 15 digits, including country code.');
+      });
       if (!form.reportValidity()) return;
-
       const payload = payloadFromForm(form);
-      const isBooking = payload.leadType === 'booking';
-      const whatsappUrl = isBooking ? makeWhatsAppUrl(payload) : '';
-
-      form.classList.add('is-submitting');
-      if (button) { button.disabled = true; button.textContent = isBooking ? 'Saving your request...' : 'Joining the list...'; }
-      setStatus(status, '', 'Saving your details securely...');
-
-      const result = await submitPayload(payload);
-      form.classList.remove('is-submitting');
-      form.classList.add('is-complete');
-
-      if (result.state === 'success') {
-        setStatus(status, 'success', isBooking ? 'Request saved. WhatsApp is opening so you can finish your booking.' : 'You are on the TSG update list.');
-      } else if (result.state === 'not_configured') {
-        setStatus(status, 'queued', isBooking ? 'Google Sheet capture is not connected yet. WhatsApp is opening so your request can still continue.' : 'The update form is not connected yet. Please try again soon.');
-      } else {
-        setStatus(status, 'queued', isBooking ? 'Sheet save could not be confirmed. WhatsApp is opening so your request can still continue.' : 'You are saved for sync and will be added when the connection returns.');
+      if (payload.marketingConsent === 'Yes' && !payload.email) {
+        status.dataset.state = 'error';
+        status.textContent = 'Add your email to receive updates, or untick the optional marketing checkbox.';
+        form.elements.namedItem('email').focus();
+        return;
       }
-
-      if (button) button.textContent = isBooking ? 'Request captured' : 'You are on the list';
-      form.querySelectorAll('input,select,button').forEach(control => { control.disabled = true; });
-
+      const signature = JSON.stringify(payload);
+      busy = true;
+      const controls = [...form.querySelectorAll('input,select')].filter(control => !control.disabled);
+      controls.forEach(control => { control.disabled = true; });
+      button.disabled = true;
+      form.setAttribute('aria-busy', 'true');
+      button.textContent = 'Preparing...';
+      status.textContent = 'Preparing your details and attempting website delivery...';
+      if (signature !== lastSignature) {
+        submittedPayload = {...payload, leadId: `TSG-${crypto.randomUUID()}`, timestamp: new Date().toISOString()};
+        // Store only a digest and receipt ID, never participant or contact details.
+        // This also makes unchanged retries after a refresh idempotent in this tab.
+        try {
+          const digest = [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(signature)))].map(n => n.toString(16).padStart(2, '0')).join('');
+          const key = `tsgSubmission:${payload.leadType}`;
+          const previous = JSON.parse(sessionStorage.getItem(key) || 'null');
+          if (previous?.digest === digest) {
+            submittedPayload.leadId = previous.leadId;
+            submittedPayload.timestamp = previous.timestamp;
+          } else sessionStorage.setItem(key, JSON.stringify({digest, leadId: submittedPayload.leadId, timestamp: submittedPayload.timestamp}));
+        } catch { /* An unchanged retry still keeps its ID in memory if storage is blocked. */ }
+        lastSignature = signature;
+      }
+      // Reuse the same ID for an unchanged retry, including after an opaque response.
+      const result = await postPayload(submittedPayload);
+      controls.forEach(control => { control.disabled = false; });
+      busy = false;
+      button.disabled = false;
+      form.removeAttribute('aria-busy');
+      const isBooking = submittedPayload.leadType === 'booking';
+      status.dataset.state = result === 'failed' ? 'error' : 'queued';
+      status.textContent = result === 'unverified'
+        ? 'Website delivery attempted; storage could not be verified.'
+        : result === 'failed' ? 'Website delivery failed or timed out. Your details are still here; you can retry.'
+          : 'Website delivery is unavailable. Your details are still here.';
       if (isBooking) {
-        const success = form.querySelector('[data-booking-success]');
-        const link = form.querySelector('[data-whatsapp-link]');
-        if (link) {
-          link.href = whatsappUrl;
-          link.addEventListener('click', () => recordWhatsAppOpened(payload.leadId), {once: true});
-        }
-        if (success) success.hidden = false;
-        window.setTimeout(() => openWhatsApp(whatsappUrl, payload.leadId), whatsappAutoOpenDelayMs);
+        link.href = makeWhatsAppUrl(submittedPayload);
+        success.hidden = false;
+        status.textContent += ' You must open WhatsApp and press Send on the prepared message to continue with TSG.';
       } else {
-        form.reset();
+        status.textContent += ' Check for a confirmation email, or retry with the same details.';
       }
+      button.textContent = `Retry ${isBooking ? 'Website Delivery' : defaultLabel}`;
     });
   };
-
   document.querySelectorAll('[data-tsg-lead-form]').forEach(handleForm);
-  window.addEventListener('online', syncQueue);
-  syncQueue();
 })();

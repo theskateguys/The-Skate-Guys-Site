@@ -26,6 +26,15 @@
 .booking-success p{color:#d4d4de;font-size:12px;line-height:1.55}
 .booking-success a:not(.btn){color:#00f5ff;font-weight:800}
 .booking-success a.btn{color:#001014!important;font-weight:800;text-align:center}
+.booking-success[hidden],[data-rental-size][hidden],[data-guardian][hidden]{display:none}
+.participant{min-width:0;border:0;border-top:1px solid rgba(255,255,255,.14);padding:18px 0;display:grid;gap:13px}
+.participant legend{padding-right:10px;color:#00f5ff;font-weight:700}
+.participant [data-guardian]{display:grid;gap:13px}
+.participant [data-guardian][hidden]{display:none}
+#bookingForm .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+#bookingForm input,#bookingForm select{min-width:0}
+#bookingForm .btn{white-space:normal;overflow-wrap:anywhere}
+@media(max-width:550px){#bookingForm .two{grid-template-columns:1fr}}
 @media(max-width:820px){.lead-capture-inner{grid-template-columns:1fr;gap:24px}.lead-capture-form{grid-template-columns:1fr 170px}.lead-capture-form .lead-submit{grid-column:1/-1}}
 @media(max-width:540px){.lead-capture-band{padding:44px 0}.lead-capture-form{grid-template-columns:1fr}.lead-capture-form .lead-submit{grid-column:auto}.lead-consent,.lead-privacy,.lead-status{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){.lead-capture-form *{transition:none!important}}

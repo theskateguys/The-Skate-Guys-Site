@@ -1,0 +1,258 @@
+{
+  "date": "2026-10-16",
+  "timezone": "America/Port_of_Spain",
+  "sourceCommit": "8ce511d62ba31d2b5eba09d8db722c8527d5229a",
+  "scope": "REAL Chromium against newly authorized isolated optimized Apps Script version2. No mocked network responses, email-bearing fresh request or production access.",
+  "projectId": "1qXXCOqzdedWiuwjdR1bcJHp7T517fbXUlFl_s9NVfNKlytGmNpWrVKU9",
+  "testSheetId": "1CuA0uWDnUu-EK0XseYxNNpEK4lX5SZ7S5UuTdy-HCyM",
+  "backup": {
+    "sheetId": "1g9KH1RLxBhdD7BSHeyeir0K0x7DvhVy4P_oXmNIIHUA",
+    "boundCodeProjectId": "1xy8di1PjiF4xoenpNHywhWuNF8om3N1V3bGITuzau-zWRkD4O_ExnUKn",
+    "boundedCellsMatchBeforeTest": true,
+    "boundSourceNormalizedSha256": "1c2a42013977dff8fa710f1f431d3182ee8b334050e79a9eccb932f850b0b7df",
+    "boundSourceMatchesOriginal": true,
+    "settingsSnapshot": "Ignored local output/acceptance/isolated-pre-optimized-settings.json",
+    "archiveOnlyDoNotExecuteCopiedCode": true
+  },
+  "deployment": {
+    "version": 2,
+    "endpoint": "https://script.google.com/macros/s/AKfycbw-UnIZTK7uF6yLQfGWM_mSQBHD6aVL_e7AoGikQY5cweh1EnGTuBN7z188XFnt-e4B2g/exec",
+    "separateDeployment": true,
+    "version1AndItsUrlPreserved": true,
+    "codeNormalizedSha256": "199f633076ef8740569d7ca877cdb50277fc9a8f2d93c044c4dcde2306b13554",
+    "emailLogoRawSha256": "d21808c728f60d1db52bc0b4dc7a791d873248c2880fc734475f79eb33d0a12f",
+    "bothFilesReadBackMatchingReviewed": true,
+    "profilingAndOneOffMailHelpersExcluded": true
+  },
+  "timeoutMs": 25000,
+  "duplicate": {
+    "leadId": "TSG-966d41c4-e666-4f17-838b-f4d25dfa8481",
+    "timestampReused": "2026-10-16T19:43:07.105Z",
+    "pass": true,
+    "savedVisible": true,
+    "evidence": {
+      "requests": [
+        {
+          "mode": "cors",
+          "at": 4240.20000000298
+        }
+      ],
+      "reads": [
+        {
+          "host": "script.googleusercontent.com",
+          "type": "cors",
+          "httpStatus": 200,
+          "ok": true,
+          "matchingReference": true,
+          "status": "duplicate_ignored",
+          "at": 11064.90000000596,
+          "savedAlreadyVisible": false
+        }
+      ],
+      "saved": [
+        {
+          "at": 11065.70000000298,
+          "readsSeen": 1
+        }
+      ],
+      "whatsapp": [
+        {
+          "at": 4260.800000011921,
+          "host": "wa.me",
+          "number": "18682766878",
+          "matchingReference": true,
+          "readsSeen": 0
+        }
+      ]
+    },
+    "requestTimeMs": 6824.70000000298,
+    "responseTimeMs": 6824.70000000298,
+    "timeoutHeadroomMs": 18175.29999999702,
+    "whatsappAfterDispatchMs": 20.600000008940697,
+    "cellsUnchanged": true,
+    "mailMessageSetUnchanged": true,
+    "executionUi": {
+      "version": 2,
+      "localStart": "2026-10-16 17:46:23",
+      "durationSeconds": 4.324,
+      "status": "Completed"
+    }
+  },
+  "fresh": {
+    "leadId": "TSG-OPTIMIZED-NOEMAIL-1792187088270",
+    "timestamp": "2026-10-16T21:44:48.270Z",
+    "label": "TEST ONLY - Dylon optimized blank-email acceptance",
+    "emailBlank": true,
+    "marketingConsent": "No",
+    "pass": true,
+    "savedVisible": true,
+    "evidence": {
+      "requests": [
+        {
+          "mode": "cors",
+          "at": 2213.0999999940395
+        }
+      ],
+      "reads": [
+        {
+          "host": "script.googleusercontent.com",
+          "type": "cors",
+          "httpStatus": 200,
+          "ok": true,
+          "matchingReference": true,
+          "status": "New Lead",
+          "at": 8673.39999999106,
+          "savedAlreadyVisible": false
+        }
+      ],
+      "saved": [
+        {
+          "at": 8674,
+          "readsSeen": 1
+        }
+      ],
+      "whatsapp": [
+        {
+          "at": 2221.0999999940395,
+          "host": "wa.me",
+          "number": "18682766878",
+          "matchingReference": true,
+          "readsSeen": 0
+        }
+      ]
+    },
+    "requestTimeMs": 6460.29999999702,
+    "responseTimeMs": 6460.29999999702,
+    "timeoutHeadroomMs": 18539.70000000298,
+    "whatsappAfterDispatchMs": 8,
+    "executionUi": {
+      "version": 2,
+      "localStart": "2026-10-16 17:46:57",
+      "durationSeconds": 5.861,
+      "status": "Completed"
+    }
+  },
+  "readback": {
+    "Leads": {
+      "before": 19,
+      "after": 20,
+      "freshMatchingRows": [
+        21
+      ],
+      "existingPopulatedRowsPreserved": true,
+      "checks": {
+        "leadId": true,
+        "name": true,
+        "emailBlank": true,
+        "whatsapp": true,
+        "status": true,
+        "island": true,
+        "skaterType": true,
+        "offer": true,
+        "rentals": true,
+        "source": true,
+        "consentOff": true,
+        "whatsappNotOpened": true,
+        "area": true,
+        "date": true,
+        "time": true,
+        "count": true,
+        "participants": true,
+        "timestamp": true,
+        "utmSource": true,
+        "utmCampaign": true,
+        "utmMedium": true,
+        "referrer": true,
+        "leadType": true,
+        "tags": true,
+        "participantDetails": true,
+        "notesBlank": true
+      },
+      "allChecksPassed": true
+    },
+    "Bookings": {
+      "before": 16,
+      "after": 17,
+      "freshMatchingRows": [
+        18
+      ],
+      "existingPopulatedRowsPreserved": true,
+      "checks": {
+        "leadId": true,
+        "name": true,
+        "emailBlank": true,
+        "whatsapp": true,
+        "status": true,
+        "island": true,
+        "skaterType": true,
+        "offer": true,
+        "rentals": true,
+        "source": true,
+        "consentOff": true,
+        "whatsappNotOpened": true,
+        "area": true,
+        "date": true,
+        "time": true,
+        "count": true,
+        "participants": true,
+        "timestamp": true,
+        "participantDetails": true,
+        "notesBlank": true,
+        "tags": true
+      },
+      "allChecksPassed": true
+    },
+    "Email Subscribers": {
+      "before": 7,
+      "after": 7,
+      "freshMatchingRows": [],
+      "existingPopulatedRowsPreserved": true
+    },
+    "Follow Up Status": {
+      "before": 16,
+      "after": 17,
+      "freshMatchingRows": [
+        18
+      ],
+      "existingPopulatedRowsPreserved": true,
+      "checks": {
+        "leadId": true,
+        "name": true,
+        "emailBlank": true,
+        "whatsapp": true,
+        "status": true,
+        "leadType": true,
+        "weeklyUpdatesOff": true,
+        "lastContactedBlank": true,
+        "firstDue": true,
+        "reminderDue": true
+      },
+      "allChecksPassed": true
+    }
+  },
+  "mail": {
+    "exactLeadIdSearchMessageCountBefore": 1,
+    "afterDuplicate": 1,
+    "afterFresh": 1,
+    "sameMessageIds": true,
+    "newEmailObserved": false,
+    "deliveryPath": "Duplicate skips sendLeadConfirmation_; blank email returns before MailApp.sendEmail.",
+    "limitations": "Mailbox observations are before/after exact-ID searches, not a guarantee about unrelated future mail."
+  },
+  "reminders": {
+    "enabled": false,
+    "reminderTriggers": 0,
+    "unrelatedOnOpenRetained": true
+  },
+  "limitations": [
+    "Only two Google POSTs: unchanged existing duplicate and one fresh blank-email consentNo request. Initial local harness failure occurred before any POST.",
+    "Per-phase Cloud log values were not exposed in the execution table; execution duration and browser end-to-end times are separately recorded.",
+    "Fresh email-bearing and consented-subscriber paths are not exercised. No additional email authorized.",
+    "One fresh blank-email sample does not establish an SLA or like-for-like speedup over the older email-bearing profiling run."
+  ],
+  "productionEndpointChanged": false,
+  "liveSheetAccessedOrChanged": false,
+  "websiteChanged": false,
+  "pushed": false,
+  "merged": false
+}

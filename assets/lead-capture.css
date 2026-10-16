@@ -31,6 +31,9 @@
 .participant legend{padding-right:10px;color:#00f5ff;font-weight:700}
 .participant [data-guardian]{display:grid;gap:13px}
 .participant [data-guardian][hidden]{display:none}
+.booking-policy{margin-top:14px}
+.booking-policy ul{padding-left:18px;margin-top:8px}
+.booking-policy li+li{margin-top:8px}
 #bookingForm .two{grid-template-columns:repeat(2,minmax(0,1fr))}
 #bookingForm input,#bookingForm select{min-width:0}
 #bookingForm .btn{white-space:normal;overflow-wrap:anywhere}

@@ -118,8 +118,13 @@
       `UTM source: ${payload.utmSource || '-'}`, `UTM campaign: ${payload.utmCampaign || '-'}`,
       `Submitted: ${payload.timestamp}`, '',
       'Please check coach, location and skate availability before payment. Deposit preferred; payment on arrival by arrangement.',
-      'Rescheduling: at least 24 hours notice. Credit rather than refunds; credit valid for one calendar month from the original scheduled session date.',
-      'Please clarify late cancellation, no-show and TSG cancellation arrangements.'
+      'At least 24 hours notice: the amount paid carries forward as credit.',
+      'Less than 24 hours notice or no-show: no automatic credit; genuine emergencies reviewed individually.',
+      'TSG/coach cancellation or unsafe weather/venue: full amount paid carries forward as credit, without penalty.',
+      'Credit expires one calendar month from the original scheduled session date. If the matching date does not exist, use the last day of that month.',
+      'If TSG cannot offer a replacement before expiry, credit is extended to give the client a reasonable opportunity to attend. TSG records the agreed new expiry.',
+      'Transfers require TSG approval, subject to participant suitability and skate availability.',
+      'Credit rather than refunds.'
     ];
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
   };

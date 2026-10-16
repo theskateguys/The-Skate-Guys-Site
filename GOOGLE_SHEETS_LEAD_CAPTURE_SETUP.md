@@ -7,9 +7,17 @@
 - Trinidad location is agreed during booking. For Tobago, TSG confirms Rec TT Black Rock or another suitable agreed location. Availability is not promised everywhere.
 - A request is not a confirmed class. TSG checks coach, location and skate availability before payment.
 - Deposit preferred; payment on arrival available by arrangement. No deposit amount has been approved in this implementation. No online payment is added.
-- Give at least 24 hours' notice to reschedule. Credit rather than refunds; credit is valid for one calendar month from the original scheduled session date.
+- At least 24 hours' notice: the amount paid carries forward as credit.
+- Less than 24 hours' notice or no-show: no automatic credit; genuine emergencies reviewed individually.
+- TSG/coach cancellation or unsafe weather/venue: full amount paid carries forward as credit, without penalty.
+- Credit expires one calendar month from the original scheduled session date. If the matching date does not exist, use the last day of that month.
+- If TSG cannot offer a replacement before expiry, extend the credit to give the client a reasonable opportunity to attend. Record the agreed new expiry.
+- Transfers require TSG approval, subject to participant suitability and skate availability.
+- Credit rather than refunds.
 
-**Business review needed:** late cancellations (less than 24 hours), no-shows, TSG/coach cancellations, weather or unsafe locations, credit transferability, and how to handle month-end dates when calculating a calendar month. Do not invent fees, refund exceptions, deposit amounts or forfeiture rules. TSG should clarify these with customers before confirmation. The under-18 guardian fields are a coordination rule, not a legal consent waiver. The 20-person form limit is a coordination safeguard, not a promise of group capacity; larger groups should contact TSG.
+These cancellation/credit rules are approved. No fixed emergency criteria, extension duration, cancellation fee or deposit amount has been invented. Emergency decisions and extensions are agreed individually. For each credit, staff must record the amount paid, original scheduled session date and calculated expiry in the booking row's existing `Notes` field. For an extension, also record the reason TSG could not offer a replacement, the agreed new expiry, agreement date and staff member. Preserve previous notes rather than replacing them. For a transfer, record TSG approval and the suitability/skate-availability check. This release does not automate credit balances or expiry calculations. Example: January 31, 2027 expires February 28, 2027, unless an extension is agreed under the approved rule.
+
+The under-18 guardian fields are a coordination rule, not a legal consent waiver. The 20-person form limit is a coordination safeguard, not a promise of group capacity; larger groups should contact TSG.
 
 ## Website delivery and WhatsApp
 
@@ -49,10 +57,18 @@ Duplicate prevention uses a script lock and checks Lead ID separately in Leads, 
 1. Back up the existing Google Sheet and current Apps Script version. Inspect existing headers for duplicates/renamed columns before migration.
 2. Open the existing Sheet, then Extensions > Apps Script. Update the code from `automation/google-apps-script/Code.gs`.
 3. Retain the `TSG_LEADS_SPREADSHEET_ID` script property pointing to the existing Sheet. Do not create a replacement live database.
-4. Run `setupTSGLeadSystem` and authorize it. Verify old rows/columns remain intact and the new columns appear on the right. Setup installs/replaces the daily follow-up trigger; review the project timezone (America/Port_of_Spain) and permissions.
+4. Before running setup, set script property `TSG_AUTOMATIC_REMINDERS_ENABLED` to `false`. Run `setupTSGLeadSystem` and authorize it. Verify old rows/columns remain intact and the new columns appear on the right. Setup removes existing follow-up triggers and creates none while this property is false or absent; the reminder runner itself also exits without sending emails. Review the project timezone (America/Port_of_Spain). This applies to the isolated test project only; do not modify live triggers as part of this test.
 5. For isolated acceptance tests, first deploy a separate test script against a copied/test Sheet. Point only a local/preview configuration at that test `/exec` URL. Keep production credentials and endpoint unchanged in this branch.
 6. When the website and script changes are approved together, use Deploy > Manage deployments > Edit on the existing Web App, select a **new version**, execute as the owner, access Anyone, and deploy. Updating that deployment preserves its `/exec` URL. The existing `assets/lead-config.js` endpoint is intentionally unchanged.
 7. Coordinate the script and website release: the new server requires participant details and does not accept legacy package-only booking payloads. Do not deploy it independently while the old booking form is still in use. Old open tabs can still use WhatsApp fallback; ask visitors to reload for the new form.
+
+## Isolated test setup and email behavior
+
+Keep the pre-migration backup untouched. Create a separate test Sheet copy and a separate Apps Script project. Explicitly set `TSG_LEADS_SPREADSHEET_ID` to the **test Sheet ID**, even if a copied bound script already contains a value. Never run test setup with the live Sheet ID. Set `TSG_AUTOMATIC_REMINDERS_ENABLED=false` before setup or deployment. Inspect Triggers to confirm there is no `runTSGFollowUpReminders` trigger. Neither manual execution nor an old trigger can send reminder mail while that property remains false. Production reminders are unaffected because this is a separate project. Enabling reminders later requires an explicit decision: set the property to `true` and run `installTSGAutomationTriggers`.
+
+Immediate acknowledgement emails are separate from automatic reminders. A new booking with an email address still receives one acknowledgement after server-side storage, whether or not marketing consent is checked. An unchanged duplicate retry does not send another acknowledgement. Inform the tester before submitting. Marketing consent is optional; leave it unchecked for the first labelled test so no subscriber is added. No weekly marketing campaign is scheduled by this script.
+
+Use the contact name `TEST ONLY - <tester name>` with the tester's own WhatsApp/email. The test is not a class reservation and no payment is taken. Record its Lead ID, then inspect exactly one matching row in each of Leads, Bookings and Follow Up Status. Compare every submitted contact, island, area, date/time, participant age/experience/rental/size/system/guardian, offer, consent, timestamp and attribution field to the payload. A duplicate retry must use the unchanged original payload and Lead ID: row counts and acknowledgement count must remain unchanged. Do not create an artificial row directly in Sheets and call that a successful website save. Verify the actual Apps Script POST. No real save is verified until those rows have been read back.
 
 ## Verification and acceptance
 

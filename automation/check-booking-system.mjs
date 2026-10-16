@@ -36,10 +36,17 @@ const spreadsheet = {
   insertSheet: name => { const sheet = new Sheet(name); sheets.set(name, sheet); return sheet; }
 };
 const emails = [];
+const properties = new Map([['TSG_LEADS_SPREADSHEET_ID', 'test-only']]);
+const removedTriggers = [];
+const createdTriggers = [];
+const oldReminderTrigger = {getHandlerFunction: () => 'runTSGFollowUpReminders'};
+const unrelatedTrigger = {getHandlerFunction: () => 'unrelatedTask'};
+const triggerBuilder = {timeBased() { return this; }, everyDays() { return this; }, atHour() { return this; }, create() { createdTriggers.push('runTSGFollowUpReminders'); }};
 const rule = {requireValueInList() { return this; }, setAllowInvalid() { return this; }, build() { return this; }};
 const context = vm.createContext({
   console: {error() {}},
-  PropertiesService: {getScriptProperties: () => ({getProperty: () => 'test-only'})},
+  PropertiesService: {getScriptProperties: () => ({getProperty: name => properties.get(name) || null})},
+  ScriptApp: {getProjectTriggers: () => [oldReminderTrigger, unrelatedTrigger], deleteTrigger: trigger => removedTriggers.push(trigger), newTrigger: () => triggerBuilder},
   SpreadsheetApp: {openById: () => spreadsheet, newDataValidation: () => rule},
   LockService: {getScriptLock: () => ({waitLock() {}, releaseLock() {}})},
   MailApp: {sendEmail: message => emails.push(message)},
@@ -74,6 +81,25 @@ assert.match(get('Leads', base.leadId, 'Package'), /TT\$80/);
 assert.equal(post(base).status, 'duplicate_ignored');
 for (const name of ['Leads', 'Bookings', 'Follow Up Status']) assert.equal(sheets.get(name).rows.length, 2);
 assert.equal(emails.length, 1, 'Duplicate retries do not resend confirmation');
+assert.match(emails[0].body, /genuine emergencies reviewed individually/);
+assert.match(emails[0].body, /Record the agreed new expiry/);
+assert.match(emails[0].body, /without penalty/);
+
+// Absent or explicitly false opt-in disables both trigger installation and execution.
+for (const setting of [undefined, 'false']) {
+  if (setting === undefined) properties.delete('TSG_AUTOMATIC_REMINDERS_ENABLED');
+  else properties.set('TSG_AUTOMATIC_REMINDERS_ENABLED', setting);
+  const before = emails.length;
+  call('installTSGAutomationTriggers');
+  assert.equal(createdTriggers.length, 0, 'No reminder trigger installed while disabled');
+  call('runTSGFollowUpReminders');
+  assert.equal(emails.length, before, 'Disabled reminders cannot send email');
+  assert.equal(get('Bookings', base.leadId, 'Status'), 'New Lead');
+}
+assert.ok(removedTriggers.every(trigger => trigger === oldReminderTrigger), 'Only reminder triggers removed');
+properties.set('TSG_AUTOMATIC_REMINDERS_ENABLED', 'true');
+call('installTSGAutomationTriggers');
+assert.equal(createdTriggers.length, 1, 'Explicit opt-in can install the reminder trigger');
 
 // Partial-write repair must keep an existing confirmed record untouched.
 set('Leads', base.leadId, 'Status', 'Paid');

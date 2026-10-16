@@ -13,6 +13,7 @@ Branch prepared locally for review. No website or Apps Script production deploym
 - No uncaught JavaScript page errors occurred during the passing browser run. Deliberately aborted mock requests can produce expected browser network-error console entries; these are not successful submissions.
 - Confirmed/Paid statuses tested in Leads, Bookings and Follow Up Status individually. WhatsApp-open tracking and due reminder runs preserved them and sent no reminder. Replied was also protected against unanswered-request reminders. New Lead can advance to WhatsApp Opened, then Follow Up Needed once.
 - `git diff --check` passed for the booking changes.
+- After policy approval, browser checks passed again at 390px, 768px and 1440px, including all seven approved rules on the page and in the prepared WhatsApp message. Mocked acknowledgement mail contains the approved rules. Reminder tests verify absent/false opt-in removes only reminder triggers, installs none, sends no reminder mail and leaves booking statuses unchanged. The existing enabled-reminder status-protection checks also still pass under an explicit mock opt-in.
 
 ## Reproduce
 
@@ -30,4 +31,4 @@ Review screenshots are generated under `output/playwright/`; browser CLI artifac
 
 These are mocked integration tests, **not a verified Google Sheets save**. No real email was sent and no actual WhatsApp message was sent. Before release, use a copied/test Sheet and test Apps Script deployment to inspect actual rows, authorization, quotas and confirmation mail; test WhatsApp on a real mobile device and send the message manually. Follow the coordinated deployment steps in `GOOGLE_SHEETS_LEAD_CAPTURE_SETUP.md`.
 
-TSG must review unspecified late cancellation/no-show, weather/venue/TSG cancellation, credit transfer and calendar-month edge cases. No fees, refund exceptions, deposit amount or automatic payment behavior have been invented.
+The approved cancellation/credit policy now covers late cancellation/no-show emergency review, TSG/coach/weather/venue cancellations, approved transfers, month-end expiry and extensions when TSG cannot offer a replacement. Staff record credit and extension agreements in existing booking Notes, preserving history. No deposit amount, fixed extension duration or automatic payment behavior has been invented. Automatic reminder mail is disabled by default unless `TSG_AUTOMATIC_REMINDERS_ENABLED` is exactly `true`; acknowledgement emails remain separate.

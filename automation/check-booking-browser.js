@@ -20,6 +20,8 @@ async page => {
   await page.context().route('https://wa.me/**', route => route.fulfill({contentType: 'text/html', body: '<p>Mock WhatsApp handoff</p>'}));
   await page.goto(`${base}/book.html?utm_source=browser_mock&utm_campaign=single_session`);
   const form = page.locator('#bookingForm');
+  assert(await page.locator('.booking-policy li').count() === 7, 'All seven approved policy rules are visible');
+  for (const rule of ['no automatic credit', 'genuine emergencies', 'without penalty', 'last day of that month', 'agreed new expiry', 'Transfers require TSG approval', 'Credit rather than refunds']) assert((await page.locator('.booking-policy').innerText()).includes(rule), `Booking policy includes ${rule}`);
   const submit = form.locator('button[type=submit]');
   const status = form.locator('[data-form-status]');
   const waitForResult = () => status.filter({hasText: /storage could not be verified|delivery failed|delivery is unavailable/}).waitFor();
@@ -86,7 +88,7 @@ async page => {
   const url = await link.evaluate(el => ({pathname: new URL(el.href).pathname, message: new URL(el.href).searchParams.get('text')}));
   assert(url.pathname === '/18682766878', 'Correct WhatsApp number');
   const message = url.message;
-  for (const text of ['TT$80', '75 minutes', 'Black Rock', 'UK child', 'Synthetic Guardian', '2027-01-05', 'browser_mock', 'one calendar month', '24 hours']) assert(message.includes(text), `WhatsApp includes ${text}`);
+  for (const text of ['TT$80', '75 minutes', 'Black Rock', 'UK child', 'Synthetic Guardian', '2027-01-05', 'browser_mock', 'one calendar month', '24 hours', 'no automatic credit', 'genuine emergencies', 'without penalty', 'last day of that month', 'agreed new expiry', 'participant suitability', 'Credit rather than refunds']) assert(message.includes(text), `WhatsApp includes ${text}`);
   assert(await link.isVisible(), 'WhatsApp fallback visible');
 
   await submit.click();

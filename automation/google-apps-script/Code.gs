@@ -1,5 +1,6 @@
 const TSG_CONFIG = Object.freeze({
   spreadsheetIdProperty: 'TSG_LEADS_SPREADSHEET_ID',
+  remindersEnabledProperty: 'TSG_AUTOMATIC_REMINDERS_ENABLED',
   replyToEmail: 'info.theskateguys@gmail.com',
   businessName: 'The Skate Guys',
   bookingUrl: 'https://the-skate-guys-site.vercel.app/book.html',
@@ -27,6 +28,15 @@ const TSG_SHEETS = Object.freeze({
 });
 
 const TSG_STATUSES = ['New Lead','WhatsApp Opened','Replied','Confirmed','Paid','No Response','Follow Up Needed'];
+const TSG_CREDIT_POLICY = [
+  'At least 24 hours notice: the amount paid carries forward as credit.',
+  'Less than 24 hours notice or no-show: no automatic credit; genuine emergencies reviewed individually.',
+  'TSG/coach cancellation or unsafe weather/venue: full amount paid carries forward as credit, without penalty.',
+  'Credit expires one calendar month from the original scheduled session date. If the matching date does not exist, use the last day of that month.',
+  'If TSG cannot offer a replacement before expiry, extend the credit to give the client a reasonable opportunity to attend. Record the agreed new expiry.',
+  'Transfers require TSG approval, subject to participant suitability and skate availability.',
+  'Credit rather than refunds.'
+].join('\n');
 
 function onOpen() {
   SpreadsheetApp.getUi()
@@ -50,11 +60,16 @@ function installTSGAutomationTriggers() {
     .filter(trigger => trigger.getHandlerFunction() === 'runTSGFollowUpReminders')
     .forEach(trigger => ScriptApp.deleteTrigger(trigger));
 
+  if (!automaticRemindersEnabled_()) return;
   ScriptApp.newTrigger('runTSGFollowUpReminders')
     .timeBased()
     .everyDays(1)
     .atHour(10)
     .create();
+}
+
+function automaticRemindersEnabled_() {
+  return PropertiesService.getScriptProperties().getProperty(TSG_CONFIG.remindersEnabledProperty) === 'true';
 }
 
 function doGet() {
@@ -190,6 +205,7 @@ function markWhatsAppOpened_(leadId) {
 }
 
 function runTSGFollowUpReminders() {
+  if (!automaticRemindersEnabled_()) return;
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try { runFollowUpReminders_(); }
@@ -236,7 +252,7 @@ function sendLeadConfirmation_(lead) {
   const isBooking = lead.leadType === 'booking';
   const subject = isBooking ? 'We received your TSG booking request' : 'You are on the TSG update list';
   const body = isBooking
-    ? `Hi ${lead.name || 'there'},\n\nWe received your booking request (${lead.leadId}). This is not a confirmed class. Please send your prepared WhatsApp message so TSG can check coach, location and skate availability before payment. Your requested session is TT$80 per person for 75 minutes, skate rental included. Deposit preferred; payment on arrival by arrangement.\n\nGive at least 24 hours notice to reschedule. Credit rather than refunds; credit is valid for one calendar month from the original scheduled session date. Ask TSG about unspecified late cancellation, no-show and TSG cancellation details before confirming. No payment has been taken.\n\nThe Skate Guys`
+    ? `Hi ${lead.name || 'there'},\n\nWe received your booking request (${lead.leadId}). This is not a confirmed class. Please send your prepared WhatsApp message so TSG can check coach, location and skate availability before payment. Your requested session is TT$80 per person for 75 minutes, skate rental included. Deposit preferred; payment on arrival by arrangement.\n\n${TSG_CREDIT_POLICY}\n\nNo payment has been taken.\n\nThe Skate Guys`
     : `Welcome to the TSG update list. We will send useful class, event, merch and Elite updates.\n\nThe Skate Guys`;
   MailApp.sendEmail({to: lead.email, replyTo: TSG_CONFIG.replyToEmail, name: TSG_CONFIG.businessName, subject: subject, body: body});
 }

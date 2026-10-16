@@ -3,6 +3,7 @@ const TSG_CONFIG = Object.freeze({
   remindersEnabledProperty: 'TSG_AUTOMATIC_REMINDERS_ENABLED',
   replyToEmail: 'info.theskateguys@gmail.com',
   businessName: 'The Skate Guys',
+  whatsappNumber: '18682766878',
   bookingUrl: 'https://the-skate-guys-site.vercel.app/book.html',
   reminderHours: 24
 });
@@ -33,7 +34,7 @@ const TSG_CREDIT_POLICY = [
   'Less than 24 hours notice or no-show: no automatic credit; genuine emergencies reviewed individually.',
   'TSG/coach cancellation or unsafe weather/venue: full amount paid carries forward as credit, without penalty.',
   'Credit expires one calendar month from the original scheduled session date. If the matching date does not exist, use the last day of that month.',
-  'If TSG cannot offer a replacement before expiry, extend the credit to give the client a reasonable opportunity to attend. Record the agreed new expiry.',
+  "If TSG cannot offer a replacement before expiry, extend the credit to give the client a reasonable opportunity to attend. We'll confirm your revised credit expiry with you.",
   'Transfers require TSG approval, subject to participant suitability and skate availability.',
   'Credit rather than refunds.'
 ].join('\n');
@@ -49,7 +50,7 @@ function onOpen() {
 
 function setupTSGLeadSystem() {
   const spreadsheet = getSpreadsheet_();
-  Object.keys(TSG_SHEETS).forEach(key => ensureSheet_(spreadsheet, TSG_SHEETS[key]));
+  Object.keys(TSG_SHEETS).forEach(key => ensureSheet_(spreadsheet, TSG_SHEETS[key], true));
   applyValidations_(spreadsheet);
   installTSGAutomationTriggers();
   return 'TSG lead system is ready.';
@@ -77,13 +78,18 @@ function doGet() {
 }
 
 function doPost(event) {
+  const started = Date.now();
+  const timing = {event: 'tsg_submission_timing', lockWaitMs: 0, sheetMs: 0, emailMs: 0};
   try {
     const payload = parsePayload_(event);
     if (payload.action === 'whatsapp_opened') {
       const trackingLock = LockService.getScriptLock();
+      let phase = Date.now();
       trackingLock.waitLock(10000);
+      timing.lockWaitMs = Date.now() - phase;
+      phase = Date.now();
       try { return markWhatsAppOpened_(payload.leadId); }
-      finally { trackingLock.releaseLock(); }
+      finally { timing.sheetMs = Date.now() - phase; trackingLock.releaseLock(); }
     }
     if (payload.action !== 'lead_submit') throw new Error('Unsupported action.');
     if (payload.website) return jsonResponse_({ok: true});
@@ -93,10 +99,14 @@ function doPost(event) {
 
     const lock = LockService.getScriptLock();
     let result;
+    let phase = Date.now();
     lock.waitLock(10000);
+    timing.lockWaitMs = Date.now() - phase;
+    phase = Date.now();
     try {
       result = saveLead_(lead);
     } finally {
+      timing.sheetMs = Date.now() - phase;
       lock.releaseLock();
     }
 
@@ -104,11 +114,17 @@ function doPost(event) {
       return jsonResponse_({ok: true, leadId: lead.leadId, status: 'duplicate_ignored'});
     }
 
-    sendLeadConfirmation_(lead);
+    phase = Date.now();
+    try { sendLeadConfirmation_(lead); }
+    finally { timing.emailMs = Date.now() - phase; }
     return jsonResponse_({ok: true, leadId: lead.leadId, status: result.status});
   } catch (error) {
     console.error(error);
     return jsonResponse_({ok: false, error: String(error.message || error)});
+  } finally {
+    // Durations only: never log contact details, participant data or request payloads.
+    timing.totalMs = Date.now() - started;
+    console.log(JSON.stringify(timing));
   }
 }
 
@@ -116,6 +132,8 @@ function saveLead_(lead) {
   const spreadsheet = getSpreadsheet_();
   const leadsSheet = ensureSheet_(spreadsheet, TSG_SHEETS.leads);
   const duplicate = hasLeadId_(leadsSheet, 'Lead ID', lead.leadId);
+  // The submission lock covers all three appends; reuse one status snapshot.
+  const status = protectedStatus_(spreadsheet, lead.leadId) || lead.status;
   const values = {
     'Timestamp': lead.timestamp, 'Lead ID': lead.leadId, 'Name': lead.name,
     'WhatsApp': lead.whatsapp, 'Email': lead.email, 'Location': lead.location,
@@ -123,7 +141,7 @@ function saveLead_(lead) {
     'Preferred Time': lead.preferredTime, 'Source Page': lead.sourcePage,
     'UTM Source': lead.utmSource, 'UTM Campaign': lead.utmCampaign,
     'Marketing Consent': lead.marketingConsent, 'WhatsApp Opened': lead.whatsappOpened,
-    'Status': protectedStatus_(spreadsheet, lead.leadId) || lead.status, 'Notes': lead.notes, 'Tags': lead.tags, 'Lead Type': lead.leadType,
+    'Status': status, 'Notes': lead.notes, 'Tags': lead.tags, 'Lead Type': lead.leadType,
     'UTM Medium': lead.utmMedium, 'Referrer': lead.referrer,
     'Preferred Area': lead.preferredArea, 'Preferred Date': lead.preferredDate,
     'Participant Count': lead.participantCount,
@@ -135,19 +153,18 @@ function saveLead_(lead) {
   if (!duplicate) appendMappedRow_(leadsSheet, values);
 
   if (lead.leadType === 'booking') {
-    values.Status = protectedStatus_(spreadsheet, lead.leadId) || lead.status;
     const bookingsSheet = ensureSheet_(spreadsheet, TSG_SHEETS.bookings);
     if (!hasLeadId_(bookingsSheet, 'Lead ID', lead.leadId)) {
       appendMappedRow_(bookingsSheet, values);
     }
-    appendFollowUp_(spreadsheet, lead);
+    appendFollowUp_(spreadsheet, lead, status);
   }
 
   if (!duplicate && lead.email && lead.marketingConsent === 'Yes') upsertSubscriber_(spreadsheet, lead);
   return {status: duplicate ? 'duplicate_ignored' : lead.status};
 }
 
-function appendFollowUp_(spreadsheet, lead) {
+function appendFollowUp_(spreadsheet, lead, status) {
   const sheet = ensureSheet_(spreadsheet, TSG_SHEETS.followUp);
   if (hasLeadId_(sheet, 'Lead ID', lead.leadId)) return;
 
@@ -155,7 +172,7 @@ function appendFollowUp_(spreadsheet, lead) {
   const reminderDue = new Date(created.getTime() + TSG_CONFIG.reminderHours * 60 * 60 * 1000);
   appendMappedRow_(sheet, {
     'Lead ID': lead.leadId, 'Email': lead.email, 'Name': lead.name, 'WhatsApp': lead.whatsapp,
-    'Lead Type': lead.leadType, 'Status': protectedStatus_(spreadsheet, lead.leadId) || 'New Lead',
+    'Lead Type': lead.leadType, 'Status': status,
     'First Follow Up Due': created, 'Reminder Due': reminderDue,
     'Weekly Update Eligible': lead.marketingConsent === 'Yes' ? 'Yes' : 'No',
     'Last Contacted': '', 'Notes': ''
@@ -172,7 +189,21 @@ function upsertSubscriber_(spreadsheet, lead) {
     'Name': lead.name, 'Location': lead.location, 'Source Page': lead.sourcePage,
     'Tags': lead.tags, 'Marketing Consent': 'Yes', 'Status': 'Subscribed', 'Last Updated': new Date()};
   if (index === -1) appendMappedRow_(sheet, values);
-  else Object.keys(values).forEach(header => sheet.getRange(index + 2, headers.indexOf(header) + 1).setValue(values[header]));
+  else {
+    // Batch adjacent owned columns, never rewrite custom cells or formulas between them.
+    let pending = [];
+    let start = 0;
+    const flush = () => {
+      if (pending.length) sheet.getRange(index + 2, start + 1, 1, pending.length).setValues([pending]);
+      pending = [];
+    };
+    headers.forEach((header, column) => {
+      if (!Object.prototype.hasOwnProperty.call(values, header)) { flush(); return; }
+      if (!pending.length) start = column;
+      pending.push(values[header]);
+    });
+    flush();
+  }
 }
 
 function hasLeadId_(sheet, headerName, leadId) {
@@ -250,11 +281,100 @@ function runFollowUpReminders_() {
 function sendLeadConfirmation_(lead) {
   if (!lead.email) return;
   const isBooking = lead.leadType === 'booking';
-  const subject = isBooking ? 'We received your TSG booking request' : 'You are on the TSG update list';
-  const body = isBooking
-    ? `Hi ${lead.name || 'there'},\n\nWe received your booking request (${lead.leadId}). This is not a confirmed class. Please send your prepared WhatsApp message so TSG can check coach, location and skate availability before payment. Your requested session is TT$80 per person for 75 minutes, skate rental included. Deposit preferred; payment on arrival by arrangement.\n\n${TSG_CREDIT_POLICY}\n\nNo payment has been taken.\n\nThe Skate Guys`
-    : `Welcome to the TSG update list. We will send useful class, event, merch and Elite updates.\n\nThe Skate Guys`;
-  MailApp.sendEmail({to: lead.email, replyTo: TSG_CONFIG.replyToEmail, name: TSG_CONFIG.businessName, subject: subject, body: body});
+  const message = isBooking ? buildBookingAcknowledgement_(lead) : {
+    subject: 'You are on the TSG update list',
+    body: 'Welcome to the TSG update list. We will send useful class, event, merch and Elite updates.\n\nThe Skate Guys'
+  };
+  if (isBooking) message.inlineImages = {tsgLogo: getTSGEmailLogo_()};
+  MailApp.sendEmail(Object.assign({to: lead.email, replyTo: TSG_CONFIG.replyToEmail, name: TSG_CONFIG.businessName}, message));
+}
+
+function bookingEmailDate_(value) {
+  const text = String(value || '');
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text);
+  const date = new Date(text + 'T12:00:00Z');
+  if (!match || Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== text) return text;
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return `${Number(match[3])} ${months[Number(match[2]) - 1]} ${match[1]}`;
+}
+
+function bookingEmailDetails_(lead) {
+  const details = [
+    ['Customer reference', lead.leadId], ['Contact name', lead.name],
+    ['WhatsApp', lead.whatsapp], ['Email', lead.email || 'Not provided'],
+    ['Requested island', lead.location], ['Requested area', lead.preferredArea],
+    ['Requested date', bookingEmailDate_(lead.preferredDate)], ['Requested time (T&T local time)', lead.preferredTime],
+    ['Participants', lead.participantCount]
+  ];
+  lead.participants.forEach((p, index) => {
+    details.push([`Participant ${index + 1}`, `Age ${p.age}; ${p.experience}; rental skates: ${p.rentals}`]);
+    if (p.rentals === 'Yes') details.push([`Participant ${index + 1} skate size`, `${p.skateSize} (${p.sizeSystem})`]);
+    if (p.age < 18) details.push([`Participant ${index + 1} guardian`, `${p.guardianName}; WhatsApp: ${p.guardianPhone}`]);
+  });
+  return details;
+}
+
+function bookingEmailWhatsAppUrl_(lead) {
+  const message = [
+    'TSG Booking Request (not confirmed)',
+    ...bookingEmailDetails_(lead).map(detail => detail.join(': ')),
+    'Single session: TT$80 per person / 75 minutes / skate rental included.',
+    'Please check coach, location and skate availability before payment.'
+  ].join('\n');
+  return `https://wa.me/${TSG_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
+function buildBookingAcknowledgement_(lead) {
+  const details = bookingEmailDetails_(lead);
+  const whatsappUrl = bookingEmailWhatsAppUrl_(lead);
+  const nextStep = 'Please send your prepared WhatsApp message so TSG can check coach, location and skate availability before payment.';
+  const payment = 'Deposit preferred; payment on arrival by arrangement.';
+  const location = 'Trinidad location is agreed during booking. For Tobago, TSG confirms Rec TT Black Rock or another suitable agreed location.';
+  const policyHeadings = ['24-hour rescheduling notice', 'Late notice or no-show', 'TSG, coach, weather or venue cancellation', 'Credit expiry', 'When TSG cannot offer a replacement', 'Transfers', 'Credit rather than refunds'];
+  const policyHtml = TSG_CREDIT_POLICY.split('\n').map((rule, index) =>
+    `<p style="margin:0 0 18px;font-size:14px;line-height:1.65;"><strong>${escapeHtml_(policyHeadings[index])}</strong><br>${escapeHtml_(rule)}</p>`
+  ).join('');
+  const detailsHtml = details.map(detail =>
+    `<tr><td style="padding:6px 0;border-bottom:1px solid #dce8e8;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word;"><span style="font-size:12px;line-height:1.5;color:#4a6265;">${escapeHtml_(detail[0])}</span><br><span style="font-size:15px;line-height:1.6;">${escapeHtml_(detail[1])}</span></td></tr>`
+  ).join('');
+  const contentHtml = `
+    <p style="margin:0 0 20px;">Hi ${escapeHtml_(lead.name || 'there')},</p>
+    <p style="margin:0 0 20px;">We received your booking request. <strong>This is not a confirmed class.</strong></p>
+    <p style="margin:0 0 24px;padding:14px 16px;background-color:#e8f8f7;border-left:3px solid #00f5ff;color:#14545b;font-size:14px;"><strong>Awaiting availability confirmation</strong></p>
+    <h2 style="margin:0 0 10px;font-size:19px;line-height:1.4;">Your requested session</h2>
+    <p style="margin:0 0 10px;font-size:17px;line-height:1.6;"><strong>TT$80 per person / 75 minutes / skate rental included.</strong></p>
+    <p style="margin:0 0 22px;">One person can book. Classes are by appointment.</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;max-width:100%;"><tr><td bgcolor="#00f5ff" style="background-color:#00f5ff;border-radius:4px;text-align:center;mso-padding-alt:14px 20px;"><a href="${escapeHtml_(whatsappUrl)}" style="display:inline-block;padding:14px 20px;color:#102b30;font-size:15px;line-height:1.5;font-weight:bold;text-decoration:none;">Continue on WhatsApp</a></td></tr></table>
+    <p style="margin:16px 0 20px;font-size:14px;">You must press <strong>Send</strong> in WhatsApp. Opening WhatsApp alone does not send your message or confirm a class. Your customer reference is included.</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;table-layout:fixed;border-collapse:collapse;">${detailsHtml}</table>
+    <p style="margin:18px 0 28px;font-size:14px;color:#4a6265;">Date, time and location above are requested, not confirmed. ${escapeHtml_(location)}</p>
+    <h2 style="margin:0 0 12px;font-size:19px;line-height:1.4;">What happens next</h2>
+    <p style="margin:0 0 18px;">${escapeHtml_(nextStep)}</p>
+    <p style="margin:0 0 10px;">${escapeHtml_(payment)}</p>
+    <p style="margin:0 0 28px;"><strong>No payment has been taken.</strong></p>
+    <h2 style="margin:0 0 18px;padding-top:24px;border-top:1px solid #dce8e8;font-size:19px;line-height:1.4;">Rescheduling, cancellation &amp; credit</h2>
+    ${policyHtml}`;
+  return {
+    subject: 'We received your TSG booking request',
+    body: `Booking Request Received\n\nHi ${lead.name || 'there'},\n\nWe received your booking request (${lead.leadId}). This is not a confirmed class.\nStatus: Awaiting availability confirmation\n\nTT$80 per person / 75 minutes / skate rental included.\nOne person can book. Classes are by appointment.\n\nContinue on WhatsApp: ${whatsappUrl}\nYou must press Send in WhatsApp. Opening WhatsApp alone does not send your message or confirm a class.\n\n${details.map(detail => detail.join(': ')).join('\n')}\n\nDate, time and location are requested, not confirmed. ${location}\n\n${nextStep}\n${payment}\n\nNo payment has been taken.\n\n${TSG_CREDIT_POLICY}\n\nThe Skate Guys Ltd\nTrinidad & Tobago\nWhatsApp: +1 868 276 6878\n${TSG_CONFIG.replyToEmail}\n${TSG_CONFIG.bookingUrl}`,
+    htmlBody: renderTSGEmailLayout_({heading: 'Booking Request Received', preheader: 'Awaiting availability confirmation. This is not a confirmed class. No payment has been taken.', contentHtml: contentHtml})
+  };
+}
+
+// Reusable presentation only. contentHtml must be built from escaped values, never raw customer HTML.
+function renderTSGEmailLayout_(options) {
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>${escapeHtml_(options.heading)}</title></head>
+  <body style="margin:0;padding:0;background-color:#e8f8f7;color:#1d3035;font-family:Arial,Helvetica,sans-serif;">
+  <div style="display:none;font-size:1px;color:#e8f8f7;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">${escapeHtml_(options.preheader)}</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#e8f8f7" style="width:100%;border-collapse:collapse;background-color:#e8f8f7;"><tr><td align="center" style="padding:24px 12px;">
+  <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="width:100%;max-width:600px;table-layout:fixed;border-collapse:collapse;background-color:#ffffff;color:#1d3035;">
+  <tr><td style="padding:4px 24px 12px;text-align:center;"><img src="cid:tsgLogo" width="136" height="136" alt="The Skate Guys company logo" style="display:block;width:136px;height:136px;max-width:100%;margin:0 auto;border:0;color:#1d3035;font-size:13px;"><p style="margin:0 0 4px;font-size:21px;line-height:1.4;font-weight:bold;">The Skate Guys Ltd</p><p style="margin:0;font-size:14px;line-height:1.6;color:#4a6265;">Trinidad &amp; Tobago</p></td></tr>
+  <tr><td style="padding:0 24px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;"><tr><td width="50%" height="3" bgcolor="#ff2d6b" style="height:3px;background-color:#ff2d6b;font-size:0;line-height:0;">&nbsp;</td><td width="50%" height="3" bgcolor="#00f5ff" style="height:3px;background-color:#00f5ff;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
+  <tr><td style="padding:28px 24px 16px;font-size:15px;line-height:1.7;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word;"><h1 style="margin:0 0 24px;font-size:28px;line-height:1.25;color:#1d3035;">${escapeHtml_(options.heading)}</h1>${options.contentHtml}</td></tr>
+  <tr><td style="padding:20px 24px 28px;border-top:1px solid #dce8e8;font-size:13px;line-height:1.8;color:#4a6265;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word;"><strong style="color:#1d3035;">The Skate Guys Ltd</strong><br>Trinidad &amp; Tobago<br><a href="mailto:${escapeHtml_(TSG_CONFIG.replyToEmail)}" style="color:#14545b;text-decoration:underline;">${escapeHtml_(TSG_CONFIG.replyToEmail)}</a><br><a href="https://wa.me/${TSG_CONFIG.whatsappNumber}" style="color:#14545b;text-decoration:underline;">WhatsApp: +1 868 276 6878</a><br><a href="${escapeHtml_(TSG_CONFIG.bookingUrl)}" style="color:#14545b;text-decoration:underline;">The Skate Guys website</a></td></tr>
+  </table><!--[if mso]></td></tr></table><![endif]-->
+  </td></tr></table></body></html>`;
 }
 
 function updateLeadStatus_(spreadsheet, leadId, status) {
@@ -306,7 +426,7 @@ function getSpreadsheet_() {
   throw new Error(`Set the ${TSG_CONFIG.spreadsheetIdProperty} script property before deploying.`);
 }
 
-function ensureSheet_(spreadsheet, definition) {
+function ensureSheet_(spreadsheet, definition, format) {
   let sheet = spreadsheet.getSheetByName(definition.name);
   if (!sheet) sheet = spreadsheet.insertSheet(definition.name);
   const currentHeaders = sheet.getLastColumn() ? sheet.getRange(1, 1, 1, sheet.getLastColumn()).getDisplayValues()[0] : [];
@@ -315,9 +435,11 @@ function ensureSheet_(spreadsheet, definition) {
   const requiredColumns = currentHeaders.length + missing.length;
   if (requiredColumns > sheet.getMaxColumns()) sheet.insertColumnsAfter(sheet.getMaxColumns(), requiredColumns - sheet.getMaxColumns());
   if (missing.length) sheet.getRange(1, currentHeaders.length + 1, 1, missing.length).setValues([missing]);
-  sheet.setFrozenRows(1);
-  sheet.getRange(1, 1, 1, requiredColumns).setFontWeight('bold').setBackground('#e8eaed').setFontColor('#202124');
-  if (!sheet.getFilter() && sheet.getMaxRows() > 1) sheet.getRange(1, 1, sheet.getMaxRows(), requiredColumns).createFilter();
+  if (format || missing.length) {
+    sheet.setFrozenRows(1);
+    sheet.getRange(1, 1, 1, requiredColumns).setFontWeight('bold').setBackground('#e8eaed').setFontColor('#202124');
+    if (!sheet.getFilter() && sheet.getMaxRows() > 1) sheet.getRange(1, 1, sheet.getMaxRows(), requiredColumns).createFilter();
+  }
   return sheet;
 }
 

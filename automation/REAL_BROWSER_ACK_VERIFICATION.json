@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-16",
+  "timezone": "America/Port_of_Spain",
+  "passed": true,
+  "scope": "Real Chromium browser using current review frontend and existing isolated Web App version 1; no deployment or mocked response",
+  "test": "Unchanged retry of existing isolated test booking",
+  "leadId": "TSG-966d41c4-e666-4f17-838b-f4d25dfa8481",
+  "timestampReused": "2026-10-16T19:43:07.105Z",
+  "requestMode": "cors",
+  "browserTimeoutMs": 15000,
+  "productionTimeoutMsUnchanged": 9000,
+  "requestAtMs": 253.2,
+  "acknowledgementReadAtMs": 9497.7,
+  "savedUiObservedAtMs": 9498,
+  "requestToAcknowledgementMs": 9244.5,
+  "response": {
+    "host": "script.googleusercontent.com",
+    "type": "cors",
+    "httpStatus": 200,
+    "json": {
+      "ok": true,
+      "leadId": "TSG-966d41c4-e666-4f17-838b-f4d25dfa8481",
+      "status": "duplicate_ignored"
+    }
+  },
+  "savedAlreadyVisibleWhenJsonWasRead": false,
+  "matchingReadsSeenWhenSavedWasShown": 1,
+  "networkResponseReplacedOrFulfilled": false,
+  "recordReuseMethod": "Seeded only the existing receipt ID, timestamp and SHA-256 signature in the isolated tab sessionStorage; outgoing body was checked for unchanged request details before native fetch",
+  "trackingMethod": "Observed native Response.json consumed by the actual app and subsequent status DOM mutation; returned original JSON unchanged",
+  "sheetReadback": {
+    "leadsMatchingRows": [19],
+    "bookingsMatchingRows": [16],
+    "followUpMatchingRows": [16],
+    "recordCounts": {"Leads": 19, "Bookings": 16, "Follow Up Status": 16, "Email Subscribers": 7},
+    "changedCellsSincePriorProfileReadback": 0
+  },
+  "automaticRemindersEnabled": false,
+  "automaticReminderTriggers": 0,
+  "unrelatedOnOpenTriggerRetained": true,
+  "whatsappOpened": false,
+  "newEmailRequested": false,
+  "productionEndpointChanged": false,
+  "limitations": [
+    "The existing version 1 Web App was tested; optimized/editor code was not newly deployed.",
+    "The real round trip exceeded the current production 9-second timeout; a stable production latency budget is not proven by this pass.",
+    "This retry does not replace fresh full-flow acceptance of the final deployed production backend."
+  ]
+}

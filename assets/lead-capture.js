@@ -18,15 +18,20 @@
   const postPayload = async payload => {
     if (!endpoint) return 'not_configured';
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), Number(config.requestTimeoutMs || 9000));
+    const timeout = setTimeout(() => controller.abort(), Number(config.requestTimeoutMs || 25000));
     try {
-      // An opaque response cannot prove that Apps Script accepted or stored the data.
-      await fetch(endpoint, {
-        method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      // A simple CORS POST can expose an acknowledgement when the backend permits it.
+      // A CORS/redirect failure is uncertain: the POST may already have been stored.
+      const response = await fetch(endpoint, {
+        method: 'POST', mode: 'cors', headers: {'Content-Type': 'text/plain;charset=utf-8'},
         body: JSON.stringify(payload), signal: controller.signal
       });
+      if (response.type === 'opaque' || !response.ok) return 'unverified';
+      const acknowledgement = await response.json();
+      if (acknowledgement.ok === true && acknowledgement.leadId === payload.leadId &&
+          ['New Lead', 'duplicate_ignored'].includes(acknowledgement.status)) return 'saved';
       return 'unverified';
-    } catch { return 'failed'; }
+    } catch { return controller.signal.aborted ? 'timed_out' : 'failed'; }
     finally { clearTimeout(timeout); }
   };
 
@@ -139,7 +144,13 @@
     let lastSignature = '';
     let submittedPayload;
     let busy = false;
-    if (link) link.addEventListener('click', () => { if (submittedPayload) recordWhatsAppOpened(submittedPayload.leadId); });
+    let openedLeadId;
+    if (link) link.addEventListener('click', () => {
+      if (!submittedPayload) return;
+      openedLeadId = submittedPayload.leadId;
+      // Prefer tracking after delivery to reduce insert races; opening is best-effort telemetry.
+      if (!busy) recordWhatsAppOpened(openedLeadId);
+    });
     form.addEventListener('input', event => {
       event.target.setCustomValidity?.('');
       if (success) success.hidden = true;
@@ -168,7 +179,7 @@
       const controls = [...form.querySelectorAll('input,select')].filter(control => !control.disabled);
       controls.forEach(control => { control.disabled = true; });
       button.disabled = true;
-      form.setAttribute('aria-busy', 'true');
+      button.setAttribute('aria-busy', 'true');
       button.textContent = 'Preparing...';
       status.textContent = 'Preparing your details and attempting website delivery...';
       if (signature !== lastSignature) {
@@ -186,21 +197,31 @@
         } catch { /* An unchanged retry still keeps its ID in memory if storage is blocked. */ }
         lastSignature = signature;
       }
-      // Reuse the same ID for an unchanged retry, including after an opaque response.
-      const result = await postPayload(submittedPayload);
-      controls.forEach(control => { control.disabled = false; });
-      busy = false;
-      button.disabled = false;
-      form.removeAttribute('aria-busy');
       const isBooking = submittedPayload.leadType === 'booking';
-      status.dataset.state = result === 'failed' ? 'error' : 'queued';
-      status.textContent = result === 'unverified'
-        ? 'Website delivery attempted; storage could not be verified.'
-        : result === 'failed' ? 'Website delivery could not be verified (connection interrupted or timed out). Your details are still here; you can retry.'
-          : 'Website delivery is unavailable. Your details are still here.';
       if (isBooking) {
         link.href = makeWhatsAppUrl(submittedPayload);
         success.hidden = false;
+      }
+      status.dataset.state = 'queued';
+      status.textContent = 'Website delivery is pending; storage has not been verified.' +
+        (isBooking ? ' Your WhatsApp message is ready now. Open WhatsApp and press Send; you do not need to wait here.' : ' You can keep this page open for the delivery result.');
+      button.textContent = 'Attempting Website Delivery...';
+      // The prepared link is usable before any network work completes.
+      const result = await postPayload(submittedPayload);
+      if (openedLeadId === submittedPayload.leadId) recordWhatsAppOpened(openedLeadId);
+      controls.forEach(control => { control.disabled = false; });
+      busy = false;
+      button.disabled = false;
+      button.removeAttribute('aria-busy');
+      status.dataset.state = result === 'saved' ? 'success' : ['failed', 'timed_out'].includes(result) ? 'error' : 'queued';
+      status.textContent = result === 'saved' ? 'Your details were saved: the website received a matching storage acknowledgement.' + (isBooking ? ' This is not a confirmed class.' : '')
+        : result === 'unverified'
+        ? 'Website delivery attempted; storage could not be verified. Your details are still here; you can retry with the same request ID.'
+        : ['failed', 'timed_out'].includes(result) ? 'Website delivery could not be verified.' +
+          (result === 'timed_out' ? ' The browser timed out; storage may still complete.' : ' The response was unreadable or the connection was interrupted.') +
+          ' Your details are still here; you can retry with the same request ID.'
+          : 'Website delivery is unavailable. Your details are still here.';
+      if (isBooking) {
         status.textContent += ' You must open WhatsApp and press Send on the prepared message to continue with TSG.';
       } else {
         status.textContent += ' Check for a confirmation email, or retry with the same details.';

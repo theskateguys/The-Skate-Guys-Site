@@ -1,0 +1,49 @@
+LOCAL EMAIL PREVIEW - SAMPLE DATA - NO EMAIL SENT
+
+Booking Request Received
+
+Hi SAMPLE ONLY - Jordan Baptiste,
+
+We received your booking request (TSG-PREVIEW-NOT-A-REAL-BOOKING). This is not a confirmed class.
+Status: Awaiting availability confirmation
+
+TT$80 per person / 75 minutes / skate rental included.
+One person can book. Classes are by appointment.
+
+Continue on WhatsApp: https://wa.me/18682766878?text=TSG%20Booking%20Request%20(not%20confirmed)%0ACustomer%20reference%3A%20TSG-PREVIEW-NOT-A-REAL-BOOKING%0AContact%20name%3A%20SAMPLE%20ONLY%20-%20Jordan%20Baptiste%0AWhatsApp%3A%20%2B18685550100%0AEmail%3A%20sample%40example.test%0ARequested%20island%3A%20Tobago%0ARequested%20area%3A%20Black%20Rock%20(requested)%0ARequested%20date%3A%205%20January%202027%0ARequested%20time%20(T%26T%20local%20time)%3A%2010%3A30%0AParticipants%3A%202%0AParticipant%201%3A%20Age%2030%3B%20Beginner%3B%20rental%20skates%3A%20No%0AParticipant%202%3A%20Age%2012%3B%20First%20time%3B%20rental%20skates%3A%20Yes%0AParticipant%202%20skate%20size%3A%205%20(UK%20child)%0AParticipant%202%20guardian%3A%20SAMPLE%20ONLY%20-%20Alex%20Baptiste%3B%20WhatsApp%3A%20%2B18685550100%0ASingle%20session%3A%20TT%2480%20per%20person%20%2F%2075%20minutes%20%2F%20skate%20rental%20included.%0APlease%20check%20coach%2C%20location%20and%20skate%20availability%20before%20payment.
+You must press Send in WhatsApp. Opening WhatsApp alone does not send your message or confirm a class.
+
+Customer reference: TSG-PREVIEW-NOT-A-REAL-BOOKING
+Contact name: SAMPLE ONLY - Jordan Baptiste
+WhatsApp: +18685550100
+Email: sample@example.test
+Requested island: Tobago
+Requested area: Black Rock (requested)
+Requested date: 5 January 2027
+Requested time (T&T local time): 10:30
+Participants: 2
+Participant 1: Age 30; Beginner; rental skates: No
+Participant 2: Age 12; First time; rental skates: Yes
+Participant 2 skate size: 5 (UK child)
+Participant 2 guardian: SAMPLE ONLY - Alex Baptiste; WhatsApp: +18685550100
+
+Date, time and location are requested, not confirmed. Trinidad location is agreed during booking. For Tobago, TSG confirms Rec TT Black Rock or another suitable agreed location.
+
+Please send your prepared WhatsApp message so TSG can check coach, location and skate availability before payment.
+Deposit preferred; payment on arrival by arrangement.
+
+No payment has been taken.
+
+At least 24 hours notice: the amount paid carries forward as credit.
+Less than 24 hours notice or no-show: no automatic credit; genuine emergencies reviewed individually.
+TSG/coach cancellation or unsafe weather/venue: full amount paid carries forward as credit, without penalty.
+Credit expires one calendar month from the original scheduled session date. If the matching date does not exist, use the last day of that month.
+If TSG cannot offer a replacement before expiry, extend the credit to give the client a reasonable opportunity to attend. We'll confirm your revised credit expiry with you.
+Transfers require TSG approval, subject to participant suitability and skate availability.
+Credit rather than refunds.
+
+The Skate Guys Ltd
+Trinidad & Tobago
+WhatsApp: +1 868 276 6878
+info.theskateguys@gmail.com
+https://the-skate-guys-site.vercel.app/book.html

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TSG Email Review - Sample Data Only</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#e8f8f7;color:#1d3035;font:15px/1.6 Arial,Helvetica,sans-serif}header,main{max-width:1140px;margin:0 auto;padding:24px}h1{margin:0;font-size:26px}p{margin:8px 0 16px}nav{display:flex;gap:12px 24px;flex-wrap:wrap}a{color:#14545b;text-underline-offset:3px}section{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:24px;align-items:start}h2{font-size:17px;margin:0 0 12px}iframe{display:block;width:100%;height:840px;border:1px solid #b9d7d7;background:#e8f8f7}article{min-width:0}@media(max-width:1000px){section{grid-template-columns:minmax(0,1fr)}article:last-child{width:min(390px,100%)}}@media(max-width:480px){header,main{padding:16px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TSG Email Review</h1>
+    <p>Sample data only. Nothing is sent. These are browser previews, not Gmail, Outlook or Apple Mail tests.</p>
+    <nav aria-label="Email preview variants">
+      <a href="booking-request.html">Standard acknowledgement</a>
+      <a href="stress-test.html">Long name, reference &amp; three participants</a>
+      <a href="blocked-images.html">Blocked-image simulation</a>
+      <a href="booking-request.txt">Plain-text alternative</a>
+    </nav>
+  </header>
+  <main>
+    <section aria-label="Desktop and mobile email previews">
+      <article><h2>Desktop</h2><iframe title="Desktop sample booking acknowledgement" src="booking-request.html"></iframe></article>
+      <article><h2>Mobile - 390px</h2><iframe title="Mobile sample booking acknowledgement" src="booking-request.html"></iframe></article>
+    </section>
+  </main>
+</body>
+</html>

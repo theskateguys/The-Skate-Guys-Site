@@ -44,15 +44,17 @@ const unrelatedTrigger = {getHandlerFunction: () => 'unrelatedTask'};
 const triggerBuilder = {timeBased() { return this; }, everyDays() { return this; }, atHour() { return this; }, create() { createdTriggers.push('runTSGFollowUpReminders'); }};
 const rule = {requireValueInList() { return this; }, setAllowInvalid() { return this; }, build() { return this; }};
 const context = vm.createContext({
-  console: {error() {}},
+  console: {error() {}, log() {}},
   PropertiesService: {getScriptProperties: () => ({getProperty: name => properties.get(name) || null})},
   ScriptApp: {getProjectTriggers: () => [oldReminderTrigger, unrelatedTrigger], deleteTrigger: trigger => removedTriggers.push(trigger), newTrigger: () => triggerBuilder},
   SpreadsheetApp: {openById: () => spreadsheet, newDataValidation: () => rule},
   LockService: {getScriptLock: () => ({waitLock() {}, releaseLock() {}})},
   MailApp: {sendEmail: message => emails.push(message)},
+  Utilities: {base64Decode: value => Buffer.from(value, 'base64'), newBlob: (bytes, type, name) => ({bytes, type, name})},
   ContentService: {MimeType: {JSON: 'json'}, createTextOutput: content => ({setMimeType: () => JSON.parse(content)})}
 });
 vm.runInContext(await fs.readFile('automation/google-apps-script/Code.gs', 'utf8'), context);
+vm.runInContext(await fs.readFile('automation/google-apps-script/EmailLogo.gs', 'utf8'), context);
 const call = (name, ...args) => context[name](...args);
 const post = payload => call('doPost', {postData: {contents: JSON.stringify(payload)}});
 const base = {
@@ -82,7 +84,7 @@ assert.equal(post(base).status, 'duplicate_ignored');
 for (const name of ['Leads', 'Bookings', 'Follow Up Status']) assert.equal(sheets.get(name).rows.length, 2);
 assert.equal(emails.length, 1, 'Duplicate retries do not resend confirmation');
 assert.match(emails[0].body, /genuine emergencies reviewed individually/);
-assert.match(emails[0].body, /Record the agreed new expiry/);
+assert.match(emails[0].body, /We'll confirm your revised credit expiry with you/);
 assert.match(emails[0].body, /without penalty/);
 
 // Absent or explicitly false opt-in disables both trigger installation and execution.
@@ -134,6 +136,15 @@ assert.equal(post({...base, leadId: 'TSG-NO-EMAIL', email: ''}).ok, true);
 assert.equal(post({...base, leadId: 'TSG-SOLO', participantCount: 1, participants: [base.participants[0]]}).ok, true);
 assert.equal(post({...base, leadId: 'TSG-OPTIN', marketingConsent: 'Yes'}).ok, true);
 assert.equal(sheets.get('Email Subscribers').rows.length, 2);
+// Batch updates must skip custom/formula columns, including ones between owned columns.
+const subscribers = sheets.get('Email Subscribers');
+subscribers.rows[0].splice(3, 0, 'Custom Formula', 'Custom Literal');
+subscribers.rows[1].splice(3, 0, '=1+1', 'keep staff value');
+assert.equal(post({...base, leadId: 'TSG-OPTIN-UPDATE', marketingConsent: 'Yes', name: 'Updated Synthetic'}).ok, true);
+assert.equal(subscribers.rows.length, 2);
+assert.equal(subscribers.rows[1][3], '=1+1');
+assert.equal(subscribers.rows[1][4], 'keep staff value');
+assert.equal(get('Email Subscribers', 'TSG-OPTIN-UPDATE', 'Name'), 'Updated Synthetic');
 assert.equal(post({...base, leadId: 'TSG-OPTIN', marketingConsent: 'Yes'}).status, 'duplicate_ignored');
 assert.equal(sheets.get('Email Subscribers').rows.length, 2);
 for (const mutation of [

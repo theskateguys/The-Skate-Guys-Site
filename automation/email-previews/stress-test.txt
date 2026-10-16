@@ -1,0 +1,51 @@
+LOCAL EMAIL PREVIEW - SAMPLE DATA - NO EMAIL SENT
+
+Booking Request Received
+
+Hi SAMPLE ONLY - Alexandria-Christina Jean-Baptiste Montgomery-Williams and family,
+
+We received your booking request (TSG-PREVIEW-LONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCE). This is not a confirmed class.
+Status: Awaiting availability confirmation
+
+TT$80 per person / 75 minutes / skate rental included.
+One person can book. Classes are by appointment.
+
+Continue on WhatsApp: https://wa.me/18682766878?text=TSG%20Booking%20Request%20(not%20confirmed)%0ACustomer%20reference%3A%20TSG-PREVIEW-LONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCE%0AContact%20name%3A%20SAMPLE%20ONLY%20-%20Alexandria-Christina%20Jean-Baptiste%20Montgomery-Williams%20and%20family%0AWhatsApp%3A%20%2B18685550100%0AEmail%3A%20sample%40example.test%0ARequested%20island%3A%20Tobago%0ARequested%20area%3A%20SAMPLE%20ONLY%20-%20A%20long%20requested%20area%20description%20for%20coordination%2C%20subject%20to%20TSG%20checking%20a%20suitable%20venue%0ARequested%20date%3A%205%20January%202027%0ARequested%20time%20(T%26T%20local%20time)%3A%2010%3A30%0AParticipants%3A%203%0AParticipant%201%3A%20Age%2030%3B%20Beginner%3B%20rental%20skates%3A%20No%0AParticipant%202%3A%20Age%2012%3B%20First%20time%3B%20rental%20skates%3A%20Yes%0AParticipant%202%20skate%20size%3A%205%20(UK%20child)%0AParticipant%202%20guardian%3A%20SAMPLE%20ONLY%20-%20Alex%20Baptiste%3B%20WhatsApp%3A%20%2B18685550100%0AParticipant%203%3A%20Age%2018%3B%20Intermediate%3B%20rental%20skates%3A%20Yes%0AParticipant%203%20skate%20size%3A%2010%20(US%20men)%0ASingle%20session%3A%20TT%2480%20per%20person%20%2F%2075%20minutes%20%2F%20skate%20rental%20included.%0APlease%20check%20coach%2C%20location%20and%20skate%20availability%20before%20payment.
+You must press Send in WhatsApp. Opening WhatsApp alone does not send your message or confirm a class.
+
+Customer reference: TSG-PREVIEW-LONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCELONGREFERENCE
+Contact name: SAMPLE ONLY - Alexandria-Christina Jean-Baptiste Montgomery-Williams and family
+WhatsApp: +18685550100
+Email: sample@example.test
+Requested island: Tobago
+Requested area: SAMPLE ONLY - A long requested area description for coordination, subject to TSG checking a suitable venue
+Requested date: 5 January 2027
+Requested time (T&T local time): 10:30
+Participants: 3
+Participant 1: Age 30; Beginner; rental skates: No
+Participant 2: Age 12; First time; rental skates: Yes
+Participant 2 skate size: 5 (UK child)
+Participant 2 guardian: SAMPLE ONLY - Alex Baptiste; WhatsApp: +18685550100
+Participant 3: Age 18; Intermediate; rental skates: Yes
+Participant 3 skate size: 10 (US men)
+
+Date, time and location are requested, not confirmed. Trinidad location is agreed during booking. For Tobago, TSG confirms Rec TT Black Rock or another suitable agreed location.
+
+Please send your prepared WhatsApp message so TSG can check coach, location and skate availability before payment.
+Deposit preferred; payment on arrival by arrangement.
+
+No payment has been taken.
+
+At least 24 hours notice: the amount paid carries forward as credit.
+Less than 24 hours notice or no-show: no automatic credit; genuine emergencies reviewed individually.
+TSG/coach cancellation or unsafe weather/venue: full amount paid carries forward as credit, without penalty.
+Credit expires one calendar month from the original scheduled session date. If the matching date does not exist, use the last day of that month.
+If TSG cannot offer a replacement before expiry, extend the credit to give the client a reasonable opportunity to attend. We'll confirm your revised credit expiry with you.
+Transfers require TSG approval, subject to participant suitability and skate availability.
+Credit rather than refunds.
+
+The Skate Guys Ltd
+Trinidad & Tobago
+WhatsApp: +1 868 276 6878
+info.theskateguys@gmail.com
+https://the-skate-guys-site.vercel.app/book.html

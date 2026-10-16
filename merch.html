@@ -525,18 +525,18 @@
     .custom-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,.8); }
     .custom-item::before { content: "→"; color: var(--gold); font-size: 11px; }
 
-    /* ── Elite strip ── */
-    .elite-row {
+    /* ── Session strip ── */
+    .session-row {
       margin-top: 3px;
       background: #0c0c12;
       padding: 22px 28px;
       display: flex; align-items: center; justify-content: space-between;
       gap: 16px; flex-wrap: wrap;
     }
-    .elite-row-left { display: flex; align-items: center; gap: 14px; }
-    .elite-crown { font-size: 28px; }
-    .elite-text { font-size: 14px; color: rgba(255,255,255,.85); }
-    .elite-text strong { color: var(--gold); }
+    .session-row-left { display: flex; align-items: center; gap: 14px; }
+    .session-icon { font-size: 28px; }
+    .session-text { font-size: 14px; color: rgba(255,255,255,.85); }
+    .session-text strong { color: var(--gold); }
 
     /* ── Email bar ── */
     .email-bar {
@@ -656,8 +656,8 @@
       .size-note .btn { width: 100%; }
       .size-order-steps { grid-template-columns: 1fr; }
       .size-order-step { padding: 18px 20px; }
-      .elite-row { margin-top: 16px; border-radius: 14px; padding: 20px; }
-      .elite-row-left { align-items: flex-start; }
+      .session-row { margin-top: 16px; border-radius: 14px; padding: 20px; }
+      .session-row-left { align-items: flex-start; }
       .custom-section { margin-top: 38px; border-radius: 16px; }
       .custom-left { padding: 28px 22px; }
       .custom-right { display: none; }
@@ -702,11 +702,11 @@
       <span>🛼 OFFICIAL TSG COMMUNITY GEAR</span>
       <span>✏️ CUSTOM NAME PRINTING AVAILABLE</span>
       <span>💬 ORDER THROUGH SHOPIFY OR WHATSAPP</span>
-      <span>👑 TSG ELITE MEMBERS GET FIRST ACCESS</span>
+      <span>TT$80 PER PERSON &middot; 75 MINUTES &middot; SKATE RENTAL INCLUDED</span>
       <span>🛼 OFFICIAL TSG COMMUNITY GEAR</span>
       <span>✏️ CUSTOM NAME PRINTING AVAILABLE</span>
       <span>💬 ORDER THROUGH SHOPIFY OR WHATSAPP</span>
-      <span>👑 TSG ELITE MEMBERS GET FIRST ACCESS</span>
+      <span>TT$80 PER PERSON &middot; 75 MINUTES &middot; SKATE RENTAL INCLUDED</span>
     </div>
   </div>
 
@@ -724,7 +724,6 @@
           <a href="index.html">Home</a>
           <a href="book.html">Classes</a>
           <a href="merch.html" class="active">Merch</a>
-          <a href="elite.html">Elite</a>
           <a href="book.html">Locations</a>
           <a href="index.html#hire">Hire</a>
         </div>
@@ -740,12 +739,11 @@
         <a href="index.html">Home</a>
         <a href="book.html">Classes &amp; Pricing</a>
         <a href="merch.html">🛒 Merch Store</a>
-        <a href="elite.html">👑 TSG Elite</a>
         <a href="book.html">Book a Class</a>
         <a href="book.html">Locations</a>
         <a href="index.html#hire">Events &amp; Hire</a>
         <div class="sep"></div>
-        <a href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">🛼 Join Community</a>
+        <a href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">🛼 View WhatsApp Group</a>
         <a href="https://wa.me/18682766878" target="_blank" rel="noopener">💬 WhatsApp Us</a>
       </div>
     </div>
@@ -1093,13 +1091,13 @@
         </div>
       </section>
 
-      <!-- Elite strip -->
-      <div class="elite-row">
-        <div class="elite-row-left">
-          <span class="elite-crown">👑</span>
-          <div class="elite-text"><strong>TSG Elite members get first access</strong> to select drops and community gear updates.</div>
+      <!-- Single-session booking -->
+      <div class="session-row">
+        <div class="session-row-left">
+          <span class="session-icon" aria-hidden="true">&#x1F6FC;</span>
+          <div class="session-text"><strong>TT$80 per person. 75 minutes. Skate rental included.</strong> Classes by appointment. One person can book.</div>
         </div>
-        <a class="btn btn-gold btn-sm" href="elite.html">Join Elite →</a>
+        <a class="btn btn-gold btn-sm" href="book.html">Book a Class</a>
       </div>
 
       <!-- Custom print section -->
@@ -1130,7 +1128,7 @@
           <input type="email" name="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" required>
           <select name="location" aria-label="Location" required><option value="">Your island</option><option>Trinidad</option><option>Tobago</option></select>
           <button class="btn btn-primary btn-sm" type="submit">Notify Me</button>
-          <label class="lead-consent"><input type="checkbox" name="marketingConsent" required><span>I agree to receive TSG merch, class, event and Elite updates by email. I can unsubscribe at any time.</span></label>
+          <label class="lead-consent"><input type="checkbox" name="marketingConsent" required><span>I agree to receive TSG merch, class and event updates by email. I can unsubscribe at any time.</span></label>
           <p class="lead-privacy">We may measure anonymous website activity. Personal details are collected only when you submit this form.</p>
           <p class="lead-status" data-form-status aria-live="polite"></p>
         </form>
@@ -1150,7 +1148,7 @@
           <div class="footer-tag">Trinidad &amp; Tobago's leading rollerskate community.</div>
           <div class="social-row">
             <a class="s-btn" href="https://instagram.com/the_skateguys" target="_blank" rel="noopener">📸 Instagram</a>
-            <a class="s-btn" href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">🛼 Community</a>
+            <a class="s-btn" href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" target="_blank" rel="noopener">🛼 WhatsApp Group</a>
           </div>
         </div>
         <div class="footer-col">
@@ -1158,7 +1156,7 @@
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="book.html">Classes</a></li>
-            <li><a href="elite.html">TSG Elite</a></li>
+            <li><a href="book.html">Book a Class</a></li>
             <li><a href="index.html#hire">Events &amp; Hire</a></li>
           </ul>
         </div>

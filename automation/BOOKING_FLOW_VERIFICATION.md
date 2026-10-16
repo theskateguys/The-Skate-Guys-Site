@@ -29,6 +29,12 @@ Review screenshots are generated under `output/playwright/`; browser CLI artifac
 
 ## Still requires separate operational acceptance
 
-These are mocked integration tests, **not a verified Google Sheets save**. No real email was sent and no actual WhatsApp message was sent. Before release, use a copied/test Sheet and test Apps Script deployment to inspect actual rows, authorization, quotas and confirmation mail; test WhatsApp on a real mobile device and send the message manually. Follow the coordinated deployment steps in `GOOGLE_SHEETS_LEAD_CAPTURE_SETUP.md`.
+### Isolated setup verified on October 16, 2026
+
+The pre-migration Sheet backup remains untouched. A separate test Sheet copy and a separate code backup were created. The test Apps Script container was checked against the test Sheet before editing. Its saved Code.gs matched the reviewed source (normalizing line endings/trailing whitespace). Script properties explicitly target the copied test Sheet and set `TSG_AUTOMATIC_REMINDERS_ENABLED=false`.
+
+After user authorization, `setupTSGLeadSystem` completed successfully in the test project. Connector readback compared every existing populated cell in all four tabs before/after setup: zero existing values changed. Populated record counts stayed at Leads 17, Bookings 14, Email Subscribers 7 and Follow Up Status 14. The five new booking headers were appended on the right. The test project's Triggers page showed **0 triggers**. These migration checks are real Google Sheets readbacks, not mocked checks; they do not establish that a new website booking POST has been stored.
+
+The browser/server submission tests above remain mocked integration tests, **not a verified new-booking save**. The real migration readback is separate. No real acknowledgement email or WhatsApp message was sent during these checks. Before release, use the isolated test deployment to submit the tester's own details and inspect actual new rows, quotas and confirmation mail; test WhatsApp on a real mobile device and send the message manually. Follow the coordinated deployment steps in `GOOGLE_SHEETS_LEAD_CAPTURE_SETUP.md`.
 
 The approved cancellation/credit policy now covers late cancellation/no-show emergency review, TSG/coach/weather/venue cancellations, approved transfers, month-end expiry and extensions when TSG cannot offer a replacement. Staff record credit and extension agreements in existing booking Notes, preserving history. No deposit amount, fixed extension duration or automatic payment behavior has been invented. Automatic reminder mail is disabled by default unless `TSG_AUTOMATIC_REMINDERS_ENABLED` is exactly `true`; acknowledgement emails remain separate.

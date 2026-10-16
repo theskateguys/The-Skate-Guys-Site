@@ -24,7 +24,7 @@ async page => {
   for (const rule of ['no automatic credit', 'genuine emergencies', 'without penalty', 'last day of that month', 'agreed new expiry', 'Transfers require TSG approval', 'Credit rather than refunds']) assert((await page.locator('.booking-policy').innerText()).includes(rule), `Booking policy includes ${rule}`);
   const submit = form.locator('button[type=submit]');
   const status = form.locator('[data-form-status]');
-  const waitForResult = () => status.filter({hasText: /storage could not be verified|delivery failed|delivery is unavailable/}).waitFor();
+  const waitForResult = () => status.filter({hasText: /storage could not be verified|delivery could not be verified|delivery is unavailable/}).waitFor();
   const fill = async () => {
     await form.getByLabel('Contact name', {exact: true}).fill('Synthetic Browser Test');
     await form.getByLabel('WhatsApp number', {exact: true}).fill('+18685550100');
@@ -97,7 +97,7 @@ async page => {
   mode = 'failed';
   await submit.click();
   await waitForResult();
-  assert((await status.textContent()).includes('failed'), 'Network failure described honestly');
+  assert((await status.textContent()).includes('delivery could not be verified'), 'Network failure does not claim that storage failed');
   assert(await form.getByLabel('Contact name', {exact: true}).inputValue() === 'Synthetic Browser Test', 'Failure retains details');
   assert(await submit.isEnabled() && await link.isVisible(), 'Failure keeps retry and handoff available');
   assert(payloads[2].leadId === original.leadId, 'Failed retry keeps ID');

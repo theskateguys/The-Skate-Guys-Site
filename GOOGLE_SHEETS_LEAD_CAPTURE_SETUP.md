@@ -25,7 +25,7 @@ The under-18 guardian fields are a coordination rule, not a legal consent waiver
 2. Only on submission does the website send personal details to the configured Apps Script endpoint, with Lead ID, timestamp, source page, UTM source/campaign/medium and referrer.
 3. The browser uses `no-cors`. Its opaque response **cannot verify successful storage**. The page says delivery was attempted but storage is unverified; it never calls this a saved/received booking. An Apps Script email, unlike the browser's opaque response, is sent after server-side storage.
 4. A thank-you panel provides an explicit WhatsApp button. The visitor must open WhatsApp and press **Send** on the prepared message. Opening WhatsApp alone does not send a message or confirm a class. Explicit opening avoids delayed popup blocking.
-5. If delivery fails, times out, or the endpoint is missing, WhatsApp remains available. Inputs remain populated and editable; the retry button is enabled. No background personal-data queue or automatic resubmission on reconnect is used.
+5. If the network request fails or times out, storage might still have succeeded. The page says delivery **could not be verified**, rather than claiming storage failed. If the endpoint is missing it reports delivery unavailable. WhatsApp remains available, inputs remain populated and editable, and retry is enabled. No background personal-data queue or automatic resubmission on reconnect is used.
 6. An unchanged retry uses the same Lead ID and timestamp. A SHA-256 digest plus ID/timestamp (no contact or participant data) in sessionStorage supports retries after refresh in the same tab. Changed details create a new request ID because duplicate submissions never overwrite existing records. If storage is blocked, unchanged retries in the current page still reuse the ID. A new tab or cleared session can create a new request; staff can reconcile it by contact details.
 
 The WhatsApp message includes participant ages, experience, rental needs, sizes with sizing systems, guardian contacts for under-18s, preferences, contact details, offer, source/UTMs, consent and policy wording. Rental sizes are requests for an availability/fit check, not guaranteed inventory.
@@ -35,6 +35,8 @@ The WhatsApp message includes participant ages, experience, rental needs, sizes 
 Use the existing **TSG Website Leads** spreadsheet and tabs: `Leads`, `Bookings`, `Email Subscribers`, `Follow Up Status`.
 
 Existing columns and rows are retained. `ensureSheet_` adds missing headers on the right, never renames, reorders or deletes old columns. Reads and writes use header names, including status validation. Preserve unique, exact header names. Existing filters may need their range extended manually to include the new columns.
+
+After migration, keep the existing layout and size only the five new columns for readability: Preferred Area about 180px, Preferred Date 140px, Participant Count 140px, Participants JSON 400px, Participant Details 360px. Wrap those new headers and the human-readable Participant Details column; avoid sheet-wide autofit or restyling existing columns. These scoped formatting changes were applied to the isolated test copy, not the live Sheet.
 
 `Leads` and `Bookings` gain:
 

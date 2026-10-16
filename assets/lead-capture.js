@@ -196,7 +196,7 @@
       status.dataset.state = result === 'failed' ? 'error' : 'queued';
       status.textContent = result === 'unverified'
         ? 'Website delivery attempted; storage could not be verified.'
-        : result === 'failed' ? 'Website delivery failed or timed out. Your details are still here; you can retry.'
+        : result === 'failed' ? 'Website delivery could not be verified (connection interrupted or timed out). Your details are still here; you can retry.'
           : 'Website delivery is unavailable. Your details are still here.';
       if (isBooking) {
         link.href = makeWhatsAppUrl(submittedPayload);

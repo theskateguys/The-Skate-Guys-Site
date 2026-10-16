@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-16",
+  "timezone": "America/Port_of_Spain",
+  "sourceCommit": "f8a3a4329ca0816dee491d63aa2517e498937e73",
+  "branch": "codex/single-session-booking-review",
+  "passed": true,
+  "scope": "Real Chromium, actual review frontend with 25000ms configured deadline; existing isolated Apps Script version 1; no mocked network response.",
+  "leadId": "TSG-966d41c4-e666-4f17-838b-f4d25dfa8481",
+  "timestampReused": "2026-10-16T19:43:07.105Z",
+  "browserTimeoutMs": 25000,
+  "requestAtMs": 514.8,
+  "whatsappVisibleAtMs": 524.6,
+  "acknowledgementReadAtMs": 9204.9,
+  "savedUiObservedAtMs": 9205.3,
+  "requestToAcknowledgementMs": 8690.1,
+  "remainingBeforeTimeoutMs": 16309.9,
+  "whatsappVisibleAfterPostDispatchMs": 9.8,
+  "response": {
+    "host": "script.googleusercontent.com",
+    "type": "cors",
+    "httpStatus": 200,
+    "json": {
+      "ok": true,
+      "leadId": "TSG-966d41c4-e666-4f17-838b-f4d25dfa8481",
+      "status": "duplicate_ignored"
+    }
+  },
+  "savedAlreadyVisibleWhenJsonWasRead": false,
+  "matchingReadsSeenWhenSavedWasShown": 1,
+  "whatsapp": {
+    "host": "wa.me",
+    "number": "18682766878",
+    "matchingReference": true,
+    "acknowledgementsReadWhenVisible": 0,
+    "clicked": false
+  },
+  "requestCount": 1,
+  "networkResponseReplacedOrFulfilled": false,
+  "applicationFilesModified": false,
+  "recordReuseMethod": "Existing labelled record reconstructed from copied test Sheet. Only original ID/timestamp and SHA-256 payload digest seeded in isolated tab sessionStorage. Guard checked unchanged payload, ID and timestamp before native fetch. Private fixture removed after test.",
+  "sheetReadback": {
+    "spreadsheetId": "1CuA0uWDnUu-EK0XseYxNNpEK4lX5SZ7S5UuTdy-HCyM",
+    "leadsMatchingRows": [
+      19
+    ],
+    "bookingsMatchingRows": [
+      16
+    ],
+    "followUpMatchingRows": [
+      16
+    ],
+    "recordCountsBefore": {
+      "Leads": 19,
+      "Bookings": 16,
+      "Follow Up Status": 16,
+      "Email Subscribers": 7
+    },
+    "recordCountsAfter": {
+      "Leads": 19,
+      "Bookings": 16,
+      "Follow Up Status": 16,
+      "Email Subscribers": 7
+    },
+    "boundedRanges": [
+      "Leads!A1:Z30",
+      "Bookings!A1:Z25",
+      "'Follow Up Status'!A1:Z25",
+      "'Email Subscribers'!A1:Z12"
+    ],
+    "changedCells": 0
+  },
+  "emailCheck": {
+    "method": "Read-only Gmail search for exact Lead ID before and after retry",
+    "matchingMessagesBefore": 1,
+    "matchingMessagesAfter": 1,
+    "matchingMessageIdsUnchanged": true,
+    "newEmailRequested": false,
+    "limitation": "Bounded before/after mailbox observation; not proof against an unrelated future send."
+  },
+  "reminders": {
+    "property": "TSG_AUTOMATIC_REMINDERS_ENABLED",
+    "value": "false",
+    "reminderTriggers": 0,
+    "unrelatedOnOpenTriggerRetained": true,
+    "verifiedIn": "Isolated Apps Script settings and Triggers UI"
+  },
+  "browserConsoleErrors": 0,
+  "browserConsoleWarnings": 0,
+  "productionEndpointChanged": false,
+  "websiteDeployed": false,
+  "appsScriptDeployed": false,
+  "limitations": [
+    "Single successful duplicate retry against existing version 1; not an SLA or optimized-backend benchmark.",
+    "Final optimized backend/editor code remains undeployed and needs separate approved isolated acceptance.",
+    "No WhatsApp navigation/message was sent; link availability, number and matching reference were verified."
+  ]
+}

@@ -11,6 +11,8 @@ Status: REVIEW ONLY. No merge, push, website deployment or Web App deployment au
 
 ## Why use side-by-side endpoints
 
+Additional timeout gate PASSED with the actual **25000ms** review setting against the existing isolated version 1 Web App: a real Chromium unchanged duplicate retry consumed matching Google JSON in **8690.1ms**, leaving **16309.9ms** before timeout. WhatsApp appeared within 9.8ms of POST dispatch, before acknowledgement; saved appeared only after the matching response. Copied-Sheet cell data/counts and the exact-Lead-ID mailbox message set were unchanged. Reminders were read-only verified false with zero reminder triggers. See `automation/REAL_BROWSER_25S_ACK_VERIFICATION.json` and the dated verification appendix. This replaces the need to prove the chosen 25-second setting against a real response, but does not satisfy final optimized-backend/new-save or production acceptance. No release action is authorized by this pass.
+
 The current legacy form and the new participant-based form have incompatible payloads. A single mutable endpoint cannot atomically switch with cached/open website tabs. Keep the existing legacy Web App version/URL intact during cutover; create a second versioned deployment **in the same production Apps Script project**, using the same live Sheet and script lock. This requires approval for one release-only `assets/lead-config.js` endpoint change. No such change is made in this review. If retaining the identical URL is mandatory, stop and prepare an approved backwards-compatible bridge or maintenance release first; do not improvise a backend-first cutover.
 
 ### Exact endpoint change, not applied

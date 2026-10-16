@@ -283,7 +283,7 @@ function sendLeadConfirmation_(lead) {
   const isBooking = lead.leadType === 'booking';
   const message = isBooking ? buildBookingAcknowledgement_(lead) : {
     subject: 'You are on the TSG update list',
-    body: 'Welcome to the TSG update list. We will send useful class, event, merch and Elite updates.\n\nThe Skate Guys'
+    body: 'Welcome to the TSG update list. We will send useful class, event and merch updates.\n\nThe Skate Guys'
   };
   if (isBooking) message.inlineImages = {tsgLogo: getTSGEmailLogo_()};
   MailApp.sendEmail(Object.assign({to: lead.email, replyTo: TSG_CONFIG.replyToEmail, name: TSG_CONFIG.businessName}, message));

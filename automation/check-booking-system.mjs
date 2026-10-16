@@ -164,4 +164,21 @@ assert.deepEqual(sheets.get('Leads').rows[0].slice(0, old.length), old);
 assert.deepEqual(sheets.get('Leads').rows[1], oldRow);
 assert.equal(get('Leads', 'TSG-MIGRATION', 'Preferred Area'), 'Black Rock');
 call('applyValidations_', spreadsheet);
+
+// Newsletter copy stays separate from the approved booking acknowledgement.
+const bookingAcknowledgement = call('buildBookingAcknowledgement_', call('normalizeLead_', base));
+assert.equal(bookingAcknowledgement.subject, emails[0].subject);
+assert.equal(bookingAcknowledgement.body, emails[0].body);
+assert.equal(bookingAcknowledgement.htmlBody, emails[0].htmlBody);
+const beforeWelcome = emails.length;
+call('sendLeadConfirmation_', {...base, leadType: 'email'});
+assert.equal(emails.length, beforeWelcome + 1);
+const welcome = emails.at(-1);
+assert.equal(welcome.subject, 'You are on the TSG update list');
+assert.equal(welcome.body, 'Welcome to the TSG update list. We will send useful class, event and merch updates.\n\nThe Skate Guys');
+assert.doesNotMatch(welcome.body, /Elite/i);
+assert.equal(welcome.htmlBody, undefined);
+assert.equal(welcome.inlineImages, undefined);
+assert.deepEqual(call('buildBookingAcknowledgement_', call('normalizeLead_', base)), bookingAcknowledgement);
 console.log('PASS: mocked Apps Script storage, duplicate retries/repair, optional consent/email, participant validation, legacy schema preservation and protected status transitions. No Google Sheet save was performed.');
+console.log('PASS: mocked newsletter welcome promises class, event and merch updates only; booking acknowledgement unchanged. No real email sent.');

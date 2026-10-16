@@ -1,0 +1,185 @@
+{
+  "inspectedAtUtc": "2026-10-16T23:15:48Z",
+  "scope": "Read-only authenticated browser inspection of actual production Apps Script. No setup, reminder or submission handler was manually invoked; no settings, deployments or Sheet data changed. Opening the bound Sheet can run its onOpen menu-only function.",
+  "projectId": "1wCcJh9WBnfpOqtun6gzhR5v-81pOLHJsxtXvwCnDRSTrR1w1kJEAy5YU",
+  "boundSpreadsheetId": "1RCEUW2TP2Z1NaXdqeCjmmx041KyuTpBYY28Uz1EAqjU",
+  "deployment": {
+    "id": "AKfycbymjXSnhFomwbFB7aHQXMffD73hKy7dXr80rixGOuDumRcnLoPOjN6L8bj1rGUMUVkC8g",
+    "version": 2,
+    "versionDisplayedAt": "11 July 2026 00:25 GMT-04",
+    "executeAs": "info.theskateguys@gmail.com",
+    "access": "Anyone",
+    "archivedDeployments": 1
+  },
+  "source": {
+    "file": "Code.gs",
+    "lines": 298,
+    "sha256Lf": "8a66986cf87ce39024a929a34b1e4c710606ecbc58c7a354c233a15d44b82dd2",
+    "immutableVersionRead": true,
+    "headMatchesDeployed": true,
+    "matchingRepositoryBlob": "51ddd8f4f17318c3537544a1ab58ae51ede090dd:automation/google-apps-script/Code.gs",
+    "method": "Opened bound project from live Sheet Extensions > Apps Script; matched deployment ID; selected version 2 in Project History; copied source read-only; compared SHA256 after CRLF-to-LF normalization. Independently read Current version and appsscript.json."
+  },
+  "manifest": {
+    "timeZone": "America/Puerto_Rico",
+    "dependencies": {},
+    "exceptionLogging": "STACKDRIVER",
+    "runtimeVersion": "V8",
+    "webapp": {
+      "executeAs": "USER_DEPLOYING",
+      "access": "ANYONE_ANONYMOUS"
+    },
+    "headMatchesDeployed": true
+  },
+  "scriptProperties": {
+    "count": 0,
+    "observed": "Loaded Project Settings shows Add script property and no property/value rows. Read twice after navigation.",
+    "spreadsheetResolution": "Bound active spreadsheet fallback; no explicit TSG_LEADS_SPREADSHEET_ID property.",
+    "reminderGuardSupported": false
+  },
+  "triggers": {
+    "currentAccountVisibleCount": 1,
+    "handlers": [
+      {
+        "handler": "runTSGFollowUpReminders",
+        "deployment": "Head",
+        "event": "Time-based",
+        "schedule": "Day timer, 10am to 11am (GMT-04:00)",
+        "lastRunLocal": "16 October 2026 10:04:04",
+        "displayedErrorRate": "0%"
+      }
+    ],
+    "visibilityLimit": "Trigger inventory is for the signed-in owner; other users' installable triggers require their own audit.",
+    "productionRemindersDisabled": false,
+    "changed": false
+  },
+  "statusWrites": [
+    {
+      "function": "saveLead_",
+      "lines": [
+        94,
+        102,
+        112
+      ],
+      "tabs": [
+        "Leads",
+        "Bookings"
+      ],
+      "effect": "Appends New Lead on initial rows; no cross-tab protected-status snapshot. doPost submission lock covers save only."
+    },
+    {
+      "function": "appendFollowUp_",
+      "lines": [
+        125,
+        131
+      ],
+      "tabs": [
+        "Follow Up Status"
+      ],
+      "effect": "Appends literal New Lead if missing, regardless of protected status in other tabs."
+    },
+    {
+      "function": "markWhatsAppOpened_",
+      "lines": [
+        159,
+        170,
+        171
+      ],
+      "tabs": [
+        "Leads",
+        "Bookings"
+      ],
+      "effect": "Sets flag Yes and unconditionally overwrites Status with WhatsApp Opened; reached by unlocked doPost tracking branch line66."
+    },
+    {
+      "function": "runTSGFollowUpReminders",
+      "lines": [
+        176,
+        202,
+        203
+      ],
+      "tabs": [
+        "Follow Up Status"
+      ],
+      "effect": "Checks this tab only; sends reminder, sets Follow Up Needed and Last Contacted without lock/cross-tab guard; then calls updateLeadStatus_."
+    },
+    {
+      "function": "updateLeadStatus_",
+      "lines": [
+        218,
+        226
+      ],
+      "tabs": [
+        "Leads",
+        "Bookings"
+      ],
+      "effect": "Unconditionally overwrites matching row Status; reminder helper."
+    }
+  ],
+  "otherWriters": [
+    {
+      "function": "upsertSubscriber_",
+      "lines": [
+        137,
+        144,
+        145
+      ],
+      "scope": "Email Subscribers only",
+      "effect": "Writes Status Subscribed and subscriber row; not a booking/follow-up status path."
+    },
+    {
+      "function": "ensureSheet_",
+      "lines": [
+        238,
+        242
+      ],
+      "scope": "Headers",
+      "effect": "Rewrites legacy header prefix on mismatch; unsafe for custom/reordered headers."
+    },
+    {
+      "function": "applyValidations_",
+      "lines": [
+        249
+      ],
+      "scope": "Validation metadata",
+      "effect": "Uses fixed positions; does not change existing status values."
+    },
+    {
+      "function": "setupTSGLeadSystem/installTSGAutomationTriggers",
+      "lines": [
+        39,
+        43,
+        47
+      ],
+      "scope": "Schema and triggers",
+      "effect": "Setup calls installer which creates daily reminder trigger without disable guard."
+    }
+  ],
+  "entryPoints": {
+    "publicPost": [
+      "lead_submit -> normalize/validate -> locked saveLead_ -> appendFollowUp_ -> sendLeadConfirmation_",
+      "whatsapp_opened -> unlocked markWhatsAppOpened_"
+    ],
+    "trigger": "Head runTSGFollowUpReminders -> direct Follow Up Status writes -> updateLeadStatus_",
+    "manualMenu": [
+      "setupTSGLeadSystem",
+      "installTSGAutomationTriggers",
+      "runTSGFollowUpReminders"
+    ],
+    "readOnly": [
+      "doGet",
+      "onOpen creates menu only"
+    ]
+  },
+  "boundaries": {
+    "liveRowsRead": false,
+    "liveRowsWritten": false,
+    "runClicked": false,
+    "settingsSaved": false,
+    "triggerChanged": false,
+    "endpointChanged": false,
+    "deployed": false,
+    "emailSentByAgent": false,
+    "isolatedDeploymentChanged": false
+  }
+}

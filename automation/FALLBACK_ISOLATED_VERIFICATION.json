@@ -1,0 +1,145 @@
+{
+  "checkedAt": "2026-10-16",
+  "scope": "One isolated native attempt only. Browser acknowledgement is not Sheet/inbox or production verification. Parent must compare all rows/cell values, counts and zero-email reference baseline after this attempt. No automatic second attempt.",
+  "pass": true,
+  "reference": "TSG-OPTIMIZED-NOEMAIL-1792187088270",
+  "receipt": {
+    "leadId": "TSG-OPTIMIZED-NOEMAIL-1792187088270",
+    "timestamp": "2026-10-16T21:44:48.270Z"
+  },
+  "expectedStatus": "duplicate_ignored",
+  "nativeResponse": {
+    "at": 7902.4000000059605,
+    "type": "cors",
+    "httpStatus": 200,
+    "ok": true,
+    "leadId": "TSG-OPTIMIZED-NOEMAIL-1792187088270",
+    "status": "duplicate_ignored",
+    "savedAlreadyVisible": false
+  },
+  "savedVisible": true,
+  "orderingPassed": true,
+  "evidence": {
+    "requests": [
+      {
+        "at": 814.1000000089407,
+        "mode": "cors"
+      }
+    ],
+    "reads": [
+      {
+        "at": 7902.4000000059605,
+        "type": "cors",
+        "httpStatus": 200,
+        "ok": true,
+        "leadId": "TSG-OPTIMIZED-NOEMAIL-1792187088270",
+        "status": "duplicate_ignored",
+        "savedAlreadyVisible": false
+      }
+    ],
+    "saved": [
+      {
+        "at": 7904.9000000059605,
+        "readsSeen": 1,
+        "matchingReference": true
+      }
+    ],
+    "whatsapp": [
+      {
+        "at": 816.2000000029802,
+        "host": "wa.me",
+        "number": "18682766878",
+        "matchingReference": true,
+        "readsSeen": 0
+      }
+    ],
+    "blocked": []
+  },
+  "diagnostics": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "guardViolations": []
+  },
+  "postCount": 1,
+  "responseTimeMs": 7088.29999999702,
+  "timeoutHeadroomMs": 17911.70000000298,
+  "whatsappTimeMs": 2.0999999940395355,
+  "screenshot": "output/acceptance/rollback-isolated-blank-retry-status.png",
+  "target": {
+    "projectId": "1qXXCOqzdedWiuwjdR1bcJHp7T517fbXUlFl_s9NVfNKlytGmNpWrVKU9",
+    "sheetId": "1CuA0uWDnUu-EK0XseYxNNpEK4lX5SZ7S5UuTdy-HCyM",
+    "version": 2,
+    "endpoint": "https://script.google.com/macros/s/AKfycbw-UnIZTK7uF6yLQfGWM_mSQBHD6aVL_e7AoGikQY5cweh1EnGTuBN7z188XFnt-e4B2g/exec"
+  },
+  "artifact": {
+    "path": "output/rollback/isolated-02639f8-v2-parent-retry",
+    "sourceSHA": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+    "templateManifestSHA256": "95f5880b2f9a7a882c73cdf92a2a646135da0471969449f77f411643727bb0e2",
+    "boundManifestSHA256": "81d34c1ac8def15bdaa696153527860634a0ceec5dabd40bc599a346ca4ffb22",
+    "productionReady": false
+  },
+  "sheetReadback": {
+    "beforeCounts": {
+      "Leads": 21,
+      "Bookings": 18,
+      "Follow Up Status": 18,
+      "Email Subscribers": 7
+    },
+    "afterCounts": {
+      "Leads": 21,
+      "Bookings": 18,
+      "Email Subscribers": 7,
+      "Follow Up Status": 18
+    },
+    "beforeReferenceRows": {
+      "Leads": [
+        21
+      ],
+      "Bookings": [
+        18
+      ],
+      "Follow Up Status": [
+        18
+      ],
+      "Email Subscribers": []
+    },
+    "afterReferenceRows": {
+      "Leads": [
+        21
+      ],
+      "Bookings": [
+        18
+      ],
+      "Email Subscribers": [],
+      "Follow Up Status": [
+        18
+      ]
+    },
+    "comparison": "Counts and reference multiplicity/row positions checked before and after. No claim of a retained full-cell snapshot comparison."
+  },
+  "email": {
+    "emailField": "blank",
+    "marketingConsent": "No",
+    "referenceSearchBefore": 0,
+    "referenceSearchAfter": 0,
+    "query": "in:anywhere \"TSG-OPTIMIZED-NOEMAIL-1792187088270\"",
+    "limitation": "Sender-account reference search, not global mailbox proof or an email-bearing acceptance test."
+  },
+  "reminders": {
+    "property": "false",
+    "reminderTriggerCount": 0,
+    "verification": "Read-only isolated settings/trigger inspection before retry; unrelated onOpen retained"
+  },
+  "production": {
+    "writes": 0,
+    "endpointChanges": 0,
+    "deployments": 0,
+    "triggerChanges": 0
+  },
+  "limits": [
+    "This tests the pinned strict fallback against existing isolated strict v2, not deployment of the newly prepared legacy replacement.",
+    "Pinned backend newsletter wording patch is not on isolated v2; unchanged booking retry does not exercise that path.",
+    "Production fallback binding/staging requires separate approval and verification."
+  ]
+}

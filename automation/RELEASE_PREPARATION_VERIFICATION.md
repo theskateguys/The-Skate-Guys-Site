@@ -1,5 +1,53 @@
 # Release Preparation Verification
 
+## Follow-Up From 02639f8
+
+Completed local preparation on 16 October 2026; historical evidence below remains
+scoped to its original run. No production write, deployment, trigger change,
+endpoint switch, push, merge or new email occurred.
+
+- Sol's complete legacy replacement is in `legacy-compatibility/Code.gs` with its
+  own README. All 39 focused offline groups pass: cross-tab protected states,
+  shared-lock mutation helpers, partial repair, mapped additive schema, old
+  envelopes, duplicate/no-mail behavior and disabled reminder entry points.
+  This is NOT Google acceptance of that replacement; it remains undeployed.
+- Pinned fallback source `02639f8c7e0361b72d1a19d03bf5fc6579ca2839` now has a
+  guarded isolated-only binding/checker/server. Five binding tests pass; all 43
+  artifact files reconstruct correctly, with only the endpoint rebound.
+- Actual Chromium retry against existing isolated strict v2 returned matching
+  `duplicate_ignored` in 7088.3ms, with WhatsApp ready after 2.1ms and saved shown
+  only after native readable acknowledgement. Counts stayed 21/18/18/7; the same
+  reference remains once in each booking tab and absent from subscribers. Zero
+  sender messages matched before/after. See `FALLBACK_ISOLATED_VERIFICATION.md`
+  and JSON for hashes, destination and evidence limits. No fresh row/email.
+- Read-only production trigger/execution recheck still shows the active Head
+  reminder. `PRODUCTION_REMINDER_CUTOVER.md` records exact pause, owner audit,
+  unsafe in-flight execution drain, verification and separately approved restore
+  order. Nothing was paused. Original unsafe in-flight requests cannot be made
+  safe by the new script lock retroactively.
+- Runtime website, strict backend, production config endpoint and approved offer
+  are untouched. `d8a6a5a` is not a fallback. Test-bound output is not publishable.
+
+Remaining decisions: authorize isolated legacy deployment/acceptance first; only
+after that passes, approve production backup/pause/compatibility cutover, strict
+migration/new deployment, explicit release AND fallback binding/staging, and
+website promotion/production acceptance. Reminder restoration is separate.
+
+### Astra Review
+
+One final read-only `gpt-6-astra` review inspected the implementation, binding and
+runbooks. It found one P2: reminder delivery must require a writable contact
+marker BEFORE sending, rather than rejecting formulas/missing headers only
+afterward. Sol's scoped follow-up adds that pre-send guard and regressions for
+missing markers and formulas with blank effective values. All 39 groups pass,
+including the three new marker regressions. No actual reminder was sent. The
+parent reviewed the six-line guard and regression diff before committing. No additional
+material binding/runbook contradiction was found. Production remains NO-GO
+pending isolated legacy acceptance and the explicit cutover/release approvals
+above; a passing local review does not authorize any live action.
+
+## Historical 02639f8 Preparation
+
 Date: 16 October 2026, America/Port_of_Spain. Base commit: 52467abc209a51f7a42f33c2e41297e1621a3b48.
 Scope: local preparation plus explicitly authorized read-only production inspection. No live Sheet writes, request submissions, emails, endpoint changes, push, merge or deployment.
 

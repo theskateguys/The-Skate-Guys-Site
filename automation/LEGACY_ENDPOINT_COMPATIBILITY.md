@@ -2,7 +2,7 @@
 
 ## Status
 
-Read-only production inspection completed on 16 October 2026. The compatibility patch described here is NOT implemented, tested against Google or deployed. Do not release the new website while the retained writer is unguarded.
+Read-only production inspection completed on 16 October 2026. A complete local replacement is now prepared in `legacy-compatibility/Code.gs`, with focused offline tests in `check-legacy-compatibility.mjs` (39 groups passed, including the Astra pre-send-marker finding). It is NOT deployed or verified against Google. Install it instead of the original legacy `Code.gs`, never alongside the strict handler or as a second file with duplicate globals. Do not release the new website while the live retained writer remains unguarded.
 
 Production reminders are currently ACTIVE, not disabled. This inspection changed no trigger or setting. Disabling the existing production reminder trigger requires an explicit authorized operational step; setting a property alone cannot disable version 2, which never reads that property. Isolated test reminders remain a separate disabled configuration.
 
@@ -44,11 +44,11 @@ Related paths:
 
 The offline reproduction in check-legacy-status-risk.mjs uses the pinned matching Git blob and mocked services. It confirms the old risk; it does NOT fix or run the production handler.
 
-## Proposed Compatibility Contract
+## Compatibility Contract and Deployment Gates
 
 Keep the old /exec URL and legacy payload accepted while old/cached forms remain in use. Do NOT send participant-less legacy requests to the new strict participant endpoint, fabricate ages/sizes/guardians, silently reinterpret an old package as a confirmed offer or promise discontinued prices.
 
-Recommended separately approved patch for the legacy deployment:
+Implemented local replacement contract; installation/deployment still needs separate approval:
 1. Preserve old lead_submit/whatsapp_opened field names, response envelope and unchanged-ID duplicate behavior. Retain raw legacy package/time preference as historical request information, clearly flag incomplete legacy requests for staff reconciliation, and collect missing participant details before confirming TT$80 availability/payment.
 2. Route EVERY mutation through the same project script lock used by the new participant deployment. Keep both deployments in this production project so that lock is shared. Sheet UI/manual staff edits do not participate in that lock; avoid automated multi-step status edits and reread immediately before writes. Another project writing the Sheet would require separate coordination.
 3. Under the lock, locate rows by Lead ID using exact unique headers, then read statuses from Leads, Bookings and Follow Up Status before any status write. Paid takes precedence over Confirmed. If either protected state exists anywhere, do not downgrade ANY existing protected row or automatically overwrite staff-owned states. Missing rows created to repair a request must inherit the protected state; never blindly default a missing child to New Lead.
@@ -59,6 +59,14 @@ Recommended separately approved patch for the legacy deployment:
 8. Remove retired Elite newsletter wording without adding marketing flows. Keep consent separate and optional; do not subscribe legacy consent-No contacts.
 9. Do not copy the new strict validator wholesale into the old handler. Test both old and new contracts explicitly. The new participant endpoint remains strict and uses the approved single-session offer.
 10. Keep a saved immutable version of the verified legacy source for audit, not as an approved operational fallback. Reverting to unsafe version 2 after protecting new bookings would reintroduce the risk.
+
+The replacement appends only `Legacy Review Required` to the three status tabs;
+it does not copy raw payloads into new PII columns or invent participant details.
+Existing rows/Notes are not backfilled. Fresh legacy bookings retain one plain
+transactional acknowledgement with the current offer and availability distinction;
+duplicate/repair paths never resend. Mail/service failures require manual
+reconciliation, not an exactly-once guarantee. See `legacy-compatibility/README.md`
+for lock, schema, UI-edit and volume limits and the focused offline matrix.
 
 ## Acceptance Matrix Before Any Production Change
 
@@ -76,7 +84,7 @@ All initial checks run offline with mocks and then, only with authorization, aga
 
 1. Record live settings/versions/triggers and take fresh Sheet plus code/manifest/properties backups. Keep the current endpoint and website unchanged.
 2. Explicitly approve disabling the existing production reminder trigger before any editor code/setup change. Remove only the recorded reminder trigger, inspect all owners, and allow in-flight executions to finish or stop them through an approved procedure. Do not assume trigger deletion cancels an already-running execution.
-3. Approve, implement and pass the compatibility matrix against copied data before production. Install reviewed compatibility-safe Head source and an explicit live-Sheet property; keep reminders false. Authorize and update only the existing legacy deployment to the tested compatible version, preserving its URL. Re-verify deployed source/version and status behavior. This is a FUTURE deployment, not performed here.
+3. Review the prepared replacement and offline matrix, then explicitly authorize an isolated compatibility deployment and targeted copied-Sheet acceptance before production. Install reviewed compatibility-safe Head source and an explicit live-Sheet property only after the production approval/backup/pause gates; keep reminders false. Authorize and update only the existing legacy deployment to the tested compatible version, preserving its URL. Re-verify deployed source/version and status behavior and drain original unsafe in-flight requests before proceeding. These are FUTURE deployments, not performed here.
 4. With the legacy writer safe, install the reviewed strict source plus EmailLogo.gs as the candidate new booking version in the same project. Current Head/manual menu/trigger functions will follow that source; keep reminders disabled and audit any compatibility-specific manual functions before replacing Head.
 5. Run additive setup after backup, then verify all pre-existing populated cells/statuses/notes and schema. Create the new strict participant deployment without moving the old URL.
 6. Bind the approved website release AND compliant fallback to the new strict /exec URL in a separately authorized release-config commit/build. Stage, test, then promote only with explicit approval.
@@ -85,6 +93,6 @@ All initial checks run offline with mocks and then, only with authorization, aga
 
 ## Remaining Release Blocker
 
-Inspection uncertainty is resolved: the deployed legacy code is confirmed unsafe and a production reminder trigger is active. A plan alone does not protect live records. Release remains blocked until a compatibility-safe legacy handler and reminder-disable operation are separately authorized, implemented and verified. No production changes or test submissions were performed in this task.
+Inspection uncertainty is resolved: the deployed legacy code is confirmed unsafe and a production reminder trigger is active. A local replacement and offline tests do not protect live records until the guarded handler is deployed. Release remains blocked until isolated legacy acceptance and the production compatibility update/trigger pause are separately authorized and verified. The pinned strict fallback is exercised separately against the existing isolated strict version; that test does not deploy or verify the new legacy replacement. See `PRODUCTION_REMINDER_CUTOVER.md` for pause, quiescence, verification and separately approved restoration. No production changes are authorized by this preparation.
 
 Official references: [script-scoped locks](https://developers.google.com/apps-script/reference/lock/lock-service), [installable trigger ownership and behavior](https://developers.google.com/apps-script/guides/triggers/installable), and [versioned deployment updates](https://developers.google.com/apps-script/concepts/deployments). A script lock coordinates guarded code sections, not manual Sheet edits or another script project.

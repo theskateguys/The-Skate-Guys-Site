@@ -1,0 +1,94 @@
+# Legacy Compatibility Candidate
+
+Guarded source only, NOT deployed. `Code.gs` is a complete replacement for the
+legacy project's `Code.gs`, never an additional file beside strict `Code.gs`.
+It has no EmailLogo.gs or HTML-letterhead dependency. This task does not authorize
+installation, setup, trigger changes, deployment or customer email.
+
+Baseline: review branch `codex/single-session-booking-review`, base `02639f8`.
+Contract evidence: `../LEGACY_ENDPOINT_COMPATIBILITY.md`, the actual inspection
+JSON, and pinned source `51ddd8f:automation/google-apps-script/Code.gs` (LF SHA256
+`8a66986cf87ce39024a929a34b1e4c710606ecbc58c7a354c233a15d44b82dd2`).
+The offline suite checks that fingerprint before comparing known envelopes.
+
+## Contract And Scope
+
+- Keeps `lead_submit`, `whatsapp_opened`, honeypot success, duplicate response,
+  unknown-ID tracking response and legacy validation errors. Email remains required
+  for legacy bookings. Participant-less old forms remain accepted, not routed
+  through the strict participant validator. Invalid timestamps additionally fail
+  explicitly before writes.
+- Original Package, Preferred Time, Adult/Child, rentals, consent, Notes, attribution
+  and contact fields retain legacy normalization/sanitization. They are historical
+  requests, not agreed prices, participant details or confirmed appointments.
+  Adds only `Legacy Review Required` to the three booking/status tabs, on the right.
+  New booking/repair rows flag staff reconciliation. Existing Notes/rows are not
+  rewritten to backfill this flag. No raw-payload PII copy or participant invention.
+- Fresh successful saves retain one plain transactional acknowledgement under the
+  submission lock. It states the current TT$80 per person / 75-minute session with
+  skate rental included, missing-detail/availability checks, not-confirmed status
+  and no payment taken. No retired Elite offer or historical-price promise.
+  Consent-No bookings do not subscribe; consented email leads retain their separate
+  plain update-list acknowledgement. No new acknowledgement enable property/flow.
+- Any existing ID in Leads, Bookings OR Follow Up Status makes the operation a
+  duplicate: repair missing rows only, never resend acknowledgement or recover a
+  subscriber automatically. Existing rows/timestamps/Notes stay untouched. Repairs
+  prefer surviving sheet fields over changed retry fields; information absent from
+  every surviving tab cannot be reconstructed and needs staff review.
+
+## Safety Rules
+
+Every mutation helper acquires the same project script lock, including direct
+calls. Nested helpers reuse the execution's lock; queued Sheet writes flush before
+release. Submission, repair, subscription and acknowledgement stay in that locked
+execution. Deployments coordinate only if they share the project AND all their
+writers actually honor its script lock.
+
+All three status tabs are checked. New missing rows inherit Paid before Confirmed,
+then Replied/later existing states. Existing Paid/Confirmed/Replied or unknown
+staff states block automatic transitions globally and are never overwritten.
+Tracking still sets the WhatsApp flag, but advances only New Lead status. The
+legacy tracking response is an event acknowledgement, not proof of stored status.
+
+Headers are mapped, never reordered/relabelled. Missing nonidentity columns are
+appended; populated sheets missing identity/status headers, blank/duplicate or
+case/whitespace-ambiguous headers, and duplicate IDs within any tab fail for staff
+review. Existing custom/formula cells are preserved. Subscriber updates touch only
+owned nonidentity profile cells and skip formulas; original identity/time/status
+and consent are not rewritten.
+
+`TSG_AUTOMATIC_REMINDERS_ENABLED` is disabled when absent and accepts ONLY the
+literal string `true`. Installer removes only visible matching reminder triggers
+and creates none while disabled. Runner and directly invoked worker both guard
+execution. Enabled reminder tests are mocks only: cross-tab statuses/email are
+checked before/after detail reads and immediately before send; eligibility is
+rechecked after send, with fresh target status reads immediately before writes.
+Sending also requires an existing, empty, formula-free `Last Contacted` cell;
+without a writable delivery marker the candidate fails closed before email.
+
+## Verification And Limits
+
+Run from the worktree: `node automation/check-legacy-compatibility.mjs`.
+The targeted suite covers exact pinned legacy envelopes, all-three-tab
+Paid/Confirmed/Replied protection, missing parent/children and all presence subsets,
+mixed strongest states, partial-append repair, duplicate/mail failure behavior,
+disabled installer/runner/worker, mock-enabled reminders, read/send-time staff
+edits, reordered/additive/custom headers, formulas, ambiguity/duplicate rejection,
+direct helper locks, flush ordering and two-VM simulated lock contention/retries.
+It does not test or change the strict/new participant contract.
+
+These are in-memory tests, not isolated Google acceptance or production
+verification. The lock serializes cooperating scripts; it is not an ACID Sheet
+transaction or rollback. Earlier appends can survive a later service failure and
+are repaired on retry. Sheet UI edits/other script projects bypass this lock; a
+manual edit between the final read and write/send cannot be made atomic, and a
+message already sent cannot be recalled. Staff must reconcile partial mail or
+subscriber failures; duplicates deliberately do not resend, and no exactly-once
+mail guarantee or delivery ledger is introduced. Whole-sheet ID/header scans
+favor safety; production volume/quota/timeout behavior is not measured here.
+
+The parent's production recheck reports the legacy Head reminder still active;
+this source has not changed it. Operational pause/owner/in-flight audit and any
+safe restoration require the parent's `../PRODUCTION_REMINDER_CUTOVER.md` process
+and separate explicit authorization. Updating a deployment does not stop old
+in-flight executions. No production release decision is implied by passing mocks.

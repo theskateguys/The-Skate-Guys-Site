@@ -54,7 +54,7 @@ node automation/build-booking-rollback.mjs --source $SourceSHA --email-patch-rev
 node automation/check-booking-rollback.mjs --source $SourceSHA --artifact "output/rollback/$SourceSHA" --regressions
 ```
 
-`--email-patch-reviewed` is an operator review acknowledgement, not automated proof or release permission. Versioned builds require the approved website commit as an ancestor and reject `d8a6a5a`. Website bytes must exactly match `contract.json`'s approved SHA. Deliberate future website changes require a separately reviewed contract update. Backend bytes come from the explicit SHA, including the final email patch. No versioned artifact is pinned by this local task. Keep generated manifests outside Git to avoid a self-referential source hash.
+`--email-patch-reviewed` is an operator review acknowledgement, not automated proof or release permission. Versioned builds require the approved website commit as an ancestor and reject `d8a6a5a`. Website bytes must exactly match `contract.json`'s approved SHA. Deliberate future website changes require a separately reviewed contract update. Backend bytes come from the explicit SHA, including the final email patch. The completed follow-up pins source `02639f8c7e0361b72d1a19d03bf5fc6579ca2839`; see the isolated derivative below. Keep generated manifests outside Git to avoid a self-referential source hash.
 
 ## Manifest and Publish Boundary
 
@@ -66,6 +66,83 @@ node automation/check-booking-rollback.mjs --source $SourceSHA --artifact "outpu
 - Provenance is outside `website/`. Checker reconstructs expected bytes from source rather than trusting manifest hashes; it rejects altered/extra/missing files, extra empty directories and symlinks. Outputs must stay under Git-ignored `output/rollback/`; builder never deletes/overwrites an artifact.
 
 ## Binding and Common-Mode Limits
+
+### Isolated Pinned Derivative (Not Release Binding)
+
+The separate isolated binder accepts ONLY the existing strict-v2 test endpoint ending
+`AKfycbw-UnIZTK7uF6yLQfGWM_mSQBHD6aVL_e7AoGikQY5cweh1EnGTuBN7z188XFnt-e4B2g/exec`.
+It reconstructs the 43-file pinned source `02639f8c7e0361b72d1a19d03bf5fc6579ca2839`,
+checks its pinned manifest SHA-256, and verifies the immutable offline template on every check.
+Only the derivative's `website/assets/lead-config.js` endpoint changes. All other website/backend
+bytes remain exact. Source, template and bound hashes are recorded in a separate derivative
+manifest with `purpose: ISOLATED_ONLY`, `productionReady: false`, copied Sheet/project IDs,
+deployment ID and version 2. This does NOT authorize release or prove remote deployment settings.
+No changes to the original builder, checker, library or contract are needed.
+
+Run from this review worktree, using a fresh ignored path:
+
+```powershell
+$Artifact = 'output/rollback/isolated-02639f8-v2-parent-retry'
+node automation/bind-booking-rollback-isolated.mjs --out $Artifact
+node automation/check-booking-rollback-isolated.mjs --artifact $Artifact
+node --test automation/rollback/test-binding.mjs
+node automation/rollback/binding-prepare-retry.mjs --artifact $Artifact
+```
+
+These are local integrity/HTTP/syntax checks, not browser, isolated Google or production
+verification. They do not run the long packaging/mock suite. Existing artifact and runner
+paths are never overwritten. The runner preparation pins the prior harness hash, retains
+its native response observer and exact wire-body/single-POST guards, and writes ONLY
+`output/acceptance/run-rollback-isolated-blank-retry.js`. It never invokes the runner or reads
+the private fixture. The prior email runner is unchanged and MUST NOT be used unmodified here.
+
+Parent read verification is mandatory: exact version 2/project, copied Sheet property,
+`TSG_AUTOMATIC_REMINDERS_ENABLED=false`, and zero reminder triggers (only `onOpen`). This is
+operator attestation, NOT automated proof from the manifest. The allowed unchanged record is
+`TSG-OPTIMIZED-NOEMAIL-1792187088270`, timestamp `2026-10-16T21:44:48.270Z`, label
+`TEST ONLY - Dylon optimized blank-email acceptance`, blank email, consent `No`, source
+`book.html`, empty UTMs/referrer. Parent owns ALL original payload values and must preserve
+them, including participant details and phone; no payload is constructed here. Expected
+native acknowledgement is only `duplicate_ignored`. No fresh record or email is authorized.
+
+The parent-owned ignored JSON fixture uses the prior harness structure (`payload`, `leadId`,
+`timestamp`, `endpoint`, `expectedStatus`) and must explicitly carry these attestations:
+
+- `approvedIsolatedCandidate`, `approvedUnchangedRetry`, `automaticRemindersDisabled`,
+  `ownContactDetails`, `existingRowsCompleteVerifiedByParent`, `duplicateReadbackVerified`,
+  all `true`. These are parent attestations, not automated remote proof.
+
+Parent retains the separately read version/project/Sheet/trigger evidence and baseline counts
+`{"Leads":21,"Bookings":18,"FollowUp":18,"Subscribers":7}` plus zero emails for the reference.
+Verify the actual deployment/version before invoking the runner; project history alone is not
+a deployment mapping. The local manifest states the required identity, not observed remote proof.
+
+Start on port 4196 ONLY after verifying it is free; the server exits on collision. Default
+mode exposes no fixture. To expose exactly ONE parent-provided ignored fixture, opt in:
+
+```powershell
+node automation/rollback/serve.mjs --isolated-binding --artifact $Artifact --port 4196 --private-fixture output/acceptance/fallback-isolated-retry-private.json
+```
+
+The explicit path must be a regular, non-symlink JSON file directly under ignored
+`output/acceptance/`. Its bytes are snapshotted at startup and exposed only at
+`http://127.0.0.1:4196/isolated-retry-fixture.json`, never under its filesystem path.
+No other private/backend/doc/root-manifest files are served. Exact loopback Host+port,
+same-origin checks, GET/HEAD-only methods and no-store apply. Stop the server when finished.
+The safe public identity route is `http://127.0.0.1:4196/isolated-test-manifest.json`, including
+bound manifest hash, source/binding identity and `requestTimeoutMs: 25000`. CSP connections
+allow only self, the exact HTTPS Google endpoint and HTTPS `script.googleusercontent.com`
+redirects. Website bytes are checked again before each response; no local POST is accepted.
+
+Parent may invoke the NEW prepared runner once in a clean browser context with service
+workers blocked, using the existing Playwright CLI `run-code --filename` workflow. This
+reads the opted-in fixture before UI navigation, verifies exact bound-manifest identity,
+then permits ONE exact unchanged POST and its real Google redirect/response. It does not
+mock the acknowledgement. The authorized parent invocation is now completed: see
+`../FALLBACK_ISOLATED_VERIFICATION.md` for native acknowledgement, counts/reference-row
+readback, zero-email search and the explicit full-cell-comparison limitation. No second
+invocation is authorized by these instructions. Stop on any mismatch or uncertainty; do
+not retry automatically. A browser pass alone is not Sheet/inbox or production verification.
 
 The tracked config retains the existing production string. Generated config replaces ONLY that endpoint with `''`; WhatsApp and 25000ms remain. There is no `--endpoint` option. A future separately authorized release binding must accept an explicit verified NEW strict booking `/exec` URL, reject legacy/isolated URLs, bind release AND fallback identically and record source/output hashes, authorization and deployment identity in a separate binding manifest. Preserve the immutable offline template. This checker intentionally rejects bound copies; their verification belongs to that future authorized binding contract.
 

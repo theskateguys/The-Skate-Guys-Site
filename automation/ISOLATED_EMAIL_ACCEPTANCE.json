@@ -1,0 +1,417 @@
+{
+  "testedAtUtc": "2026-10-16T22:40:15Z",
+  "scope": "Isolated Apps Script version 2 and copied test Sheet only; not production verification.",
+  "branch": "codex/single-session-booking-review",
+  "baseCommit": "bf952606e02aafa35c4e9b7f90d88f2dda4297b9",
+  "reference": "TSG-OPTIMIZED-EMAIL-ACCEPTANCE-20261016",
+  "isolatedProject": "1qXXCOqzdedWiuwjdR1bcJHp7T517fbXUlFl_s9NVfNKlytGmNpWrVKU9",
+  "isolatedSheet": "1CuA0uWDnUu-EK0XseYxNNpEK4lX5SZ7S5UuTdy-HCyM",
+  "deploymentVersion": 2,
+  "endpoint": "https://script.google.com/macros/s/AKfycbw-UnIZTK7uF6yLQfGWM_mSQBHD6aVL_e7AoGikQY5cweh1EnGTuBN7z188XFnt-e4B2g/exec",
+  "automaticRemindersEnabled": false,
+  "triggerReadback": "One onOpen trigger; no automatic reminder trigger.",
+  "marketingConsent": "No",
+  "timeoutMs": 25000,
+  "fresh": {
+    "pass": true,
+    "reference": "TSG-OPTIMIZED-EMAIL-ACCEPTANCE-20261016",
+    "receipt": {
+      "leadId": "TSG-OPTIMIZED-EMAIL-ACCEPTANCE-20261016",
+      "timestamp": "2026-10-16T22:36:02.774Z"
+    },
+    "expectedStatus": "NewLead",
+    "nativeResponse": {
+      "at": 9111.5,
+      "type": "cors",
+      "httpStatus": 200,
+      "ok": true,
+      "leadId": "TSG-OPTIMIZED-EMAIL-ACCEPTANCE-20261016",
+      "status": "New Lead",
+      "savedAlreadyVisible": false
+    },
+    "savedVisible": true,
+    "orderingPassed": true,
+    "evidence": {
+      "requests": [
+        {
+          "at": 722,
+          "mode": "cors"
+        }
+      ],
+      "reads": [
+        {
+          "at": 9111.5,
+          "type": "cors",
+          "httpStatus": 200,
+          "ok": true,
+          "leadId": "TSG-OPTIMIZED-EMAIL-ACCEPTANCE-20261016",
+          "status": "New Lead",
+          "savedAlreadyVisible": false
+        }
+      ],
+      "saved": [
+        {
+          "at": 9115.39999999106,
+          "readsSeen": 1,
+          "matchingReference": true
+        }
+      ],
+      "whatsapp": [
+        {
+          "at": 727.5999999940395,
+          "host": "wa.me",
+          "number": "18682766878",
+          "matchingReference": true,
+          "readsSeen": 0
+        }
+      ],
+      "blocked": []
+    },
+    "diagnostics": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "guardViolations": []
+    },
+    "postCount": 1,
+    "responseTimeMs": 8389.5,
+    "timeoutHeadroomMs": 16610.5,
+    "whatsappTimeMs": 5.5999999940395355,
+    "screenshot": "output/acceptance/email-fresh-status.png",
+    "scope": "One isolated native attempt only. Browser acknowledgement is not Sheet/inbox or production verification. Parent must verify rows and inbox before authorizing unchanged retry."
+  },
+  "retry": {
+    "pass": true,
+    "reference": "TSG-OPTIMIZED-EMAIL-ACCEPTANCE-20261016",
+    "receipt": {
+      "leadId": "TSG-OPTIMIZED-EMAIL-ACCEPTANCE-20261016",
+      "timestamp": "2026-10-16T22:36:02.774Z"
+    },
+    "expectedStatus": "duplicate_ignored",
+    "nativeResponse": {
+      "at": 6197.5,
+      "type": "cors",
+      "httpStatus": 200,
+      "ok": true,
+      "leadId": "TSG-OPTIMIZED-EMAIL-ACCEPTANCE-20261016",
+      "status": "duplicate_ignored",
+      "savedAlreadyVisible": false
+    },
+    "savedVisible": true,
+    "orderingPassed": true,
+    "evidence": {
+      "requests": [
+        {
+          "at": 738,
+          "mode": "cors"
+        }
+      ],
+      "reads": [
+        {
+          "at": 6197.5,
+          "type": "cors",
+          "httpStatus": 200,
+          "ok": true,
+          "leadId": "TSG-OPTIMIZED-EMAIL-ACCEPTANCE-20261016",
+          "status": "duplicate_ignored",
+          "savedAlreadyVisible": false
+        }
+      ],
+      "saved": [
+        {
+          "at": 6200.899999991059,
+          "readsSeen": 1,
+          "matchingReference": true
+        }
+      ],
+      "whatsapp": [
+        {
+          "at": 741.8999999910593,
+          "host": "wa.me",
+          "number": "18682766878",
+          "matchingReference": true,
+          "readsSeen": 0
+        }
+      ],
+      "blocked": []
+    },
+    "diagnostics": {
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "guardViolations": []
+    },
+    "postCount": 1,
+    "responseTimeMs": 5459.5,
+    "timeoutHeadroomMs": 19540.5,
+    "whatsappTimeMs": 3.8999999910593033,
+    "screenshot": "output/acceptance/email-retry-status.png",
+    "scope": "One isolated native attempt only. Browser acknowledgement is not Sheet/inbox or production verification. Parent must verify rows and inbox before authorizing unchanged retry."
+  },
+  "counts": {
+    "before": {
+      "Leads": 20,
+      "Bookings": 17,
+      "Follow Up Status": 17,
+      "Email Subscribers": 7
+    },
+    "afterFresh": {
+      "Leads": 21,
+      "Bookings": 18,
+      "Follow Up Status": 18,
+      "Email Subscribers": 7
+    },
+    "afterRetry": {
+      "Leads": 21,
+      "Bookings": 18,
+      "Follow Up Status": 18,
+      "Email Subscribers": 7
+    }
+  },
+  "sheetVerification": {
+    "pass": true,
+    "checks": [
+      {
+        "tab": "Leads",
+        "row": 22,
+        "checkedColumns": 26
+      },
+      {
+        "tab": "Bookings",
+        "row": 19,
+        "checkedColumns": 21
+      },
+      {
+        "tab": "Follow Up Status",
+        "row": 19,
+        "checkedColumns": 11
+      }
+    ],
+    "failures": [],
+    "existingPopulatedRowsUnchanged": true,
+    "subscriberRowsUnchanged": true,
+    "phoneCellNumericCoercionVerified": true
+  },
+  "allCellsUnchangedAfterRetry": true,
+  "email": {
+    "senderMessageId": "1a146dd05d214194",
+    "oneSentCopy": true,
+    "html": true,
+    "plainText": true,
+    "cidLogo": true,
+    "heading": true,
+    "status": true,
+    "notConfirmed": true,
+    "noPayment": true,
+    "reference": true,
+    "correctWhatsApp": true,
+    "pink": true,
+    "turquoise": true,
+    "revisedCreditExpiry": true,
+    "senderSentIdsBefore": [],
+    "senderSentIdsAfterFresh": [
+      "1a146dd05d214194"
+    ],
+    "senderSentIdsAfterRetry": [
+      "1a146dd05d214194"
+    ],
+    "recipientDeliveryEvidence": "User confirmed exactly one branded email arrived in the authorized recipient inbox, then refreshed after retry and confirmed still exactly one. Recipient mailbox was not independently readable through the connected sender account.",
+    "recipientConfirmedFirstDelivery": true,
+    "recipientConfirmedNoSecondEmailAfterRetry": true
+  },
+  "responsiveAndLinkChecks": {
+    "pass": true,
+    "pagesLoaded": 5,
+    "localTargetsChecked": 22,
+    "bookingLinks": [
+      {
+        "page": "index.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "index.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "index.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "index.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "index.html",
+        "label": "01Learn to Skate75-minute sessions by appointment. TT$80 per person, skate rental included. One person can book.Book a Class ->",
+        "href": "book.html"
+      },
+      {
+        "page": "index.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "index.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "index.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "merch.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "merch.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "merch.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "merch.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "elite.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      },
+      {
+        "page": "elite.html",
+        "label": "Book a Class",
+        "href": "book.html"
+      }
+    ],
+    "communityLinks": [
+      {
+        "page": "index.html",
+        "label": "View Group Invite",
+        "href": "https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi"
+      },
+      {
+        "page": "elite.html",
+        "label": "View Group Invite",
+        "href": "https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi"
+      }
+    ],
+    "results": [
+      {
+        "page": "index.html",
+        "width": 390,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "book.html",
+        "width": 390,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "merch.html",
+        "width": 390,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "elite.html",
+        "width": 390,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "index.html",
+        "width": 768,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "book.html",
+        "width": 768,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "merch.html",
+        "width": 768,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "elite.html",
+        "width": 768,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "index.html",
+        "width": 1440,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "book.html",
+        "width": 1440,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "merch.html",
+        "width": 1440,
+        "overflow": false,
+        "brokenEagerImages": 0
+      },
+      {
+        "page": "elite.html",
+        "width": 1440,
+        "overflow": false,
+        "brokenEagerImages": 0
+      }
+    ],
+    "failures": [],
+    "pageErrors": [],
+    "submissionAttempts": 0,
+    "scope": "Local preview only. No form submissions, email, Sheets request or external checkout. External links checked for URL/number, not followed."
+  },
+  "groupInviteReadback": {
+    "url": "https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi",
+    "heading": "The Skate Guys",
+    "kind": "Group chat invite",
+    "joined": false,
+    "adminApprovalNotVerified": true
+  },
+  "guardrails": {
+    "productionAccessed": false,
+    "productionEndpointEdited": false,
+    "liveSheetAccessed": false,
+    "websiteDeployed": false,
+    "scriptDeployed": false,
+    "pushed": false,
+    "merged": false,
+    "whatsappMessageSent": false
+  },
+  "limitations": [
+    "Single real fresh/retry timing sample, not a latency guarantee.",
+    "Recipient delivery is user-confirmed; sent MIME independently inspected from sender account.",
+    "Participant/guardian edge cases and protected status transitions were covered by mocked regression tests, not by additional real submissions."
+  ],
+  "harnessNotes": [
+    "Initial observer failed before submission because URL was unavailable in the CLI host context; Sheet readback stayed byte-for-byte unchanged and no matching email existed.",
+    "Corrected only the ignored observer, then submitted once. Native browser fetch and Response.json were observed without synthesizing a response.",
+    "Local responsive checker initially misread Contact TSG card description mentioning Book a Class as its action label; corrected test-only selector to inspect the actual card CTA. No website change was made to satisfy this false positive.",
+    "Temporary private fixture removed; email-capable local server and test browsers stopped."
+  ]
+}

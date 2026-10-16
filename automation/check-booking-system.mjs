@@ -1,0 +1,130 @@
+// In-memory Apps Script tests. No Google services, email, or network requests.
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import vm from 'node:vm';
+
+class Sheet {
+  constructor(name, rows = []) { this.name = name; this.rows = rows; }
+  getLastRow() { return this.rows.length; }
+  getLastColumn() { return Math.max(0, ...this.rows.map(row => row.length)); }
+  getMaxRows() { return 1000; }
+  getMaxColumns() { return 26; }
+  insertColumnsAfter() {}
+  getFilter() { return true; }
+  setFrozenRows() {}
+  appendRow(row) { this.rows.push([...row]); }
+  getRange(row, column, height = 1, width = 1) {
+    assert.ok(row > 0 && column > 0);
+    const read = () => Array.from({length: height}, (_, r) => Array.from({length: width}, (_, c) => this.rows[row - 1 + r]?.[column - 1 + c] ?? ''));
+    const write = values => values.forEach((cells, r) => cells.forEach((value, c) => {
+      this.rows[row - 1 + r] ||= [];
+      this.rows[row - 1 + r][column - 1 + c] = value;
+    }));
+    const range = {
+      getValues: read, getDisplayValues: () => read().map(cells => cells.map(String)),
+      getValue: () => read()[0][0], setValue: value => write([[value]]), setValues: write,
+      setFontWeight: () => range, setBackground: () => range, setFontColor: () => range,
+      setDataValidation: () => range, createFilter: () => range
+    };
+    return range;
+  }
+}
+
+const sheets = new Map();
+const spreadsheet = {
+  getSheetByName: name => sheets.get(name),
+  insertSheet: name => { const sheet = new Sheet(name); sheets.set(name, sheet); return sheet; }
+};
+const emails = [];
+const rule = {requireValueInList() { return this; }, setAllowInvalid() { return this; }, build() { return this; }};
+const context = vm.createContext({
+  console: {error() {}},
+  PropertiesService: {getScriptProperties: () => ({getProperty: () => 'test-only'})},
+  SpreadsheetApp: {openById: () => spreadsheet, newDataValidation: () => rule},
+  LockService: {getScriptLock: () => ({waitLock() {}, releaseLock() {}})},
+  MailApp: {sendEmail: message => emails.push(message)},
+  ContentService: {MimeType: {JSON: 'json'}, createTextOutput: content => ({setMimeType: () => JSON.parse(content)})}
+});
+vm.runInContext(await fs.readFile('automation/google-apps-script/Code.gs', 'utf8'), context);
+const call = (name, ...args) => context[name](...args);
+const post = payload => call('doPost', {postData: {contents: JSON.stringify(payload)}});
+const base = {
+  action: 'lead_submit', leadType: 'booking', leadId: 'TSG-MOCK-1', timestamp: '2026-01-01T12:00:00Z',
+  name: 'Synthetic Test', whatsapp: '+18685550100', email: 'synthetic@example.test',
+  location: 'Tobago', preferredArea: 'Black Rock', preferredDate: '2027-01-05', preferredTime: '10:30',
+  participantCount: 2, participants: [
+    {age: 30, experience: 'Beginner', rentals: 'No'},
+    {age: 12, experience: 'First time', rentals: 'Yes', skateSize: '5', sizeSystem: 'UK child', guardianName: 'Synthetic Guardian', guardianPhone: '+18685550100'}
+  ], marketingConsent: 'No', utmSource: 'mock', utmCampaign: 'booking-check', sourcePage: 'book.html'
+};
+const rowFor = (name, id) => {
+  const sheet = sheets.get(name);
+  return sheet?.rows.slice(1).find(row => row[sheet.rows[0].indexOf('Lead ID')] === id);
+};
+const get = (name, id, header) => rowFor(name, id)?.[sheets.get(name).rows[0].indexOf(header)];
+const set = (name, id, header, value) => { rowFor(name, id)[sheets.get(name).rows[0].indexOf(header)] = value; };
+
+assert.equal(post(base).ok, true);
+for (const name of ['Leads', 'Bookings', 'Follow Up Status']) assert.equal(sheets.get(name).rows.length, 2);
+assert.equal(sheets.has('Email Subscribers'), false);
+assert.equal(get('Leads', base.leadId, 'Participant Count'), 2);
+assert.equal(JSON.parse(get('Bookings', base.leadId, 'Participants JSON'))[1].sizeSystem, 'UK child');
+assert.equal(get('Leads', base.leadId, 'UTM Campaign'), 'booking-check');
+assert.match(get('Leads', base.leadId, 'Package'), /TT\$80/);
+assert.equal(post(base).status, 'duplicate_ignored');
+for (const name of ['Leads', 'Bookings', 'Follow Up Status']) assert.equal(sheets.get(name).rows.length, 2);
+assert.equal(emails.length, 1, 'Duplicate retries do not resend confirmation');
+
+// Partial-write repair must keep an existing confirmed record untouched.
+set('Leads', base.leadId, 'Status', 'Paid');
+sheets.get('Bookings').rows.splice(1, 1);
+sheets.get('Follow Up Status').rows.splice(1, 1);
+assert.equal(post(base).status, 'duplicate_ignored');
+assert.equal(get('Bookings', base.leadId, 'Status'), 'Paid');
+assert.equal(get('Follow Up Status', base.leadId, 'Status'), 'Paid');
+
+for (const protectedTab of ['Leads', 'Bookings', 'Follow Up Status']) {
+  for (const status of ['Confirmed', 'Paid', 'Replied']) {
+    for (const tab of ['Leads', 'Bookings', 'Follow Up Status']) set(tab, base.leadId, 'Status', 'New Lead');
+    set(protectedTab, base.leadId, 'Status', status);
+    post({action: 'whatsapp_opened', leadId: base.leadId});
+    assert.equal(get(protectedTab, base.leadId, 'Status'), status);
+    const emailCount = emails.length;
+    call('runTSGFollowUpReminders');
+    assert.equal(emails.length, emailCount, `No reminder when ${protectedTab} is ${status}`);
+    assert.equal(get(protectedTab, base.leadId, 'Status'), status);
+  }
+}
+for (const tab of ['Leads', 'Bookings', 'Follow Up Status']) set(tab, base.leadId, 'Status', 'New Lead');
+post({action: 'whatsapp_opened', leadId: base.leadId});
+assert.equal(get('Bookings', base.leadId, 'Status'), 'WhatsApp Opened');
+call('runTSGFollowUpReminders');
+assert.equal(get('Bookings', base.leadId, 'Status'), 'Follow Up Needed');
+const sent = emails.length;
+call('runTSGFollowUpReminders');
+assert.equal(emails.length, sent, 'Reminder sent only once');
+
+assert.equal(post({...base, leadId: 'TSG-NO-EMAIL', email: ''}).ok, true);
+assert.equal(post({...base, leadId: 'TSG-SOLO', participantCount: 1, participants: [base.participants[0]]}).ok, true);
+assert.equal(post({...base, leadId: 'TSG-OPTIN', marketingConsent: 'Yes'}).ok, true);
+assert.equal(sheets.get('Email Subscribers').rows.length, 2);
+assert.equal(post({...base, leadId: 'TSG-OPTIN', marketingConsent: 'Yes'}).status, 'duplicate_ignored');
+assert.equal(sheets.get('Email Subscribers').rows.length, 2);
+for (const mutation of [
+  {participantCount: 3}, {preferredDate: '2027-02-30'}, {whatsapp: 'bad'},
+  {email: '', marketingConsent: 'Yes'}, {preferredTime: '25:00'},
+  {participants: [{...base.participants[1], skateSize: ''}], participantCount: 1},
+  {participants: [{...base.participants[1], sizeSystem: ''}], participantCount: 1},
+  {participants: [{...base.participants[1], guardianPhone: ''}], participantCount: 1}
+]) assert.equal(post({...base, leadId: 'TSG-INVALID', ...mutation}).ok, false);
+
+// Existing records and extra/reordered columns survive header migration and writes.
+const old = ['Notes','Lead ID','Name','Status','Custom Staff Column'];
+const oldRow = ['keep note','LEGACY-1','Legacy Customer','Confirmed','keep custom'];
+sheets.set('Leads', new Sheet('Leads', [old.slice(), oldRow.slice()]));
+assert.equal(post({...base, leadId: 'TSG-MIGRATION'}).ok, true);
+assert.deepEqual(sheets.get('Leads').rows[0].slice(0, old.length), old);
+assert.deepEqual(sheets.get('Leads').rows[1], oldRow);
+assert.equal(get('Leads', 'TSG-MIGRATION', 'Preferred Area'), 'Black Rock');
+call('applyValidations_', spreadsheet);
+console.log('PASS: mocked Apps Script storage, duplicate retries/repair, optional consent/email, participant validation, legacy schema preservation and protected status transitions. No Google Sheet save was performed.');

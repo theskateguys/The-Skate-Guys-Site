@@ -1,0 +1,14 @@
+.git
+.vercel
+.codex
+.agents
+.review
+.playwright-cli
+output
+automation
+release
+node_modules
+*.md
+.env*
+assets/lead-capture.*
+assets/lead-config.js

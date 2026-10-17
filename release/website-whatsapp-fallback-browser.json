@@ -1,0 +1,10 @@
+{
+  "results": [
+    "390: fallback loads, correct offer/policy/WhatsApp, no forms/scripts/overflow",
+    "1440: fallback loads, correct offer/policy/WhatsApp, no forms/scripts/overflow",
+    "20-participant message preserves all participants and TT$1600 total"
+  ],
+  "encodedUrlLength": 3371,
+  "externalWhatsAppOpened": false,
+  "note": "Link construction verified. No WhatsApp message was sent; app/device delivery is not claimed."
+}

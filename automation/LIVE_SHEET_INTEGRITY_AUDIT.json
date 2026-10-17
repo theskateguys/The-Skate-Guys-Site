@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "complete": true,
+  "notes": [
+    "Local read-only audit; no production writes performed.",
+    "Atomic snapshot not guaranteed; tabs may have been read at different times.",
+    "Counts cover supplied populated rows only; source completeness is caller-owned.",
+    "Email Leads and Subscribers alone do not require booking companions.",
+    "Unknown status values are replaced with opaque labels; metadata is not echoed.",
+    "Blank IDs cannot be matched; unknown Lead Type does not alone imply booking."
+  ],
+  "counts": {
+    "tabs": {
+      "Leads": {
+        "rows": 17,
+        "uniqueIDs": 12,
+        "duplicateGroups": 1,
+        "extraRows": 5
+      },
+      "Bookings": {
+        "rows": 14,
+        "uniqueIDs": 9,
+        "duplicateGroups": 1,
+        "extraRows": 5
+      },
+      "FollowUp": {
+        "rows": 14,
+        "uniqueIDs": 9,
+        "duplicateGroups": 1,
+        "extraRows": 5
+      },
+      "Subscribers": {
+        "rows": 7,
+        "uniqueIDs": 7,
+        "duplicateGroups": 0,
+        "extraRows": 0
+      }
+    },
+    "uniqueIDs": 12,
+    "duplicateGroups": 1,
+    "extraRows": 15,
+    "missingCompanionRows": 0,
+    "orphanGroups": 0,
+    "statusConflictGroups": 5,
+    "blankIdPopulatedRows": 0
+  },
+  "issues": [],
+  "duplicateGroups": [
+    {
+      "group": "duplicateGroup1",
+      "leadGroup": "leadGroup1",
+      "rowsByTab": {
+        "Leads": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "Bookings": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "FollowUp": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    }
+  ],
+  "missingCompanions": [],
+  "orphanGroups": [],
+  "statusConflicts": [
+    {
+      "group": "leadGroup1",
+      "rows": [
+        {
+          "tab": "Leads",
+          "rowNumber": 2,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "Leads",
+          "rowNumber": 4,
+          "status": "New Lead"
+        },
+        {
+          "tab": "Leads",
+          "rowNumber": 5,
+          "status": "New Lead"
+        },
+        {
+          "tab": "Leads",
+          "rowNumber": 6,
+          "status": "New Lead"
+        },
+        {
+          "tab": "Leads",
+          "rowNumber": 7,
+          "status": "New Lead"
+        },
+        {
+          "tab": "Leads",
+          "rowNumber": 8,
+          "status": "New Lead"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 2,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 4,
+          "status": "New Lead"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 5,
+          "status": "New Lead"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 6,
+          "status": "New Lead"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 7,
+          "status": "New Lead"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 8,
+          "status": "New Lead"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 2,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 4,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 5,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 6,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 7,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 8,
+          "status": "Follow Up Needed"
+        }
+      ]
+    },
+    {
+      "group": "leadGroup3",
+      "rows": [
+        {
+          "tab": "Leads",
+          "rowNumber": 9,
+          "status": "Replied"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 9,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 9,
+          "status": "Follow Up Needed"
+        }
+      ]
+    },
+    {
+      "group": "leadGroup4",
+      "rows": [
+        {
+          "tab": "Leads",
+          "rowNumber": 10,
+          "status": "Replied"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 10,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 10,
+          "status": "Follow Up Needed"
+        }
+      ]
+    },
+    {
+      "group": "leadGroup5",
+      "rows": [
+        {
+          "tab": "Leads",
+          "rowNumber": 11,
+          "status": "Replied"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 11,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 11,
+          "status": "Follow Up Needed"
+        }
+      ]
+    },
+    {
+      "group": "leadGroup6",
+      "rows": [
+        {
+          "tab": "Leads",
+          "rowNumber": 12,
+          "status": "Replied"
+        },
+        {
+          "tab": "Bookings",
+          "rowNumber": 12,
+          "status": "Follow Up Needed"
+        },
+        {
+          "tab": "FollowUp",
+          "rowNumber": 12,
+          "status": "Follow Up Needed"
+        }
+      ]
+    }
+  ],
+  "blankIdRows": [],
+  "unknownLeadTypeRows": [],
+  "ambiguousLeadTypes": [],
+  "invalidTypeRows": [],
+  "unknownStatusRows": []
+}

@@ -12,6 +12,19 @@ Status: LOCAL PREPARATION ONLY. No push, merge, production code/endpoint change,
 
 ## Critical Live Blockers
 
+Latest superseding evidence: [clean synthetic deployment, acceptance blocked](automation/CLEAN_LEGACY_ACCEPTANCE.md)
+and [completed read-only live audit](automation/LIVE_SHEET_INTEGRITY_AUDIT.md).
+The separate clean project/Sheet and version-1 deployment are created; immutable
+source verification is blocked by Google Project History HTTP 500/browser timeouts.
+No synthetic acceptance POST has run. Do not infer a passing matrix from deployment.
+The live audit found one shared duplicate-ID group (rows 2,4,5,6,7,8 in all three
+status tabs) and five conflicting-status groups; no missing booking companions.
+The global guard would block unrelated submissions on this data. Production is
+NO-GO pending separately approved backed-up staff reconciliation, fresh integrity
+checks, and completed isolated acceptance. The live trigger was not changed.
+The older authorization limits below describe the historical version-3 attempt;
+the later read-only audit was separately authorized, but live repair is NOT.
+
 Latest isolated legacy attempt: [version-3 evidence](automation/LEGACY_ISOLATED_ACCEPTANCE.md)
 and [JSON](automation/LEGACY_ISOLATED_ACCEPTANCE.json). Approved blank-email legacy
 booking validation is implemented and 42 offline groups pass. The first native
@@ -24,7 +37,7 @@ run. Do not retarget the shared properties of existing isolated v1/v2 deployment
 Do not bypass the guard.
 Production header/ID uniqueness must be audited before installing this candidate;
 do not infer live data integrity from a later clean synthetic test or silently
-delete/rewrite live history. No live Sheet audit/write is authorized by these notes.
+delete/rewrite live history. No live Sheet WRITE is authorized by these notes.
 
 Parent inspection resolved the earlier production uncertainty: actual deployed legacy version 2 and Head match the 298-line main source, LF SHA-256 `8a66986cf87ce39024a929a34b1e4c710606ecbc58c7a354c233a15d44b82dd2`. Production project: `1wCcJh9WBnfpOqtun6gzhR5v-81pOLHJsxtXvwCnDRSTrR1w1kJEAy5YU`; live Sheet: `1RCEUW2TP2Z1NaXdqeCjmmx041KyuTpBYY28Uz1EAqjU`. No script properties were visible; legacy code uses the bound-Sheet fallback.
 
@@ -32,7 +45,7 @@ Parent inspection resolved the earlier production uncertainty: actual deployed l
 
 **Block editor replacement and migration until explicitly authorized disabling of that specific production reminder trigger is completed and verified.** Follow [pause, verify and restore](automation/PRODUCTION_REMINDER_CUTOVER.md). Preserve unrelated triggers. Deletion does not cancel an already-running execution. Do not invoke old setup/install/reminder functions that can recreate it. Restore scheduling only through a separate approval after reviewing due backlog and safe Head code, never automatically during release or rollback.
 
-**Side-by-side URLs alone are insufficient.** The retained live handler can overwrite Confirmed/Paid through tracking, reminders, helper writes and partial-row creation. The replacement guards those paths and preserves old payload/response envelopes, with explicitly approved optional blank booking email. It is deployed only as isolated v3, whose acceptance is blocked above; production installation at the same legacy URL is not authorized. Keep reminders disabled. Staff Sheet edits and original in-flight unsafe executions do not share the new guard; drain the old executions before strict migration. Local tests cannot make the live legacy writer safe.
+**Side-by-side URLs alone are insufficient.** The retained live handler can overwrite Confirmed/Paid through tracking, reminders, helper writes and partial-row creation. The replacement guards those paths and preserves old payload/response envelopes, with explicitly approved optional blank booking email. Historical isolated v3 stopped on copied-data duplicates; a separate clean synthetic version 1 is now deployed but its acceptance has not started. Production installation at the same legacy URL is not authorized. Keep isolated reminders disabled; the live trigger is unchanged and requires its separately approved pause. Staff Sheet edits and original in-flight unsafe executions do not share the new guard; drain the old executions before strict migration. Local tests cannot make the live legacy writer safe.
 
 ## Offline Fallback Contract
 
@@ -48,7 +61,7 @@ This approved common-mode baseline is a rollback target for FUTURE changes. Rele
 
 1. Astra reviews the complete branch/current-main diff and exact hashes. Run lead, booking-system, WhatsApp, legacy-risk, rollback and browser checks. Distinguish mocked/local, isolated Google and production evidence. Verify TT$80 per person/75 minutes/rental included, seven policy rules, retired Elite without Tally, optional consent/email, immediate WhatsApp, 25000ms, truthful acknowledgement states and protected statuses. Record the final parent source SHA only after its authorized commit.
 2. Record actual production Sheet/project/deployment/version, website team/project/domain/deployment, main SHA, manifests, properties and relevant triggers/owners. Revalidate inspected identities at action time. Freshly back up live Sheet and production sources/settings before changes; retain earlier backups. Record bounded cell counts/hashes privately, never publish customer data.
-3. Review the prepared compatibility source and focused offline evidence, then authorize an isolated legacy deployment and copied-Sheet acceptance. For production, explicitly authorize reminder pause; preserve its schedule, audit all owners and verify in-flight reminders have finished/stopped BEFORE editor changes. Authorize updating only the legacy deployment to the accepted compatible version, preserving its URL/payload contract. Drain remaining original-version Web App executions and verify deployed source/version/status safety before continuing; never restore unsafe v2 as a shortcut.
+3. Complete the already-authorized clean synthetic acceptance only after immutable source/binding/settings verification and backups. For production, explicitly authorize reminder pause and writer quiescence; preserve its schedule, audit all owners and verify in-flight reminders/writes have finished/stopped BEFORE repair or editor changes. Obtain separate staff approval for a record-level reconciliation mapping of the audited duplicates/status conflicts; preserve every record, Note, status and provenance. Only perform approved repairs after backups, then rerun the live integrity/header audit and require no unresolved duplicates/conflicts/missing companions before installation. Authorize updating only the legacy deployment to the accepted compatible version, preserving its URL/payload contract. Drain remaining original-version Web App executions and verify deployed source/version/status safety before continuing; never restore unsafe v2 as a shortcut.
 4. With legacy writers safe and reminders disabled, install final strict `Code.gs` plus `EmailLogo.gs` in the SAME verified production project. Preserve the compatibility deployment/version; audit Head/manual functions when replacing editor source. Exclude profiling/test helpers. Set verified live-Sheet property and reminders=false for code that honors it. Perform approved additive setup: missing headers append right; preserve populated cells/statuses/Notes/custom formulas; compare with fresh backup. Never replace live data with a template/test Sheet.
 5. Create a NEW versioned strict booking Web App deployment with approved owner/public access, preserving the compatibility-safe legacy URL. Record NEW_BOOKING_EXEC_URL, strict version/source hashes and compliant fallback backend version. A health GET is not save acceptance. Only separately approved labelled save/retry tests may write; disclose acknowledgement email before any fresh email-bearing submission. Keep unchanged retry IDs and retain labelled records.
 6. Only with endpoint-change authorization, bind BOTH release and fallback to that NEW strict `/exec` URL. The tracked production endpoint remains unchanged during local preparation. Never use isolated version-1 (`AKfycbw755w_...`) or version-2 (`AKfycbw-UnIZTK7...`) URLs or silently return to legacy. Record binding hashes separately from the immutable offline manifest. Preserve all other approved runtime bytes and 25000ms.

@@ -1,0 +1,27 @@
+{
+  "sourceSheetId": "1RCEUW2TP2Z1NaXdqeCjmmx041KyuTpBYY28Uz1EAqjU",
+  "clientLocalDate": "2026-10-16",
+  "startUTC": "2026-10-17 00:28:57 UTC",
+  "finishUTC": "2026-10-17 00:29:00 UTC",
+  "initialAndFinalSelectedCellsEqual": true,
+  "coverage": {
+    "gridRows": 1000,
+    "readRanges": [
+      "Leads!B2:B1000",
+      "Leads!P2:P1000",
+      "Leads!S2:S1000",
+      "Bookings!B2:B1000",
+      "Bookings!N2:N1000",
+      "'Follow Up Status'!A2:A1000",
+      "'Follow Up Status'!E2:F1000",
+      "'Email Subscribers'!B2:B1000",
+      "'Email Subscribers'!I2:I1000"
+    ],
+    "headerRowsRead": true,
+    "contactColumnsRead": false
+  },
+  "writes": 0,
+  "triggerChanges": 0,
+  "repairs": 0,
+  "caveat": "Two matching bounded observations are not an atomic snapshot, ongoing monitor or proof of no intervening writes."
+}

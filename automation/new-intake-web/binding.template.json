@@ -1,0 +1,15 @@
+{
+  "purpose": "NEW_CLEAN_INTAKE_ISOLATED_ONLY",
+  "endpoint": "https://script.google.com/macros/s/AKfycbwtS-JSw6zdr32pmqeuYIqTfX7umMo7PHeEb2vNeMsk0QYt-bMBXYqyCn7vUzOwdr1Eig/exec",
+  "deploymentId": "AKfycbwtS-JSw6zdr32pmqeuYIqTfX7umMo7PHeEb2vNeMsk0QYt-bMBXYqyCn7vUzOwdr1Eig",
+  "version": 1,
+  "projectId": "15mf3aFuF6ZWDkP5qkk220XNGU4X1G0yYuQqI6gGXPc7E5olcdYuD7g-2",
+  "spreadsheetId": "1mRV2mJuv5hU57j6uFMJWPm5IdihzjLdpkbltqbXlxV0",
+  "newCleanSheet": false,
+  "newProjectAndDeployment": false,
+  "automaticRemindersDisabled": false,
+  "submissionsRequireSeparateRunnerApproval": true,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "authorizationReference": null
+}

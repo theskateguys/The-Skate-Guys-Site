@@ -1,5 +1,25 @@
 # Production Reminder Cutover Procedure
 
+## Current Route Overrides Historical Migration Steps
+
+For the new independent intake, use [New Intake Cutover Runbook](NEW_INTAKE_CUTOVER_RUNBOOK.md).
+Do NOT install legacy code, update the old deployment or migrate the live Sheet merely to
+launch the new Sheet. Historical steps 5-7 below apply only to an explicitly approved
+legacy compatibility migration, not the current new-intake plan.
+
+Current read-only recheck: owner-visible old Head daily reminder remains ACTIVE; Running
+filter showed zero at inspection. The new synthetic project has reminders=false and zero
+installable triggers. Neither fact proves the old project is paused globally.
+
+After explicit authority: inventory each owner's matching handler, delete ONLY the approved
+old `runTSGFollowUpReminders` trigger, refresh to verify absence, inspect BOTH Running and
+Paused executions across writers/owners, allow in-flight work to finish, then recheck through
+an agreed quiet interval. No stopping executions, source/property change or setup helper
+is implicitly authorized. A false property does not disable old version 2. Cached clients may
+still write to the old endpoint; monitor old and new Sheets separately. No data repair.
+Restore no reminder automatically on rollback; review the actual Head runner and obtain
+separate schedule/recipient/backlog approval before re-creating a trigger or sending mail.
+
 Status: PREPARED ONLY. No trigger, deployment, property, live Sheet or email changed. Every production operation below requires explicit approval.
 
 ## Inspected Baseline

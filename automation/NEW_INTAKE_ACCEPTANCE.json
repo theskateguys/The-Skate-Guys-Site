@@ -1,0 +1,550 @@
+{
+  "scope": "ACTUAL ISOLATED GOOGLE ACCEPTANCE; NOT PRODUCTION INTAKE VERIFICATION",
+  "observedOn": "16 October 2026 (America/Port_of_Spain); submission UTC 2026-10-17T03:43:14.664Z",
+  "production": {
+    "commit": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+    "url": "https://the-skate-guys-site.vercel.app",
+    "deploymentId": "dpl_ChBmfxVVkecQ7XgSM7sQYssRbs8n",
+    "sourceFileHashesMatched": 42,
+    "googleBookingConnected": false,
+    "preparedWhatsApp": "18682766878",
+    "messageSent": false
+  },
+  "isolated": {
+    "projectId": "15mf3aFuF6ZWDkP5qkk220XNGU4X1G0yYuQqI6gGXPc7E5olcdYuD7g-2",
+    "spreadsheetId": "1mRV2mJuv5hU57j6uFMJWPm5IdihzjLdpkbltqbXlxV0",
+    "deploymentId": "AKfycbwtS-JSw6zdr32pmqeuYIqTfX7umMo7PHeEb2vNeMsk0QYt-bMBXYqyCn7vUzOwdr1Eig",
+    "version": 1,
+    "endpoint": "https://script.google.com/macros/s/AKfycbwtS-JSw6zdr32pmqeuYIqTfX7umMo7PHeEb2vNeMsk0QYt-bMBXYqyCn7vUzOwdr1Eig/exec",
+    "executeAs": "info.theskateguys@gmail.com",
+    "access": "Anyone",
+    "reminders": false,
+    "installableTriggers": 0,
+    "sourceSha256LF": {
+      "Code": "a761017b077e8f895ca03370eea32f62a09616e6f47d5f057820f1b83108a968",
+      "EmailLogo": "d21808c728f60d1db52bc0b4dc7a791d873248c2880fc734475f79eb33d0a12f"
+    }
+  },
+  "future": {
+    "spreadsheetId": "1oOvHxL2P4rM3-a5rxd4zTvmLE4iIM4RBEj5uWJ1NslI",
+    "baselineDataRows": 0,
+    "productionProjectCreated": false,
+    "productionEndpointCreated": false
+  },
+  "browser": {
+    "origin": "http://127.0.0.1:4202",
+    "artifact": "output/new-intake-web/isolated-stage-v1/release",
+    "responseMocked": false,
+    "timeoutMs": 25000,
+    "leadId": "TSG-7c22fa48-1957-44df-a37c-e6bb932a6540",
+    "whatsappReadyMs": 2.4,
+    "freshResponseMs": 5122.2,
+    "retryResponseMs": 5217.7,
+    "freshResponse": {
+      "ok": true,
+      "leadId": "TSG-7c22fa48-1957-44df-a37c-e6bb932a6540",
+      "status": "New Lead"
+    },
+    "retryResponse": {
+      "ok": true,
+      "leadId": "TSG-7c22fa48-1957-44df-a37c-e6bb932a6540",
+      "status": "duplicate_ignored"
+    },
+    "responseType": "cors",
+    "httpStatus": 200,
+    "responseHost": "script.googleusercontent.com",
+    "savedVisibleBeforeRead": false,
+    "matchingIdReadBeforeSaved": true,
+    "sameRetryPayloadAndTimestamp": true,
+    "applicationErrors": [],
+    "whatsappMessageSent": false,
+    "timeoutNote": "Native responses completed below 25 seconds. Actual abort/uncertainty behavior exercised with UI mocks, not a delayed Google run."
+  },
+  "sheet": {
+    "countsBefore": {
+      "Leads": 0,
+      "Bookings": 0,
+      "Email Subscribers": 0,
+      "Follow Up Status": 0
+    },
+    "countsAfterFresh": {
+      "Leads": 1,
+      "Bookings": 1,
+      "Email Subscribers": 0,
+      "Follow Up Status": 1
+    },
+    "countsAfterRetry": {
+      "Leads": 1,
+      "Bookings": 1,
+      "Email Subscribers": 0,
+      "Follow Up Status": 1
+    },
+    "rowReferences": {
+      "Leads": "Leads!A2:Z2",
+      "Bookings": "Bookings!A2:U2",
+      "Follow Up Status": "'Follow Up Status'!A2:K2"
+    },
+    "fieldComparisons": [
+      {
+        "tab": "Leads",
+        "field": "Lead ID",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Name",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "WhatsApp",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Email",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Location",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Adult/Child",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Package",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Rentals Needed",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Preferred Time",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Source Page",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Marketing Consent",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "WhatsApp Opened",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Status",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Tags",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Preferred Area",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Preferred Date",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Participant Count",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Lead ID",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Name",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "WhatsApp",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Email",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Location",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Adult/Child",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Package",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Rentals Needed",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Preferred Time",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Source Page",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Marketing Consent",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "WhatsApp Opened",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Status",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Tags",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Preferred Area",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Preferred Date",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Participant Count",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "UTM Source",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "UTM Campaign",
+        "pass": true
+      },
+      {
+        "tab": "Leads",
+        "field": "Participants JSON",
+        "pass": true
+      },
+      {
+        "tab": "Bookings",
+        "field": "Participants JSON",
+        "pass": true
+      },
+      {
+        "tab": "Follow Up Status",
+        "field": "Lead ID",
+        "pass": true
+      },
+      {
+        "tab": "Follow Up Status",
+        "field": "Email",
+        "pass": true
+      },
+      {
+        "tab": "Follow Up Status",
+        "field": "Name",
+        "pass": true
+      },
+      {
+        "tab": "Follow Up Status",
+        "field": "WhatsApp",
+        "pass": true
+      },
+      {
+        "tab": "Follow Up Status",
+        "field": "Lead Type",
+        "pass": true
+      },
+      {
+        "tab": "Follow Up Status",
+        "field": "Status",
+        "pass": true
+      },
+      {
+        "tab": "Follow Up Status",
+        "field": "Weekly Update Eligible",
+        "pass": true
+      }
+    ],
+    "allReadbackCellsUnchangedAfterRetry": true,
+    "readback": [
+      {
+        "sheet": "Leads",
+        "data": {
+          "range": "Leads!A1:Z6",
+          "majorDimension": "ROWS",
+          "values": [
+            [
+              "Timestamp",
+              "Lead ID",
+              "Name",
+              "WhatsApp",
+              "Email",
+              "Location",
+              "Adult/Child",
+              "Package",
+              "Rentals Needed",
+              "Preferred Time",
+              "Source Page",
+              "UTM Source",
+              "UTM Campaign",
+              "Marketing Consent",
+              "WhatsApp Opened",
+              "Status",
+              "Notes",
+              "Tags",
+              "Lead Type",
+              "UTM Medium",
+              "Referrer",
+              "Preferred Area",
+              "Preferred Date",
+              "Participant Count",
+              "Participants JSON",
+              "Participant Details"
+            ],
+            [
+              "10/16/2026 23:43:15",
+              "TSG-7c22fa48-1957-44df-a37c-e6bb932a6540",
+              "TEST ONLY - Clean Intake Acceptance 16 October 2026",
+              "18685550100",
+              "[approved test recipient]",
+              "Tobago",
+              "Adult, Child",
+              "Single session: TT$80 per person / 75 minutes / skate rental included",
+              "Yes",
+              "16:30",
+              "book.html",
+              "isolated_acceptance",
+              "clean_intake_v1",
+              "No",
+              "No",
+              "New Lead",
+              "",
+              "class_lead,tobago",
+              "booking",
+              "",
+              "",
+              "Black Rock - requested, not confirmed",
+              "2027-01-05",
+              "2",
+              "[{\"age\":30,\"experience\":\"Beginner\",\"rentals\":\"No\",\"skateSize\":\"\",\"sizeSystem\":\"\",\"guardianName\":\"\",\"guardianPhone\":\"\"},{\"age\":12,\"experience\":\"First time\",\"rentals\":\"Yes\",\"skateSize\":\"38\",\"sizeSystem\":\"EU\",\"guardianName\":\"TEST ONLY - Sample Guardian\",\"guardianPhone\":\"18685550101\"}]",
+              "1. Age 30; Beginner; rentals No; size - ; guardian - \n2. Age 12; First time; rentals Yes; size 38 EU; guardian TEST ONLY - Sample Guardian 18685550101"
+            ]
+          ]
+        }
+      },
+      {
+        "sheet": "Bookings",
+        "data": {
+          "range": "Bookings!A1:Z6",
+          "majorDimension": "ROWS",
+          "values": [
+            [
+              "Timestamp",
+              "Lead ID",
+              "Name",
+              "WhatsApp",
+              "Email",
+              "Location",
+              "Adult/Child",
+              "Package",
+              "Rentals Needed",
+              "Preferred Time",
+              "Source Page",
+              "Marketing Consent",
+              "WhatsApp Opened",
+              "Status",
+              "Tags",
+              "Notes",
+              "Preferred Area",
+              "Preferred Date",
+              "Participant Count",
+              "Participants JSON",
+              "Participant Details"
+            ],
+            [
+              "10/16/2026 23:43:15",
+              "TSG-7c22fa48-1957-44df-a37c-e6bb932a6540",
+              "TEST ONLY - Clean Intake Acceptance 16 October 2026",
+              "18685550100",
+              "[approved test recipient]",
+              "Tobago",
+              "Adult, Child",
+              "Single session: TT$80 per person / 75 minutes / skate rental included",
+              "Yes",
+              "16:30",
+              "book.html",
+              "No",
+              "No",
+              "New Lead",
+              "class_lead,tobago",
+              "",
+              "Black Rock - requested, not confirmed",
+              "2027-01-05",
+              "2",
+              "[{\"age\":30,\"experience\":\"Beginner\",\"rentals\":\"No\",\"skateSize\":\"\",\"sizeSystem\":\"\",\"guardianName\":\"\",\"guardianPhone\":\"\"},{\"age\":12,\"experience\":\"First time\",\"rentals\":\"Yes\",\"skateSize\":\"38\",\"sizeSystem\":\"EU\",\"guardianName\":\"TEST ONLY - Sample Guardian\",\"guardianPhone\":\"18685550101\"}]",
+              "1. Age 30; Beginner; rentals No; size - ; guardian - \n2. Age 12; First time; rentals Yes; size 38 EU; guardian TEST ONLY - Sample Guardian 18685550101"
+            ]
+          ]
+        }
+      },
+      {
+        "sheet": "Email Subscribers",
+        "data": {
+          "range": "'Email Subscribers'!A1:Z6",
+          "majorDimension": "ROWS",
+          "values": [
+            [
+              "Timestamp",
+              "Lead ID",
+              "Email",
+              "Name",
+              "Location",
+              "Source Page",
+              "Tags",
+              "Marketing Consent",
+              "Status",
+              "Last Updated"
+            ]
+          ]
+        }
+      },
+      {
+        "sheet": "Follow Up Status",
+        "data": {
+          "range": "'Follow Up Status'!A1:Z6",
+          "majorDimension": "ROWS",
+          "values": [
+            [
+              "Lead ID",
+              "Email",
+              "Name",
+              "WhatsApp",
+              "Lead Type",
+              "Status",
+              "First Follow Up Due",
+              "Reminder Due",
+              "Weekly Update Eligible",
+              "Last Contacted",
+              "Notes"
+            ],
+            [
+              "TSG-7c22fa48-1957-44df-a37c-e6bb932a6540",
+              "[approved test recipient]",
+              "TEST ONLY - Clean Intake Acceptance 16 October 2026",
+              "18685550100",
+              "booking",
+              "New Lead",
+              "10/16/2026 23:43:15",
+              "10/17/2026 23:43:15",
+              "No"
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "email": {
+    "authorizedFreshCount": 1,
+    "senderSentMatchesAfterFresh": 1,
+    "senderSentMatchesAfterRetry": 1,
+    "recipientConfirmedExactlyOne": true,
+    "recipientConfirmedBrandedLogoAndButton": true,
+    "contentChecks": {
+      "htmlBytes": 11837,
+      "plainBytes": 3359,
+      "heading": true,
+      "notConfirmed": true,
+      "noPayment": true,
+      "date": true,
+      "localTime": true,
+      "expiry": true,
+      "cid": true,
+      "wa": true,
+      "plainNotConfirmed": true
+    },
+    "noOtherEmailAuthorized": true
+  },
+  "previews": {
+    "release": {
+      "id": "dpl_9Tk6QrFTa4DwXiyXcSB7KvRphTee",
+      "url": "https://the-skate-guys-site-n4jbrce3u-dylons-projects-1d199d9f.vercel.app"
+    },
+    "compliantFallback": {
+      "id": "dpl_EFH4uCJ3A5ecWrfN9Qi9uK1VyQQH",
+      "url": "https://the-skate-guys-site-jwdy1kndl-dylons-projects-1d199d9f.vercel.app"
+    },
+    "ready": true,
+    "productionTarget": false,
+    "aliases": [],
+    "protectedBy": "Vercel Authentication",
+    "nativeHostedSubmissionPerformed": false
+  },
+  "legacy": {
+    "readOnlyInspection": true,
+    "projectId": "1wCcJh9WBnfpOqtun6gzhR5v-81pOLHJsxtXvwCnDRSTrR1w1kJEAy5YU",
+    "sheetId": "1RCEUW2TP2Z1NaXdqeCjmmx041KyuTpBYY28Uz1EAqjU",
+    "handler": "runTSGFollowUpReminders",
+    "triggerOwner": "Me",
+    "deployment": "Head",
+    "schedule": "Day timer, 10am-11am GMT-04:00",
+    "lastRun": "16 October 2026 10:04:04 AM",
+    "lastRunDurationSeconds": 6.377,
+    "displayedExecutionsCompleted": 9,
+    "runningAtInspection": 0,
+    "triggerStillActive": true,
+    "noWritesOrChanges": true
+  },
+  "limitations": [
+    "Native isolated success is not production verification or a latency SLA.",
+    "Consent-No path only; subscriber/weekly campaign not accepted here.",
+    "Sequential writes and email delivery are not transactional; no durable email replay ledger.",
+    "Same-code automated fallback does not fix shared integration defects; use exact published WhatsApp-only build.",
+    "Future production project/endpoint, production binding and activation require separate approval."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "reviewSHA": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+  "whatsappProductionSHA": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+  "whatsappProductionDeploymentId": "dpl_ChBmfxVVkecQ7XgSM7sQYssRbs8n",
+  "placeholderEndpoint": "PASTE_GOOGLE_APPS_SCRIPT_NEW_ISOLATED_EXEC_URL",
+  "isolatedProjectId": "15mf3aFuF6ZWDkP5qkk220XNGU4X1G0yYuQqI6gGXPc7E5olcdYuD7g-2",
+  "isolatedSpreadsheetId": "1mRV2mJuv5hU57j6uFMJWPm5IdihzjLdpkbltqbXlxV0",
+  "reservedFutureSpreadsheetId": "1oOvHxL2P4rM3-a5rxd4zTvmLE4iIM4RBEj5uWJ1NslI",
+  "website": [
+    "index.html", "book.html", "merch.html", "elite.html", "logo.png",
+    "googlee25463d8d8656390.html", "sitemap.xml",
+    "assets/lead-config.js", "assets/lead-capture.js", "assets/lead-capture.css",
+    "assets/updates-data.js", "assets/logo.png", "assets/theskateguys-1.png",
+    "assets/coaches/Dylon.jpg", "assets/coaches/Dylon.webp",
+    "assets/coaches/Jevon.jpg", "assets/coaches/Jevon.webp",
+    "assets/coaches/Nikesha.jpg", "assets/coaches/Nikesha.webp",
+    "assets/coaches/Shelsea.jpg", "assets/coaches/Shelsea.webp",
+    "assets/community/tsg-01.jpg", "assets/community/tsg-02.jpg", "assets/community/tsg-03.jpg",
+    "assets/community/tsg-04.webp", "assets/community/tsg-05.webp", "assets/community/tsg-06.webp",
+    "assets/events/disco-flyer.png", "assets/events/events-data.js",
+    "assets/events/lambeau-day.jpg.jpeg", "assets/events/popup-lowlands.jpg.jpg",
+    "assets/hero/canoe-bay-team-1200.webp", "assets/hero/canoe-bay-team-1536.webp",
+    "assets/hero/canoe-bay-team-768.webp", "assets/hero/canoe-bay-team.webp",
+    "assets/merch/classic-tshirt-community.jpg", "assets/merch/mockup-bucket-hat-logo.svg",
+    "assets/merch/mockup-hoodie-logo.svg", "assets/merch/mockup-keychain-logo.svg",
+    "assets/merch/mockup-socks-logo.svg", "assets/merch/mockup-tshirt-logo.svg"
+  ]
+}

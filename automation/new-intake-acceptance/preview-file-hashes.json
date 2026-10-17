@@ -1,0 +1,342 @@
+{
+  "release": [
+    {
+      "file": "assets/coaches/Dylon.jpg",
+      "sha1": "25fbee6f7ba2c884c331f8880e3aa004222f72a0"
+    },
+    {
+      "file": "assets/coaches/Dylon.webp",
+      "sha1": "b69d6b1ccb674ed528be4a099acb557f60cfd235"
+    },
+    {
+      "file": "assets/coaches/Jevon.jpg",
+      "sha1": "c3e4b1094607afc2318e1c37dd650a50d1ae218a"
+    },
+    {
+      "file": "assets/coaches/Jevon.webp",
+      "sha1": "72780484838c4e8c0a0629341ee9f95d6ff35174"
+    },
+    {
+      "file": "assets/coaches/Nikesha.jpg",
+      "sha1": "4128fdb38ac2646d59310edae5caf2bc813bad9e"
+    },
+    {
+      "file": "assets/coaches/Nikesha.webp",
+      "sha1": "ca3e8fdad1de757e52bb0e1be874abafe41f59b9"
+    },
+    {
+      "file": "assets/coaches/Shelsea.jpg",
+      "sha1": "cfd83e19226342f29a1a514f376d4166ba974cb6"
+    },
+    {
+      "file": "assets/coaches/Shelsea.webp",
+      "sha1": "76f6f4d176ac9b3d2394f0f438ae88275c8204dd"
+    },
+    {
+      "file": "assets/community/tsg-01.jpg",
+      "sha1": "422aee0a41b6586a2bec24b9a7e9b66d5474fc33"
+    },
+    {
+      "file": "assets/community/tsg-02.jpg",
+      "sha1": "e1906b136797bf3d30f0fcbb4f71400cb3667447"
+    },
+    {
+      "file": "assets/community/tsg-03.jpg",
+      "sha1": "184b480a9fc1b2653ef505feda9a3d4b25ec1f48"
+    },
+    {
+      "file": "assets/community/tsg-04.webp",
+      "sha1": "25cdfde4bcc33494284cc8506d58568d6dffd05f"
+    },
+    {
+      "file": "assets/community/tsg-05.webp",
+      "sha1": "e82f2353af58a021701c00753d17f9f136abdb06"
+    },
+    {
+      "file": "assets/community/tsg-06.webp",
+      "sha1": "f5692fa447b3f6490567f7edf2fa33f4f86d3311"
+    },
+    {
+      "file": "assets/events/disco-flyer.png",
+      "sha1": "47a4fc98bc7cd74941f0457d806426091583bb8e"
+    },
+    {
+      "file": "assets/events/events-data.js",
+      "sha1": "78dd80b281cfbf08bdfa1d353c6fc64fbe16615c"
+    },
+    {
+      "file": "assets/events/lambeau-day.jpg.jpeg",
+      "sha1": "067d1ccab6915a65d3b9d95aab165ec40139527f"
+    },
+    {
+      "file": "assets/events/popup-lowlands.jpg.jpg",
+      "sha1": "cedb36c989cbf2af8f9c21da55400f3b7aff9acc"
+    },
+    {
+      "file": "assets/hero/canoe-bay-team-1200.webp",
+      "sha1": "036c72315dcf06c8497a0137dd7cc7c394a1ea26"
+    },
+    {
+      "file": "assets/hero/canoe-bay-team-1536.webp",
+      "sha1": "e4a911228df5616e297341f55addfdb608b31b15"
+    },
+    {
+      "file": "assets/hero/canoe-bay-team-768.webp",
+      "sha1": "1761527fd22962256f12d05885d618878f182ca9"
+    },
+    {
+      "file": "assets/hero/canoe-bay-team.webp",
+      "sha1": "200162f7a3f23e38443ae2d7b2f8f6f778eaec11"
+    },
+    {
+      "file": "assets/lead-capture.css",
+      "sha1": "4869969f8e01cbb912a03192d2bd5f66edbaee0d"
+    },
+    {
+      "file": "assets/lead-capture.js",
+      "sha1": "7067ba8e4c3949051a4554d5e0759841dbc1b4d1"
+    },
+    {
+      "file": "assets/lead-config.js",
+      "sha1": "4a0dcb862a7893b39149818c8d81a6ea21d41720"
+    },
+    {
+      "file": "assets/logo.png",
+      "sha1": "e103039d9a7af78dc20a88de273ccbb0e97d03d9"
+    },
+    {
+      "file": "assets/merch/classic-tshirt-community.jpg",
+      "sha1": "a0976066cefa83f890583d6de4070f00edc314ff"
+    },
+    {
+      "file": "assets/merch/mockup-bucket-hat-logo.svg",
+      "sha1": "d77cd0d1a0972922bee605aad0b359e8ee26f3c7"
+    },
+    {
+      "file": "assets/merch/mockup-hoodie-logo.svg",
+      "sha1": "94676f8509063c425856b25e1879d803900bed00"
+    },
+    {
+      "file": "assets/merch/mockup-keychain-logo.svg",
+      "sha1": "e923e7c3364e76f0e19074d364ef5c5bf6266b24"
+    },
+    {
+      "file": "assets/merch/mockup-socks-logo.svg",
+      "sha1": "9c4d300713fd7f17ce1d2c5a490bec6945bad58a"
+    },
+    {
+      "file": "assets/merch/mockup-tshirt-logo.svg",
+      "sha1": "84cc1d7252b28ad60bc8e32ffaccd115fdee6578"
+    },
+    {
+      "file": "assets/theskateguys-1.png",
+      "sha1": "7bfc12cd116d90ff7f5a4a32c28bb738c8841718"
+    },
+    {
+      "file": "assets/updates-data.js",
+      "sha1": "7df87d56801434e65d04ad3efdca6be388fc1c65"
+    },
+    {
+      "file": "logo.png",
+      "sha1": "e103039d9a7af78dc20a88de273ccbb0e97d03d9"
+    },
+    {
+      "file": "book.html",
+      "sha1": "eea1f340114685b134c86e79336afa0a923d4f99"
+    },
+    {
+      "file": "elite.html",
+      "sha1": "4f61a29b67eb21c5781b7d26a689f5aaa07cfcb9"
+    },
+    {
+      "file": "googlee25463d8d8656390.html",
+      "sha1": "7fa94d09bc5c07c0a10ce083ac8a24acde9356bb"
+    },
+    {
+      "file": "index.html",
+      "sha1": "617660c142f488dcb5d470c870f50393fb9b9894"
+    },
+    {
+      "file": "merch.html",
+      "sha1": "fbc58d523ae3f29b3d898459ba5082872d744492"
+    },
+    {
+      "file": "sitemap.xml",
+      "sha1": "5691ca8eef18149757f5e496ceec615ec384b8e3"
+    },
+    {
+      "file": "vercel.json",
+      "sha1": "1bc4d2649e44b338c865e9130a15e00c2416ecb4"
+    }
+  ],
+  "compliantFallback": [
+    {
+      "file": "assets/coaches/Dylon.jpg",
+      "sha1": "25fbee6f7ba2c884c331f8880e3aa004222f72a0"
+    },
+    {
+      "file": "assets/coaches/Dylon.webp",
+      "sha1": "b69d6b1ccb674ed528be4a099acb557f60cfd235"
+    },
+    {
+      "file": "assets/coaches/Jevon.jpg",
+      "sha1": "c3e4b1094607afc2318e1c37dd650a50d1ae218a"
+    },
+    {
+      "file": "assets/coaches/Jevon.webp",
+      "sha1": "72780484838c4e8c0a0629341ee9f95d6ff35174"
+    },
+    {
+      "file": "assets/coaches/Nikesha.jpg",
+      "sha1": "4128fdb38ac2646d59310edae5caf2bc813bad9e"
+    },
+    {
+      "file": "assets/coaches/Nikesha.webp",
+      "sha1": "ca3e8fdad1de757e52bb0e1be874abafe41f59b9"
+    },
+    {
+      "file": "assets/coaches/Shelsea.jpg",
+      "sha1": "cfd83e19226342f29a1a514f376d4166ba974cb6"
+    },
+    {
+      "file": "assets/coaches/Shelsea.webp",
+      "sha1": "76f6f4d176ac9b3d2394f0f438ae88275c8204dd"
+    },
+    {
+      "file": "assets/community/tsg-01.jpg",
+      "sha1": "422aee0a41b6586a2bec24b9a7e9b66d5474fc33"
+    },
+    {
+      "file": "assets/community/tsg-02.jpg",
+      "sha1": "e1906b136797bf3d30f0fcbb4f71400cb3667447"
+    },
+    {
+      "file": "assets/community/tsg-03.jpg",
+      "sha1": "184b480a9fc1b2653ef505feda9a3d4b25ec1f48"
+    },
+    {
+      "file": "assets/community/tsg-04.webp",
+      "sha1": "25cdfde4bcc33494284cc8506d58568d6dffd05f"
+    },
+    {
+      "file": "assets/community/tsg-05.webp",
+      "sha1": "e82f2353af58a021701c00753d17f9f136abdb06"
+    },
+    {
+      "file": "assets/community/tsg-06.webp",
+      "sha1": "f5692fa447b3f6490567f7edf2fa33f4f86d3311"
+    },
+    {
+      "file": "assets/events/disco-flyer.png",
+      "sha1": "47a4fc98bc7cd74941f0457d806426091583bb8e"
+    },
+    {
+      "file": "assets/events/events-data.js",
+      "sha1": "78dd80b281cfbf08bdfa1d353c6fc64fbe16615c"
+    },
+    {
+      "file": "assets/events/lambeau-day.jpg.jpeg",
+      "sha1": "067d1ccab6915a65d3b9d95aab165ec40139527f"
+    },
+    {
+      "file": "assets/events/popup-lowlands.jpg.jpg",
+      "sha1": "cedb36c989cbf2af8f9c21da55400f3b7aff9acc"
+    },
+    {
+      "file": "assets/hero/canoe-bay-team-1200.webp",
+      "sha1": "036c72315dcf06c8497a0137dd7cc7c394a1ea26"
+    },
+    {
+      "file": "assets/hero/canoe-bay-team-1536.webp",
+      "sha1": "e4a911228df5616e297341f55addfdb608b31b15"
+    },
+    {
+      "file": "assets/hero/canoe-bay-team-768.webp",
+      "sha1": "1761527fd22962256f12d05885d618878f182ca9"
+    },
+    {
+      "file": "assets/hero/canoe-bay-team.webp",
+      "sha1": "200162f7a3f23e38443ae2d7b2f8f6f778eaec11"
+    },
+    {
+      "file": "assets/lead-capture.css",
+      "sha1": "4869969f8e01cbb912a03192d2bd5f66edbaee0d"
+    },
+    {
+      "file": "assets/lead-capture.js",
+      "sha1": "7067ba8e4c3949051a4554d5e0759841dbc1b4d1"
+    },
+    {
+      "file": "assets/lead-config.js",
+      "sha1": "4a0dcb862a7893b39149818c8d81a6ea21d41720"
+    },
+    {
+      "file": "assets/logo.png",
+      "sha1": "e103039d9a7af78dc20a88de273ccbb0e97d03d9"
+    },
+    {
+      "file": "assets/merch/classic-tshirt-community.jpg",
+      "sha1": "a0976066cefa83f890583d6de4070f00edc314ff"
+    },
+    {
+      "file": "assets/merch/mockup-bucket-hat-logo.svg",
+      "sha1": "d77cd0d1a0972922bee605aad0b359e8ee26f3c7"
+    },
+    {
+      "file": "assets/merch/mockup-hoodie-logo.svg",
+      "sha1": "94676f8509063c425856b25e1879d803900bed00"
+    },
+    {
+      "file": "assets/merch/mockup-keychain-logo.svg",
+      "sha1": "e923e7c3364e76f0e19074d364ef5c5bf6266b24"
+    },
+    {
+      "file": "assets/merch/mockup-socks-logo.svg",
+      "sha1": "9c4d300713fd7f17ce1d2c5a490bec6945bad58a"
+    },
+    {
+      "file": "assets/merch/mockup-tshirt-logo.svg",
+      "sha1": "84cc1d7252b28ad60bc8e32ffaccd115fdee6578"
+    },
+    {
+      "file": "assets/theskateguys-1.png",
+      "sha1": "7bfc12cd116d90ff7f5a4a32c28bb738c8841718"
+    },
+    {
+      "file": "assets/updates-data.js",
+      "sha1": "7df87d56801434e65d04ad3efdca6be388fc1c65"
+    },
+    {
+      "file": "logo.png",
+      "sha1": "e103039d9a7af78dc20a88de273ccbb0e97d03d9"
+    },
+    {
+      "file": "book.html",
+      "sha1": "eea1f340114685b134c86e79336afa0a923d4f99"
+    },
+    {
+      "file": "elite.html",
+      "sha1": "4f61a29b67eb21c5781b7d26a689f5aaa07cfcb9"
+    },
+    {
+      "file": "googlee25463d8d8656390.html",
+      "sha1": "7fa94d09bc5c07c0a10ce083ac8a24acde9356bb"
+    },
+    {
+      "file": "index.html",
+      "sha1": "617660c142f488dcb5d470c870f50393fb9b9894"
+    },
+    {
+      "file": "merch.html",
+      "sha1": "fbc58d523ae3f29b3d898459ba5082872d744492"
+    },
+    {
+      "file": "sitemap.xml",
+      "sha1": "5691ca8eef18149757f5e496ceec615ec384b8e3"
+    },
+    {
+      "file": "vercel.json",
+      "sha1": "1bc4d2649e44b338c865e9130a15e00c2416ecb4"
+    }
+  ]
+}

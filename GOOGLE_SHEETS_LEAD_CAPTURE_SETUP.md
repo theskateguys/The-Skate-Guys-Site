@@ -1,5 +1,23 @@
 # TSG Booking and Google Sheets Setup
 
+## Current New-Intake Route
+
+Follow [New Intake Cutover Runbook](automation/NEW_INTAKE_CUTOVER_RUNBOOK.md), not the
+historical old-Sheet migration route below. The current website is WhatsApp-only commit
+`5592c39`; Google automation is staged but NOT active. Reserve new Sheet
+`1oOvHxL2P4rM3-a5rxd4zTvmLE4iIM4RBEj5uWJ1NslI` for future requests only. Its four tabs
+are header-only, with no production project/endpoint yet. Never import legacy or test rows.
+
+Completed isolated acceptance uses DIFFERENT Sheet `1mRV2mJuv5hU57j6uFMJWPm5IdihzjLdpkbltqbXlxV0`
+and project `15mf3aFuF6ZWDkP5qkk220XNGU4X1G0yYuQqI6gGXPc7E5olcdYuD7g-2`, version 1,
+reminders=false/zero triggers. One approved branded email and three booking rows, matching
+native browser acknowledgement and unchanged retry passed; [evidence](automation/NEW_INTAKE_ACCEPTANCE.json).
+The TEST endpoint must never become production. Keep 25000ms and immediate WhatsApp;
+only a readable matching response permits saved wording. Production creation/binding,
+verification effects and activation need separate approval. Do not change the tracked
+endpoint or live Sheet under preparation authority. Newsletter subscription/delivery is a
+separate acceptance path, not established by the consent-No booking test.
+
 ## Latest Legacy Acceptance Gate
 
 Current local revision isolates ambiguous target IDs rather than globally

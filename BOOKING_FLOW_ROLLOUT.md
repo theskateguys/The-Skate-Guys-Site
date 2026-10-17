@@ -1,5 +1,20 @@
 # Booking Release and Compliant Rollback Runbook
 
+## Current Launch Strategy: New Clean Intake
+
+The later approved strategy in [New Intake Cutover Runbook](automation/NEW_INTAKE_CUTOVER_RUNBOOK.md)
+supersedes the legacy migration/compatibility cutover below for the next website release.
+Website-only commit `5592c39` is now published; the automated branch is NOT activated.
+Use a new independent Sheet/project for FUTURE requests; preserve the old Sheet, endpoint
+and records, with no migration or deduplication at launch. Old legacy-audit findings remain
+historical facts and residual-old-system risks, not permission to repair them or a requirement
+to point the strict backend at that data. See [new isolated acceptance](automation/NEW_INTAKE_ACCEPTANCE.json)
+for the completed native Google test and separate mock-timeout evidence. Any production
+project, binding, old-trigger pause/drain and activation still require explicit approval.
+The exact published WhatsApp-only deployment, not `d8a6a5a`, is the shared-defect rollback.
+The older sections below retain their original historical scope; do not execute their
+old-Sheet migration steps for the new-intake launch.
+
 Status: LOCAL PREPARATION ONLY. No push, merge, production code/endpoint change, deployment, live Sheet write or additional email is authorized by this document. Each release action and destination requires explicit approval.
 
 ## Evidence and Limits

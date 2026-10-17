@@ -13,6 +13,7 @@ assert.equal(inspection.source.matchingRepositoryBlob, '51ddd8f4f17318c3537544a1
 assert.equal(createHash('sha256').update(pinned).digest('hex'), inspection.source.sha256Lf);
 const source = readFileSync(new URL('legacy-compatibility/Code.gs', import.meta.url), 'utf8');
 const tabs = ['Leads','Bookings','Follow Up Status'];
+const allTabs = [...tabs,'Email Subscribers'];
 const base = {
   action: 'lead_submit', leadType: 'booking', leadId: 'TSG-OFFLINE-LEGACY',
   timestamp: '2000-01-01T12:00:00Z', name: 'Synthetic Legacy', whatsapp: '+18685550100',
@@ -36,6 +37,8 @@ function world() {
 }
 class Sheet {
   constructor(name, w) { this.name = name; this.w = w; this.rows = []; this.maxColumns = 26; }
+  getName() { return this.name; }
+  getParent() { return {getSheetByName: name => this.w.sheets.get(name)}; }
   getLastRow() { return this.rows.length; }
   getLastColumn() { return Math.max(0, ...this.rows.map(row => row.length)); }
   getMaxRows() { return 1000; }
@@ -130,6 +133,28 @@ function harness(code = source, w = world()) {
   return {w, spreadsheet, call, post, definitions, row, get, set, remove, seed,
     enabled() { w.properties.set('TSG_AUTOMATIC_REMINDERS_ENABLED','true'); },
     lead(payload = base) { return call('normalizeLead_', payload); }};
+}
+
+const sheetState = h => clone([...h.w.sheets].map(([name, sheet]) => [name, sheet.rows]));
+function duplicateRows(h, tab, id) {
+  const sheet = h.w.sheets.get(tab);
+  const copy = [...h.row(tab, id)];
+  copy[sheet.rows[0].indexOf('Lead ID')] = ` ${id} `;
+  sheet.rows.push(copy);
+  return copy;
+}
+function unrelatedDuplicates(h) {
+  const id = 'UNRELATED-AMBIGUOUS';
+  assert.equal(h.post({...base, leadId: id, email: 'ambiguous@example.test', marketingConsent: 'Yes'}).ok, true);
+  for (const tab of allTabs) {
+    const copy = duplicateRows(h, tab, id);
+    copy[h.w.sheets.get(tab).rows[0].indexOf('Status')] = 'Paid';
+  }
+  h.w.writes.length = 0; h.w.emails.length = 0;
+  return () => clone(allTabs.map(tab => {
+    const sheet = h.w.sheets.get(tab);
+    return sheet.rows.slice(1).filter(row => String(row[sheet.rows[0].indexOf('Lead ID')]).trim() === id);
+  }));
 }
 
 test('pinned source and exact known legacy envelopes/validation', () => {
@@ -475,22 +500,283 @@ test('additive migration preserves historical prefixes/rows and does not populat
   assert.equal(sheet.rows[0].filter(x => x === 'Legacy Review Required').length,1);
 });
 
-test('ambiguous headers or duplicate IDs in ANY tab fail before mutations/mail, not silent deduplication', () => {
-  for (const tab of [...tabs,'Email Subscribers']) for (const mutation of ['duplicate-id','duplicate-header','blank-header','case-header','space-header','missing-id','missing-status']) {
+test('global schema guards still fail before mutations/mail despite unrelated target identity', () => {
+  for (const tab of allTabs) for (const mutation of ['duplicate-header','blank-header','case-header','space-header','missing-id','missing-status', ...(tab === 'Email Subscribers' ? ['missing-email'] : [])]) {
     const h = harness(); h.seed();
     if (tab === 'Email Subscribers') h.post({...base,leadId: 'SUBSCRIBER',marketingConsent: 'Yes'});
     const sheet = h.w.sheets.get(tab);
-    if (mutation === 'duplicate-id') sheet.rows.push([...sheet.rows[1]]);
     if (mutation === 'duplicate-header') sheet.rows[0].push('Status');
     if (mutation === 'blank-header') { sheet.rows[0].push(''); sheet.rows[1].push('orphan data'); }
     if (mutation === 'case-header') sheet.rows[0][sheet.rows[0].indexOf('Status')] = 'status';
     if (mutation === 'space-header') sheet.rows[0][sheet.rows[0].indexOf('Status')] = ' Status ';
     if (mutation === 'missing-id') sheet.rows[0][sheet.rows[0].indexOf('Lead ID')] = 'Unknown Identity';
     if (mutation === 'missing-status') sheet.rows[0][sheet.rows[0].indexOf('Status')] = 'Unknown State';
+    if (mutation === 'missing-email') sheet.rows[0][sheet.rows[0].indexOf('Email')] = 'Unknown Email';
     h.w.writes.length = 0; h.w.emails.length = 0;
+    const before = sheetState(h);
     assert.equal(h.post({...base,leadId:'ANOTHER'}).ok,false,`${tab} ${mutation}`);
+    assert.equal(h.post({action:'whatsapp_opened',leadId:base.leadId}).ok,false);
+    h.enabled();
+    for (const runner of ['runTSGFollowUpReminders','runFollowUpReminders_']) assert.throws(() => h.call(runner), /header/);
     assert.equal(h.w.writes.length,0); assert.equal(h.w.emails.length,0);
+    assert.deepEqual(sheetState(h),before);
     assert.equal(h.w.held,false);
+  }
+});
+
+test('unrelated duplicates in all four tabs permit participantless old-form saves, tracks, retries and subscriber writes', () => {
+  for (const email of [base.email, '']) {
+    const h = harness(); const ambiguousRows = unrelatedDuplicates(h); const untouched = ambiguousRows();
+    const request = {...base, email, marketingConsent: 'Yes'};
+    assert.equal('participants' in request,false);
+    assert.deepEqual(h.post(request),{ok:true,leadId:base.leadId,status:'New Lead'});
+    tabs.forEach(tab => {
+      assert.equal(h.get(tab,'Notes'),base.notes);
+      assert.equal(h.get(tab,'Status'),'New Lead');
+      assert.equal(h.get(tab,'Email'),email);
+    });
+    assert.equal(h.w.emails.length,email ? 1 : 0);
+    assert.equal(Boolean(h.row('Email Subscribers')),Boolean(email));
+    if (email) {
+      assert.match(h.w.emails[0].body,/TT\$80 per person \/ 75 minutes \/ skate rental included/);
+      assert.match(h.w.emails[0].body,/not a confirmed class/);
+      assert.match(h.w.emails[0].body,/No payment has been taken/);
+    }
+    assert.deepEqual(h.post({action:'whatsapp_opened',leadId:base.leadId}),{ok:true,leadId:base.leadId,status:'WhatsApp Opened'});
+    for (const tab of ['Leads','Bookings']) {
+      assert.equal(h.get(tab,'WhatsApp Opened'),'Yes');
+      assert.equal(h.get(tab,'Status'),'WhatsApp Opened');
+    }
+    const before = sheetState(h); h.w.writes.length = 0;
+    assert.equal(h.post({...request,name:'Changed retry',notes:'Changed notes'}).status,'duplicate_ignored');
+    assert.deepEqual(sheetState(h),before); assert.equal(h.w.writes.length,0);
+    assert.equal(h.w.emails.length,email ? 1 : 0);
+    assert.deepEqual(ambiguousRows(),untouched);
+    assert.equal(h.w.held,false);
+  }
+});
+
+test('unrelated all-tab duplicates permit partial append recovery for old forms including optional blank email', () => {
+  for (const failed of ['Bookings','Follow Up Status']) for (const email of [base.email,'']) {
+    const h = harness(); const ambiguousRows = unrelatedDuplicates(h); const untouched = ambiguousRows();
+    const request = {...base,email}; h.w.failAppend = failed;
+    assert.deepEqual(h.post(request),{ok:false,error:'MOCK partial append failure'});
+    h.set('Leads','Status','Paid'); h.w.failAppend = null;
+    const before = tabs.map(tab => h.get(tab,'Status'));
+    assert.equal(h.post({...request,name:'Changed',notes:'Changed'}).status,'duplicate_ignored');
+    for (const [index, tab] of tabs.entries()) {
+      assert.equal(h.get(tab,'Status'),before[index] || 'Paid'); assert.equal(h.get(tab,'Name'),base.name);
+      assert.equal(h.get(tab,'Notes'),base.notes); assert.equal(h.get(tab,'Email'),email);
+      const sheet = h.w.sheets.get(tab);
+      assert.equal(sheet.rows.slice(1).filter(row => row[sheet.rows[0].indexOf('Lead ID')] === base.leadId).length,1);
+    }
+    assert.equal(h.w.emails.length,0); assert.deepEqual(ambiguousRows(),untouched);
+    assert.equal(h.w.held,false);
+  }
+});
+
+test('unrelated duplicates never weaken any protected companion or resolve conflicting protected states by overwriting', () => {
+  for (const protectedTab of tabs) for (const state of ['Confirmed','Paid','Replied']) {
+    const h = harness(); h.seed(); const ambiguousRows = unrelatedDuplicates(h); const untouched = ambiguousRows();
+    h.set(protectedTab,'Status',state);
+    const others = tabs.filter(tab => tab !== protectedTab);
+    h.set(others[0],'Status',state === 'Paid' ? 'Confirmed' : 'Paid');
+    const before = tabs.map(tab => h.get(tab,'Status'));
+    h.enabled(); h.post({action:'whatsapp_opened',leadId:base.leadId});
+    h.call('updateLeadStatus_',h.spreadsheet,base.leadId,'Follow Up Needed');
+    h.call('runTSGFollowUpReminders'); h.call('runFollowUpReminders_');
+    h.call('sendLeadConfirmation_',h.lead());
+    assert.equal(h.post({...base,notes:'Changed retry'}).status,'duplicate_ignored');
+    assert.deepEqual(tabs.map(tab => h.get(tab,'Status')),before);
+    tabs.forEach(tab => assert.equal(h.get(tab,'Notes'),base.notes));
+    assert.equal(h.get('Follow Up Status','Last Contacted'),'');
+    assert.equal(h.w.emails.length,0); assert.deepEqual(ambiguousRows(),untouched);
+  }
+});
+
+for (const tab of allTabs) {
+  test(`ambiguous target in ${tab}: every save/track/mutation/mail helper rejects before any write`, () => {
+    for (const states of [['New Lead','Confirmed'],['Paid','New Lead'],['Replied','Paid']]) {
+      const h = harness();
+      assert.equal(h.post({...base,marketingConsent:'Yes'}).ok,true); h.enabled();
+      const record = h.call('record_',h.w.sheets.get('Leads'),base.leadId);
+      h.set(tab,'Status',states[0]);
+      const copy = duplicateRows(h,tab,base.leadId);
+      copy[h.w.sheets.get(tab).rows[0].indexOf('Status')] = states[1];
+      // Missing review headers must not be appended before target ambiguity is detected.
+      const leads = h.w.sheets.get('Leads'); const reviewColumn = leads.rows[0].indexOf('Legacy Review Required');
+      leads.rows.forEach(row => row.splice(reviewColumn,1));
+      const before = sheetState(h); h.w.writes.length = 0; h.w.emails.length = 0;
+      for (const payload of [base,{...base,email:''},{action:'whatsapp_opened',leadId:base.leadId}]) {
+        assert.deepEqual(h.post(payload),{ok:false,error:`Ambiguous target Lead ID in ${tab}: multiple rows; staff review required.`});
+      }
+      const operations = [
+        () => h.call('saveLead_',h.lead()),
+        () => h.call('appendFollowUp_',h.spreadsheet,h.lead()),
+        () => h.call('appendMissingRecord_',h.spreadsheet,h.definitions.bookings,base.leadId,{}),
+        () => h.call('markWhatsAppOpened_',base.leadId),
+        () => h.call('writeNonStatusCell_',record,'WhatsApp Opened','Yes'),
+        () => h.call('updateLeadStatus_',h.spreadsheet,base.leadId,'Follow Up Needed'),
+        () => h.call('writeAutomaticStatus_',h.spreadsheet,base.leadId,'leads','No Response',false),
+        () => h.call('upsertSubscriber_',h.spreadsheet,h.lead({...base,marketingConsent:'Yes'})),
+        () => h.call('sendLeadConfirmation_',h.lead()),
+        () => h.call('writeReminderContact_',h.spreadsheet,base.leadId)
+      ];
+      for (const run of operations) {
+        assert.throws(run,error => error.code === 'TSG_AMBIGUOUS_LEAD_ID' && error.message.includes(tab));
+        assert.equal(h.w.held,false);
+      }
+      assert.deepEqual(sheetState(h),before);
+      assert.equal(h.w.writes.length,0); assert.equal(h.w.emails.length,0);
+      assert.equal(h.w.waits,h.w.releases);
+    }
+  });
+  test(`reminder loop skips target duplicate in ${tab}, continues unique IDs, never touches ambiguous rows`, () => {
+    for (const runner of ['runTSGFollowUpReminders','runFollowUpReminders_']) {
+      const h = harness(); h.seed();
+      if (tab === 'Email Subscribers') h.call('upsertSubscriber_',h.spreadsheet,h.lead({...base,marketingConsent:'Yes'}));
+      const copy = duplicateRows(h,tab,base.leadId);
+      copy[h.w.sheets.get(tab).rows[0].indexOf('Status')] = 'Paid';
+      const ambiguousBefore = sheetState(h);
+      const unique = {...base,leadId:'UNIQUE-DUE',email:'unique@example.test'};
+      assert.equal(h.post(unique).ok,true);
+      h.enabled(); h.w.writes.length = 0; h.w.emails.length = 0;
+      h.call(runner);
+      assert.equal(h.w.emails.length,1); assert.equal(h.w.emails[0].to,unique.email);
+      for (const [name, rows] of ambiguousBefore) assert.deepEqual(clone(h.w.sheets.get(name).rows.slice(0,rows.length)),rows);
+      tabs.forEach(name => assert.equal(h.get(name,'Status',unique.leadId),'Follow Up Needed'));
+      assert.ok(h.get('Follow Up Status','Last Contacted',unique.leadId));
+      assert.ok(h.w.writes.every(write => write.row === h.w.sheets.get(write.tab).rows.length));
+      h.call(runner); assert.equal(h.w.emails.length,1); assert.equal(h.w.held,false);
+    }
+  });
+  test(`target duplicate in ${tab} blocks missing-companion recovery before append or header migration`, () => {
+    const h = harness(); h.post({...base,marketingConsent:'Yes'});
+    duplicateRows(h,tab,base.leadId);
+    const missing = tab === 'Leads' ? 'Bookings' : 'Leads'; h.remove(missing);
+    const before = sheetState(h); h.w.writes.length = 0; h.w.emails.length = 0;
+    assert.equal(h.post({...base,name:'Changed participantless retry'}).ok,false);
+    assert.throws(() => h.call('appendFollowUp_',h.spreadsheet,h.lead()),/Ambiguous target Lead ID/);
+    assert.deepEqual(sheetState(h),before); assert.equal(h.w.writes.length,0); assert.equal(h.w.emails.length,0);
+  });
+}
+
+test('all-tab unrelated duplicates permit protected orphan recovery without changing any historical row', () => {
+  for (const survivor of tabs) for (const state of ['Confirmed','Paid','Replied']) for (const email of [base.email,'']) {
+    const h = harness(); h.post({...base,email});
+    const ambiguousRows = unrelatedDuplicates(h); const untouched = ambiguousRows();
+    h.set(survivor,'Status',state);
+    const survivorRow = clone(h.row(survivor));
+    for (const tab of tabs) if (tab !== survivor) {
+      const sheet = h.w.sheets.get(tab); const idColumn = sheet.rows[0].indexOf('Lead ID');
+      sheet.rows = sheet.rows.filter((row, index) => index === 0 || row[idColumn] !== base.leadId);
+    }
+    h.w.emails.length = 0;
+    assert.equal(h.post({...base,email,name:'Changed retry',notes:'Changed'}).status,'duplicate_ignored');
+    tabs.forEach(tab => {
+      assert.equal(h.get(tab,'Status'),state); assert.equal(h.get(tab,'Email'),email);
+      assert.equal(h.get(tab,'Notes'),base.notes);
+    });
+    assert.deepEqual(clone(h.row(survivor)),survivorRow);
+    assert.deepEqual(ambiguousRows(),untouched); assert.equal(h.w.emails.length,0);
+  }
+});
+
+test('reminders recheck newly ambiguous IDs before mail and after mail without later status/contact writes', () => {
+  for (const tab of allTabs) for (const phase of ['candidate-read','during-send']) {
+    const h = harness(); h.seed(); h.enabled();
+    if (tab === 'Email Subscribers') h.call('upsertSubscriber_',h.spreadsheet,h.lead({...base,marketingConsent:'Yes'}));
+    let reads = 0; let inserted = false;
+    const insert = () => { duplicateRows(h,tab,base.leadId); inserted = true; };
+    if (phase === 'during-send') h.w.mailHook = insert;
+    else h.w.readHook = event => {
+      if (event.tab === 'Follow Up Status' && event.row === 2 && event.width > 1 && ++reads === 2) {
+        h.w.readHook = null; insert();
+      }
+    };
+    h.w.writes.length = 0; h.w.emails.length = 0;
+    h.call('runFollowUpReminders_');
+    assert.equal(inserted,true); assert.equal(h.w.emails.length,phase === 'during-send' ? 1 : 0);
+    assert.equal(h.w.writes.length,0);
+    tabs.forEach(name => assert.equal(h.get(name,'Status'),'New Lead'));
+    assert.equal(h.get('Follow Up Status','Last Contacted'),'');
+    assert.equal(h.w.held,false);
+  }
+});
+
+test('reminder isolation does not swallow mail/service errors as duplicate-ID skips', () => {
+  const h = harness(); h.seed(); h.enabled(); h.w.failMail = true;
+  assert.throws(() => h.call('runFollowUpReminders_'),/MOCK mail failure/);
+  assert.equal(h.w.writes.length,0); assert.equal(h.w.emails.length,0); assert.equal(h.w.held,false);
+});
+
+test('subscriber email upsert cannot mutate a different ambiguous historical identity', () => {
+  const h = harness(); h.seed();
+  h.call('upsertSubscriber_',h.spreadsheet,h.lead({...base,marketingConsent:'Yes'}));
+  duplicateRows(h,'Bookings',base.leadId);
+  const before = sheetState(h); h.w.writes.length = 0; h.w.emails.length = 0;
+  assert.throws(() => h.call('upsertSubscriber_',h.spreadsheet,h.lead({...base,leadId:'OTHER-ID',marketingConsent:'Yes'})),/Ambiguous target Lead ID in Bookings/);
+  assert.deepEqual(sheetState(h),before); assert.equal(h.w.writes.length,0); assert.equal(h.w.emails.length,0);
+});
+
+test('consented booking doPost saves three rows before cross-ID subscriber ambiguity; unchanged retry never recovers subscriber/mail', () => {
+  for (const ambiguousTab of tabs) {
+    const h = harness();
+    const historicalId = 'TSG-OFFLINE-CONSENT-HISTORICAL';
+    const request = {...base, leadId: 'TSG-OFFLINE-CONSENT-PARTIAL',
+      email: 'consent-partial@example.test', marketingConsent: 'Yes',
+      name: 'Synthetic Partial Booking', notes: 'New request provenance; not confirmed'};
+    assert.deepEqual(h.post({...request, leadId: historicalId, name: 'Synthetic Historical Subscriber',
+      notes: 'Historical staff Notes; preserve provenance'}),
+    {ok: true, leadId: historicalId, status: 'New Lead'});
+    assert.equal(h.w.emails.length, 1, 'Fixture setup sends only one mocked acknowledgement');
+    tabs.forEach((tab, index) => h.set(tab, 'Status', ['Confirmed','Paid','Replied'][index], historicalId));
+    const copy = duplicateRows(h, ambiguousTab, historicalId);
+    copy[h.w.sheets.get(ambiguousTab).rows[0].indexOf('Status')] = 'Paid';
+    copy[h.w.sheets.get(ambiguousTab).rows[0].indexOf('Notes')] = 'Ambiguous companion Notes; preserve provenance';
+    const subscribers = h.w.sheets.get('Email Subscribers');
+    subscribers.rows[0].push('Notes');
+    subscribers.rows[1].push('Historical subscriber Notes; preserve provenance');
+    assert.equal(h.get('Email Subscribers', 'Email', historicalId), request.email);
+    const before = sheetState(h);
+    const counts = Object.fromEntries(before.map(([tab, rows]) => [tab, rows.length]));
+    assert.deepEqual(counts, Object.fromEntries(allTabs.map(tab =>
+      [tab, tab === 'Email Subscribers' ? 2 : tab === ambiguousTab ? 3 : 2])));
+    allTabs.forEach(tab => assert.equal(h.row(tab, request.leadId), undefined));
+    assert.equal(h.w.properties.has('TSG_AUTOMATIC_REMINDERS_ENABLED'), false);
+    h.w.writes.length = 0; h.w.emails.length = 0;
+
+    assert.deepEqual(h.post(request), {ok: false,
+      error: `Ambiguous target Lead ID in ${ambiguousTab}: multiple rows; staff review required.`});
+    assert.deepEqual(h.w.writes, tabs.map(tab => ({tab, kind: 'append'})),
+      'Only the three new booking rows are written before the cross-ID subscriber snapshot fails');
+    for (const [tab, rows] of before) {
+      assert.deepEqual(clone(h.w.sheets.get(tab).rows.slice(0, rows.length)), rows,
+        `${tab}: historical rows, headers, Notes, statuses and subscriber remain unchanged`);
+      assert.equal(h.w.sheets.get(tab).rows.length, counts[tab] + (tabs.includes(tab) ? 1 : 0));
+    }
+    tabs.forEach(tab => {
+      assert.equal(h.get(tab, 'Email', request.leadId), request.email);
+      assert.equal(h.get(tab, tab === 'Follow Up Status' ? 'Weekly Update Eligible' : 'Marketing Consent', request.leadId), 'Yes');
+      assert.equal(h.get(tab, 'Name', request.leadId), request.name);
+      assert.equal(h.get(tab, 'Notes', request.leadId), request.notes);
+      assert.equal(h.get(tab, 'Status', request.leadId), 'New Lead');
+      assert.match(h.get(tab, 'Legacy Review Required', request.leadId), /before confirmation\/payment/);
+    });
+    assert.equal(h.get('Follow Up Status', 'Last Contacted', request.leadId), '');
+    assert.equal(h.row('Email Subscribers', request.leadId), undefined);
+    assert.equal(h.w.emails.length, 0);
+    assert.equal(h.w.held, false);
+
+    const partial = sheetState(h); h.w.writes.length = 0;
+    assert.deepEqual(h.post(request), {ok: true, leadId: request.leadId, status: 'duplicate_ignored'});
+    assert.deepEqual(sheetState(h), partial, 'Unchanged same-ID retry changes no row or subscriber data');
+    assert.equal(h.w.writes.length, 0);
+    assert.equal(h.row('Email Subscribers', request.leadId), undefined);
+    assert.equal(h.w.emails.length, 0, 'Neither failed submission nor retry sends a mocked email');
+    assert.equal(h.w.created.length, 0); assert.equal(h.w.deleted.length, 0);
+    assert.equal(h.w.held, false);
+    assert.equal(h.w.waits, h.w.releases); assert.equal(h.w.flushes, h.w.releases);
   }
 });
 
@@ -545,4 +831,4 @@ test('two isolated executions contend on shared script lock; serialized submissi
 console.log(`\nPASS: ${checks} targeted offline groups (nested matrix cases included).`);
 console.log('Pinned legacy contract compared; only replacement legacy source executed as candidate. Strict/new participant contract is outside this suite.');
 console.log('Lock contention is simulated across isolated VM executions; no real parallel Apps Script/Google verification.');
-console.log('This suite performs no browser/network/Google/mail/trigger/deployment/Git actions. Candidate deployment is isolated v3 only; production is unchanged. See LEGACY_ISOLATED_ACCEPTANCE.md for the stopped Google run, not a successful acceptance matrix.');
+console.log('Local source only, not deployed verification. No browser/network/Google/real mail/trigger/deployment/Git-write actions; Git reads pin the legacy comparison.');

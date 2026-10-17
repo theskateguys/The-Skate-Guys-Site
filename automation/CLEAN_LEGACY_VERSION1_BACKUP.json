@@ -1,0 +1,30 @@
+{
+  "projectId": "1PwInosoMgf7Cp0mHH97SlAQ1j1BnJqs2ycis75awxIkBiAS6CPWWh7dU",
+  "version": 1,
+  "sourceSHA256LF": "8616a9d5fc098d1fe7408db21c25065b8748932b63bd6736b8f8acf1c84f7e35",
+  "sourceBackup": "output/acceptance/clean-legacy-verified/version-1-reviewed-source.zip",
+  "manifest": {
+    "timeZone": "America/Puerto_Rico",
+    "dependencies": {},
+    "exceptionLogging": "STACKDRIVER",
+    "runtimeVersion": "V8",
+    "webapp": {
+      "executeAs": "USER_DEPLOYING",
+      "access": "ANYONE_ANONYMOUS"
+    }
+  },
+  "properties": {
+    "TSG_LEADS_SPREADSHEET_ID": "1jt4AZNBfIv0SOwWzalfMRiTdqdjzpWn6--g91db11e8",
+    "TSG_AUTOMATIC_REMINDERS_ENABLED": "false"
+  },
+  "triggers": [],
+  "sheetBackup": {
+    "success": true,
+    "id": "1KB1l4goRbzy36Wlvf2mHeC0FnjYBYtTjbywys2vHo3U",
+    "title": "BACKUP BEFORE ACCEPTANCE - CLEAN SYNTHETIC LEGACY - 2026-10-16",
+    "mimeType": "application/vnd.google-apps.spreadsheet",
+    "url": "https://docs.google.com/spreadsheets/d/1KB1l4goRbzy36Wlvf2mHeC0FnjYBYtTjbywys2vHo3U/edit?usp=drivesdk",
+    "made_private": false
+  },
+  "verification": "Immutable Version 1 selected in Project History; copied Code.gs normalized to LF and SHA-256 matched; manifest copied separately; actual properties and Showing 0 triggers read."
+}

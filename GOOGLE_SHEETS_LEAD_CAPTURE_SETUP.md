@@ -2,12 +2,33 @@
 
 ## Latest Legacy Acceptance Gate
 
-Superseding status: the newly authorized clean synthetic project/Sheet and
-version-1 deployment exist, but no acceptance requests have run. Immutable source
-readback is blocked by Google Project History HTTP 500/browser timeouts. See
-[clean environment and resume procedure](automation/CLEAN_LEGACY_ACCEPTANCE.md).
+Current local revision isolates ambiguous target IDs rather than globally
+rejecting unrelated submissions. All ambiguous rows stay unchanged; protected
+statuses across companions remain protected, and schema/header failures remain
+global. The 62-group offline suite is separate from revised isolated Google
+acceptance. Historical global-guard evidence below remains valid for its version.
+The strict participant backend is NOT changed: duplicate-ID first-match tracking
+must be resolved by approved reconciliation or separately tested strict guarding
+before strict endpoint/website cutover, even if revised legacy acceptance passes.
+
+The clean synthetic version-1 baseline is COMPLETE: immutable source/binding,
+reminders=false and zero triggers verified, backups made, and 39 real browser
+POSTs plus nine deliberate companion removals/restorations passed. See
+[actual version-1 evidence](automation/CLEAN_LEGACY_VERSION1_ACCEPTANCE.md).
+The revised source has a separate synthetic-only version-2 deployment; use its
+[native response/row evidence](automation/LEGACY_DUPLICATE_ISOLATION_ACCEPTANCE.md)
+and [Astra review](automation/LEGACY_DUPLICATE_ISOLATION_REVIEW.md), not deployment
+success or mocks, for the acceptance scope. All real booking emails are blank,
+consent No; two subscriber rows are deliberate ambiguity fixtures, not sign-ups.
+Initial timed-out/health-payload attempts remain recorded as failures, not saved
+acknowledgements. The 90-second diagnostic harness is NOT the website timeout:
+keep 25000ms and accurate uncertain-delivery/unchanged-ID recovery wording.
 The separately authorized [read-only live audit](automation/LIVE_SHEET_INTEGRITY_AUDIT.md)
-is complete: duplicate IDs and five conflicting-status groups block cutover.
+is complete: duplicate IDs and five conflicting-status groups need an approved
+handling plan. Native legacy latency above 25 seconds, unchanged strict ambiguity
+handling, and unsafe production writers/trigger currently block release.
+The consented cross-ID subscriber collision remains a manual-recovery limit;
+full-flow offline coverage does not authorize or verify an email-bearing Google test.
 No live repair, trigger change, endpoint switch or website release occurred.
 The version-3 attempt described below is historical, not the new clean deployment.
 
@@ -22,8 +43,9 @@ save/tracking/retry/repair/protection success matrix is NOT complete. See
 Do not clean up copied historical records, weaken the guard or retarget shared
 script properties automatically. The dedicated synthetic Sheet and separate
 project have since been approved and created; resume only under their exact
-binding after the pending source/settings verification. Production must pass
-staff reconciliation and a fresh header/ID/status integrity audit before any
+binding after independently verifying source/settings. Production must pass
+an ambiguous-ID inventory and fresh header integrity audit before a legacy-only
+decision; strict migration still needs reconciliation or accepted strict quarantine before
 installation; no live Sheet write is authorized here. Strict production
 endpoint, website and active live reminder scheduling remain unchanged.
 
@@ -95,7 +117,7 @@ The canonical production sequence and rollback gates are in [BOOKING_FLOW_ROLLOU
 
 1. Revalidate production identities, owners, versions, properties and triggers, then obtain approval for a fresh backup of the live Sheet and production sources/settings. Inspect headers for duplicates/renamed columns. The inspected live `TSG_LEADS_SPREADSHEET_ID` property is **ABSENT**; legacy code uses the bound-Sheet fallback. There is no existing property to retain. Do not set an explicit verified live Sheet ID until after the approved backup and the approved legacy-compatibility decision; do not substitute a copied test Sheet or replacement database.
 2. Before **any production editor replacement or setup**, separately authorize disabling the actual active legacy `runTSGFollowUpReminders` trigger. Audit other owners' triggers and verify in-flight reminder executions have finished/stopped under the approved quiescence procedure; deleting a trigger does not cancel an execution. Preserve unrelated triggers and the recorded reminder schedule. Setting `TSG_AUTOMATIC_REMINDERS_ENABLED=false` alone cannot disable the old code. Do not invoke old setup/install/reminder functions that could recreate the trigger.
-3. The [legacy replacement](automation/legacy-compatibility/README.md) passes 42 offline groups. Historical isolated version 3 stopped on duplicates; new clean synthetic version 1 is deployed but acceptance has not started. Complete its source/settings verification, backups and acceptance before production decisions. Under separate live authorization, pause reminders and quiesce writers, approve a staff record-level reconciliation mapping for audited duplicates/status conflicts, back up and execute only approved repairs, then require a clean fresh integrity/header audit before installation. Preserve all records/Notes/statuses/provenance. Only then authorize updating the existing production legacy deployment, preserving its URL and old payload/response envelopes, approved optional blank booking email, and guarded status writers. Verify deployed source/version and status safety. Local mocks or a second URL alone do not make live writers safe; do not replace the legacy deployment with the strict participant-only server. Its additive schema includes one `Legacy Review Required` column in each status tab, preserving existing data. Follow [pause, verify and restore](automation/PRODUCTION_REMINDER_CUTOVER.md); reminders remain off during cutover, with restoration separately approved.
+3. The revised [legacy replacement](automation/legacy-compatibility/README.md) passes 62 offline groups with target-ID quarantine. Read the latest exact-version Google evidence separately; complete source/settings verification, backups, clean cases and ambiguity-isolation acceptance before production decisions. For a compatibility-only update, separately authorize reminder pause/writer quiescence and fresh header/ambiguous-ID inventory checks. Staff may leave historical ambiguous rows quarantined and handled manually only under the accepted sole-writer contract; do not infer permission to reconcile conflicting statuses. Any repair requires separately approved backups and a record-level mapping preserving every record/Note/status/provenance. Updating the legacy deployment remains a separately approved action, preserving its URL, payload contract and optional blank booking email. Verify source/version/status safety and drain old executions. Before strict migration, require approved reconciliation plus a fresh integrity audit OR separately implemented/accepted strict ambiguity guarding; current strict first-match tracking is not covered. Do not replace the legacy handler with the strict participant-only server. Additive schema includes one `Legacy Review Required` column in each status tab, preserving data. Follow [pause, verify and restore](automation/PRODUCTION_REMINDER_CUTOVER.md); restoration needs separate approval.
 4. Only after legacy writers are verified safe and reminders are disabled/quiescent, authorize installing final strict `automation/google-apps-script/Code.gs` plus `EmailLogo.gs` in the **same verified production script project**, preserving the compatibility-safe legacy deployment/version. Exclude preview/profiling/test helpers and audit Head/manual functions. At this approved stage, explicitly set the verified live `TSG_LEADS_SPREADSHEET_ID` and `TSG_AUTOMATIC_REMINDERS_ENABLED=false` for code that honors it. Separately approved additive setup must preserve existing rows, statuses, Notes and custom columns/formulas, append missing headers on the right, and compare against the fresh backup. Verify the America/Port_of_Spain timezone.
 5. Only then authorize a **new versioned strict booking Web App deployment in that same project**, with approved owner/access settings, retaining the compatibility-safe legacy URL. Follow the canonical runbook for separately approved release/fallback binding, staging, endpoint switch and production acceptance. The strict server requires participant details and cannot replace the legacy package-only contract while old forms/open tabs use it. The production endpoint string in `assets/lead-config.js` remains unchanged in this review; its review timeout is 25000ms, so the file itself is not unchanged. Reminder activation remains a separate decision.
 

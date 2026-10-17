@@ -1,5 +1,10 @@
 # Clean Synthetic Legacy Acceptance: Deployment Prepared, Tests Blocked
 
+Historical preparation snapshot from eff7a9be. The editor later recovered and
+immutable version 1 was verified. Its completed 39-request real Google results
+are in CLEAN_LEGACY_VERSION1_ACCEPTANCE.md/json; do not use the blocked status
+below as the current acceptance result. The original account is retained intact.
+
 This is isolated preparation, NOT a passing acceptance result or production
 verification. No acceptance POST, fixture seeding, email or reminder execution
 was performed in this new environment during this attempt.

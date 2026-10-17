@@ -2,7 +2,16 @@
 
 ## Status
 
-Follow-up from b0709dd: optional blank legacy booking email was explicitly
+Current local revision: target-ID isolation replaces the earlier global
+duplicate-ID rejection. Global schema/header validation remains; any ambiguous
+requested ID across the four tabs fails before target writes, leaving its rows
+untouched, while unrelated unique IDs can proceed. Protected/conflicting statuses
+are not reconciled or overwritten. The expanded 62-group offline suite passes;
+actual isolated deployment/acceptance is a separate evidence gate. The historical
+version-3/global-guard account below is retained for provenance, not as the current
+candidate contract. Production code/data/trigger/endpoint remain unchanged.
+
+Historical version-3 account: follow-up from b0709dd, optional blank legacy booking email was explicitly
 approved; 42 offline groups pass. Exact reviewed source is deployed only in the
 isolated project as version 3. Its first native Google request was rejected for
 pre-existing copied-Sheet duplicate IDs; all further testing stopped, no rows or
@@ -10,10 +19,10 @@ statuses changed. Successful legacy acceptance remains BLOCKED. See
 `LEGACY_ISOLATED_ACCEPTANCE.md` for source/backup/destination evidence, the stop
 condition and next approval. Do not treat deployment alone as acceptance or
 clean up historical rows without approval. Audit production ID/header integrity
-before any future installation; one historical duplicate intentionally blocks
-all mutations, including unrelated new saves.
+before any future installation. That earlier candidate intentionally blocked
+all mutations for any duplicate; the local revision above changes only that scope.
 
-Read-only production inspection completed on 16 October 2026. The replacement is in `legacy-compatibility/Code.gs`, with 42 focused offline groups passing in `check-legacy-compatibility.mjs`, including the Astra pre-send-marker finding and optional blank booking email. It is NOT deployed to production, and its isolated success matrix remains incomplete as recorded above. Install it instead of the original legacy `Code.gs`, never alongside the strict handler or as a second file with duplicate globals. Do not release the new website while the live retained writer remains unguarded.
+Read-only production inspection completed on 16 October 2026. The revised replacement is in `legacy-compatibility/Code.gs`, with 62 offline groups in `check-legacy-compatibility.mjs`. Exact-version native evidence is in `CLEAN_LEGACY_VERSION1_ACCEPTANCE.md` and `LEGACY_DUPLICATE_ISOLATION_ACCEPTANCE.md`; failures and latency concerns remain explicit. It is NOT deployed to production. Any accepted installation replaces original legacy `Code.gs`, never sits beside the strict handler or duplicate globals. Do not release the website while the live retained writer remains unguarded; strict duplicate handling and latency are independent release gates.
 
 Production reminders are currently ACTIVE, not disabled. This inspection changed no trigger or setting. Disabling the existing production reminder trigger requires an explicit authorized operational step; setting a property alone cannot disable version 2, which never reads that property. Isolated test reminders remain a separate disabled configuration.
 

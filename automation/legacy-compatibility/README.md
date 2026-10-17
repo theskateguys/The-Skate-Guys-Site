@@ -1,11 +1,12 @@
 # Legacy Compatibility Candidate
 
-Guarded replacement, NOT deployed to production. A separately authorized isolated
-version-3 deployment now contains this source, including approved optional blank
-booking email. Its first real request was rejected because copied historical
-records contain duplicate IDs; acceptance stopped without writes. See
-`../LEGACY_ISOLATED_ACCEPTANCE.md`. No further deployment/test is authorized by
-these notes. `Code.gs` replaces the legacy project's `Code.gs`, never an additional
+Guarded replacement, NOT deployed to production. The historical isolated
+version-3 attempt used the earlier global duplicate guard and stopped on copied
+historical duplicates; see `../LEGACY_ISOLATED_ACCEPTANCE.md`. The current local
+revision isolates duplicate rejection to the ambiguous target ID across all four
+tabs while preserving global schema/header guards. Its isolated Google evidence
+must be read separately; local tests alone do not establish deployment or acceptance.
+No production deployment/test is authorized by these notes. `Code.gs` replaces the legacy project's `Code.gs`, never an additional
 file beside strict `Code.gs`. It has no EmailLogo.gs or HTML-letterhead dependency.
 
 Baseline: review branch `codex/single-session-booking-review`, base `02639f8`.
@@ -57,8 +58,11 @@ legacy tracking response is an event acknowledgement, not proof of stored status
 
 Headers are mapped, never reordered/relabelled. Missing nonidentity columns are
 appended; populated sheets missing identity/status headers, blank/duplicate or
-case/whitespace-ambiguous headers, and duplicate IDs within any tab fail for staff
-review. Existing custom/formula cells are preserved. Subscriber updates touch only
+case/whitespace-ambiguous headers fail globally for staff review. Multiple rows
+for the requested ID in ANY tab reject that identity before target writes; all
+its rows remain untouched. Unrelated unique IDs are not blocked by historical
+duplicates. Email-address subscriber upserts also check ambiguity of the existing
+subscriber's identity. Existing custom/formula cells are preserved. Subscriber updates touch only
 owned nonidentity profile cells and skip formulas; original identity/time/status
 and consent are not rewritten.
 
@@ -82,7 +86,7 @@ edits, reordered/additive/custom headers, formulas, ambiguity/duplicate rejectio
 direct helper locks, flush ordering and two-VM simulated lock contention/retries.
 It does not test or change the strict/new participant contract.
 
-The 42-group suite is in-memory, not isolated Google acceptance or production
+The expanded 62-group suite is in-memory, not isolated Google acceptance or production
 verification. The separate stopped Google run proves fail-closed rejection and
 no writes, NOT the successful-save/protected-status matrix. The lock serializes
 cooperating scripts; it is not an ACID Sheet
@@ -91,14 +95,46 @@ are repaired on retry. Sheet UI edits/other script projects bypass this lock; a
 manual edit between the final read and write/send cannot be made atomic, and a
 message already sent cannot be recalled. Staff must reconcile partial mail or
 subscriber failures; duplicates deliberately do not resend, and no exactly-once
-mail guarantee or delivery ledger is introduced. Whole-sheet ID/header scans
+mail guarantee or delivery ledger is introduced. Target ID/header scans
 favor safety; production volume/quota/timeout behavior is not measured here.
+
+### Manual-Recovery Limit
+
+This is an Astra-review-led test/docs follow-up to the parent review, not a second
+Astra review or a source-code fix. The full `doPost` offline regression uses only
+canonical mock identities `TSG-OFFLINE-CONSENT-HISTORICAL` and
+`TSG-OFFLINE-CONSENT-PARTIAL`, with `consent-partial@example.test`. It covers an
+affirmatively consented new booking whose email matches a historical subscriber
+with a different Lead ID ambiguous in a status tab (each of the three tabs is
+checked within one group). All three new booking rows are appended before the
+subscriber's cross-ID snapshot throws and `doPost` returns `ok: false`. Historical
+rows, subscriber data, Notes, provenance and statuses remain unchanged, and no
+mock email is sent by the failed submission. An unchanged same-Lead-ID retry
+returns `duplicate_ignored` with no row changes, subscriber recovery or email.
+
+Storage may therefore complete while subscription/acknowledgement fails. Keep the
+same Lead ID on retry; never use a new ID to bypass this failure. The customer
+request is not confirmed. Hold for staff review: separately inspect consent,
+ownership and the ambiguous identity mapping under the approved backup and
+reconciliation process. This documents an operational limit, not a new automated
+flow or business policy. It authorizes no automatic marketing, resend, merge or
+status downgrade; preserve Notes and provenance. No automatic subscriber/email
+recovery is provided by the duplicate path.
+
+These regression tests are offline only. The email-bearing Google case is NOT
+authorized and has NOT been run as part of this follow-up. Source `Code.gs`, the
+ongoing isolated matrix and production remain unchanged by this test/docs work;
+the parent owns other documentation and acceptance evidence updates.
 
 The parent's production recheck reports the legacy Head reminder still active;
 this source has not changed it. Operational pause/owner/in-flight audit and any
 safe restoration require the parent's `../PRODUCTION_REMINDER_CUTOVER.md` process
 and separate explicit authorization. Updating a deployment does not stop old
 in-flight executions. No production release decision is implied by passing mocks.
-Global ID/header integrity must be audited BEFORE any production installation:
-one historical duplicate can intentionally block unrelated new submissions. Never
-silently deduplicate history or weaken the guard to manufacture acceptance.
+Audit header integrity and inventory ambiguous IDs BEFORE production decisions.
+The revised legacy guard can leave ambiguous identities quarantined without
+blocking unrelated requests, subject to actual isolated acceptance and final
+release review. Conflicting statuses are not permission to rewrite records;
+Replied/Confirmed/Paid or unknown staff states remain protected across companions.
+Staff reconciliation and the strict backend's own ambiguity behavior remain
+separate gates. Never silently deduplicate or repair historical records.

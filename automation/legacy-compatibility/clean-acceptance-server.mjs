@@ -4,9 +4,11 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { parseArgs } from 'node:util';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { createAcceptanceFixtures } from './acceptance-fixtures.mjs';
 
-const { values } = parseArgs({options: {endpoint: {type: 'string'}}});
+const { values } = parseArgs({options: {endpoint: {type: 'string'}, 'baseline-v1': {type: 'boolean', default: false}}});
 const approvedEndpoint = 'https://script.google.com/macros/s/AKfycbyWtXY4AYK4wjgLeDDn60APzI_fF1VYpBdZ0PS30eYqEoBrvzVmqKQxYjR38jwMZF0MLg/exec';
 const excluded = [
   'AKfycbymjXSnhFomwbFB7aHQXMffD73hKy7dXr80rixGOuDumRcnLoPOjN6L8bj1rGUMUVkC8g',
@@ -20,7 +22,9 @@ assert.match(values.endpoint, /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-
 assert.ok(!excluded.some(id => values.endpoint.includes(id)), 'Production and all old test deployments forbidden');
 const timestamp = '2026-10-17T00:30:00.000Z';
 const fixtures = createAcceptanceFixtures(timestamp);
-const source = (await readFile(new URL('Code.gs', import.meta.url), 'utf8')).replace(/\r\n?/g, '\n');
+const source = (values['baseline-v1'] ? execFileSync('git', ['show', 'eff7a9be:automation/legacy-compatibility/Code.gs'],
+  {cwd: fileURLToPath(new URL('../../', import.meta.url)), encoding: 'utf8'}) :
+  await readFile(new URL('Code.gs', import.meta.url), 'utf8')).replace(/\r\n?/g, '\n');
 const sourceSHA256 = createHash('sha256').update(source).digest('hex');
 assert.equal(sourceSHA256, '8616a9d5fc098d1fe7408db21c25065b8748932b63bd6736b8f8acf1c84f7e35');
 const manifest = {

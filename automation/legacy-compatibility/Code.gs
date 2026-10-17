@@ -140,13 +140,6 @@ function inspectSheet_(sheet, definition) {
   if (sheet.getLastRow() < 2) return;
   const required = definition.name === TSG_SHEETS.subscribers.name ? ['Lead ID','Email','Status'] : ['Lead ID','Status'];
   if (required.some(header => !headers.includes(header))) throw new Error('Missing identity/status header; staff review required.');
-  const ids = sheet.getRange(2, headers.indexOf('Lead ID') + 1, sheet.getLastRow() - 1, 1).getDisplayValues().flat();
-  const seen = Object.create(null);
-  ids.forEach(value => {
-    const id = String(value).trim();
-    if (id && seen[id]) throw new Error('Duplicate Lead ID in sheet; staff review required.');
-    if (id) seen[id] = true;
-  });
 }
 function preflight_(spreadsheet) {
   Object.keys(TSG_SHEETS).forEach(key => inspectSheet_(spreadsheet.getSheetByName(TSG_SHEETS[key].name), TSG_SHEETS[key]));
@@ -172,7 +165,11 @@ function record_(sheet, leadId) {
   if (idColumn < 0) throw new Error('Missing identity/status header; staff review required.');
   const ids = sheet.getRange(2, idColumn + 1, sheet.getLastRow() - 1, 1).getDisplayValues().flat();
   const matches = ids.map((id, i) => String(id).trim() === String(leadId).trim() ? i + 2 : 0).filter(Boolean);
-  if (matches.length > 1) throw new Error('Duplicate Lead ID in sheet; staff review required.');
+  if (matches.length > 1) {
+    const error = new Error(`Ambiguous target Lead ID in ${sheet.getName()}: multiple rows; staff review required.`);
+    error.code = 'TSG_AMBIGUOUS_LEAD_ID';
+    throw error;
+  }
   if (!matches.length) return null;
   const row = matches[0];
   const values = sheet.getRange(row, 1, 1, headers.length).getValues()[0];
@@ -182,7 +179,12 @@ function record_(sheet, leadId) {
 }
 function snapshot_(spreadsheet, leadId) {
   preflight_(spreadsheet);
-  return TSG_STATUS_KEYS.map(key => record_(spreadsheet.getSheetByName(TSG_SHEETS[key].name), leadId));
+  // Resolve every companion before any target write, including subscriber-only ambiguity.
+  const records = {};
+  Object.keys(TSG_SHEETS).forEach(key => {
+    records[key] = record_(spreadsheet.getSheetByName(TSG_SHEETS[key].name), leadId);
+  });
+  return TSG_STATUS_KEYS.map(key => records[key]);
 }
 function status_(record) { return record ? String(record.data['Status'] || '').trim() : ''; }
 function inheritedStatus_(snapshot) {
@@ -217,6 +219,7 @@ function legacyValues_(lead) {
 }
 function appendMissingRecord_(spreadsheet, definition, leadId, values) {
   return withScriptLock_(() => {
+    snapshot_(spreadsheet, leadId);
     const sheet = ensureSheet_(spreadsheet, definition);
     if (record_(sheet, leadId)) return false;
     const headers = headers_(sheet);
@@ -261,6 +264,7 @@ function appendFollowUp_(spreadsheet, lead) {
 function writeNonStatusCell_(record, header, value) {
   return withScriptLock_(() => {
     if (['Status','Lead ID','Last Contacted'].includes(header)) throw new Error('Use a guarded status/identity writer.');
+    snapshot_(record.sheet.getParent(), record.data['Lead ID']);
     const headers = headers_(record.sheet);
     const column = headers.indexOf(header) + 1;
     if (!column) throw new Error('Missing write header; staff review required.');
@@ -275,11 +279,16 @@ function writeNonStatusCell_(record, header, value) {
 function upsertSubscriber_(spreadsheet, lead) {
   return withScriptLock_(() => {
     if (!lead.email || lead.marketingConsent !== 'Yes') return;
-    const sheet = ensureSheet_(spreadsheet, TSG_SHEETS.subscribers);
-    const headers = headers_(sheet);
-    const emails = sheet.getLastRow() > 1 ? sheet.getRange(2, headers.indexOf('Email') + 1, sheet.getLastRow() - 1, 1).getDisplayValues().flat() : [];
+    snapshot_(spreadsheet, lead.leadId);
+    let sheet = spreadsheet.getSheetByName(TSG_SHEETS.subscribers.name);
+    const existingHeaders = sheet ? headers_(sheet) : [];
+    const emails = sheet && sheet.getLastRow() > 1 ? sheet.getRange(2, existingHeaders.indexOf('Email') + 1, sheet.getLastRow() - 1, 1).getDisplayValues().flat() : [];
     const matches = emails.map((value, i) => String(value).trim().toLowerCase() === lead.email.toLowerCase() ? i + 2 : 0).filter(Boolean);
     if (matches.length > 1) throw new Error('Duplicate subscriber email; staff review required.');
+    // Email upserts may address a different historical ID; isolate that identity too.
+    if (matches.length) snapshot_(spreadsheet, sheet.getRange(matches[0], existingHeaders.indexOf('Lead ID') + 1).getValue());
+    sheet = ensureSheet_(spreadsheet, TSG_SHEETS.subscribers);
+    const headers = headers_(sheet);
     const values = {'Timestamp': lead.timestamp, 'Lead ID': lead.leadId, 'Email': lead.email,
       'Name': lead.name, 'Location': lead.location, 'Source Page': lead.sourcePage, 'Tags': lead.tags,
       'Marketing Consent': 'Yes', 'Status': 'Subscribed', 'Last Updated': new Date()};
@@ -402,20 +411,25 @@ function runFollowUpReminders_() {
     const headers = headers_(sheet);
     const ids = sheet.getRange(2, headers.indexOf('Lead ID') + 1, sheet.getLastRow() - 1, 1).getDisplayValues().flat();
     ids.filter(Boolean).forEach(leadId => {
-      const candidate = reminderCandidate_(spreadsheet, leadId);
-      if (!candidate) return;
-      const fresh = reminderCandidate_(spreadsheet, leadId);
-      if (!fresh || fresh.signature !== candidate.signature || !automaticRemindersEnabled_()) return;
-      MailApp.sendEmail({to: fresh.email, replyTo: TSG_CONFIG.replyToEmail, name: TSG_CONFIG.businessName,
-        subject: 'Still ready to roll with TSG?',
-        body: `Hi ${fresh.name || 'there'},\n\nYour legacy booking request (${leadId}) is not a confirmed class. Please reply so TSG can collect participant details and check availability. The current single session is TT$80 per person / 75 minutes / skate rental included; historical package preferences are not an agreed price. No payment has been taken.\n\nThe Skate Guys`});
-      // A human can edit during sendEmail; never overwrite their resulting state.
-      const after = reminderCandidate_(spreadsheet, leadId);
-      if (!after || after.signature !== fresh.signature) return;
-      updateLeadStatus_(spreadsheet, leadId, 'Follow Up Needed');
-      const latest = reminderCandidate_(spreadsheet, leadId);
-      if (!latest) return;
-      writeReminderContact_(spreadsheet, leadId);
+      try {
+        const candidate = reminderCandidate_(spreadsheet, leadId);
+        if (!candidate) return;
+        const fresh = reminderCandidate_(spreadsheet, leadId);
+        if (!fresh || fresh.signature !== candidate.signature || !automaticRemindersEnabled_()) return;
+        MailApp.sendEmail({to: fresh.email, replyTo: TSG_CONFIG.replyToEmail, name: TSG_CONFIG.businessName,
+          subject: 'Still ready to roll with TSG?',
+          body: `Hi ${fresh.name || 'there'},\n\nYour legacy booking request (${leadId}) is not a confirmed class. Please reply so TSG can collect participant details and check availability. The current single session is TT$80 per person / 75 minutes / skate rental included; historical package preferences are not an agreed price. No payment has been taken.\n\nThe Skate Guys`});
+        // A human can edit during sendEmail; never overwrite their resulting state.
+        const after = reminderCandidate_(spreadsheet, leadId);
+        if (!after || after.signature !== fresh.signature) return;
+        updateLeadStatus_(spreadsheet, leadId, 'Follow Up Needed');
+        const latest = reminderCandidate_(spreadsheet, leadId);
+        if (!latest) return;
+        writeReminderContact_(spreadsheet, leadId);
+      } catch (error) {
+        // One ambiguous identity must not starve unrelated reminders; schema failures still abort.
+        if (error.code !== 'TSG_AMBIGUOUS_LEAD_ID') throw error;
+      }
     });
   });
 }

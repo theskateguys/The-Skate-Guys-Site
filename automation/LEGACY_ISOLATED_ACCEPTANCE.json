@@ -1,0 +1,316 @@
+{
+  "baseCommit": "b0709ddf7c6f07961b8a04ea192459b37785c6c1",
+  "status": "BLOCKED_STOPPED_NO_SUCCESSFUL_SAVE",
+  "scope": "Actual isolated Google browser rejection, not completed legacy acceptance or production verification",
+  "authorization": {
+    "isolatedDeployment": true,
+    "blankEmailFixtures": true,
+    "optionalLegacyBookingEmailChange": true,
+    "productionActions": false
+  },
+  "deployment": {
+    "projectId": "1qXXCOqzdedWiuwjdR1bcJHp7T517fbXUlFl_s9NVfNKlytGmNpWrVKU9",
+    "copiedSheetId": "1CuA0uWDnUu-EK0XseYxNNpEK4lX5SZ7S5UuTdy-HCyM",
+    "deploymentId": "AKfycbxNvwUUKELEdP4kQIMxdUapXfLu7XdG0EOLsX_o_fjD8EmVq4U7PHhg41j73Fmg-ZOwKg",
+    "version": 3,
+    "displayedTime": "16 October 2026 8:06 PM GMT-04",
+    "sourceSHA256LF": "8616a9d5fc098d1fe7408db21c25065b8748932b63bd6736b8f8acf1c84f7e35",
+    "immutableSourceMatchedExactly": true,
+    "executeAs": "info.theskateguys@gmail.com",
+    "access": "Anyone",
+    "existingStrictDeploymentsUpdated": false
+  },
+  "backup": {
+    "sheetId": "1e2IzT0k6p5mS7JxmSwGcsgqO9VDIq2V5w7RM9vSfcfE",
+    "boundProjectId": "1Qw1kW6WbNUlxx2FPhw6fzNynbeNz4ulY49WXItOOB5Kxz51Y1YDYRNXJ",
+    "codeAndLogoCopiedExactly": true,
+    "baselineCellsMatch": true,
+    "privateBaselineSHA256": "8d80d006fd61b9d7060cca397b078849f47132b55102afa7155dbcf6718d3f88"
+  },
+  "reminders": {
+    "beforeProperty": "false",
+    "afterProperty": "false",
+    "beforeReminderTriggers": 0,
+    "afterReminderTriggers": 0,
+    "unrelatedOnOpenPreserved": true,
+    "setupInstallOrRunnerInvocations": 0
+  },
+  "fixture": {
+    "leadId": "LEGACY-ACCEPTANCE-20261017T001000000Z-FRESH",
+    "payload": {
+      "action": "lead_submit",
+      "leadType": "booking",
+      "leadId": "LEGACY-ACCEPTANCE-20261017T001000000Z-FRESH",
+      "timestamp": "2026-10-17T00:10:00.000Z",
+      "name": "TEST ONLY Synthetic Legacy Acceptance",
+      "whatsapp": "TEST ONLY - DO NOT CONTACT",
+      "email": "",
+      "marketingConsent": "No",
+      "location": "TEST ONLY Tobago",
+      "skaterType": "Child",
+      "package": "TEST ONLY historical package preference - reconcile; no agreed price",
+      "rentalsNeeded": "Yes",
+      "preferredTime": "TEST ONLY Saturday afternoon preference",
+      "sourcePage": "old-book.html",
+      "utmSource": "TEST ONLY",
+      "utmMedium": "acceptance",
+      "utmCampaign": "LEGACY-ACCEPTANCE",
+      "referrer": "TEST ONLY offline fixture",
+      "notes": "TEST ONLY historical request; no appointment, price or payment promise.",
+      "tags": "TEST ONLY LEGACY-ACCEPTANCE",
+      "website": ""
+    },
+    "trackingPayload": {
+      "action": "whatsapp_opened",
+      "leadId": "LEGACY-ACCEPTANCE-20261017T001000000Z-FRESH"
+    },
+    "expectedSaveResponseAfterApproval": {
+      "ok": true,
+      "leadId": "LEGACY-ACCEPTANCE-20261017T001000000Z-FRESH",
+      "status": "New Lead"
+    },
+    "expectedTrackingResponse": {
+      "ok": true,
+      "leadId": "LEGACY-ACCEPTANCE-20261017T001000000Z-FRESH",
+      "status": "WhatsApp Opened"
+    },
+    "expectedRetryResponseAfterApproval": {
+      "ok": true,
+      "leadId": "LEGACY-ACCEPTANCE-20261017T001000000Z-FRESH",
+      "status": "duplicate_ignored"
+    }
+  },
+  "actualBrowserResponse": {
+    "pass": false,
+    "case": "FRESH",
+    "action": "fresh",
+    "leadId": "LEGACY-ACCEPTANCE-20261017T001000000Z-FRESH",
+    "expected": "New Lead",
+    "postCount": 1,
+    "violations": [],
+    "httpStatus": 200,
+    "type": "cors",
+    "json": {
+      "ok": false,
+      "error": "Duplicate Lead ID in sheet; staff review required."
+    },
+    "responseTimeMs": 4314.899999991059,
+    "evidenceScope": "Native browser Google response only; parent must read back rows/statuses before continuing. No mocks, no automatic retry."
+  },
+  "before": {
+    "Leads": {
+      "dataRows": 21,
+      "statusCounts": {
+        "Follow Up Needed": 5,
+        "New Lead": 12,
+        "Replied": 4
+      },
+      "fixtureMatches": 0
+    },
+    "Bookings": {
+      "dataRows": 18,
+      "statusCounts": {
+        "Follow Up Needed": 9,
+        "New Lead": 9
+      },
+      "fixtureMatches": 0
+    },
+    "Email Subscribers": {
+      "dataRows": 7,
+      "statusCounts": {
+        "Subscribed": 7
+      },
+      "fixtureMatches": 0
+    },
+    "Follow Up Status": {
+      "dataRows": 18,
+      "statusCounts": {
+        "Follow Up Needed": 14,
+        "New Lead": 4
+      },
+      "fixtureMatches": 0
+    }
+  },
+  "after": {
+    "Leads": {
+      "dataRows": 21,
+      "statusCounts": {
+        "Follow Up Needed": 5,
+        "New Lead": 12,
+        "Replied": 4
+      },
+      "fixtureMatches": 0
+    },
+    "Bookings": {
+      "dataRows": 18,
+      "statusCounts": {
+        "Follow Up Needed": 9,
+        "New Lead": 9
+      },
+      "fixtureMatches": 0
+    },
+    "Email Subscribers": {
+      "dataRows": 7,
+      "statusCounts": {
+        "Subscribed": 7
+      },
+      "fixtureMatches": 0
+    },
+    "Follow Up Status": {
+      "dataRows": 18,
+      "statusCounts": {
+        "Follow Up Needed": 14,
+        "New Lead": 4
+      },
+      "fixtureMatches": 0
+    }
+  },
+  "fullBoundedCellDataUnchanged": true,
+  "fullIDScan": {
+    "rangeRows": "2:1000",
+    "beforeDuplicateGroups": [
+      {
+        "tab": "Leads",
+        "duplicateGroups": [
+          {
+            "rows": [
+              2,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
+        ],
+        "populatedIDCount": 21
+      },
+      {
+        "tab": "Bookings",
+        "duplicateGroups": [
+          {
+            "rows": [
+              2,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
+        ],
+        "populatedIDCount": 18
+      },
+      {
+        "tab": "Email Subscribers",
+        "duplicateGroups": [],
+        "populatedIDCount": 7
+      },
+      {
+        "tab": "Follow Up Status",
+        "duplicateGroups": [
+          {
+            "rows": [
+              2,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
+        ],
+        "populatedIDCount": 18
+      }
+    ],
+    "afterDuplicateGroups": [
+      {
+        "tab": "Leads",
+        "populatedIDCount": 21,
+        "duplicateGroups": [
+          {
+            "rows": [
+              2,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
+        ],
+        "fixtureMatches": 0
+      },
+      {
+        "tab": "Bookings",
+        "populatedIDCount": 18,
+        "duplicateGroups": [
+          {
+            "rows": [
+              2,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
+        ],
+        "fixtureMatches": 0
+      },
+      {
+        "tab": "Email Subscribers",
+        "populatedIDCount": 7,
+        "duplicateGroups": [],
+        "fixtureMatches": 0
+      },
+      {
+        "tab": "Follow Up Status",
+        "populatedIDCount": 18,
+        "duplicateGroups": [
+          {
+            "rows": [
+              2,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          }
+        ],
+        "fixtureMatches": 0
+      }
+    ]
+  },
+  "tests": {
+    "freshSave": "BLOCKED",
+    "failClosedNoWrite": "VERIFIED",
+    "whatsappOpened": "NOT_RUN",
+    "unchangedRetry": "NOT_RUN",
+    "partialRecovery": "NOT_RUN",
+    "protectedStatusMatrix": "NOT_RUN",
+    "offlineGroupsPassed": 42
+  },
+  "email": {
+    "fixtureEmail": "",
+    "marketingConsent": "No",
+    "postAttemptSenderReferenceSearch": 0,
+    "query": "in:anywhere \"LEGACY-ACCEPTANCE-20261017T001000000Z\"",
+    "scope": "Post-attempt sender-account reference search plus blank-email/source failure-path check; not global inbox proof."
+  },
+  "externalActions": {
+    "browserPostAttempts": 1,
+    "sheetFixtureWrites": 0,
+    "newTestRows": 0,
+    "newTestEmailsObserved": 0,
+    "productionWrites": 0,
+    "productionEndpointChanges": 0,
+    "productionDeployments": 0,
+    "liveTriggerChanges": 0,
+    "pushes": 0,
+    "merges": 0
+  },
+  "processFinding": "Baseline duplicate-ID analysis was missed before first POST; fail-closed backend detected pre-existing groups. Future preflight must scan all used ID columns before submission.",
+  "stopDecision": "No more requests/seed/repair/cleanup. Ask approval for a dedicated clean synthetic acceptance Sheet AND separate isolated script project, or staff-reviewed copied-Sheet repair, before a new run. Never retarget the existing test project's shared Sheet property, which affects retained strict v1/v2 deployments."
+}

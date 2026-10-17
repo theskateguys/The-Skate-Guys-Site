@@ -134,7 +134,7 @@ function harness(code = source, w = world()) {
 
 test('pinned source and exact known legacy envelopes/validation', () => {
   for (const mutate of [
-    {}, {leadId: ''}, {email: ''}, {email: 'bad'}, {name: ''}, {whatsapp: ''}, {package: ''},
+    {}, {leadId: ''}, {email: 'bad'}, {name: ''}, {whatsapp: ''}, {package: ''},
     {leadType: 'email', marketingConsent: 'No'}, {leadType: 'email', marketingConsent: 'Yes'},
     {leadType: 'unexpected', marketingConsent: 'Yes'}, {website: 'honeypot'}, {action: 'unknown'}
   ]) {
@@ -150,6 +150,52 @@ test('pinned source and exact known legacy envelopes/validation', () => {
   assert.deepEqual(candidate.call('doPost', {}), {ok: false, error: 'Missing request body.'});
   assert.deepEqual(candidate.post({action: 'whatsapp_opened'}), {ok: false, error: 'Lead ID is required.'});
   assert.equal(candidate.call('doGet').service, 'TSG Website Leads');
+});
+
+test('approved blank-email booking saves three rows and unchanged retry has no mail/subscriber/writes', () => {
+  for (const email of ['', '   ', undefined]) {
+    const h = harness();
+    const request = {...base, email};
+    assert.deepEqual(h.post(request), {ok: true, leadId: base.leadId, status: 'New Lead'});
+    for (const tab of tabs) {
+      assert.equal(h.w.sheets.get(tab).rows.length, 2);
+      assert.equal(h.get(tab,'Email'), '');
+      assert.equal(h.get(tab,'Status'), 'New Lead');
+    }
+    assert.equal(h.w.sheets.has('Email Subscribers'), false);
+    assert.equal(h.w.emails.length, 0);
+    const before = clone([...h.w.sheets].map(([name, sheet]) => [name, sheet.rows]));
+    h.w.writes.length = 0;
+    assert.deepEqual(h.post(request), {ok: true, leadId: base.leadId, status: 'duplicate_ignored'});
+    assert.deepEqual(clone([...h.w.sheets].map(([name, sheet]) => [name, sheet.rows])), before);
+    assert.equal(h.w.writes.length, 0);
+    assert.equal(h.w.emails.length, 0);
+    assert.equal(h.w.sheets.has('Email Subscribers'), false);
+  }
+});
+
+test('malformed nonblank booking email fails before writes or mail', () => {
+  for (const email of ['bad', 'missing@domain', 'two addresses@example.test', '@example.test']) {
+    const h = harness();
+    assert.deepEqual(h.post({...base, email}), {ok: false, error: 'A valid email is required.'});
+    assert.equal(h.w.sheets.size, 0);
+    assert.equal(h.w.writes.length, 0);
+    assert.equal(h.w.emails.length, 0);
+  }
+});
+
+test('newsletter still requires valid email and affirmative consent before writes', () => {
+  for (const [email, marketingConsent, error] of [
+    ['', 'Yes', 'A valid email is required.'],
+    ['bad', 'Yes', 'A valid email is required.'],
+    ['synthetic@example.test', 'No', 'Email consent is required.']
+  ]) {
+    const h = harness();
+    assert.deepEqual(h.post({...base, leadType: 'email', email, marketingConsent}), {ok: false, error});
+    assert.equal(h.w.sheets.size, 0);
+    assert.equal(h.w.writes.length, 0);
+    assert.equal(h.w.emails.length, 0);
+  }
 });
 
 test('legacy data, one review column, plain current-offer acknowledgement and duplicate no-mail', () => {
@@ -499,4 +545,4 @@ test('two isolated executions contend on shared script lock; serialized submissi
 console.log(`\nPASS: ${checks} targeted offline groups (nested matrix cases included).`);
 console.log('Pinned legacy contract compared; only replacement legacy source executed as candidate. Strict/new participant contract is outside this suite.');
 console.log('Lock contention is simulated across isolated VM executions; no real parallel Apps Script/Google verification.');
-console.log('No browser, network, real email, Google Sheet, production trigger, deployment, commit or push performed. Guarded source is NOT deployed.');
+console.log('This suite performs no browser/network/Google/mail/trigger/deployment/Git actions. Candidate deployment is isolated v3 only; production is unchanged. See LEGACY_ISOLATED_ACCEPTANCE.md for the stopped Google run, not a successful acceptance matrix.');

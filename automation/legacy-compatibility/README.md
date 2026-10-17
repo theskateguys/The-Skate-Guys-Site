@@ -1,9 +1,12 @@
 # Legacy Compatibility Candidate
 
-Guarded source only, NOT deployed. `Code.gs` is a complete replacement for the
-legacy project's `Code.gs`, never an additional file beside strict `Code.gs`.
-It has no EmailLogo.gs or HTML-letterhead dependency. This task does not authorize
-installation, setup, trigger changes, deployment or customer email.
+Guarded replacement, NOT deployed to production. A separately authorized isolated
+version-3 deployment now contains this source, including approved optional blank
+booking email. Its first real request was rejected because copied historical
+records contain duplicate IDs; acceptance stopped without writes. See
+`../LEGACY_ISOLATED_ACCEPTANCE.md`. No further deployment/test is authorized by
+these notes. `Code.gs` replaces the legacy project's `Code.gs`, never an additional
+file beside strict `Code.gs`. It has no EmailLogo.gs or HTML-letterhead dependency.
 
 Baseline: review branch `codex/single-session-booking-review`, base `02639f8`.
 Contract evidence: `../LEGACY_ENDPOINT_COMPATIBILITY.md`, the actual inspection
@@ -14,8 +17,10 @@ The offline suite checks that fingerprint before comparing known envelopes.
 ## Contract And Scope
 
 - Keeps `lead_submit`, `whatsapp_opened`, honeypot success, duplicate response,
-  unknown-ID tracking response and legacy validation errors. Email remains required
-  for legacy bookings. Participant-less old forms remain accepted, not routed
+  unknown-ID tracking response and legacy validation errors except the explicitly
+  approved optional booking email change: blank booking email is accepted without
+  mail/subscription; malformed nonblank email is rejected. Newsletter email and
+  affirmative consent remain required. Participant-less old forms remain accepted, not routed
   through the strict participant validator. Invalid timestamps additionally fail
   explicitly before writes.
 - Original Package, Preferred Time, Adult/Child, rentals, consent, Notes, attribution
@@ -77,8 +82,10 @@ edits, reordered/additive/custom headers, formulas, ambiguity/duplicate rejectio
 direct helper locks, flush ordering and two-VM simulated lock contention/retries.
 It does not test or change the strict/new participant contract.
 
-These are in-memory tests, not isolated Google acceptance or production
-verification. The lock serializes cooperating scripts; it is not an ACID Sheet
+The 42-group suite is in-memory, not isolated Google acceptance or production
+verification. The separate stopped Google run proves fail-closed rejection and
+no writes, NOT the successful-save/protected-status matrix. The lock serializes
+cooperating scripts; it is not an ACID Sheet
 transaction or rollback. Earlier appends can survive a later service failure and
 are repaired on retry. Sheet UI edits/other script projects bypass this lock; a
 manual edit between the final read and write/send cannot be made atomic, and a
@@ -92,3 +99,6 @@ this source has not changed it. Operational pause/owner/in-flight audit and any
 safe restoration require the parent's `../PRODUCTION_REMINDER_CUTOVER.md` process
 and separate explicit authorization. Updating a deployment does not stop old
 in-flight executions. No production release decision is implied by passing mocks.
+Global ID/header integrity must be audited BEFORE any production installation:
+one historical duplicate can intentionally block unrelated new submissions. Never
+silently deduplicate history or weaken the guard to manufacture acceptance.

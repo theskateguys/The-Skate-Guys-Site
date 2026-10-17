@@ -104,7 +104,9 @@ function normalizeLead_(payload) {
 function validateLead_(lead) {
   // Deliberately the legacy email/booking envelope, not the strict participant validator.
   if (!lead.leadId) throw new Error('Lead ID is required.');
-  if (!lead.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) throw new Error('A valid email is required.');
+  // Cell escaping must not turn a missing local part into a valid address.
+  const email = lead.email.replace(/^'(?=[=+\-@])/, '');
+  if ((email || lead.leadType !== 'booking') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('A valid email is required.');
   if (lead.leadType === 'booking' && (!lead.name || !lead.whatsapp || !lead.package)) throw new Error('Booking name, WhatsApp and package are required.');
   if (lead.leadType !== 'booking' && lead.marketingConsent !== 'Yes') throw new Error('Email consent is required.');
   if (Number.isNaN(new Date(lead.timestamp).getTime())) throw new Error('Valid timestamp required.');

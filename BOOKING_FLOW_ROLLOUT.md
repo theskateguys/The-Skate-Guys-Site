@@ -12,13 +12,27 @@ Status: LOCAL PREPARATION ONLY. No push, merge, production code/endpoint change,
 
 ## Critical Live Blockers
 
+Latest isolated legacy attempt: [version-3 evidence](automation/LEGACY_ISOLATED_ACCEPTANCE.md)
+and [JSON](automation/LEGACY_ISOLATED_ACCEPTANCE.json). Approved blank-email legacy
+booking validation is implemented and 42 offline groups pass. The first native
+Google request was rejected by the global duplicate-ID guard because the copied
+test Sheet already contained duplicate groups. No row/status changed; all further
+tests stopped. Successful legacy save/tracking/retry/repair/protection acceptance
+is NOT complete. Obtain approval for a dedicated clean synthetic acceptance Sheet
+AND separate isolated project, or staff-reviewed copied-data repair, before a new
+run. Do not retarget the shared properties of existing isolated v1/v2 deployments.
+Do not bypass the guard.
+Production header/ID uniqueness must be audited before installing this candidate;
+do not infer live data integrity from a later clean synthetic test or silently
+delete/rewrite live history. No live Sheet audit/write is authorized by these notes.
+
 Parent inspection resolved the earlier production uncertainty: actual deployed legacy version 2 and Head match the 298-line main source, LF SHA-256 `8a66986cf87ce39024a929a34b1e4c710606ecbc58c7a354c233a15d44b82dd2`. Production project: `1wCcJh9WBnfpOqtun6gzhR5v-81pOLHJsxtXvwCnDRSTrR1w1kJEAy5YU`; live Sheet: `1RCEUW2TP2Z1NaXdqeCjmmx041KyuTpBYY28Uz1EAqjU`. No script properties were visible; legacy code uses the bound-Sheet fallback.
 
 **LIVE reminders are ACTIVE.** One owner-visible Head time-driven `runTSGFollowUpReminders` trigger runs as a Day timer 10am-11am GMT-04; last displayed run was 16 October 2026 10:04:04 AM. Legacy v2 does not read a reminder-disable property. Setting `TSG_AUTOMATIC_REMINDERS_ENABLED=false` alone is ineffective. No trigger was changed during inspection. Other owners' triggers and in-flight executions require an approved audit/quiescence procedure too.
 
 **Block editor replacement and migration until explicitly authorized disabling of that specific production reminder trigger is completed and verified.** Follow [pause, verify and restore](automation/PRODUCTION_REMINDER_CUTOVER.md). Preserve unrelated triggers. Deletion does not cancel an already-running execution. Do not invoke old setup/install/reminder functions that can recreate it. Restore scheduling only through a separate approval after reviewing due backlog and safe Head code, never automatically during release or rollback.
 
-**Side-by-side URLs alone are insufficient.** The retained live handler can overwrite Confirmed/Paid through tracking, reminders, helper writes and partial-row creation. The prepared replacement guards those paths while preserving the old payload/response contract; it still needs separately authorized isolated deployment/acceptance and production installation at the same URL. Keep reminders disabled. Staff Sheet edits and original in-flight unsafe executions do not share the new guard; drain the old executions before strict migration. Local tests cannot make the live legacy writer safe.
+**Side-by-side URLs alone are insufficient.** The retained live handler can overwrite Confirmed/Paid through tracking, reminders, helper writes and partial-row creation. The replacement guards those paths and preserves old payload/response envelopes, with explicitly approved optional blank booking email. It is deployed only as isolated v3, whose acceptance is blocked above; production installation at the same legacy URL is not authorized. Keep reminders disabled. Staff Sheet edits and original in-flight unsafe executions do not share the new guard; drain the old executions before strict migration. Local tests cannot make the live legacy writer safe.
 
 ## Offline Fallback Contract
 

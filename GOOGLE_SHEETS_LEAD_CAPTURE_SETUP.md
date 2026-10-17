@@ -1,5 +1,22 @@
 # TSG Booking and Google Sheets Setup
 
+## Latest Legacy Acceptance Gate
+
+The separately authorized guarded legacy candidate (including approved optional
+blank booking email) passes 42 offline groups and is deployed ONLY as isolated
+version 3. Its first real Google request was rejected by the global duplicate-ID
+guard; the copied Sheet already contained duplicate historical IDs. The test
+stopped without writes, status changes, subscriber additions or email. The
+save/tracking/retry/repair/protection success matrix is NOT complete. See
+[actual evidence](automation/LEGACY_ISOLATED_ACCEPTANCE.md).
+
+Do not clean up copied historical records, weaken the guard or retarget shared
+script properties automatically. Obtain approval for a dedicated synthetic Sheet
+AND separate isolated project, or a reviewed repair of the copied data, before
+rerunning. Production must pass its own header/ID uniqueness audit before any
+installation; no live Sheet audit/write is authorized here. Strict production
+endpoint, website and active live reminder scheduling remain unchanged.
+
 ## Offer and booking process
 
 - Single session: TT$80 per person, 75 minutes, skate rental included.
@@ -68,7 +85,7 @@ The canonical production sequence and rollback gates are in [BOOKING_FLOW_ROLLOU
 
 1. Revalidate production identities, owners, versions, properties and triggers, then obtain approval for a fresh backup of the live Sheet and production sources/settings. Inspect headers for duplicates/renamed columns. The inspected live `TSG_LEADS_SPREADSHEET_ID` property is **ABSENT**; legacy code uses the bound-Sheet fallback. There is no existing property to retain. Do not set an explicit verified live Sheet ID until after the approved backup and the approved legacy-compatibility decision; do not substitute a copied test Sheet or replacement database.
 2. Before **any production editor replacement or setup**, separately authorize disabling the actual active legacy `runTSGFollowUpReminders` trigger. Audit other owners' triggers and verify in-flight reminder executions have finished/stopped under the approved quiescence procedure; deleting a trigger does not cancel an execution. Preserve unrelated triggers and the recorded reminder schedule. Setting `TSG_AUTOMATIC_REMINDERS_ENABLED=false` alone cannot disable the old code. Do not invoke old setup/install/reminder functions that could recreate the trigger.
-3. The complete local [legacy replacement](automation/legacy-compatibility/README.md) passes 39 offline groups. Separately approve its isolated deployment and copied-Sheet acceptance before authorizing an update to the existing legacy deployment. Preserve its URL and old payload/response contract, guard all legacy status writers, and verify deployed source/version and status safety. Local mocks or a second URL alone do not make legacy writers safe; do not replace the legacy deployment with the strict participant-only server. Its additive schema includes one `Legacy Review Required` column in each status tab, preserving existing data. Follow [pause, verify and restore](automation/PRODUCTION_REMINDER_CUTOVER.md); reminders remain off during cutover, with restoration separately approved.
+3. The [legacy replacement](automation/legacy-compatibility/README.md) passes 42 offline groups. Its isolated version-3 success matrix is blocked as recorded above; obtain the next isolated-target decision and complete acceptance before authorizing an update to the existing production legacy deployment. Preserve its URL and old payload/response envelopes, with the approved optional blank booking email, guard all status writers, and verify deployed source/version and status safety. Local mocks or a second URL alone do not make live writers safe; do not replace the legacy deployment with the strict participant-only server. Its additive schema includes one `Legacy Review Required` column in each status tab, preserving existing data. Follow [pause, verify and restore](automation/PRODUCTION_REMINDER_CUTOVER.md); reminders remain off during cutover, with restoration separately approved.
 4. Only after legacy writers are verified safe and reminders are disabled/quiescent, authorize installing final strict `automation/google-apps-script/Code.gs` plus `EmailLogo.gs` in the **same verified production script project**, preserving the compatibility-safe legacy deployment/version. Exclude preview/profiling/test helpers and audit Head/manual functions. At this approved stage, explicitly set the verified live `TSG_LEADS_SPREADSHEET_ID` and `TSG_AUTOMATIC_REMINDERS_ENABLED=false` for code that honors it. Separately approved additive setup must preserve existing rows, statuses, Notes and custom columns/formulas, append missing headers on the right, and compare against the fresh backup. Verify the America/Port_of_Spain timezone.
 5. Only then authorize a **new versioned strict booking Web App deployment in that same project**, with approved owner/access settings, retaining the compatibility-safe legacy URL. Follow the canonical runbook for separately approved release/fallback binding, staging, endpoint switch and production acceptance. The strict server requires participant details and cannot replace the legacy package-only contract while old forms/open tabs use it. The production endpoint string in `assets/lead-config.js` remains unchanged in this review; its review timeout is 25000ms, so the file itself is not unchanged. Reminder activation remains a separate decision.
 

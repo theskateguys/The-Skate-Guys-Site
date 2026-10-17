@@ -2,7 +2,18 @@
 
 ## Status
 
-Read-only production inspection completed on 16 October 2026. A complete local replacement is now prepared in `legacy-compatibility/Code.gs`, with focused offline tests in `check-legacy-compatibility.mjs` (39 groups passed, including the Astra pre-send-marker finding). It is NOT deployed or verified against Google. Install it instead of the original legacy `Code.gs`, never alongside the strict handler or as a second file with duplicate globals. Do not release the new website while the live retained writer remains unguarded.
+Follow-up from b0709dd: optional blank legacy booking email was explicitly
+approved; 42 offline groups pass. Exact reviewed source is deployed only in the
+isolated project as version 3. Its first native Google request was rejected for
+pre-existing copied-Sheet duplicate IDs; all further testing stopped, no rows or
+statuses changed. Successful legacy acceptance remains BLOCKED. See
+`LEGACY_ISOLATED_ACCEPTANCE.md` for source/backup/destination evidence, the stop
+condition and next approval. Do not treat deployment alone as acceptance or
+clean up historical rows without approval. Audit production ID/header integrity
+before any future installation; one historical duplicate intentionally blocks
+all mutations, including unrelated new saves.
+
+Read-only production inspection completed on 16 October 2026. The replacement is in `legacy-compatibility/Code.gs`, with 42 focused offline groups passing in `check-legacy-compatibility.mjs`, including the Astra pre-send-marker finding and optional blank booking email. It is NOT deployed to production, and its isolated success matrix remains incomplete as recorded above. Install it instead of the original legacy `Code.gs`, never alongside the strict handler or as a second file with duplicate globals. Do not release the new website while the live retained writer remains unguarded.
 
 Production reminders are currently ACTIVE, not disabled. This inspection changed no trigger or setting. Disabling the existing production reminder trigger requires an explicit authorized operational step; setting a property alone cannot disable version 2, which never reads that property. Isolated test reminders remain a separate disabled configuration.
 

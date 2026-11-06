@@ -13,11 +13,11 @@ window.TSG_UPDATES = [
   {
     type: "Class Booking",
     dateLabel: "July 2026",
-    title: "Class package bookings are open",
-    body: "Choose your package, send your details, and TSG will confirm availability for Trinidad or Tobago.",
+    title: "Request your next skate session",
+    body: "TT$80 per person for 75 minutes, skate rental included. One person can book by appointment. TSG checks coach, location and skate availability before payment.",
     ctaLabel: "Book a Class",
     href: "book.html",
     theme: "cyan",
-    tickerText: "Class bookings open - Starter Pass, Beginner Bootcamp and Academy Monthly available"
+    tickerText: "Skate sessions by appointment - TT$80 per person - 75 minutes - skate rental included"
   }
 ];

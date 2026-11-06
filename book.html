@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#050508">
   <title>Book a Skate Class | The Skate Guys</title>
-  <meta name="description" content="Choose your TSG skate package, send a short booking request and confirm your class on WhatsApp.">
+  <meta name="description" content="Request a TSG skate session by appointment: TT$80 per person for 75 minutes, skate rental included. Confirm availability with TSG on WhatsApp.">
   <meta property="og:title" content="Book a Skate Class | The Skate Guys">
-  <meta property="og:description" content="Choose your class, send your details and get your booking confirmed on WhatsApp.">
+  <meta property="og:description" content="Request a 75-minute session at TT$80 per person, skate rental included. TSG checks availability with you on WhatsApp before confirming.">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://the-skate-guys-site.vercel.app/book.html">
   <link rel="icon" href="logo.png">
@@ -74,18 +74,18 @@
     .how-item b{display:block;font:38px/1 var(--display);margin-bottom:8px}
     .how-item p{font-size:13px;color:var(--muted)}
     footer{padding:24px 0 38px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
-    @media(max-width:850px){.layout{grid-template-columns:1fr}.how-grid{grid-template-columns:1fr}.links{display:none}}
+    @media(max-width:850px){.layout{grid-template-columns:1fr}.how-grid{grid-template-columns:1fr}}
     @media(max-width:550px){:root{--wrap:min(100% - 28px,1060px)}.hero{padding-top:43px}.nav .btn{display:none}.two{grid-template-columns:1fr}h1{font-size:clamp(58px,17vw,80px)}.layout{padding-bottom:35px}.panel{padding:17px}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
   </style>
-  <link rel="stylesheet" href="assets/lead-capture.css">
+  <link rel="stylesheet" href="assets/whatsapp-booking.css">
 </head>
 <body>
   <header class="header">
     <div class="wrap nav">
       <a class="brand" href="index.html"><img src="logo.png" alt="The Skate Guys logo"><span>The Skate Guys</span></a>
-      <nav class="links" aria-label="Primary navigation"><a href="index.html">Home</a><a href="merch.html">Merch</a><a href="elite.html">Elite</a></nav>
-      <a class="btn secondary" href="https://wa.me/18682766878" target="_blank" rel="noopener">WhatsApp</a>
+      <nav class="links" aria-label="Primary navigation"><a href="index.html">Home</a><a href="merch.html">Merch</a><a href="index.html#events">Events</a></nav>
+      <a class="btn secondary" href="https://wa.me/18682766878" target="_blank" rel="noopener noreferrer" aria-label="Ask TSG on WhatsApp (opens in a new tab)">WhatsApp</a>
     </div>
   </header>
   <main>
@@ -93,71 +93,84 @@
       <div class="wrap">
         <span class="eyebrow">Trinidad &amp; Tobago skate classes</span>
         <h1>READY TO ROLL?<br>BOOK YOUR CLASS.</h1>
-        <p>Choose your package, send only the details needed and TSG will confirm availability with you on WhatsApp.</p>
+        <p>Request a 75-minute session by appointment. TT$80 per person, skate rental included. One person can book.</p>
         <div class="trust"><span>Rentals included</span><span>Kids and adults</span><span>No online payment needed to request a slot</span></div>
       </div>
     </section>
     <div class="wrap layout">
       <section class="panel" aria-labelledby="packageTitle">
-        <h2 id="packageTitle">CHOOSE YOUR PACKAGE</h2>
-        <p class="panel-intro">Start where you are. Pick one package only; your choice is sent directly with the booking request.</p>
+        <h2 id="packageTitle">YOUR SKATE SESSION</h2>
+        <p class="panel-intro">Kids and adults welcome. Classes are by appointment, including individual bookings.</p>
         <div class="packages">
-          <label class="package"><input type="radio" name="packageChoice" value="Starter Pass: 2 classes / 10 days / $140 TTD" checked form="bookingForm"><div class="package-top"><span class="package-name">Starter Pass</span><span class="price">$140</span></div><p>2 classes / 10 days / $140 TTD</p><span class="recommended">Good first step</span></label>
-          <label class="package"><input type="radio" name="packageChoice" value="Beginner Bootcamp: 4 classes / 14 days / $260 TTD" form="bookingForm"><div class="package-top"><span class="package-name">Beginner Bootcamp</span><span class="price">$260</span></div><p>4 classes / 14 days / $260 TTD</p></label>
-          <label class="package"><input type="radio" name="packageChoice" value="Academy Monthly: 4 classes / 30 days / $280 TTD" form="bookingForm"><div class="package-top"><span class="package-name">Academy Monthly</span><span class="price">$280</span></div><p>4 classes / 30 days / $280 TTD</p></label>
+          <div class="package"><div class="package-top"><span class="package-name">Single session</span><span class="price">TT$80</span></div><p>Per person / 75 minutes / skate rental included</p></div>
         </div>
-        <p class="help">Not sure which package fits? <a href="https://wa.me/18682766878?text=Hi%20TSG%2C%20I%20am%20new%20to%20skating%20and%20need%20help%20choosing%20a%20class." target="_blank" rel="noopener">Ask TSG on WhatsApp.</a></p>
+        <p class="help"><strong>Trinidad:</strong> location agreed during booking. <strong>Tobago:</strong> TSG confirms Rec TT Black Rock or another suitable agreed location. Locations depend on availability.</p>
+        <p class="help">A request is not a confirmed class. TSG checks coach, location and skate availability before payment. Deposit preferred; payment on arrival available by arrangement. TSG will discuss the deposit with you.</p>
+        <div class="note booking-policy"><strong>Rescheduling, cancellations and credit</strong>
+          <ul>
+            <li>At least 24 hours' notice: the amount paid carries forward as credit.</li>
+            <li>Less than 24 hours' notice or no-show: no automatic credit; genuine emergencies are reviewed individually.</li>
+            <li>TSG/coach cancellation or unsafe weather/venue: the full amount paid carries forward as credit, without penalty.</li>
+            <li>Credit expires one calendar month from the original scheduled session date. If the matching date does not exist, use the last day of that month.</li>
+            <li>If TSG cannot offer a replacement before expiry, we extend the credit to give you a reasonable opportunity to attend. We'll confirm your revised credit expiry with you.</li>
+            <li>Transfers require TSG approval, subject to participant suitability and skate availability.</li>
+            <li>Credit rather than refunds.</li>
+          </ul>
+        </div>
+        <p class="help">Class questions or booking help? <a href="https://wa.me/18682766878" target="_blank" rel="noopener">Ask TSG on WhatsApp.</a> Use the booking form to request your class.</p>
       </section>
       <section class="panel" aria-labelledby="formTitle">
-        <h2 id="formTitle">SEND YOUR REQUEST</h2>
-        <p class="panel-intro">This is a booking request, not a payment. TSG confirms the correct class and next step with you.</p>
-        <form class="form" id="bookingForm" data-tsg-lead-form data-lead-type="booking" data-tags="class_lead">
-          <label>Name<input name="name" autocomplete="name" required></label>
-          <label>WhatsApp number<input name="phone" autocomplete="tel" inputmode="tel" placeholder="868-276-6878" required></label>
-          <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+        <h2 id="formTitle">PREPARE YOUR REQUEST</h2>
+        <p class="panel-intro">Review your message here, then open WhatsApp and press Send. This is a request, not a confirmed booking or an online payment.</p>
+        <form class="form" id="bookingForm" autocomplete="off" hidden>
+          <label>Contact name<input name="name" autocomplete="off" maxlength="120" required></label>
+          <label>WhatsApp number<input name="phone" type="tel" autocomplete="off" inputmode="tel" placeholder="Your contact number" maxlength="24" required></label>
           <div class="two">
-            <label>Adult or child<select name="skaterType" required><option value="">Select one</option><option>Adult</option><option>Child</option></select></label>
-            <label>Location<select name="location" required><option value="">Select one</option><option>Trinidad</option><option>Tobago</option></select></label>
+            <label>Island<select name="location" required><option value="">Select one</option><option>Trinidad</option><option>Tobago</option></select></label>
+            <label>Preferred area<input name="preferredArea" maxlength="160" placeholder="Town or area to discuss with TSG" required></label>
           </div>
           <div class="two">
-            <label>Rental skates needed<select name="rentals" required><option value="">Select one</option><option>Yes</option><option>No</option></select></label>
-            <label>Preferred day or time<input name="preferredTime" placeholder="Example: Saturday morning" required></label>
+            <label>Preferred date<input name="preferredDate" type="date" required></label>
+            <label>Preferred time<input name="preferredTime" type="time" required></label>
           </div>
-          <p class="note"><strong>Rentals included.</strong> Booking is required. Classes run once the minimum group is confirmed.</p>
-          <label class="lead-consent booking-consent"><input type="checkbox" name="marketingConsent"><span>Yes, add me to occasional TSG class, event, merch and Elite updates. I can unsubscribe at any time. This is optional and does not affect my booking request.</span></label>
-          <p class="lead-privacy">We may measure anonymous website activity. Personal details are collected only when you submit this form. Booking details are used to handle your request; marketing messages are sent only when you opt in.</p>
-          <button class="btn primary submit" type="submit">Save Request &amp; Continue to WhatsApp</button>
+          <label>Number of participants<input name="participantCount" type="number" min="1" max="20" step="1" value="1" required aria-describedby="participantHelp"></label>
+          <p class="booking-help" id="participantHelp">For more than 20 participants, contact TSG to coordinate your group. Sizes help TSG check rental availability and fit.</p>
+          <div data-participants></div>
+          <template id="participantTemplate">
+            <fieldset class="participant"><legend>Participant <span data-participant-number></span></legend>
+              <div class="two"><label>Age<input data-field="age" type="number" min="1" max="120" step="1" required></label><label>Experience<select data-field="experience" required><option value="">Select one</option><option>First time</option><option>Beginner</option><option>Intermediate</option><option>Experienced</option></select></label></div>
+              <label>Rental skates needed<select data-field="rentals" required><option value="">Select one</option><option>Yes</option><option>No</option></select></label>
+              <div class="two" data-rental-size hidden><label>Skate size<input data-field="skateSize" maxlength="24" placeholder="e.g. 7 or 38" disabled></label><label>Sizing system<select data-field="sizeSystem" disabled><option value="">Select one</option><option>EU</option><option>UK adult</option><option>UK child</option><option>US men</option><option>US women</option><option>US youth</option><option>US toddler</option></select></label></div>
+              <div data-guardian hidden><p class="booking-help">For participants under 18, provide a parent or guardian contact. The booking contact may also be the guardian.</p><label>Guardian name<input data-field="guardianName" maxlength="120" disabled></label><label>Guardian WhatsApp<input data-field="guardianPhone" type="tel" autocomplete="off" inputmode="tel" maxlength="24" disabled></label></div>
+            </fieldset>
+          </template>
+          <p class="booking-help">Your details stay in this page while you edit. This website does not save or submit them. Only opening WhatsApp passes the prepared message to WhatsApp; you must press Send there to contact TSG.</p>
+          <button class="btn primary submit" type="submit">Prepare WhatsApp Request</button>
           <p class="booking-status" data-form-status aria-live="polite"></p>
-          <div class="booking-success" data-booking-success hidden><strong>Thank you. Your request is ready.</strong><p>WhatsApp will open with your pre-filled booking message. If it does not open, use the button below to send your request and confirm availability.</p><a class="btn primary" data-whatsapp-link href="#" target="_blank" rel="noopener">Open WhatsApp to Finish</a></div>
-          <p class="under-submit">Prefer a quick question first? <a href="https://wa.me/18682766878" target="_blank" rel="noopener">Message TSG directly.</a></p>
+          <section class="booking-prepared" data-booking-success aria-labelledby="preparedTitle" hidden tabindex="-1"><h3 id="preparedTitle">YOUR MESSAGE IS READY</h3><pre class="booking-message" data-message-preview></pre><p>You must press Send in WhatsApp. Opening WhatsApp does not send your request or confirm a class. No online payment is taken. TSG checks coach, location and skate availability before discussing payment and confirming.</p><div class="booking-actions"><a class="btn primary" data-whatsapp-link target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Open WhatsApp</a><button class="btn secondary" data-edit-request type="button">Edit Details</button></div><p>WhatsApp opens in a new tab or app. Your details remain here while this page stays open.</p></section>
+          <p class="under-submit">Prefer a quick question first? <a href="https://wa.me/18682766878" target="_blank" rel="noopener">Ask TSG on WhatsApp.</a> Class requests start with this form.</p>
         </form>
+        <noscript><p class="note">The detailed request form needs JavaScript. <a href="https://wa.me/18682766878?text=Hello%20TSG%2C%20I%27d%20like%20to%20request%20a%2075-minute%20skate%20session%20at%20TT%2480%20per%20person%2C%20rental%20included.%20Please%20help%20me%20check%20availability." target="_blank" rel="noopener noreferrer">Open a booking message in WhatsApp</a>, add your details there and press Send. This is not a confirmed booking or an online payment.</p></noscript>
       </section>
     </div>
-    <section class="lead-capture-band" aria-labelledby="bookingEmailTitle">
-      <div class="wrap lead-capture-inner">
-        <div class="lead-capture-copy"><span class="eyebrow">Not ready to choose?</span><h2 id="bookingEmailTitle">GET THE WEEKLY<br>TSG ROLL-UP.</h2><p>Classes, upcoming sessions, merch updates, Elite reminders and one useful skating tip, once a week.</p></div>
-        <form class="lead-capture-form" data-tsg-lead-form data-lead-type="email" data-tags="class_lead">
-          <input type="email" name="email" autocomplete="email" placeholder="Your email address" aria-label="Email address" required>
-          <select name="location" aria-label="Location" required><option value="">Your island</option><option>Trinidad</option><option>Tobago</option></select>
-          <button class="btn primary lead-submit" type="submit">Join Updates</button>
-          <label class="lead-consent"><input type="checkbox" name="marketingConsent" required><span>I agree to receive TSG class, event, merch and Elite updates by email. I can unsubscribe at any time.</span></label>
-          <p class="lead-privacy">We may measure anonymous website activity. Personal details are collected only when you submit this form.</p>
-          <p class="lead-status" data-form-status aria-live="polite"></p>
-        </form>
+    <section class="booking-contact" aria-labelledby="bookingContactTitle">
+      <div class="wrap">
+        <h2 id="bookingContactTitle">A QUESTION BEFORE YOU BOOK?</h2>
+        <p>Discuss your group, location or skate sizes directly with TSG.</p>
+        <a class="btn secondary" href="https://wa.me/18682766878?text=Hello%20TSG%2C%20I%20have%20a%20question%20about%20booking%20a%20skate%20session." target="_blank" rel="noopener noreferrer">Ask TSG on WhatsApp</a>
       </div>
     </section>
     <section class="how">
       <div class="wrap">
         <div class="how-grid">
-          <article class="how-item"><b>01</b><p>Choose the package that matches where you are now.</p></article>
-          <article class="how-item"><b>02</b><p>Send the key details through the short form.</p></article>
-          <article class="how-item"><b>03</b><p>Get availability confirmation and roll with TSG.</p></article>
+          <article class="how-item"><b>01</b><p>Request a TT$80 per-person, 75-minute session by appointment, with skate rental included.</p></article>
+          <article class="how-item"><b>02</b><p>Prepare and review your request on this page. Your details are not saved or submitted to a booking system.</p></article>
+          <article class="how-item"><b>03</b><p>Send the prepared WhatsApp message. TSG checks coach, location and skate availability before discussing payment and confirming your class.</p></article>
         </div>
       </div>
     </section>
   </main>
   <footer><div class="wrap">The Skate Guys Ltd · Trinidad &amp; Tobago</div></footer>
-  <script src="assets/lead-config.js"></script>
-  <script src="assets/lead-capture.js"></script>
+  <script src="assets/whatsapp-booking.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+[hidden]{display:none!important}
+.layout{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+.panel,.form,.two>*{min-width:0}
+.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.form input,.form select{min-width:0;font-family:var(--body)}
+.form input,.form select,.booking-prepared{scroll-margin-top:170px}
+.form .btn{font-family:var(--body);white-space:normal;text-align:center}
+.booking-help{color:var(--muted);font-size:12px;line-height:1.6}
+[data-participants]{display:grid;gap:16px}
+.participant{min-width:0;padding:16px 0 0;border:0;border-top:1px solid var(--line);display:grid;gap:13px}
+.participant legend{padding-right:12px;color:var(--cyan);font-size:15px;font-weight:700}
+[data-guardian]{display:grid;gap:13px}
+.booking-policy{margin-top:18px}
+.booking-policy ul{padding-left:19px;margin-top:9px}
+.booking-policy li+li{margin-top:9px}
+.booking-status{min-height:20px;font-size:12px;color:var(--gold)}
+.booking-status[data-state="error"]{color:#ff9eba}
+.booking-status[data-state="ready"]{color:#75fff7}
+.booking-prepared{border-top:2px solid var(--cyan);padding-top:18px;display:grid;gap:13px;min-width:0}
+.booking-prepared h3{font-size:28px;line-height:1.1}
+.booking-prepared p{color:#d4d4de;font-size:13px}
+.booking-message{font:13px/1.65 var(--body);white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;padding:12px;background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:8px}
+.booking-actions{display:flex;flex-wrap:wrap;gap:10px}
+.booking-actions .btn{flex:1 1 150px}
+.booking-contact{padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:36px}
+.booking-contact h2{font-size:36px;line-height:1.1;margin-bottom:10px}
+.booking-contact p{color:var(--muted);font-size:14px;margin-bottom:16px}
+noscript .note a{color:var(--cyan);text-decoration:underline}
+a:focus-visible,button:focus-visible,.booking-prepared:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.links a{display:inline-flex;align-items:center;min-height:44px}
+.brand,h1,h2,h3,.eyebrow,.recommended{letter-spacing:0}
+h1{font-size:100px;overflow-wrap:anywhere}
+@media(max-width:850px){
+  .nav{flex-wrap:wrap;padding-top:10px;padding-bottom:6px;gap:6px 12px}
+  .nav .btn{min-height:40px;font-size:12px;padding:8px 10px}
+  .links{display:flex;flex-wrap:wrap;width:100%;order:3;gap:4px 22px}
+  .layout{grid-template-columns:minmax(0,1fr)}
+  h1{font-size:76px}
+}
+@media(max-width:550px){
+  .nav .btn{display:inline-flex}
+  .two{grid-template-columns:minmax(0,1fr)}
+  .brand{font-size:24px}
+  h1{font-size:58px}
+  .panel h2{font-size:32px;line-height:1.05}
+  .booking-contact h2{font-size:30px}
+  .booking-actions{flex-direction:column}
+  .booking-actions .btn{flex:auto;width:100%}
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skate Sessions | The Skate Guys</title>
+  <meta name="description" content="Request a TSG skate session by appointment. TT$80 per person for 75 minutes, skate rental included. One person can book.">
+  <meta property="og:title" content="Skate Sessions | The Skate Guys">
+  <meta property="og:description" content="TT$80 per person / 75 minutes / skate rental included. Request a session with The Skate Guys in Trinidad &amp; Tobago.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#050508;--ink:#f4f4f8;--muted:#b8b8ca;--cyan:#00f5ff;--pink:#ff2d6b;--line:rgba(255,255,255,.15)}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 'DM Sans',sans-serif}
+    a{color:inherit;text-underline-offset:4px}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:5px}
+    .wrap{width:min(1080px,calc(100% - 40px));margin-inline:auto}
+    .skip-link{position:absolute;left:16px;top:-80px;background:var(--cyan);color:var(--bg);padding:10px;z-index:10}
+    .skip-link:focus{top:12px}
+    .site-header{border-bottom:1px solid var(--line)}
+    .nav-inner{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:28px/1 'Bebas Neue',sans-serif}
+    .brand img{width:48px;height:48px;object-fit:contain}
+    .nav-links{display:flex;align-items:center;gap:26px}
+    .nav-links a{font-size:14px;font-weight:600;text-decoration:none}
+    .nav-links a:hover{color:var(--cyan)}
+    .menu-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);background:none;color:var(--ink);font-size:24px;cursor:pointer}
+    .intro{padding:60px 0 48px}
+    .intro-copy{max-width:760px}
+    .retired{margin:0 0 30px;padding:10px 0 10px 16px;border-left:3px solid var(--pink);color:var(--muted);font-size:15px}
+    .eyebrow{margin:0 0 14px;color:var(--cyan);font-size:13px;font-weight:700;text-transform:uppercase}
+    h1,h2{font-family:'Bebas Neue',sans-serif;font-weight:400;line-height:1.05}
+    h1{font-size:76px;margin:0 0 18px}
+    h2{font-size:34px;margin:0 0 16px}
+    .offer{font-size:25px;line-height:1.5;margin:0 0 14px}
+    .offer strong{color:var(--pink)}
+    .intro-note{color:var(--muted);margin:0 0 26px}
+    .actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+    .booking-link{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:10px 24px;background:var(--pink);color:var(--bg);text-decoration:none;font-weight:700;border-radius:4px;transition:background .2s,transform .2s}
+    .booking-link:hover{background:#ff5c90;transform:translateY(-2px)}
+    .community-link{color:var(--cyan);font-weight:600}
+    .details{padding:38px 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .details-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+    .details p{margin:0 0 16px;color:var(--muted)}
+    .details strong{color:var(--ink)}
+    footer{padding:28px 0 36px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+    .footer-inner p{margin:0}
+    .footer-inner a{color:var(--cyan)}
+    @media(max-width:680px){
+      .wrap{width:calc(100% - 32px)}
+      .nav-inner{min-height:76px;flex-wrap:wrap;gap:0;padding:12px 0}
+      .brand{font-size:25px}.brand img{width:42px;height:42px}
+      .menu-toggle{display:inline-flex}
+      .nav-links{display:none;flex:0 0 100%;flex-direction:column;align-items:stretch;gap:0;padding-top:14px}
+      .nav-links.open{display:flex}
+      .nav-links a{padding:10px 0;border-top:1px solid var(--line)}
+      .intro{padding:32px 0 36px}.retired{margin-bottom:26px}
+      h1{font-size:52px}.offer{font-size:22px}.actions{align-items:flex-start;flex-direction:column;gap:18px}
+      .details-grid{grid-template-columns:1fr;gap:24px}.details{padding:32px 0}
+      h2{font-size:30px}
+    }
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand"><img src="logo.png" alt="" width="48" height="48"><span>THE SKATE GUYS</span></a>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="book.html">Book a Class</a>
+        <a href="index.html#events">Events</a>
+        <a href="merch.html">Merch</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content">
+    <section class="intro">
+      <div class="wrap">
+        <div class="intro-copy">
+          <p class="retired">Elite memberships have been discontinued. You can request a single skate session below.</p>
+          <p class="eyebrow">Trinidad &amp; Tobago skate classes</p>
+          <h1>THE SKATE GUYS</h1>
+          <p class="offer"><strong>TT$80 per person.</strong><br>75 minutes. Skate rental included.</p>
+          <p class="intro-note">Classes are by appointment. One person can book.</p>
+          <div class="actions">
+            <a href="book.html" class="booking-link">Book a Class</a>
+            <a href="https://wa.me/18682766878" class="community-link" target="_blank" rel="noopener">Ask TSG on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="details" aria-label="Session availability and locations">
+      <div class="wrap details-grid">
+        <div>
+          <h2>REQUEST, THEN CONFIRM</h2>
+          <p><strong>A request is not a confirmed class.</strong> TSG checks coach, location and skate availability before payment.</p>
+          <p>Deposit preferred; payment on arrival available by arrangement. For class questions or booking help, message TSG directly. Use Book a Class to submit your booking request.</p>
+        </div>
+        <div>
+          <h2>AGREE YOUR LOCATION</h2>
+          <p><strong>Trinidad:</strong> location agreed during booking.</p>
+          <p><strong>Tobago:</strong> TSG confirms Rec TT Black Rock or another suitable agreed location, subject to availability.</p>
+          <p>For community skate session and event updates, view the TSG WhatsApp group invitation.</p>
+          <a href="https://chat.whatsapp.com/KO19GyeuQfi3K1FEJ5GKLi" class="community-link" target="_blank" rel="noopener">View Group Invite</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-inner">
+      <p>The Skate Guys Ltd &middot; Trinidad &amp; Tobago</p>
+      <a href="https://wa.me/18682766878" target="_blank" rel="noopener">Message TSG on WhatsApp</a>
+    </div>
+  </footer>
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    const setMenuOpen = open => {
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    toggle.addEventListener('click', () => setMenuOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenuOpen(false); toggle.focus(); }
+    });
+  </script>
+</body>
+</html>
+

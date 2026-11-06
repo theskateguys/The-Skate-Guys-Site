@@ -1,0 +1,5 @@
+automation/node_modules/
+automation/output/
+.vercel
+/.playwright-cli/
+/output/

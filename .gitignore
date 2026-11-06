@@ -1,2 +1,20 @@
-automation/node_modules/
-automation/output/
+# Transfer safety: never add local state, credentials or customer evidence.
+**/.git/
+**/.codex/
+**/.agents/
+**/.review/
+**/.playwright-cli/
+**/node_modules/
+**/.vercel/
+**/.env*
+**/output/
+**/*credentials*
+**/*token*.json
+**/*secret*.json
+**/*binding.local*
+**/*raw-log*
+**/email-previews/
+**/*AUDIT_CAPTURE.json
+**/*ACCEPTANCE.json
+**/*ACCEPTANCE.md
+**/*BACKUP.json

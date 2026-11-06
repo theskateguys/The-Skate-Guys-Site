@@ -1,0 +1,15 @@
+{
+  "scope": "Transfer archive checks only; no Google submission, email or deployment",
+  "sourceHeads": {
+    "root": "b44308afacdca191ab442b6b8c7dadae65965479",
+    "website-whatsapp": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+    "booking-review": "b4c6ada1ff26141d324786cc5276ee69b88456ff"
+  },
+  "originalMutableInputsUnchanged": true,
+  "sourceReviewWorktreesClean": true,
+  "copiedBookingStaticChecks": "PASS: check-lead-flow.mjs",
+  "copiedBookingInMemoryTests": "PASS: check-booking-system.mjs; Google/email mocked",
+  "privacy": "Raw customer/acceptance captures and generated email evidence excluded; private test inboxes replaced; public business contacts and public email placeholder retained",
+  "historyDependentChecks": "Not portable as-is; branch/commit/ancestry guards preserved",
+  "remotePushVerifiedByThisFile": false
+}

@@ -1,0 +1,212 @@
+[
+  {
+    "file": "assets/coaches/Dylon.jpg",
+    "bytes": 4965993,
+    "sha256": "7e70ee0106bdaa606d26ae703c5f06a0af448e43d2cd964ad479f30fcbaff768"
+  },
+  {
+    "file": "assets/coaches/Dylon.webp",
+    "bytes": 1596204,
+    "sha256": "ebda6dfab02049e2354c8ba279fbccd5f7d996e6062ce33ad6cc559591c92c54"
+  },
+  {
+    "file": "assets/coaches/Jevon.jpg",
+    "bytes": 648857,
+    "sha256": "2757db79d7e798830a4b35d6f8689a003b92d512543be4dfa6196ffd9fc0b7f6"
+  },
+  {
+    "file": "assets/coaches/Jevon.webp",
+    "bytes": 349416,
+    "sha256": "3a545d09b7e90ad60308ce75e1906ef3481b4c5d510c65b26fbf892202742f8c"
+  },
+  {
+    "file": "assets/coaches/Nikesha.jpg",
+    "bytes": 638298,
+    "sha256": "717483a2f185007d17d2b7906675afa78517a314a6678d73ac5e115ea783f850"
+  },
+  {
+    "file": "assets/coaches/Nikesha.webp",
+    "bytes": 389048,
+    "sha256": "a840073a68a2f876b28e822a2bd16604cda47c3e276ea01a5f30b8e84cee9d1f"
+  },
+  {
+    "file": "assets/coaches/Shelsea.jpg",
+    "bytes": 703371,
+    "sha256": "595027b8650fc1bb957aff7b29c4a494753f8c0acd6b9054503d214619914084"
+  },
+  {
+    "file": "assets/coaches/Shelsea.webp",
+    "bytes": 403866,
+    "sha256": "63c4026a94eed08febee84467adc1634c9db7b1cda6dba5fe30fd7f768d62a07"
+  },
+  {
+    "file": "assets/community/tsg-01.jpg",
+    "bytes": 1340467,
+    "sha256": "ee7b5c6a4d31c89e0eaa9ae4e493546052fa5f1d3bc82c0458146b9c9ae210e2"
+  },
+  {
+    "file": "assets/community/tsg-02.jpg",
+    "bytes": 1555228,
+    "sha256": "6e4299d6b2f5a1f7fa3686fea53e882b8022617cdbb8bcaa2e6616cd855846fc"
+  },
+  {
+    "file": "assets/community/tsg-03.jpg",
+    "bytes": 1723987,
+    "sha256": "e21106047762b353edd8bab4e8a8b97609d7e0ab870ff47d936a5b4aef9ac830"
+  },
+  {
+    "file": "assets/community/tsg-04.webp",
+    "bytes": 1793424,
+    "sha256": "209ab3304776dd272a1ac1fad1bd67c19b5ef1f0b56c310c0ec0ff7876b377aa"
+  },
+  {
+    "file": "assets/community/tsg-05.webp",
+    "bytes": 513180,
+    "sha256": "f152571b4cd7bde445e6c4929866a4c4dc243405f004621882b23ca505869943"
+  },
+  {
+    "file": "assets/community/tsg-06.webp",
+    "bytes": 1651454,
+    "sha256": "b0a558313c5fd308af204f816f3b3f69ac28be4553fee4fb0850619ee836b92a"
+  },
+  {
+    "file": "assets/events/disco-flyer.png",
+    "bytes": 1589558,
+    "sha256": "e4baef942e466893642ca031f31163d826e32a36bc0d43bcca0080fc510ea6fc"
+  },
+  {
+    "file": "assets/events/events-data.js",
+    "bytes": 145,
+    "sha256": "396cf9cd344def589a9f30724d1ae0f12dda60f5bde38d743d0eb6b7a49736bb"
+  },
+  {
+    "file": "assets/events/lambeau-day.jpg.jpeg",
+    "bytes": 203110,
+    "sha256": "061bb08d5741651dd3519e90d0d9e9660d6d87bce27435f431205d658dac28a4"
+  },
+  {
+    "file": "assets/events/popup-lowlands.jpg.jpg",
+    "bytes": 2850960,
+    "sha256": "7c5b021acb507210a6d4e78891d75732f93ea6c2bfa159f70cf9147380dd235a"
+  },
+  {
+    "file": "assets/hero/canoe-bay-team-1200.webp",
+    "bytes": 372886,
+    "sha256": "572dcd935e39cd8e76af306fd7f8cc98b39883004a5a34e6fbbe24091a6057a6"
+  },
+  {
+    "file": "assets/hero/canoe-bay-team-1536.webp",
+    "bytes": 571724,
+    "sha256": "b4c1a21ad9ea89f78d83b9b7905a1476ad67ade2a5bf453cd85f2b3fc8323e08"
+  },
+  {
+    "file": "assets/hero/canoe-bay-team-768.webp",
+    "bytes": 163834,
+    "sha256": "d4c6593e0014027d8845a355d19d19f96ef6aa4b21326fa3845e7fffc8e1389a"
+  },
+  {
+    "file": "assets/hero/canoe-bay-team.webp",
+    "bytes": 4844,
+    "sha256": "bd18432df424423011c2d1715cf1db65bb4e1ae7d3a1b65a509d2995ac5b2ead"
+  },
+  {
+    "file": "assets/logo.png",
+    "bytes": 97484,
+    "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730"
+  },
+  {
+    "file": "assets/merch/classic-tshirt-community.jpg",
+    "bytes": 401396,
+    "sha256": "dac875bbfcd3f804b9d4089cb1d48bca4ff2fb3fd7fe1ca0e79f6a9ec4c14dd9"
+  },
+  {
+    "file": "assets/merch/mockup-bucket-hat-logo.svg",
+    "bytes": 1486,
+    "sha256": "ec8bbd3096f38a6efeb985cd2c9c1f206673d56dc31ed9a74c6bb798245dfd42"
+  },
+  {
+    "file": "assets/merch/mockup-hoodie-logo.svg",
+    "bytes": 2114,
+    "sha256": "3c10d9e2be6c45489529ca0f52f7febfd821c111262c4d1f58d769f9794e15a1"
+  },
+  {
+    "file": "assets/merch/mockup-keychain-logo.svg",
+    "bytes": 1588,
+    "sha256": "ef7341dd8ffc3de84090cfaf5d3fba5b30fe53b711fcf63121d361b546b0ff42"
+  },
+  {
+    "file": "assets/merch/mockup-socks-logo.svg",
+    "bytes": 1585,
+    "sha256": "8b8cc6f0225c1c27ebba4ea72b8ea59b90f7591eb5b0df594dc1b953213b369e"
+  },
+  {
+    "file": "assets/merch/mockup-tshirt-logo.svg",
+    "bytes": 2095,
+    "sha256": "04c45ffcde1b8c8a26d2b3de330610802ec81c9a7128a542d1996cff3f6f89df"
+  },
+  {
+    "file": "assets/theskateguys-1.png",
+    "bytes": 120615,
+    "sha256": "891f30d3b2a97d3f579603c4bbe13254c1a401916273b7ef248a5980a7d1f4ee"
+  },
+  {
+    "file": "assets/updates-data.js",
+    "bytes": 952,
+    "sha256": "ad35fab5d5d7bdebbabf2b665dd1ea51a9b0c0042886df818c0246acf386f143"
+  },
+  {
+    "file": "assets/whatsapp-booking.css",
+    "bytes": 2755,
+    "sha256": "d885f4d312a0cbe49c28fc7b1f5d10dfbbac07de098dbdff0120919c53c0ecdd"
+  },
+  {
+    "file": "assets/whatsapp-booking.js",
+    "bytes": 7557,
+    "sha256": "d64c0f5a9bfc5684bcc8ddd727cb9b2d28747ef3075f3eb904b7e1cebf4937cf"
+  },
+  {
+    "file": "assets/whatsapp-contact.css",
+    "bytes": 864,
+    "sha256": "8d575249076bb0207874908c01783c2179c643e734c4705fd06bb99846867dc0"
+  },
+  {
+    "file": "book.html",
+    "bytes": 16635,
+    "sha256": "e6c6267bc62bc1d7de06b1865efd6215bf20278a2dba9d185b555e69e06f262e"
+  },
+  {
+    "file": "elite.html",
+    "bytes": 8373,
+    "sha256": "75aa65640a3d680249e75daabd31b1446440b8e7b41d7acb9407b93ce69d17af"
+  },
+  {
+    "file": "googlee25463d8d8656390.html",
+    "bytes": 53,
+    "sha256": "55873ba23b367d7fb6a63fb877961a65c87c1b3e67dfbc81067e85976d1ca353"
+  },
+  {
+    "file": "index.html",
+    "bytes": 52809,
+    "sha256": "dc9dd2b2cdafa74ec4729203b251679c9011135bc8b0bd9a3945d78e4739e5b7"
+  },
+  {
+    "file": "logo.png",
+    "bytes": 97484,
+    "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730"
+  },
+  {
+    "file": "merch.html",
+    "bytes": 53325,
+    "sha256": "e39f09ca17798b238533b5ad4dff8323591df7f2557784829672470c84137485"
+  },
+  {
+    "file": "sitemap.xml",
+    "bytes": 663,
+    "sha256": "e24a920984386b81dfe4d5ceb7f19367a46aefac21ce3694879d9bffe7781856"
+  },
+  {
+    "file": "vercel.json",
+    "bytes": 561,
+    "sha256": "495b438d4a31c90946864f05f8a1a81e48340e2858fb17d40d61e3f3336c0a65"
+  }
+]

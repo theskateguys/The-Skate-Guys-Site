@@ -1,0 +1,3535 @@
+{
+  "schemaVersion": 1,
+  "createdDate": "2026-11-06",
+  "purpose": "TSG transfer-only archive",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "source": "generated transfer control",
+      "originalPath": null,
+      "transformations": [
+        "new transfer-only file"
+      ],
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8
+    },
+    {
+      "path": ".gitignore",
+      "source": "generated transfer control",
+      "originalPath": null,
+      "sha256": "98cc80b3b39c106e58bedd22bdc9b7955aadd52049e29d8b3e738969c73e60bb",
+      "bytes": 367,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "source": "local working tree",
+      "originalPath": "AGENTS.md",
+      "sha256": "6c72bd76a92d097eee6cc4dc4e8443f7bbc6a88974750129f8176d9965cbc632",
+      "bytes": 3018,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "BUILD_CHECKS.json",
+      "source": "generated transfer verification summary",
+      "originalPath": null,
+      "sha256": "2b44e5ac87eae1f7f602a6e6f2794404bfb74f98976c0f5f3e228fb225641993",
+      "bytes": 843,
+      "transformations": [
+        "Concise source-state summary; local settings/log filenames omitted"
+      ]
+    },
+    {
+      "path": "HANDOFF.md",
+      "source": "generated transfer documentation",
+      "originalPath": null,
+      "sha256": "a962630679a08b69c37485f8a87fb51519a29c85a76fbb7a1d1ab798e01182bf",
+      "bytes": 12584,
+      "transformations": [
+        "Generated receiving-agent handoff; clarified offline checks and history limits"
+      ]
+    },
+    {
+      "path": "README.md",
+      "source": "generated transfer documentation",
+      "originalPath": null,
+      "sha256": "2504730b1aaea9c419265ac570763ad8dd3f9635d37969bf7d08fb52cadd9862",
+      "bytes": 1273,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "TRANSFER_ONLY",
+      "source": "generated transfer control",
+      "originalPath": null,
+      "sha256": "0bfa64e8ec0558862df72ab9962b056a4ab69483a95289df33fcb60ed9c02a77",
+      "bytes": 99,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/.gitignore",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": ".gitignore",
+      "sha256": "3d9a90b7b5f5924d58fc0e020ed6c92fa62d67d551888af3a69e8ed33a5a562c",
+      "bytes": 71,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/AUDIT_REPORT.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "AUDIT_REPORT.md",
+      "sha256": "c64f98cbd137f250e97582bb105f57c978b7fa2f0738da6aea212223daefffbf",
+      "bytes": 6276,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/BOOKING_FLOW_ROLLOUT.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "BOOKING_FLOW_ROLLOUT.md",
+      "sha256": "5ad43b96f9f671018c632093e05a26c02be9e8980aeeee3b6ebd1d23afbddf60",
+      "bytes": 18664,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/CHANGELOG-CODEX-AUDIT.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "CHANGELOG-CODEX-AUDIT.md",
+      "sha256": "5e70e938556567db289630f45e05a73d3374a826ed42bdf9a6360e090ed79920",
+      "bytes": 2460,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/GOOGLE_SHEETS_LEAD_CAPTURE_SETUP.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "GOOGLE_SHEETS_LEAD_CAPTURE_SETUP.md",
+      "sha256": "f9cf794fe48b995483c9970a7b5590d57e5707f1a7609183530b40f1e06dbdc7",
+      "bytes": 33187,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/HOMEPAGE_TRUST_ROLLOUT.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "HOMEPAGE_TRUST_ROLLOUT.md",
+      "sha256": "fc29e70d901e8e30caee2c5ae299ce9cbf8359fe7c37df05a1fa30a32e0b261b",
+      "bytes": 1704,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/MERCH_MOCKUP_ROLLOUT.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "MERCH_MOCKUP_ROLLOUT.md",
+      "sha256": "3f433aaf7bdbf10868991179880839ef24169d94cab36b9d97333e1b81c2009e",
+      "bytes": 2692,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/README.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "README.md",
+      "sha256": "f439f27440128f5cf045d102e2e556f0a87ee18a7706c6e8889d6b04d131b5c1",
+      "bytes": 214,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/coaches/Dylon.jpg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/coaches/Dylon.jpg",
+      "sha256": "7e70ee0106bdaa606d26ae703c5f06a0af448e43d2cd964ad479f30fcbaff768",
+      "bytes": 4965993,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/coaches/Dylon.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/coaches/Dylon.webp",
+      "sha256": "ebda6dfab02049e2354c8ba279fbccd5f7d996e6062ce33ad6cc559591c92c54",
+      "bytes": 1596204,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/coaches/Jevon.jpg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/coaches/Jevon.jpg",
+      "sha256": "2757db79d7e798830a4b35d6f8689a003b92d512543be4dfa6196ffd9fc0b7f6",
+      "bytes": 648857,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/coaches/Jevon.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/coaches/Jevon.webp",
+      "sha256": "3a545d09b7e90ad60308ce75e1906ef3481b4c5d510c65b26fbf892202742f8c",
+      "bytes": 349416,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/coaches/Nikesha.jpg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/coaches/Nikesha.jpg",
+      "sha256": "717483a2f185007d17d2b7906675afa78517a314a6678d73ac5e115ea783f850",
+      "bytes": 638298,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/coaches/Nikesha.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/coaches/Nikesha.webp",
+      "sha256": "a840073a68a2f876b28e822a2bd16604cda47c3e276ea01a5f30b8e84cee9d1f",
+      "bytes": 389048,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/coaches/Shelsea.jpg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/coaches/Shelsea.jpg",
+      "sha256": "595027b8650fc1bb957aff7b29c4a494753f8c0acd6b9054503d214619914084",
+      "bytes": 703371,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/coaches/Shelsea.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/coaches/Shelsea.webp",
+      "sha256": "63c4026a94eed08febee84467adc1634c9db7b1cda6dba5fe30fd7f768d62a07",
+      "bytes": 403866,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/community/.gitkeep",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/community/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/community/tsg-01.jpg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/community/tsg-01.jpg",
+      "sha256": "ee7b5c6a4d31c89e0eaa9ae4e493546052fa5f1d3bc82c0458146b9c9ae210e2",
+      "bytes": 1340467,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/community/tsg-02.jpg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/community/tsg-02.jpg",
+      "sha256": "6e4299d6b2f5a1f7fa3686fea53e882b8022617cdbb8bcaa2e6616cd855846fc",
+      "bytes": 1555228,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/community/tsg-03.jpg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/community/tsg-03.jpg",
+      "sha256": "e21106047762b353edd8bab4e8a8b97609d7e0ab870ff47d936a5b4aef9ac830",
+      "bytes": 1723987,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/community/tsg-04.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/community/tsg-04.webp",
+      "sha256": "209ab3304776dd272a1ac1fad1bd67c19b5ef1f0b56c310c0ec0ff7876b377aa",
+      "bytes": 1793424,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/community/tsg-05.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/community/tsg-05.webp",
+      "sha256": "f152571b4cd7bde445e6c4929866a4c4dc243405f004621882b23ca505869943",
+      "bytes": 513180,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/community/tsg-06.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/community/tsg-06.webp",
+      "sha256": "b0a558313c5fd308af204f816f3b3f69ac28be4553fee4fb0850619ee836b92a",
+      "bytes": 1651454,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/events/disco-flyer.png",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/events/disco-flyer.png",
+      "sha256": "e4baef942e466893642ca031f31163d826e32a36bc0d43bcca0080fc510ea6fc",
+      "bytes": 1589558,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/events/events-data.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/events/events-data.js",
+      "sha256": "c68e450c7259cdc7d4843c6578e623faee00cac79af2c8b6179439d58d14e4e5",
+      "bytes": 142,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/events/lambeau-day.jpg.jpeg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/events/lambeau-day.jpg.jpeg",
+      "sha256": "061bb08d5741651dd3519e90d0d9e9660d6d87bce27435f431205d658dac28a4",
+      "bytes": 203110,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/events/popup-lowlands.jpg.jpg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/events/popup-lowlands.jpg.jpg",
+      "sha256": "7c5b021acb507210a6d4e78891d75732f93ea6c2bfa159f70cf9147380dd235a",
+      "bytes": 2850960,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/hero/canoe-bay-team-1200.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/hero/canoe-bay-team-1200.webp",
+      "sha256": "572dcd935e39cd8e76af306fd7f8cc98b39883004a5a34e6fbbe24091a6057a6",
+      "bytes": 372886,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/hero/canoe-bay-team-1536.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/hero/canoe-bay-team-1536.webp",
+      "sha256": "b4c1a21ad9ea89f78d83b9b7905a1476ad67ade2a5bf453cd85f2b3fc8323e08",
+      "bytes": 571724,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/hero/canoe-bay-team-768.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/hero/canoe-bay-team-768.webp",
+      "sha256": "d4c6593e0014027d8845a355d19d19f96ef6aa4b21326fa3845e7fffc8e1389a",
+      "bytes": 163834,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/hero/canoe-bay-team.webp",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/hero/canoe-bay-team.webp",
+      "sha256": "bd18432df424423011c2d1715cf1db65bb4e1ae7d3a1b65a509d2995ac5b2ead",
+      "bytes": 4844,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/lead-capture.css",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/lead-capture.css",
+      "sha256": "fedc5e729885b57c871351033f42c433c93099168d029f23d269f6004693b3bf",
+      "bytes": 4056,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/lead-capture.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/lead-capture.js",
+      "sha256": "305bf3dd85d30904159dcbdb8287b87c746f57ceeb1ad9ea63f70db23c1c6f3d",
+      "bytes": 13620,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/lead-config.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/lead-config.js",
+      "sha256": "8bbbc655a3344d9097230b9763d2db7d3bb83101150a179614a6095f8834b2c4",
+      "bytes": 252,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/logo.png",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/merch/classic-tshirt-community.jpg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/merch/classic-tshirt-community.jpg",
+      "sha256": "dac875bbfcd3f804b9d4089cb1d48bca4ff2fb3fd7fe1ca0e79f6a9ec4c14dd9",
+      "bytes": 401396,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/merch/merch clothe",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/merch/merch clothe",
+      "sha256": "8b911a8716b94442f9ca3dff20584048536e4c2f47b8b5bb9096cbd43c3432d5",
+      "bytes": 5,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/merch/mockup-bucket-hat-logo.svg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/merch/mockup-bucket-hat-logo.svg",
+      "sha256": "b50f80aa4936edfa786737f581719217eb7f0aa09f31298e10a0f825c93d1489",
+      "bytes": 1466,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/merch/mockup-hoodie-logo.svg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/merch/mockup-hoodie-logo.svg",
+      "sha256": "13713458e8967200f94086f983cef5b1e84f988300907b35882439f3ce031602",
+      "bytes": 2086,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/merch/mockup-keychain-logo.svg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/merch/mockup-keychain-logo.svg",
+      "sha256": "c50b2fcc0b0117b00eec9fc339efbd8ef058013e2c3d9d3340d94b13958145a5",
+      "bytes": 1567,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/merch/mockup-socks-logo.svg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/merch/mockup-socks-logo.svg",
+      "sha256": "1430aa00b1fc4e91068c2461393080cf46c9045c67fd2e76652a7b2a15a3880f",
+      "bytes": 1564,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/merch/mockup-tshirt-logo.svg",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/merch/mockup-tshirt-logo.svg",
+      "sha256": "fa47b20ac8cbfff0b606ddeb4416af221d6d5f9cf75728bf0777dc7e5a636fd6",
+      "bytes": 2066,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/theskateguys-1.png",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/theskateguys-1.png",
+      "sha256": "891f30d3b2a97d3f579603c4bbe13254c1a401916273b7ef248a5980a7d1f4ee",
+      "bytes": 120615,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/assets/updates-data.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "assets/updates-data.js",
+      "sha256": "6bad9bd9037e0bdc5178662b73b5a40a4035f744976aa9eca730fb58ca7a8fb4",
+      "bytes": 929,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/BOOKING_FLOW_VERIFICATION.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/BOOKING_FLOW_VERIFICATION.md",
+      "sha256": "de2b053843d78523c7b55a64a587e3c789b7294651fa0f28b11c97625ca0e233",
+      "bytes": 24368,
+      "transformations": [
+        "Raw historical Lead ID removed from prose"
+      ]
+    },
+    {
+      "path": "booking-review/automation/LEGACY_DUPLICATE_ISOLATION_REVIEW.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/LEGACY_DUPLICATE_ISOLATION_REVIEW.md",
+      "sha256": "b0ee4d5e8d1b0569ab5fdef68042e8617aa4d9422507429ef05bda95edb734d6",
+      "bytes": 3414,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/LEGACY_ENDPOINT_COMPATIBILITY.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/LEGACY_ENDPOINT_COMPATIBILITY.md",
+      "sha256": "fb160b823bc8c28fa6cd0bde756cf8790e8faf31022ce0dea02db8b5d3c9a0a5",
+      "bytes": 15666,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/NEW_INTAKE_CUTOVER_RUNBOOK.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/NEW_INTAKE_CUTOVER_RUNBOOK.md",
+      "sha256": "0d75b21e66abc943be9345aa09e0f65ce76482d7e90fe2f66081048714901d44",
+      "bytes": 22117,
+      "transformations": [
+        "Non-public contact email replaced with redacted-contact@example.test",
+        "Raw historical Lead ID removed from prose",
+        "Historical evidence fingerprint omitted"
+      ]
+    },
+    {
+      "path": "booking-review/automation/NEW_INTAKE_RELEASE_REVIEW.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/NEW_INTAKE_RELEASE_REVIEW.md",
+      "sha256": "3ce96891bfb51247ea0586510cc91d524079f252a6f16b17da0b0edc91aaaf40",
+      "bytes": 5681,
+      "transformations": [
+        "Historical evidence fingerprint omitted"
+      ]
+    },
+    {
+      "path": "booking-review/automation/PRODUCTION_REMINDER_CUTOVER.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/PRODUCTION_REMINDER_CUTOVER.md",
+      "sha256": "04d4d9de4cb5260cbf67fb5963b4ebbfb3b2c67ba07e01bcc1e5faed38276c46",
+      "bytes": 7865,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/RELEASE_PREPARATION_VERIFICATION.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/RELEASE_PREPARATION_VERIFICATION.md",
+      "sha256": "ad65741198d8233feb55106e3ec367de9069404bfea17326091c26519c30d627",
+      "bytes": 9783,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/audit-live-lead-integrity.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/audit-live-lead-integrity.mjs",
+      "sha256": "4d81fa2802087cea3e1a5a5c1d99c8d8424e7922f811b7e71a8eeb243db495f0",
+      "bytes": 11245,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/bind-booking-rollback-isolated.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/bind-booking-rollback-isolated.mjs",
+      "sha256": "80a92d58409e60efaf6e305b7e1eb9dbe385be179a37102759a9073703a9a169",
+      "bytes": 796,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/build-booking-rollback.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/build-booking-rollback.mjs",
+      "sha256": "c71945b788a004200250a3e3b861c0127e42c3a40dd23b107a3f5dc3a867bc2a",
+      "bytes": 1497,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/build-tsg-leads.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/build-tsg-leads.mjs",
+      "sha256": "9be4ffc98cde99cc0a2502123cc9be5e4f1644e501b13907301f04bc984e8a8d",
+      "bytes": 5721,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-booking-browser.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-booking-browser.js",
+      "sha256": "ee9b16cc2b7f4b8daf0109c586b0d3dea981e6bd34c7d66566e2a684e7aebe69",
+      "bytes": 11231,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-booking-delay.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-booking-delay.js",
+      "sha256": "0a66d103ccfb48c7888a482997f8158aec5b87b9c5ff13460ce93d6569264339",
+      "bytes": 5696,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-booking-rollback-isolated.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-booking-rollback-isolated.mjs",
+      "sha256": "3ac931cd6181664b4e057122cdb6907753001301e0bc5b7c74a1b8fd4f6f9f74",
+      "bytes": 837,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-booking-rollback.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-booking-rollback.mjs",
+      "sha256": "665dc6ba048a2c910a7c06a2839ea89e663b4e9e552e0f74b8a68f16d86627b5",
+      "bytes": 2846,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-booking-system.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-booking-system.mjs",
+      "sha256": "6cd9f949d4e3331c66b4909ed67448d05147e8641386295c508ee69a51f06917",
+      "bytes": 11383,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-booking-timeout.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-booking-timeout.js",
+      "sha256": "627fdc29456305d5dc818de11b22de193931426118ebb6e283ff847251765158",
+      "bytes": 5696,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-email-browser.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-email-browser.js",
+      "sha256": "2b66376ecb0478ef92e4d7a22cc3c12286469a2c46624e2e0e0f85693e08215e",
+      "bytes": 4362,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-lead-flow.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-lead-flow.mjs",
+      "sha256": "75d3ee99dc1f694b133ca03bed600ce8f91e48a9679157772a8e952f4f7553af",
+      "bytes": 2535,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-legacy-compatibility.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-legacy-compatibility.mjs",
+      "sha256": "075328cf27a0768ed393e80c848a5089bde35f6d0122479107125707ae257fb5",
+      "bytes": 46884,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-legacy-status-risk.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-legacy-status-risk.mjs",
+      "sha256": "6985d6215002413e53386180f222bd64ee92d11058d8d9f8f4becf5a8fe77a45",
+      "bytes": 12056,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-real-browser-ack.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-real-browser-ack.js",
+      "sha256": "098347bd0a78a07f324cdcb0524ee797b9671abc15f2d9018b5f2644eb712a2a",
+      "bytes": 13329,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/check-whatsapp-links.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/check-whatsapp-links.mjs",
+      "sha256": "b0ad372405a323110d68b336cfd21afbfd59b3d0fcf47d4330bfb366fafb7a1d",
+      "bytes": 2936,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/google-apps-script/Code.gs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/google-apps-script/Code.gs",
+      "sha256": "a761017b077e8f895ca03370eea32f62a09616e6f47d5f057820f1b83108a968",
+      "bytes": 31900,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/google-apps-script/EmailLogo.gs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/google-apps-script/EmailLogo.gs",
+      "sha256": "d21808c728f60d1db52bc0b4dc7a791d873248c2880fc734475f79eb33d0a12f",
+      "bytes": 161137,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/google-apps-script/IsolatedProfile.gs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/google-apps-script/IsolatedProfile.gs",
+      "sha256": "0c44d458ee3586cf779c3eba84591fc86d12c49a4d22addf74f002c07bd697cd",
+      "bytes": 2003,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/google-apps-script/README.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/google-apps-script/README.md",
+      "sha256": "89b5fdf38c87ae159c509203c5652d65e7216f7807c99b1b451361bfc0eb4169",
+      "bytes": 1360,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/Code.gs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/Code.gs",
+      "sha256": "c8a2f98e9b0eb4a8c01c326e3184e1dc3c9ab35cc9ac801ada1e075ca108425f",
+      "bytes": 24761,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/README.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/README.md",
+      "sha256": "4085dfe24af6c991bc2135cb954b947e1b91e372975b2289c6ec3469eef7adce",
+      "bytes": 9377,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/acceptance-browser.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/acceptance-browser.js",
+      "sha256": "34d9c41d60af378ee257771c194760f08cf6cc0d3e2f407b124c15b0944c61da",
+      "bytes": 4222,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/acceptance-fixtures.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/acceptance-fixtures.mjs",
+      "sha256": "694cf4444ee8b999b9dcf0c3fc91f2ba196885b2f855c98b427dbd4be5de01f3",
+      "bytes": 5402,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/acceptance-plan.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/acceptance-plan.md",
+      "sha256": "746989e2540160c22869d6e5a3cdeeb57d02c74535334334ffdc316c66e10e80",
+      "bytes": 11085,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/acceptance-server.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/acceptance-server.mjs",
+      "sha256": "6a0c508c0dc7d6261299af6b61afcf8607e36ce9c8bbd22a6c3cf8caa9f4aa83",
+      "bytes": 3260,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/clean-acceptance-browser.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/clean-acceptance-browser.js",
+      "sha256": "4c9fdb3e5f988b01139b7fb6c3a6109484a7a2690148dac7668f807552da2bc1",
+      "bytes": 7139,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/clean-acceptance-server.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/clean-acceptance-server.mjs",
+      "sha256": "b12965eacfe1cd51badf2a49f73412dbcb01fbbe2ec25a6cba0ca914cbec744f",
+      "bytes": 4170,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/diagnose-isolation-transport.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/diagnose-isolation-transport.js",
+      "sha256": "d26ca730000ae07373119d15c75a6cd5a21456fdb5325a13c8dcfd8f9aacf84e",
+      "bytes": 1092,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/isolation-acceptance-browser-native.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/isolation-acceptance-browser-native.js",
+      "sha256": "f9aa058754cc2a01e0b06611e992ad83c801a970711d0693f338aa42404ffa69",
+      "bytes": 7205,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/isolation-acceptance-browser.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/isolation-acceptance-browser.js",
+      "sha256": "edc19c036e8dd198303c18a0b24f7836baefd3b61430c2c1f13b816d97055bcb",
+      "bytes": 8331,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/isolation-acceptance-fixtures.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/isolation-acceptance-fixtures.mjs",
+      "sha256": "031fd951f2cb72f1e009de8c795b90c79b0bb0579e72940adf95f28e760fd230",
+      "bytes": 4837,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/isolation-acceptance-server.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/isolation-acceptance-server.mjs",
+      "sha256": "0e4d62447f8ab102a43bdfa9aa6dee433c23465b67aeb7388a1bae4bfd22ff3f",
+      "bytes": 2934,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/test-clean-acceptance-guard.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/test-clean-acceptance-guard.mjs",
+      "sha256": "e1be109b3df0f641a14bba55d1f4c4b12ae14853736e901cc3046ea7f9e1311f",
+      "bytes": 2114,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/test-isolation-acceptance-guard.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/test-isolation-acceptance-guard.mjs",
+      "sha256": "491363cae875a97f80c1e2aa95e21489da93011f9a6ed32b14efe71d5eb826c0",
+      "bytes": 15498,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/test-isolation-native-harness.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/test-isolation-native-harness.mjs",
+      "sha256": "91b3d8a1a44b5fe5f926f1c0ddca7a8a05e1823e35d9e2b2ab8543d2fd7d93da",
+      "bytes": 3490,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/legacy-compatibility/verify-google-acceptance-evidence.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/legacy-compatibility/verify-google-acceptance-evidence.mjs",
+      "sha256": "a414d6642311f320cd624eb6226bf7d5c14792aa20cc13fbd495d7a0d5e844b2",
+      "bytes": 3678,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-acceptance/README.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-acceptance/README.md",
+      "sha256": "fed90964e9e91ce274a8d0f3c0d5ec06adb711a7c2bd288d5f3cc1cb77909d9b",
+      "bytes": 2443,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-acceptance/browser-real.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-acceptance/browser-real.js",
+      "sha256": "18b216519f5ace668f51756b8613932a4a3c5f11314cde8384e73ea8bac8deeb",
+      "bytes": 6130,
+      "transformations": [
+        "Non-public contact email replaced with redacted-contact@example.test"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-acceptance/browser-retry.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-acceptance/browser-retry.js",
+      "sha256": "063593d957eb64eabb36770e5f4dc3d511fa63592d8731c01e16f7609786440e",
+      "bytes": 1468,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-acceptance/check-evidence.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-acceptance/check-evidence.mjs",
+      "sha256": "5d4f04cf8cdc27cec1232a46ff8fef7181b4dec2f98213c536ff98b368f2742e",
+      "bytes": 6480,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-acceptance/server.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-acceptance/server.mjs",
+      "sha256": "464fee296af14fea44c46beae989270d0b95d954577e627aba729993ea2f127b",
+      "bytes": 2380,
+      "transformations": [
+        "Non-public contact email replaced with redacted-contact@example.test"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-ops/build-clean-sheets.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-ops/build-clean-sheets.mjs",
+      "sha256": "452ae68b19461e313f759b6fd6c169bc768ef3708ef365563a6085440d81b92e",
+      "bytes": 6576,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-web/README.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-web/README.md",
+      "sha256": "f9297d12fea579fbfcc2b42ac570b9411c5a72ef5a00f95d460b943a3f1db699",
+      "bytes": 11289,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-web/binding.template.json",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-web/binding.template.json",
+      "sha256": "fcde406b499bf7923dc27dc948fa6a4f174aa5d379bf3a1b490dafb31fc66807",
+      "bytes": 668,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-web/browser-check.js",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-web/browser-check.js",
+      "sha256": "b4737a5c4b7715079ef0cd2af822b728fbbbb95d9634da006a936888326a4618",
+      "bytes": 11149,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-web/contract.json",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-web/contract.json",
+      "sha256": "5b6bcd865a0cf7205edb5db91440297c8d7f455e4b9886f3834c8520e35b63e2",
+      "bytes": 1861,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-web/lib.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-web/lib.mjs",
+      "sha256": "348c5b8853bd55ec5e734d495747e8391147665d6076eb36e2eeb3f294d6ddfb",
+      "bytes": 14555,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-web/test.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-web/test.mjs",
+      "sha256": "477fd98b0bb2e17efd3261427ce65c7073275f01ec9eb8f98c2f03255bf93f4d",
+      "bytes": 8328,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/new-intake-web/web.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/new-intake-web/web.mjs",
+      "sha256": "3e324fa13232b2d666091abf2a7540634ac7e818925796f9aa3107cc2dd8bb00",
+      "bytes": 6462,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/preview-booking-email.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/preview-booking-email.mjs",
+      "sha256": "f8bb7c38fab9955123c941df47543a12fbcd1d2314168ac105462d2a92121a0c",
+      "bytes": 6641,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/rollback/README.md",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/rollback/README.md",
+      "sha256": "2eac9b726fad851be6ec30f436e3eca4bbd97d1c8ec352ff415a0fca538caa33",
+      "bytes": 13149,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/rollback/binding-prepare-retry.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/rollback/binding-prepare-retry.mjs",
+      "sha256": "42e7482cb8efd672353a20305e015e2068d7d654f32759b1c8b3b50ba0b9266a",
+      "bytes": 5352,
+      "transformations": [
+        "Non-public contact email replaced with redacted-contact@example.test"
+      ]
+    },
+    {
+      "path": "booking-review/automation/rollback/binding.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/rollback/binding.mjs",
+      "sha256": "40185d06185fc976f3c4471f7f2fa7b06dca362ad330adc8743b6ef0f1381f38",
+      "bytes": 5962,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/rollback/contract.json",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/rollback/contract.json",
+      "sha256": "af3abe3ba8fac2aed0f8e29ba0d7523df1ae9755817ab5088092ea7fb02dbc9d",
+      "bytes": 1693,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/rollback/lib.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/rollback/lib.mjs",
+      "sha256": "d4a21e64c10a0bb913308155dfe353ac8184aeb95cafda8398fd1c85b0b562d3",
+      "bytes": 6352,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/rollback/serve.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/rollback/serve.mjs",
+      "sha256": "88155d3d95fcae37c3ae7b276f19d0a2567f977c9b227d3d271218429aef32c8",
+      "bytes": 4745,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/rollback/test-binding.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/rollback/test-binding.mjs",
+      "sha256": "495dea69a2e71f138c52152d01e9ea28a31fa9696109199b3f390c8817f7286e",
+      "bytes": 9749,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/rollback/test.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/rollback/test.mjs",
+      "sha256": "5a73e8b09fd2eb090371daca67e1d6ef9dc1541397923825b54a4f5660de653d",
+      "bytes": 3778,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/serve-isolated-booking-test.cjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/serve-isolated-booking-test.cjs",
+      "sha256": "357208894285157d5af2d1d2f191192fdb06308fafb0156fa69961ad88f98d09",
+      "bytes": 4224,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/automation/test-live-lead-integrity.mjs",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "automation/test-live-lead-integrity.mjs",
+      "sha256": "2f962259bdb809710e6c3de058d60a0dbee1e753dde4d63fd8fbc86edac20bfa",
+      "bytes": 8408,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/book.html",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "book.html",
+      "sha256": "c1c25c70fc6f78b3c57f2c4f52dd49ba22d71ab121b71a30dfa5b2d23e0ed67e",
+      "bytes": 17092,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/elite.html",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "elite.html",
+      "sha256": "9a4dd92a8dcf88404fd98590cfe68785edd79aab7bb2139eec5288eeabcc291b",
+      "bytes": 8203,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/googlee25463d8d8656390.html",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "googlee25463d8d8656390.html",
+      "sha256": "55873ba23b367d7fb6a63fb877961a65c87c1b3e67dfbc81067e85976d1ca353",
+      "bytes": 53,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/index.html",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "index.html",
+      "sha256": "5cbb4522459611f9131efaea2d2b864f1f0017e24ca6d15e0545f385f8ecdbd2",
+      "bytes": 53178,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/logo.png",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/merch.html",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "merch.html",
+      "sha256": "2cb6f1da9ab621896bff92589f2f3db4ff9c5809c0c966affb53fe1ffcbc37e2",
+      "bytes": 52991,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "booking-review/sitemap.xml",
+      "source": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "originalPath": "sitemap.xml",
+      "sha256": "30521b31f5bb1b1f4ef3614e30d7a43891876b5dc3aa3953b6aec50b102b29f9",
+      "bytes": 642,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "bundles/tsg-merch-uncommitted-2026-11-06.zip",
+      "source": "local pre-existing six-entry bundle",
+      "originalPath": "output/transfer/tsg-merch-uncommitted-2026-11-06.zip",
+      "sha256": "6df52ba3d52e4872afe508ffad3d6e76f69fd7265f79b6bca3aa379025dca1d7",
+      "bytes": 9148854,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "merch-draft/assets/merch/black-dtf-print.png",
+      "source": "local working tree",
+      "originalPath": "assets/merch/black-dtf-print.png",
+      "sha256": "ced574c297056c11f2f26eec5c3ddd03e5f1a36a0d6c1b66e7a55e5a71f5b03d",
+      "bytes": 2112612,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "merch-draft/assets/merch/charcoal-grey-dtf-print.png",
+      "source": "local working tree",
+      "originalPath": "assets/merch/charcoal-grey-dtf-print.png",
+      "sha256": "6a55deadf0ab8137dca181aec9ff81c6360271570afdb609c24555216d76c979",
+      "bytes": 2364464,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "merch-draft/assets/merch/heather-grey-dtf-print.png",
+      "source": "local working tree",
+      "originalPath": "assets/merch/heather-grey-dtf-print.png",
+      "sha256": "d4e5dda3b60385d7bb62f88ce92591bc542d4589f0a26af7515ef95c8edb59c1",
+      "bytes": 2310382,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "merch-draft/assets/merch/navy-dtf-print.png",
+      "source": "local working tree",
+      "originalPath": "assets/merch/navy-dtf-print.png",
+      "sha256": "059f64edd112a2a208bc1b1dc13994bc96dfa84b8d45e8d67015a5e8690d4380",
+      "bytes": 2353207,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "merch-draft/assets/merch/white-dtf-print.png",
+      "source": "local working tree",
+      "originalPath": "assets/merch/white-dtf-print.png",
+      "sha256": "8bdaa50cb324cb107c3279d9132aa6dade09b3f7101897c7d946dd1a51d046ac",
+      "bytes": 2162344,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "merch-draft/baseline-merch.html",
+      "source": "0aadc8db55a7ad8bd0db33e3cc13cd35250c5829",
+      "originalPath": "merch.html",
+      "sha256": "6350381233f94314bc6fbdef9c3d23a636af13dd6a2c8e9246b7201ef851a2db",
+      "bytes": 57234,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "merch-draft/merch.html",
+      "source": "local working tree",
+      "originalPath": "merch.html",
+      "sha256": "7341ab79614ef7af6416bb21cc3f007da8c93a7d5a19a57348ce36b4d1e66b85",
+      "bytes": 65101,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/coaches/Dylon.jpg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/coaches/Dylon.jpg",
+      "sha256": "7e70ee0106bdaa606d26ae703c5f06a0af448e43d2cd964ad479f30fcbaff768",
+      "bytes": 4965993,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/coaches/Dylon.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/coaches/Dylon.webp",
+      "sha256": "ebda6dfab02049e2354c8ba279fbccd5f7d996e6062ce33ad6cc559591c92c54",
+      "bytes": 1596204,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/coaches/Jevon.jpg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/coaches/Jevon.jpg",
+      "sha256": "2757db79d7e798830a4b35d6f8689a003b92d512543be4dfa6196ffd9fc0b7f6",
+      "bytes": 648857,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/coaches/Jevon.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/coaches/Jevon.webp",
+      "sha256": "3a545d09b7e90ad60308ce75e1906ef3481b4c5d510c65b26fbf892202742f8c",
+      "bytes": 349416,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/coaches/Nikesha.jpg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/coaches/Nikesha.jpg",
+      "sha256": "717483a2f185007d17d2b7906675afa78517a314a6678d73ac5e115ea783f850",
+      "bytes": 638298,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/coaches/Nikesha.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/coaches/Nikesha.webp",
+      "sha256": "a840073a68a2f876b28e822a2bd16604cda47c3e276ea01a5f30b8e84cee9d1f",
+      "bytes": 389048,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/coaches/Shelsea.jpg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/coaches/Shelsea.jpg",
+      "sha256": "595027b8650fc1bb957aff7b29c4a494753f8c0acd6b9054503d214619914084",
+      "bytes": 703371,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/coaches/Shelsea.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/coaches/Shelsea.webp",
+      "sha256": "63c4026a94eed08febee84467adc1634c9db7b1cda6dba5fe30fd7f768d62a07",
+      "bytes": 403866,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/community/tsg-01.jpg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/community/tsg-01.jpg",
+      "sha256": "ee7b5c6a4d31c89e0eaa9ae4e493546052fa5f1d3bc82c0458146b9c9ae210e2",
+      "bytes": 1340467,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/community/tsg-02.jpg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/community/tsg-02.jpg",
+      "sha256": "6e4299d6b2f5a1f7fa3686fea53e882b8022617cdbb8bcaa2e6616cd855846fc",
+      "bytes": 1555228,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/community/tsg-03.jpg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/community/tsg-03.jpg",
+      "sha256": "e21106047762b353edd8bab4e8a8b97609d7e0ab870ff47d936a5b4aef9ac830",
+      "bytes": 1723987,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/community/tsg-04.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/community/tsg-04.webp",
+      "sha256": "209ab3304776dd272a1ac1fad1bd67c19b5ef1f0b56c310c0ec0ff7876b377aa",
+      "bytes": 1793424,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/community/tsg-05.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/community/tsg-05.webp",
+      "sha256": "f152571b4cd7bde445e6c4929866a4c4dc243405f004621882b23ca505869943",
+      "bytes": 513180,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/community/tsg-06.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/community/tsg-06.webp",
+      "sha256": "b0a558313c5fd308af204f816f3b3f69ac28be4553fee4fb0850619ee836b92a",
+      "bytes": 1651454,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/events/disco-flyer.png",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/events/disco-flyer.png",
+      "sha256": "e4baef942e466893642ca031f31163d826e32a36bc0d43bcca0080fc510ea6fc",
+      "bytes": 1589558,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/events/events-data.js",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/events/events-data.js",
+      "sha256": "c68e450c7259cdc7d4843c6578e623faee00cac79af2c8b6179439d58d14e4e5",
+      "bytes": 142,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/events/lambeau-day.jpg.jpeg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/events/lambeau-day.jpg.jpeg",
+      "sha256": "061bb08d5741651dd3519e90d0d9e9660d6d87bce27435f431205d658dac28a4",
+      "bytes": 203110,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/events/popup-lowlands.jpg.jpg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/events/popup-lowlands.jpg.jpg",
+      "sha256": "7c5b021acb507210a6d4e78891d75732f93ea6c2bfa159f70cf9147380dd235a",
+      "bytes": 2850960,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/hero/canoe-bay-team-1200.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/hero/canoe-bay-team-1200.webp",
+      "sha256": "572dcd935e39cd8e76af306fd7f8cc98b39883004a5a34e6fbbe24091a6057a6",
+      "bytes": 372886,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/hero/canoe-bay-team-1536.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/hero/canoe-bay-team-1536.webp",
+      "sha256": "b4c1a21ad9ea89f78d83b9b7905a1476ad67ade2a5bf453cd85f2b3fc8323e08",
+      "bytes": 571724,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/hero/canoe-bay-team-768.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/hero/canoe-bay-team-768.webp",
+      "sha256": "d4c6593e0014027d8845a355d19d19f96ef6aa4b21326fa3845e7fffc8e1389a",
+      "bytes": 163834,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/hero/canoe-bay-team.webp",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/hero/canoe-bay-team.webp",
+      "sha256": "bd18432df424423011c2d1715cf1db65bb4e1ae7d3a1b65a509d2995ac5b2ead",
+      "bytes": 4844,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/lead-capture.css",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/lead-capture.css",
+      "sha256": "fedc5e729885b57c871351033f42c433c93099168d029f23d269f6004693b3bf",
+      "bytes": 4056,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/lead-capture.js",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/lead-capture.js",
+      "sha256": "305bf3dd85d30904159dcbdb8287b87c746f57ceeb1ad9ea63f70db23c1c6f3d",
+      "bytes": 13620,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/lead-config.js",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/lead-config.js",
+      "sha256": "8bbbc655a3344d9097230b9763d2db7d3bb83101150a179614a6095f8834b2c4",
+      "bytes": 252,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/logo.png",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/merch/classic-tshirt-community.jpg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/merch/classic-tshirt-community.jpg",
+      "sha256": "dac875bbfcd3f804b9d4089cb1d48bca4ff2fb3fd7fe1ca0e79f6a9ec4c14dd9",
+      "bytes": 401396,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/merch/mockup-bucket-hat-logo.svg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/merch/mockup-bucket-hat-logo.svg",
+      "sha256": "b50f80aa4936edfa786737f581719217eb7f0aa09f31298e10a0f825c93d1489",
+      "bytes": 1466,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/merch/mockup-hoodie-logo.svg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/merch/mockup-hoodie-logo.svg",
+      "sha256": "13713458e8967200f94086f983cef5b1e84f988300907b35882439f3ce031602",
+      "bytes": 2086,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/merch/mockup-keychain-logo.svg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/merch/mockup-keychain-logo.svg",
+      "sha256": "c50b2fcc0b0117b00eec9fc339efbd8ef058013e2c3d9d3340d94b13958145a5",
+      "bytes": 1567,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/merch/mockup-socks-logo.svg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/merch/mockup-socks-logo.svg",
+      "sha256": "1430aa00b1fc4e91068c2461393080cf46c9045c67fd2e76652a7b2a15a3880f",
+      "bytes": 1564,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/merch/mockup-tshirt-logo.svg",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/merch/mockup-tshirt-logo.svg",
+      "sha256": "fa47b20ac8cbfff0b606ddeb4416af221d6d5f9cf75728bf0777dc7e5a636fd6",
+      "bytes": 2066,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/theskateguys-1.png",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/theskateguys-1.png",
+      "sha256": "891f30d3b2a97d3f579603c4bbe13254c1a401916273b7ef248a5980a7d1f4ee",
+      "bytes": 120615,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/assets/updates-data.js",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "assets/updates-data.js",
+      "sha256": "6bad9bd9037e0bdc5178662b73b5a40a4035f744976aa9eca730fb58ca7a8fb4",
+      "bytes": 929,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/automation/google-apps-script/Code.gs",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "automation/google-apps-script/Code.gs",
+      "sha256": "a761017b077e8f895ca03370eea32f62a09616e6f47d5f057820f1b83108a968",
+      "bytes": 31900,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/automation/google-apps-script/EmailLogo.gs",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "automation/google-apps-script/EmailLogo.gs",
+      "sha256": "d21808c728f60d1db52bc0b4dc7a791d873248c2880fc734475f79eb33d0a12f",
+      "bytes": 161137,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/book.html",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "book.html",
+      "sha256": "964ce0400d9582e8bdd137f825c6d658fba205bcc2b3107adbacbc73d6f57aae",
+      "bytes": 17074,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/elite.html",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "elite.html",
+      "sha256": "9a4dd92a8dcf88404fd98590cfe68785edd79aab7bb2139eec5288eeabcc291b",
+      "bytes": 8203,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/googlee25463d8d8656390.html",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "googlee25463d8d8656390.html",
+      "sha256": "55873ba23b367d7fb6a63fb877961a65c87c1b3e67dfbc81067e85976d1ca353",
+      "bytes": 53,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/index.html",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "index.html",
+      "sha256": "5cbb4522459611f9131efaea2d2b864f1f0017e24ca6d15e0545f385f8ecdbd2",
+      "bytes": 53178,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/logo.png",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/merch.html",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "merch.html",
+      "sha256": "2cb6f1da9ab621896bff92589f2f3db4ff9c5809c0c966affb53fe1ffcbc37e2",
+      "bytes": 52991,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/02639f8/sitemap.xml",
+      "source": "02639f8c7e0361b72d1a19d03bf5fc6579ca2839",
+      "originalPath": "sitemap.xml",
+      "sha256": "30521b31f5bb1b1f4ef3614e30d7a43891876b5dc3aa3953b6aec50b102b29f9",
+      "bytes": 642,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/coaches/Dylon.jpg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/coaches/Dylon.jpg",
+      "sha256": "7e70ee0106bdaa606d26ae703c5f06a0af448e43d2cd964ad479f30fcbaff768",
+      "bytes": 4965993,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/coaches/Dylon.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/coaches/Dylon.webp",
+      "sha256": "ebda6dfab02049e2354c8ba279fbccd5f7d996e6062ce33ad6cc559591c92c54",
+      "bytes": 1596204,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/coaches/Jevon.jpg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/coaches/Jevon.jpg",
+      "sha256": "2757db79d7e798830a4b35d6f8689a003b92d512543be4dfa6196ffd9fc0b7f6",
+      "bytes": 648857,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/coaches/Jevon.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/coaches/Jevon.webp",
+      "sha256": "3a545d09b7e90ad60308ce75e1906ef3481b4c5d510c65b26fbf892202742f8c",
+      "bytes": 349416,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/coaches/Nikesha.jpg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/coaches/Nikesha.jpg",
+      "sha256": "717483a2f185007d17d2b7906675afa78517a314a6678d73ac5e115ea783f850",
+      "bytes": 638298,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/coaches/Nikesha.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/coaches/Nikesha.webp",
+      "sha256": "a840073a68a2f876b28e822a2bd16604cda47c3e276ea01a5f30b8e84cee9d1f",
+      "bytes": 389048,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/coaches/Shelsea.jpg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/coaches/Shelsea.jpg",
+      "sha256": "595027b8650fc1bb957aff7b29c4a494753f8c0acd6b9054503d214619914084",
+      "bytes": 703371,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/coaches/Shelsea.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/coaches/Shelsea.webp",
+      "sha256": "63c4026a94eed08febee84467adc1634c9db7b1cda6dba5fe30fd7f768d62a07",
+      "bytes": 403866,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/community/tsg-01.jpg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/community/tsg-01.jpg",
+      "sha256": "ee7b5c6a4d31c89e0eaa9ae4e493546052fa5f1d3bc82c0458146b9c9ae210e2",
+      "bytes": 1340467,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/community/tsg-02.jpg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/community/tsg-02.jpg",
+      "sha256": "6e4299d6b2f5a1f7fa3686fea53e882b8022617cdbb8bcaa2e6616cd855846fc",
+      "bytes": 1555228,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/community/tsg-03.jpg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/community/tsg-03.jpg",
+      "sha256": "e21106047762b353edd8bab4e8a8b97609d7e0ab870ff47d936a5b4aef9ac830",
+      "bytes": 1723987,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/community/tsg-04.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/community/tsg-04.webp",
+      "sha256": "209ab3304776dd272a1ac1fad1bd67c19b5ef1f0b56c310c0ec0ff7876b377aa",
+      "bytes": 1793424,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/community/tsg-05.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/community/tsg-05.webp",
+      "sha256": "f152571b4cd7bde445e6c4929866a4c4dc243405f004621882b23ca505869943",
+      "bytes": 513180,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/community/tsg-06.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/community/tsg-06.webp",
+      "sha256": "b0a558313c5fd308af204f816f3b3f69ac28be4553fee4fb0850619ee836b92a",
+      "bytes": 1651454,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/events/disco-flyer.png",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/events/disco-flyer.png",
+      "sha256": "e4baef942e466893642ca031f31163d826e32a36bc0d43bcca0080fc510ea6fc",
+      "bytes": 1589558,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/events/events-data.js",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/events/events-data.js",
+      "sha256": "c68e450c7259cdc7d4843c6578e623faee00cac79af2c8b6179439d58d14e4e5",
+      "bytes": 142,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/events/lambeau-day.jpg.jpeg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/events/lambeau-day.jpg.jpeg",
+      "sha256": "061bb08d5741651dd3519e90d0d9e9660d6d87bce27435f431205d658dac28a4",
+      "bytes": 203110,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/events/popup-lowlands.jpg.jpg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/events/popup-lowlands.jpg.jpg",
+      "sha256": "7c5b021acb507210a6d4e78891d75732f93ea6c2bfa159f70cf9147380dd235a",
+      "bytes": 2850960,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/hero/canoe-bay-team-1200.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/hero/canoe-bay-team-1200.webp",
+      "sha256": "572dcd935e39cd8e76af306fd7f8cc98b39883004a5a34e6fbbe24091a6057a6",
+      "bytes": 372886,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/hero/canoe-bay-team-1536.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/hero/canoe-bay-team-1536.webp",
+      "sha256": "b4c1a21ad9ea89f78d83b9b7905a1476ad67ade2a5bf453cd85f2b3fc8323e08",
+      "bytes": 571724,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/hero/canoe-bay-team-768.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/hero/canoe-bay-team-768.webp",
+      "sha256": "d4c6593e0014027d8845a355d19d19f96ef6aa4b21326fa3845e7fffc8e1389a",
+      "bytes": 163834,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/hero/canoe-bay-team.webp",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/hero/canoe-bay-team.webp",
+      "sha256": "bd18432df424423011c2d1715cf1db65bb4e1ae7d3a1b65a509d2995ac5b2ead",
+      "bytes": 4844,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/lead-capture.css",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/lead-capture.css",
+      "sha256": "fedc5e729885b57c871351033f42c433c93099168d029f23d269f6004693b3bf",
+      "bytes": 4056,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/lead-capture.js",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/lead-capture.js",
+      "sha256": "305bf3dd85d30904159dcbdb8287b87c746f57ceeb1ad9ea63f70db23c1c6f3d",
+      "bytes": 13620,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/lead-config.js",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/lead-config.js",
+      "sha256": "8bbbc655a3344d9097230b9763d2db7d3bb83101150a179614a6095f8834b2c4",
+      "bytes": 252,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/logo.png",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/merch/classic-tshirt-community.jpg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/merch/classic-tshirt-community.jpg",
+      "sha256": "dac875bbfcd3f804b9d4089cb1d48bca4ff2fb3fd7fe1ca0e79f6a9ec4c14dd9",
+      "bytes": 401396,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/merch/mockup-bucket-hat-logo.svg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/merch/mockup-bucket-hat-logo.svg",
+      "sha256": "b50f80aa4936edfa786737f581719217eb7f0aa09f31298e10a0f825c93d1489",
+      "bytes": 1466,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/merch/mockup-hoodie-logo.svg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/merch/mockup-hoodie-logo.svg",
+      "sha256": "13713458e8967200f94086f983cef5b1e84f988300907b35882439f3ce031602",
+      "bytes": 2086,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/merch/mockup-keychain-logo.svg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/merch/mockup-keychain-logo.svg",
+      "sha256": "c50b2fcc0b0117b00eec9fc339efbd8ef058013e2c3d9d3340d94b13958145a5",
+      "bytes": 1567,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/merch/mockup-socks-logo.svg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/merch/mockup-socks-logo.svg",
+      "sha256": "1430aa00b1fc4e91068c2461393080cf46c9045c67fd2e76652a7b2a15a3880f",
+      "bytes": 1564,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/merch/mockup-tshirt-logo.svg",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/merch/mockup-tshirt-logo.svg",
+      "sha256": "fa47b20ac8cbfff0b606ddeb4416af221d6d5f9cf75728bf0777dc7e5a636fd6",
+      "bytes": 2066,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/theskateguys-1.png",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/theskateguys-1.png",
+      "sha256": "891f30d3b2a97d3f579603c4bbe13254c1a401916273b7ef248a5980a7d1f4ee",
+      "bytes": 120615,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/assets/updates-data.js",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "assets/updates-data.js",
+      "sha256": "6bad9bd9037e0bdc5178662b73b5a40a4035f744976aa9eca730fb58ca7a8fb4",
+      "bytes": 929,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/book.html",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "book.html",
+      "sha256": "964ce0400d9582e8bdd137f825c6d658fba205bcc2b3107adbacbc73d6f57aae",
+      "bytes": 17074,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/elite.html",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "elite.html",
+      "sha256": "9a4dd92a8dcf88404fd98590cfe68785edd79aab7bb2139eec5288eeabcc291b",
+      "bytes": 8203,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/googlee25463d8d8656390.html",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "googlee25463d8d8656390.html",
+      "sha256": "55873ba23b367d7fb6a63fb877961a65c87c1b3e67dfbc81067e85976d1ca353",
+      "bytes": 53,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/index.html",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "index.html",
+      "sha256": "5cbb4522459611f9131efaea2d2b864f1f0017e24ca6d15e0545f385f8ecdbd2",
+      "bytes": 53178,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/logo.png",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/merch.html",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "merch.html",
+      "sha256": "2cb6f1da9ab621896bff92589f2f3db4ff9c5809c0c966affb53fe1ffcbc37e2",
+      "bytes": 52991,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/52467abc/sitemap.xml",
+      "source": "52467abc209a51f7a42f33c2e41297e1621a3b48",
+      "originalPath": "sitemap.xml",
+      "sha256": "30521b31f5bb1b1f4ef3614e30d7a43891876b5dc3aa3953b6aec50b102b29f9",
+      "bytes": 642,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/coaches/Dylon.jpg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/coaches/Dylon.jpg",
+      "sha256": "7e70ee0106bdaa606d26ae703c5f06a0af448e43d2cd964ad479f30fcbaff768",
+      "bytes": 4965993,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/coaches/Dylon.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/coaches/Dylon.webp",
+      "sha256": "ebda6dfab02049e2354c8ba279fbccd5f7d996e6062ce33ad6cc559591c92c54",
+      "bytes": 1596204,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/coaches/Jevon.jpg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/coaches/Jevon.jpg",
+      "sha256": "2757db79d7e798830a4b35d6f8689a003b92d512543be4dfa6196ffd9fc0b7f6",
+      "bytes": 648857,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/coaches/Jevon.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/coaches/Jevon.webp",
+      "sha256": "3a545d09b7e90ad60308ce75e1906ef3481b4c5d510c65b26fbf892202742f8c",
+      "bytes": 349416,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/coaches/Nikesha.jpg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/coaches/Nikesha.jpg",
+      "sha256": "717483a2f185007d17d2b7906675afa78517a314a6678d73ac5e115ea783f850",
+      "bytes": 638298,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/coaches/Nikesha.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/coaches/Nikesha.webp",
+      "sha256": "a840073a68a2f876b28e822a2bd16604cda47c3e276ea01a5f30b8e84cee9d1f",
+      "bytes": 389048,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/coaches/Shelsea.jpg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/coaches/Shelsea.jpg",
+      "sha256": "595027b8650fc1bb957aff7b29c4a494753f8c0acd6b9054503d214619914084",
+      "bytes": 703371,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/coaches/Shelsea.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/coaches/Shelsea.webp",
+      "sha256": "63c4026a94eed08febee84467adc1634c9db7b1cda6dba5fe30fd7f768d62a07",
+      "bytes": 403866,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/community/tsg-01.jpg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/community/tsg-01.jpg",
+      "sha256": "ee7b5c6a4d31c89e0eaa9ae4e493546052fa5f1d3bc82c0458146b9c9ae210e2",
+      "bytes": 1340467,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/community/tsg-02.jpg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/community/tsg-02.jpg",
+      "sha256": "6e4299d6b2f5a1f7fa3686fea53e882b8022617cdbb8bcaa2e6616cd855846fc",
+      "bytes": 1555228,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/community/tsg-03.jpg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/community/tsg-03.jpg",
+      "sha256": "e21106047762b353edd8bab4e8a8b97609d7e0ab870ff47d936a5b4aef9ac830",
+      "bytes": 1723987,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/community/tsg-04.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/community/tsg-04.webp",
+      "sha256": "209ab3304776dd272a1ac1fad1bd67c19b5ef1f0b56c310c0ec0ff7876b377aa",
+      "bytes": 1793424,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/community/tsg-05.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/community/tsg-05.webp",
+      "sha256": "f152571b4cd7bde445e6c4929866a4c4dc243405f004621882b23ca505869943",
+      "bytes": 513180,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/community/tsg-06.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/community/tsg-06.webp",
+      "sha256": "b0a558313c5fd308af204f816f3b3f69ac28be4553fee4fb0850619ee836b92a",
+      "bytes": 1651454,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/events/disco-flyer.png",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/events/disco-flyer.png",
+      "sha256": "e4baef942e466893642ca031f31163d826e32a36bc0d43bcca0080fc510ea6fc",
+      "bytes": 1589558,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/events/events-data.js",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/events/events-data.js",
+      "sha256": "c68e450c7259cdc7d4843c6578e623faee00cac79af2c8b6179439d58d14e4e5",
+      "bytes": 142,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/events/lambeau-day.jpg.jpeg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/events/lambeau-day.jpg.jpeg",
+      "sha256": "061bb08d5741651dd3519e90d0d9e9660d6d87bce27435f431205d658dac28a4",
+      "bytes": 203110,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/events/popup-lowlands.jpg.jpg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/events/popup-lowlands.jpg.jpg",
+      "sha256": "7c5b021acb507210a6d4e78891d75732f93ea6c2bfa159f70cf9147380dd235a",
+      "bytes": 2850960,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/hero/canoe-bay-team-1200.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/hero/canoe-bay-team-1200.webp",
+      "sha256": "572dcd935e39cd8e76af306fd7f8cc98b39883004a5a34e6fbbe24091a6057a6",
+      "bytes": 372886,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/hero/canoe-bay-team-1536.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/hero/canoe-bay-team-1536.webp",
+      "sha256": "b4c1a21ad9ea89f78d83b9b7905a1476ad67ade2a5bf453cd85f2b3fc8323e08",
+      "bytes": 571724,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/hero/canoe-bay-team-768.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/hero/canoe-bay-team-768.webp",
+      "sha256": "d4c6593e0014027d8845a355d19d19f96ef6aa4b21326fa3845e7fffc8e1389a",
+      "bytes": 163834,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/hero/canoe-bay-team.webp",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/hero/canoe-bay-team.webp",
+      "sha256": "bd18432df424423011c2d1715cf1db65bb4e1ae7d3a1b65a509d2995ac5b2ead",
+      "bytes": 4844,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/lead-capture.css",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/lead-capture.css",
+      "sha256": "fedc5e729885b57c871351033f42c433c93099168d029f23d269f6004693b3bf",
+      "bytes": 4056,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/lead-capture.js",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/lead-capture.js",
+      "sha256": "305bf3dd85d30904159dcbdb8287b87c746f57ceeb1ad9ea63f70db23c1c6f3d",
+      "bytes": 13620,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/lead-config.js",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/lead-config.js",
+      "sha256": "8bbbc655a3344d9097230b9763d2db7d3bb83101150a179614a6095f8834b2c4",
+      "bytes": 252,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/logo.png",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/merch/classic-tshirt-community.jpg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/merch/classic-tshirt-community.jpg",
+      "sha256": "dac875bbfcd3f804b9d4089cb1d48bca4ff2fb3fd7fe1ca0e79f6a9ec4c14dd9",
+      "bytes": 401396,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/merch/mockup-bucket-hat-logo.svg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/merch/mockup-bucket-hat-logo.svg",
+      "sha256": "b50f80aa4936edfa786737f581719217eb7f0aa09f31298e10a0f825c93d1489",
+      "bytes": 1466,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/merch/mockup-hoodie-logo.svg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/merch/mockup-hoodie-logo.svg",
+      "sha256": "13713458e8967200f94086f983cef5b1e84f988300907b35882439f3ce031602",
+      "bytes": 2086,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/merch/mockup-keychain-logo.svg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/merch/mockup-keychain-logo.svg",
+      "sha256": "c50b2fcc0b0117b00eec9fc339efbd8ef058013e2c3d9d3340d94b13958145a5",
+      "bytes": 1567,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/merch/mockup-socks-logo.svg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/merch/mockup-socks-logo.svg",
+      "sha256": "1430aa00b1fc4e91068c2461393080cf46c9045c67fd2e76652a7b2a15a3880f",
+      "bytes": 1564,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/merch/mockup-tshirt-logo.svg",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/merch/mockup-tshirt-logo.svg",
+      "sha256": "fa47b20ac8cbfff0b606ddeb4416af221d6d5f9cf75728bf0777dc7e5a636fd6",
+      "bytes": 2066,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/theskateguys-1.png",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/theskateguys-1.png",
+      "sha256": "891f30d3b2a97d3f579603c4bbe13254c1a401916273b7ef248a5980a7d1f4ee",
+      "bytes": 120615,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/assets/updates-data.js",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "assets/updates-data.js",
+      "sha256": "6bad9bd9037e0bdc5178662b73b5a40a4035f744976aa9eca730fb58ca7a8fb4",
+      "bytes": 929,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/automation/rollback/binding.mjs",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "automation/rollback/binding.mjs",
+      "sha256": "40185d06185fc976f3c4471f7f2fa7b06dca362ad330adc8743b6ef0f1381f38",
+      "bytes": 5962,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/book.html",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "book.html",
+      "sha256": "964ce0400d9582e8bdd137f825c6d658fba205bcc2b3107adbacbc73d6f57aae",
+      "bytes": 17074,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/elite.html",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "elite.html",
+      "sha256": "9a4dd92a8dcf88404fd98590cfe68785edd79aab7bb2139eec5288eeabcc291b",
+      "bytes": 8203,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/googlee25463d8d8656390.html",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "googlee25463d8d8656390.html",
+      "sha256": "55873ba23b367d7fb6a63fb877961a65c87c1b3e67dfbc81067e85976d1ca353",
+      "bytes": 53,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/index.html",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "index.html",
+      "sha256": "5cbb4522459611f9131efaea2d2b864f1f0017e24ca6d15e0545f385f8ecdbd2",
+      "bytes": 53178,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/logo.png",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/merch.html",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "merch.html",
+      "sha256": "2cb6f1da9ab621896bff92589f2f3db4ff9c5809c0c966affb53fe1ffcbc37e2",
+      "bytes": 52991,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/e27ea9b/sitemap.xml",
+      "source": "e27ea9b5fa2a7c282c7151c75c1b3d84c6ad082f",
+      "originalPath": "sitemap.xml",
+      "sha256": "30521b31f5bb1b1f4ef3614e30d7a43891876b5dc3aa3953b6aec50b102b29f9",
+      "bytes": 642,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/eff7a9be/automation/google-apps-script/Code.gs",
+      "source": "eff7a9be329ccb6641022d13a0c4a082264ae287",
+      "originalPath": "automation/google-apps-script/Code.gs",
+      "sha256": "a761017b077e8f895ca03370eea32f62a09616e6f47d5f057820f1b83108a968",
+      "bytes": 31900,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "source-baselines/eff7a9be/automation/legacy-compatibility/Code.gs",
+      "source": "eff7a9be329ccb6641022d13a0c4a082264ae287",
+      "originalPath": "automation/legacy-compatibility/Code.gs",
+      "sha256": "8616a9d5fc098d1fe7408db21c25065b8748932b63bd6736b8f8acf1c84f7e35",
+      "bytes": 24065,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "vercel.json",
+      "source": "generated transfer control",
+      "originalPath": null,
+      "sha256": "31a0ca8c713ff4ee4626a1d925aa153ea23cc9a234912f77bdf9790a243845ca",
+      "bytes": 36,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "verify-transfer.mjs",
+      "source": "generated transfer control",
+      "originalPath": null,
+      "transformations": [
+        "new transfer-only file"
+      ],
+      "sha256": "b8d401d1439a3766cf6d57aac29d993cc17e2bdfe85903e31eebf5fd771bbae2",
+      "bytes": 1741
+    },
+    {
+      "path": "website-whatsapp/.gitignore",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": ".gitignore",
+      "sha256": "802a58fee9b57f9b294d3f07c3774e175ecad6dce0ed19eeb0f93ce77f07ef41",
+      "bytes": 79,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/.vercelignore",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": ".vercelignore",
+      "sha256": "21560bb81dd5b96eea615cc9aadf28264a327720860fed22b60f11bb73267482",
+      "bytes": 146,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/AUDIT_REPORT.md",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "AUDIT_REPORT.md",
+      "sha256": "c64f98cbd137f250e97582bb105f57c978b7fa2f0738da6aea212223daefffbf",
+      "bytes": 6276,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/CHANGELOG-CODEX-AUDIT.md",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "CHANGELOG-CODEX-AUDIT.md",
+      "sha256": "5e70e938556567db289630f45e05a73d3374a826ed42bdf9a6360e090ed79920",
+      "bytes": 2460,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/GOOGLE_SHEETS_LEAD_CAPTURE_SETUP.md",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "GOOGLE_SHEETS_LEAD_CAPTURE_SETUP.md",
+      "sha256": "aac9f41c8c992326b8abddfd0eb2d1e070a0130e99ec55c31147f95e29891054",
+      "bytes": 3642,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/HOMEPAGE_TRUST_ROLLOUT.md",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "HOMEPAGE_TRUST_ROLLOUT.md",
+      "sha256": "fc29e70d901e8e30caee2c5ae299ce9cbf8359fe7c37df05a1fa30a32e0b261b",
+      "bytes": 1704,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/MERCH_MOCKUP_ROLLOUT.md",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "MERCH_MOCKUP_ROLLOUT.md",
+      "sha256": "3f433aaf7bdbf10868991179880839ef24169d94cab36b9d97333e1b81c2009e",
+      "bytes": 2692,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/README.md",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "README.md",
+      "sha256": "f439f27440128f5cf045d102e2e556f0a87ee18a7706c6e8889d6b04d131b5c1",
+      "bytes": 214,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/WEBSITE_WHATSAPP_RELEASE_REVIEW.md",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "WEBSITE_WHATSAPP_RELEASE_REVIEW.md",
+      "sha256": "8a7834163de4930aa5a587580e2cf8bffc7ef07e3d245660772b2c8a39b8b0f2",
+      "bytes": 9362,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/coaches/Dylon.jpg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/coaches/Dylon.jpg",
+      "sha256": "7e70ee0106bdaa606d26ae703c5f06a0af448e43d2cd964ad479f30fcbaff768",
+      "bytes": 4965993,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/coaches/Dylon.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/coaches/Dylon.webp",
+      "sha256": "ebda6dfab02049e2354c8ba279fbccd5f7d996e6062ce33ad6cc559591c92c54",
+      "bytes": 1596204,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/coaches/Jevon.jpg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/coaches/Jevon.jpg",
+      "sha256": "2757db79d7e798830a4b35d6f8689a003b92d512543be4dfa6196ffd9fc0b7f6",
+      "bytes": 648857,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/coaches/Jevon.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/coaches/Jevon.webp",
+      "sha256": "3a545d09b7e90ad60308ce75e1906ef3481b4c5d510c65b26fbf892202742f8c",
+      "bytes": 349416,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/coaches/Nikesha.jpg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/coaches/Nikesha.jpg",
+      "sha256": "717483a2f185007d17d2b7906675afa78517a314a6678d73ac5e115ea783f850",
+      "bytes": 638298,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/coaches/Nikesha.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/coaches/Nikesha.webp",
+      "sha256": "a840073a68a2f876b28e822a2bd16604cda47c3e276ea01a5f30b8e84cee9d1f",
+      "bytes": 389048,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/coaches/Shelsea.jpg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/coaches/Shelsea.jpg",
+      "sha256": "595027b8650fc1bb957aff7b29c4a494753f8c0acd6b9054503d214619914084",
+      "bytes": 703371,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/coaches/Shelsea.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/coaches/Shelsea.webp",
+      "sha256": "63c4026a94eed08febee84467adc1634c9db7b1cda6dba5fe30fd7f768d62a07",
+      "bytes": 403866,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/community/.gitkeep",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/community/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/community/tsg-01.jpg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/community/tsg-01.jpg",
+      "sha256": "ee7b5c6a4d31c89e0eaa9ae4e493546052fa5f1d3bc82c0458146b9c9ae210e2",
+      "bytes": 1340467,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/community/tsg-02.jpg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/community/tsg-02.jpg",
+      "sha256": "6e4299d6b2f5a1f7fa3686fea53e882b8022617cdbb8bcaa2e6616cd855846fc",
+      "bytes": 1555228,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/community/tsg-03.jpg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/community/tsg-03.jpg",
+      "sha256": "e21106047762b353edd8bab4e8a8b97609d7e0ab870ff47d936a5b4aef9ac830",
+      "bytes": 1723987,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/community/tsg-04.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/community/tsg-04.webp",
+      "sha256": "209ab3304776dd272a1ac1fad1bd67c19b5ef1f0b56c310c0ec0ff7876b377aa",
+      "bytes": 1793424,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/community/tsg-05.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/community/tsg-05.webp",
+      "sha256": "f152571b4cd7bde445e6c4929866a4c4dc243405f004621882b23ca505869943",
+      "bytes": 513180,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/community/tsg-06.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/community/tsg-06.webp",
+      "sha256": "b0a558313c5fd308af204f816f3b3f69ac28be4553fee4fb0850619ee836b92a",
+      "bytes": 1651454,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/events/disco-flyer.png",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/events/disco-flyer.png",
+      "sha256": "e4baef942e466893642ca031f31163d826e32a36bc0d43bcca0080fc510ea6fc",
+      "bytes": 1589558,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/events/events-data.js",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/events/events-data.js",
+      "sha256": "c68e450c7259cdc7d4843c6578e623faee00cac79af2c8b6179439d58d14e4e5",
+      "bytes": 142,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/events/lambeau-day.jpg.jpeg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/events/lambeau-day.jpg.jpeg",
+      "sha256": "061bb08d5741651dd3519e90d0d9e9660d6d87bce27435f431205d658dac28a4",
+      "bytes": 203110,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/events/popup-lowlands.jpg.jpg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/events/popup-lowlands.jpg.jpg",
+      "sha256": "7c5b021acb507210a6d4e78891d75732f93ea6c2bfa159f70cf9147380dd235a",
+      "bytes": 2850960,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/hero/canoe-bay-team-1200.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/hero/canoe-bay-team-1200.webp",
+      "sha256": "572dcd935e39cd8e76af306fd7f8cc98b39883004a5a34e6fbbe24091a6057a6",
+      "bytes": 372886,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/hero/canoe-bay-team-1536.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/hero/canoe-bay-team-1536.webp",
+      "sha256": "b4c1a21ad9ea89f78d83b9b7905a1476ad67ade2a5bf453cd85f2b3fc8323e08",
+      "bytes": 571724,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/hero/canoe-bay-team-768.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/hero/canoe-bay-team-768.webp",
+      "sha256": "d4c6593e0014027d8845a355d19d19f96ef6aa4b21326fa3845e7fffc8e1389a",
+      "bytes": 163834,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/hero/canoe-bay-team.webp",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/hero/canoe-bay-team.webp",
+      "sha256": "bd18432df424423011c2d1715cf1db65bb4e1ae7d3a1b65a509d2995ac5b2ead",
+      "bytes": 4844,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/lead-capture.css",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/lead-capture.css",
+      "sha256": "06ef2ee3936bd4af83bbacfa2914e58de3ae1ee015234cfcaeac5d7f3bb3c07b",
+      "bytes": 3305,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/lead-capture.js",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/lead-capture.js",
+      "sha256": "ed2a5644d3decad90bfe8031dd22ae3375be03fefd6d4020102ab3635a856f3a",
+      "bytes": 8827,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/lead-config.js",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/lead-config.js",
+      "sha256": "14614e2b4bf04d6f6edc41ad37006895b398f1c45905e4fe133fafaae273e87c",
+      "bytes": 251,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/logo.png",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/merch/classic-tshirt-community.jpg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/merch/classic-tshirt-community.jpg",
+      "sha256": "dac875bbfcd3f804b9d4089cb1d48bca4ff2fb3fd7fe1ca0e79f6a9ec4c14dd9",
+      "bytes": 401396,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/merch/merch clothe",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/merch/merch clothe",
+      "sha256": "8b911a8716b94442f9ca3dff20584048536e4c2f47b8b5bb9096cbd43c3432d5",
+      "bytes": 5,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/merch/mockup-bucket-hat-logo.svg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/merch/mockup-bucket-hat-logo.svg",
+      "sha256": "b50f80aa4936edfa786737f581719217eb7f0aa09f31298e10a0f825c93d1489",
+      "bytes": 1466,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/merch/mockup-hoodie-logo.svg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/merch/mockup-hoodie-logo.svg",
+      "sha256": "13713458e8967200f94086f983cef5b1e84f988300907b35882439f3ce031602",
+      "bytes": 2086,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/merch/mockup-keychain-logo.svg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/merch/mockup-keychain-logo.svg",
+      "sha256": "c50b2fcc0b0117b00eec9fc339efbd8ef058013e2c3d9d3340d94b13958145a5",
+      "bytes": 1567,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/merch/mockup-socks-logo.svg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/merch/mockup-socks-logo.svg",
+      "sha256": "1430aa00b1fc4e91068c2461393080cf46c9045c67fd2e76652a7b2a15a3880f",
+      "bytes": 1564,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/merch/mockup-tshirt-logo.svg",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/merch/mockup-tshirt-logo.svg",
+      "sha256": "fa47b20ac8cbfff0b606ddeb4416af221d6d5f9cf75728bf0777dc7e5a636fd6",
+      "bytes": 2066,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/theskateguys-1.png",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/theskateguys-1.png",
+      "sha256": "891f30d3b2a97d3f579603c4bbe13254c1a401916273b7ef248a5980a7d1f4ee",
+      "bytes": 120615,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/updates-data.js",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/updates-data.js",
+      "sha256": "6bad9bd9037e0bdc5178662b73b5a40a4035f744976aa9eca730fb58ca7a8fb4",
+      "bytes": 929,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/whatsapp-booking.css",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/whatsapp-booking.css",
+      "sha256": "d885f4d312a0cbe49c28fc7b1f5d10dfbbac07de098dbdff0120919c53c0ecdd",
+      "bytes": 2755,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/whatsapp-booking.js",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/whatsapp-booking.js",
+      "sha256": "d64c0f5a9bfc5684bcc8ddd727cb9b2d28747ef3075f3eb904b7e1cebf4937cf",
+      "bytes": 7557,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/assets/whatsapp-contact.css",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "assets/whatsapp-contact.css",
+      "sha256": "8d575249076bb0207874908c01783c2179c643e734c4705fd06bb99846867dc0",
+      "bytes": 864,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/automation/build-tsg-leads.mjs",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "automation/build-tsg-leads.mjs",
+      "sha256": "9be4ffc98cde99cc0a2502123cc9be5e4f1644e501b13907301f04bc984e8a8d",
+      "bytes": 5721,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/automation/build-whatsapp-release.mjs",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "automation/build-whatsapp-release.mjs",
+      "sha256": "a4218462d70c41cbe4901ca2877441f664e0e352c23cc4110942c6e1064bc100",
+      "bytes": 4410,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/automation/check-lead-flow.mjs",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "automation/check-lead-flow.mjs",
+      "sha256": "75d3ee99dc1f694b133ca03bed600ce8f91e48a9679157772a8e952f4f7553af",
+      "bytes": 2535,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/automation/check-whatsapp-browser.cjs",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "automation/check-whatsapp-browser.cjs",
+      "sha256": "dad812087f228db8be7c78519e1029916db6c761f2dd80bde6228846eddc7b18",
+      "bytes": 8238,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/automation/check-whatsapp-fallback.cjs",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "automation/check-whatsapp-fallback.cjs",
+      "sha256": "c3b79a03035034c852f1c313b761216509d4f4258bf310cacdffb26fd5a3488c",
+      "bytes": 3020,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/automation/google-apps-script/Code.gs",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "automation/google-apps-script/Code.gs",
+      "sha256": "8a66986cf87ce39024a929a34b1e4c710606ecbc58c7a354c233a15d44b82dd2",
+      "bytes": 13987,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/automation/google-apps-script/README.md",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "automation/google-apps-script/README.md",
+      "sha256": "89b5fdf38c87ae159c509203c5652d65e7216f7807c99b1b451361bfc0eb4169",
+      "bytes": 1360,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/automation/serve-whatsapp-release.mjs",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "automation/serve-whatsapp-release.mjs",
+      "sha256": "e0aa426e0f66cb3d57c4691a78f525040d9a9d381c15cc29013a6840385f08f5",
+      "bytes": 1529,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/book.html",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "book.html",
+      "sha256": "6a457cc6683df11c7f22ee936f20050b2b30c546e72e379d4abf522c4d8db72e",
+      "bytes": 16459,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/elite.html",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "elite.html",
+      "sha256": "2f52c7ac8b4e0c515331d07fb94cf3e84cf18ac728e1e710e4e4ba75f38f5180",
+      "bytes": 8234,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/googlee25463d8d8656390.html",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "googlee25463d8d8656390.html",
+      "sha256": "55873ba23b367d7fb6a63fb877961a65c87c1b3e67dfbc81067e85976d1ca353",
+      "bytes": 53,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/index.html",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "index.html",
+      "sha256": "2c6b1aa9503cbdd6714c440c209757ab4c8b0641dade222ffadb1d9279650eb1",
+      "bytes": 52409,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/logo.png",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "logo.png",
+      "sha256": "2e39eb2e3256dbf3b9c5c7ee9ebf2e7516886b10a46bba07260af903a9e66730",
+      "bytes": 97484,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/merch.html",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "merch.html",
+      "sha256": "d2584c2703e78ca3df448fce320287d1c846a54b92ed5517e9448a48611bfe28",
+      "bytes": 52115,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/release/website-whatsapp-manifest.json",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "release/website-whatsapp-manifest.json",
+      "sha256": "443b07e34ebfb3b67f5231901d1e1c9c8a322490d5c81b2f91d9e25fcf97b043",
+      "bytes": 6397,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/release/whatsapp-fallback-book.html",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "release/whatsapp-fallback-book.html",
+      "sha256": "b024c8895db21a8f722cc2c99fff133d5e02ef716d1e6a089e9df8a8a7d902fc",
+      "bytes": 3846,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/sitemap.xml",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "sitemap.xml",
+      "sha256": "30521b31f5bb1b1f4ef3614e30d7a43891876b5dc3aa3953b6aec50b102b29f9",
+      "bytes": 642,
+      "transformations": [
+        "exact bytes"
+      ]
+    },
+    {
+      "path": "website-whatsapp/vercel.json",
+      "source": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "originalPath": "vercel.json",
+      "sha256": "495b438d4a31c90946864f05f8a1a81e48340e2858fb17d40d61e3f3336c0a65",
+      "bytes": 561,
+      "transformations": [
+        "exact bytes"
+      ]
+    }
+  ],
+  "exclusions": [
+    {
+      "snapshot": "website-whatsapp",
+      "sourceCommit": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "path": "release/website-whatsapp-browser.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "website-whatsapp",
+      "sourceCommit": "5592c39bfd6a0f8db850b048e83b770bdd64e402",
+      "path": "release/website-whatsapp-fallback-browser.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/CLEAN_LEGACY_ACCEPTANCE.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/CLEAN_LEGACY_ACCEPTANCE.md",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/CLEAN_LEGACY_VERSION1_ACCEPTANCE.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/CLEAN_LEGACY_VERSION1_ACCEPTANCE.md",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/CLEAN_LEGACY_VERSION1_BACKUP.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/FALLBACK_ISOLATED_VERIFICATION.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/FALLBACK_ISOLATED_VERIFICATION.md",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/ISOLATED_EMAIL_ACCEPTANCE.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/ISOLATED_EMAIL_ACCEPTANCE.md",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/LEGACY_DUPLICATE_ISOLATION_ACCEPTANCE.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/LEGACY_DUPLICATE_ISOLATION_ACCEPTANCE.md",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/LEGACY_ENDPOINT_INSPECTION.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/LEGACY_ISOLATED_ACCEPTANCE.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/LEGACY_ISOLATED_ACCEPTANCE.md",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/LIVE_SHEET_INTEGRITY_AUDIT.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/LIVE_SHEET_INTEGRITY_AUDIT.md",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/LIVE_SHEET_INTEGRITY_AUDIT_CAPTURE.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/NEW_INTAKE_ACCEPTANCE.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/OPTIMIZED_BACKEND_ACCEPTANCE.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/OPTIMIZED_BACKEND_ACCEPTANCE.md",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/REAL_BROWSER_25S_ACK_VERIFICATION.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/REAL_BROWSER_ACK_VERIFICATION.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/email-previews/blocked-images.html",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/email-previews/blocked-images.txt",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/email-previews/booking-request.html",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/email-previews/booking-request.txt",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/email-previews/index.html",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/email-previews/stress-test.html",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/email-previews/stress-test.txt",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "snapshot": "booking-review",
+      "sourceCommit": "b4c6ada1ff26141d324786cc5276ee69b88456ff",
+      "path": "automation/new-intake-acceptance/preview-file-hashes.json",
+      "reason": "Raw historical acceptance/customer evidence or generated message/browser artifact; prose summaries retained"
+    },
+    {
+      "path": ".git/",
+      "reason": "Outside TSG transfer scope: private local state, logs, credentials or customer evidence; not traversed"
+    },
+    {
+      "path": ".codex/",
+      "reason": "Outside TSG transfer scope: private local state, logs, credentials or customer evidence; not traversed"
+    },
+    {
+      "path": ".agents/",
+      "reason": "Outside TSG transfer scope: private local state, logs, credentials or customer evidence; not traversed"
+    },
+    {
+      "path": ".review/",
+      "reason": "Outside TSG transfer scope: private local state, logs, credentials or customer evidence; not traversed"
+    },
+    {
+      "path": ".playwright-cli/",
+      "reason": "Outside TSG transfer scope: private local state, logs, credentials or customer evidence; not traversed"
+    },
+    {
+      "path": "node_modules/",
+      "reason": "Outside TSG transfer scope: private local state, logs, credentials or customer evidence; not traversed"
+    },
+    {
+      "path": ".env*",
+      "reason": "Outside TSG transfer scope: private local state, logs, credentials or customer evidence; not traversed"
+    },
+    {
+      "path": "output/ (except explicit merch bundle)",
+      "reason": "Outside TSG transfer scope: private local state, logs, credentials or customer evidence; not traversed"
+    }
+  ]
+}

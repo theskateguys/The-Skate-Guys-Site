@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050508">
+  <title>Book a Skate Class | The Skate Guys</title>
+  <meta name="description" content="Request a TSG skate session by appointment: TT$80 per person for 75 minutes, skate rental included. Confirm availability with TSG on WhatsApp.">
+  <meta property="og:title" content="Book a Skate Class | The Skate Guys">
+  <meta property="og:description" content="Request a 75-minute session at TT$80 per person, skate rental included. TSG checks availability with you on WhatsApp before confirming.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://the-skate-guys-site.vercel.app/book.html">
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#050508;--panel:#11111b;--panel2:#171722;--ink:#f8f8fb;--muted:#aaaabb;--line:rgba(255,255,255,.12);--cyan:#00f5ff;--pink:#ff2d6b;--gold:#ffd166;--wrap:min(1060px,calc(100% - 32px));--display:'Bebas Neue',sans-serif;--body:'DM Sans',sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100vh;background:radial-gradient(680px 400px at 0 0,rgba(255,45,107,.16),transparent 65%),radial-gradient(620px 400px at 100% 4%,rgba(0,245,255,.13),transparent 66%),var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:var(--wrap);margin:auto}
+    .header{position:sticky;top:0;z-index:9;background:rgba(5,5,8,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:9px;font:25px/1 var(--display);letter-spacing:.04em}
+    .brand img{width:37px;height:37px;object-fit:contain;border-radius:9px}
+    .links{display:flex;gap:18px}
+    .links a{font-size:13px;color:var(--muted);font-weight:700}
+    .links a:hover{color:#fff}
+    .btn{display:inline-flex;justify-content:center;align-items:center;min-height:46px;padding:11px 17px;border:1px solid transparent;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .primary{background:var(--cyan);color:#001014;box-shadow:0 0 24px rgba(0,245,255,.25)}
+    .secondary{background:rgba(255,255,255,.05);color:#fff;border-color:var(--line)}
+    .hero{padding:56px 0 24px}
+    .eyebrow{display:inline-flex;padding:7px 11px;border-radius:999px;border:1px solid rgba(0,245,255,.25);background:rgba(0,245,255,.06);color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.02em;line-height:.9}
+    h1{font-size:clamp(56px,10vw,100px);margin:17px 0}
+    .hero p{max-width:650px;color:#d1d1dd;font-size:17px}
+    .trust{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+    .trust span{font-size:12px;font-weight:700;color:var(--muted)}
+    .trust span:before{content:'*';color:var(--cyan);margin-right:6px}
+    .layout{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;padding:24px 0 52px}
+    .panel{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(16,16,26,.86)}
+    .panel h2{font-size:37px;margin-bottom:7px}
+    .panel-intro{font-size:13px;color:var(--muted);margin-bottom:16px}
+    .packages{display:grid;gap:10px}
+    .package{display:block;padding:15px;border:1px solid var(--line);border-radius:13px;background:var(--panel2);cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+    .package:hover{transform:translateY(-2px);border-color:rgba(0,245,255,.35)}
+    .package input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+    .package:has(input:checked){border-color:rgba(0,245,255,.72);box-shadow:0 0 0 1px rgba(0,245,255,.22),0 0 25px rgba(0,245,255,.10)}
+    .package-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+    .package-name{font-weight:800}
+    .price{font:31px/1 var(--display);color:var(--gold)}
+    .package p{font-size:13px;color:var(--muted);margin-top:5px}
+    .recommended{display:inline-block;margin-top:8px;padding:4px 7px;border-radius:999px;background:rgba(255,45,107,.11);color:var(--pink);font-size:10px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+    .help{margin-top:14px;font-size:13px;color:var(--muted)}
+    .help a{color:var(--cyan);font-weight:800}
+    .form{display:grid;gap:13px}
+    label{display:grid;gap:7px;font-size:13px;font-weight:800;color:#e1e1e8}
+    input,select{width:100%;min-height:47px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.22);color:#fff;font-size:15px;outline:none}
+    select option{color:#111}
+    input:focus,select:focus{border-color:rgba(0,245,255,.74);box-shadow:0 0 0 3px rgba(0,245,255,.10)}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .note{padding:13px;border:1px solid rgba(255,209,102,.24);border-radius:12px;background:rgba(255,209,102,.08);font-size:13px;color:#e0e0e7}
+    .note strong{color:var(--gold)}
+    .submit{width:100%;min-height:55px;font-size:15px}
+    .under-submit{text-align:center;color:var(--muted);font-size:12px}
+    .under-submit a{color:var(--cyan);font-weight:800}
+    .how{padding:0 0 58px}
+    .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .how-item{padding:18px;border-left:2px solid var(--cyan);background:rgba(255,255,255,.025)}
+    .how-item:nth-child(2){border-color:var(--pink)}
+    .how-item:nth-child(3){border-color:var(--gold)}
+    .how-item b{display:block;font:38px/1 var(--display);margin-bottom:8px}
+    .how-item p{font-size:13px;color:var(--muted)}
+    footer{padding:24px 0 38px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+    @media(max-width:850px){.layout{grid-template-columns:1fr}.how-grid{grid-template-columns:1fr}.links{display:none}}
+    @media(max-width:550px){:root{--wrap:min(100% - 28px,1060px)}.hero{padding-top:43px}.nav .btn{display:none}.two{grid-template-columns:1fr}h1{font-size:clamp(58px,17vw,80px)}.layout{padding-bottom:35px}.panel{padding:17px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+  </style>
+  <link rel="stylesheet" href="assets/lead-capture.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html"><img src="logo.png" alt="The Skate Guys logo"><span>The Skate Guys</span></a>
+      <nav class="links" aria-label="Primary navigation"><a href="index.html">Home</a><a href="merch.html">Merch</a><a href="index.html#events">Events</a></nav>
+      <a class="btn secondary" href="https://wa.me/18682766878" target="_blank" rel="noopener">Ask TSG on WhatsApp</a>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Trinidad &amp; Tobago skate classes</span>
+        <h1>READY TO ROLL?<br>BOOK YOUR CLASS.</h1>
+        <p>Request a 75-minute session by appointment. TT$80 per person, skate rental included. One person can book.</p>
+        <div class="trust"><span>Rentals included</span><span>Kids and adults</span><span>No online payment needed to request a slot</span></div>
+      </div>
+    </section>
+    <div class="wrap layout">
+      <section class="panel" aria-labelledby="packageTitle">
+        <h2 id="packageTitle">YOUR SKATE SESSION</h2>
+        <p class="panel-intro">Kids and adults welcome. Classes are by appointment, including individual bookings.</p>
+        <div class="packages">
+          <div class="package"><div class="package-top"><span class="package-name">Single session</span><span class="price">TT$80</span></div><p>Per person / 75 minutes / skate rental included</p></div>
+        </div>
+        <p class="help"><strong>Trinidad:</strong> location agreed during booking. <strong>Tobago:</strong> TSG confirms Rec TT Black Rock or another suitable agreed location. Locations depend on availability.</p>
+        <p class="help">A request is not a confirmed class. TSG checks coach, location and skate availability before payment. Deposit preferred; payment on arrival available by arrangement. TSG will discuss the deposit with you.</p>
+        <div class="note booking-policy"><strong>Rescheduling, cancellations and credit</strong>
+          <ul>
+            <li>At least 24 hours' notice: the amount paid carries forward as credit.</li>
+            <li>Less than 24 hours' notice or no-show: no automatic credit; genuine emergencies are reviewed individually.</li>
+            <li>TSG/coach cancellation or unsafe weather/venue: the full amount paid carries forward as credit, without penalty.</li>
+            <li>Credit expires one calendar month from the original scheduled session date. If the matching date does not exist, use the last day of that month.</li>
+            <li>If TSG cannot offer a replacement before expiry, we extend the credit to give you a reasonable opportunity to attend and record the agreed new expiry.</li>
+            <li>Transfers require TSG approval, subject to participant suitability and skate availability.</li>
+            <li>Credit rather than refunds.</li>
+          </ul>
+        </div>
+        <p class="help">Class questions or booking help? <a href="https://wa.me/18682766878" target="_blank" rel="noopener">Ask TSG on WhatsApp.</a> Use the booking form to request your class.</p>
+      </section>
+      <section class="panel" aria-labelledby="formTitle">
+        <h2 id="formTitle">SEND YOUR REQUEST</h2>
+        <p class="panel-intro">This is a booking request, not a payment. TSG confirms the correct class and next step with you.</p>
+        <form class="form" id="bookingForm" data-tsg-lead-form data-lead-type="booking" data-tags="class_lead">
+          <input type="hidden" name="package" value="Single session: TT$80 per person / 75 minutes / skate rental included">
+          <label>Contact name<input name="name" autocomplete="name" maxlength="120" required></label>
+          <label>WhatsApp number<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="868-276-6878" maxlength="24" required></label>
+          <label>Email (optional)<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
+          <div class="two">
+            <label>Island<select name="location" required><option value="">Select one</option><option>Trinidad</option><option>Tobago</option></select></label>
+            <label>Preferred area<input name="preferredArea" maxlength="160" placeholder="Town or area to discuss with TSG" required></label>
+          </div>
+          <div class="two">
+            <label>Preferred date<input name="preferredDate" type="date" required></label>
+            <label>Preferred time<input name="preferredTime" type="time" required></label>
+          </div>
+          <label>Number of participants<input name="participantCount" type="number" min="1" max="20" step="1" value="1" required aria-describedby="participantHelp"></label>
+          <p class="lead-privacy" id="participantHelp">For more than 20 participants, contact TSG to coordinate your group. Sizes help TSG check rental availability and fit.</p>
+          <div data-participants></div>
+          <template id="participantTemplate">
+            <fieldset class="participant"><legend>Participant <span data-participant-number></span></legend>
+              <div class="two"><label>Age<input data-field="age" type="number" min="1" max="120" step="1" required></label><label>Experience<select data-field="experience" required><option value="">Select one</option><option>First time</option><option>Beginner</option><option>Intermediate</option><option>Experienced</option></select></label></div>
+              <label>Rental skates needed<select data-field="rentals" required><option value="">Select one</option><option>Yes</option><option>No</option></select></label>
+              <div class="two" data-rental-size hidden><label>Skate size<input data-field="skateSize" maxlength="24" placeholder="e.g. 7 or 38" disabled></label><label>Sizing system<select data-field="sizeSystem" disabled><option value="">Select one</option><option>EU</option><option>UK adult</option><option>UK child</option><option>US men</option><option>US women</option><option>US youth</option><option>US toddler</option></select></label></div>
+              <div data-guardian hidden><p class="lead-privacy">For participants under 18, provide a parent or guardian contact. The booking contact may also be the guardian.</p><label>Guardian name<input data-field="guardianName" maxlength="120" disabled></label><label>Guardian WhatsApp<input data-field="guardianPhone" type="tel" autocomplete="off" disabled></label></div>
+            </fieldset>
+          </template>
+          <noscript><p class="note">Enable JavaScript to complete participant details and request a class through this form. Need help? <a href="https://wa.me/18682766878">Ask TSG on WhatsApp</a>.</p></noscript>
+          <label class="lead-consent booking-consent"><input type="checkbox" name="marketingConsent"><span>Yes, add me to occasional TSG class, event and merch updates. I can unsubscribe at any time. This is optional and does not affect my booking request.</span></label>
+          <p class="lead-privacy">We may measure anonymous website activity. Personal details are collected only when you submit this form. Booking details are used to handle your request; marketing messages are sent only when you opt in.</p>
+          <button class="btn primary submit" type="submit">Prepare Request &amp; Continue to WhatsApp</button>
+          <p class="booking-status" data-form-status aria-live="polite"></p>
+          <div class="booking-success" data-booking-success hidden><strong>Thank you. Your message is ready.</strong><p>You must open WhatsApp and press Send on the prepared message. Opening WhatsApp alone does not send your request or confirm a class. TSG will check availability with you.</p><a class="btn primary" data-whatsapp-link href="#" target="_blank" rel="noopener">Open WhatsApp &amp; Send Message</a></div>
+          <p class="under-submit">Prefer a quick question first? <a href="https://wa.me/18682766878" target="_blank" rel="noopener">Ask TSG on WhatsApp.</a> Class requests start with this form.</p>
+        </form>
+      </section>
+    </div>
+    <section class="lead-capture-band" aria-labelledby="bookingEmailTitle">
+      <div class="wrap lead-capture-inner">
+        <div class="lead-capture-copy"><span class="eyebrow">Not ready to choose?</span><h2 id="bookingEmailTitle">GET THE WEEKLY<br>TSG ROLL-UP.</h2><p>Classes, upcoming sessions, merch updates and one useful skating tip, once a week.</p></div>
+        <form class="lead-capture-form" data-tsg-lead-form data-lead-type="email" data-tags="class_lead">
+          <input type="email" name="email" autocomplete="email" placeholder="Your email address" aria-label="Email address" required>
+          <select name="location" aria-label="Location" required><option value="">Your island</option><option>Trinidad</option><option>Tobago</option></select>
+          <button class="btn primary lead-submit" type="submit">Join Updates</button>
+          <label class="lead-consent"><input type="checkbox" name="marketingConsent" required><span>I agree to receive TSG class, event and merch updates by email. I can unsubscribe at any time.</span></label>
+          <p class="lead-privacy">We may measure anonymous website activity. Personal details are collected only when you submit this form.</p>
+          <p class="lead-status" data-form-status aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+    <section class="how">
+      <div class="wrap">
+        <div class="how-grid">
+          <article class="how-item"><b>01</b><p>Request a TT$80 per-person, 75-minute session by appointment, with skate rental included.</p></article>
+          <article class="how-item"><b>02</b><p>Send the key details through the short form.</p></article>
+          <article class="how-item"><b>03</b><p>Send the prepared WhatsApp message. TSG checks coach, location and skate availability before discussing payment and confirming your class.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap">The Skate Guys Ltd · Trinidad &amp; Tobago</div></footer>
+  <script src="assets/lead-config.js"></script>
+  <script src="assets/lead-capture.js"></script>
+</body>
+</html>

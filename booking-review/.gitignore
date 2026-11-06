@@ -1,0 +1,4 @@
+automation/node_modules/
+automation/output/
+/.playwright-cli/
+/output/

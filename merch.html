@@ -214,6 +214,7 @@
       .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 340px; gap: 12px; }
       .p-feat, .p-std, .p-wide, .p-sm, .p-half, .p-third { grid-column: span 1; grid-row: span 1; }
       .p-feat { grid-column: span 2; }
+      .visual-tee { grid-row: span 2; min-height: 620px; }
     }
     @media (max-width: 560px) {
       .bento { grid-template-columns: 1fr; grid-auto-rows: 360px; gap: 14px; }
@@ -239,6 +240,12 @@
       background:
         radial-gradient(circle at 50% 38%, rgba(255,255,255,.08), transparent 32%),
         linear-gradient(135deg, #08080d, #12121a 55%, #07070b);
+    }
+    .pcard-img.product-img-photo {
+      object-fit: contain;
+      padding: 12px 18px 104px;
+      background: radial-gradient(ellipse at 50% 38%, #20202a 0, #101016 52%, #08080c 100%);
+      transition: transform .45s ease;
     }
     .pcard-placeholder {
       width: 100%; height: 100%;
@@ -276,6 +283,31 @@
       opacity: .9;
     }
     .pcard:hover .pcard-desc { max-height: 72px; opacity: 1; }
+
+    .tee-variant-control { display: grid; gap: 7px; margin-top: 9px; }
+    .tee-variant-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .tee-colour-label { color: rgba(255,255,255,.86); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .tee-variant-arrows { display: inline-flex; gap: 6px; }
+    .tee-variant-arrow, .tee-colour-chip {
+      border: 1px solid rgba(255,255,255,.2); background: rgba(0,0,0,.55); color: #fff;
+      cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease, background .18s ease;
+    }
+    .tee-variant-arrow { width: 32px; height: 32px; border-radius: 50%; display: inline-grid; place-items: center; font-size: 18px; line-height: 1; }
+    .tee-colour-options { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tee-colour-chip { min-height: 32px; border-radius: 999px; display: inline-flex; align-items: center; gap: 5px; padding: 4px 8px 4px 5px; font-size: 9px; font-weight: 800; white-space: nowrap; }
+    .tee-variant-arrow:hover, .tee-colour-chip:hover { border-color: var(--cyan); box-shadow: 0 0 14px rgba(0,245,255,.16); transform: translateY(-1px); }
+    .tee-colour-chip.active { border-color: var(--cyan); background: rgba(0,245,255,.14); box-shadow: 0 0 0 1px rgba(0,245,255,.18); }
+    .tee-chip-dot { width: 13px; height: 13px; border-radius: 50%; background: var(--swatch); border: 1px solid rgba(255,255,255,.35); flex: 0 0 auto; }
+    .tee-size-control { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 8px; margin-top: 7px; }
+    .tee-size-control label { color: rgba(255,255,255,.76); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+    .tee-size-control select { min-height: 36px; min-width: 0; padding: 6px 10px; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: #101016; color: #fff; font: 700 12px var(--font-body); }
+    .tee-order-actions { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; width: 100%; }
+    .tee-order-actions .pcard-btn { width: 100%; min-width: 0; padding-inline: 10px; }
+    .tee-shop-link { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 999px; color: #fff; font-size: 10px; font-weight: 800; text-transform: uppercase; white-space: nowrap; }
+    .tee-shop-link:hover { border-color: var(--cyan); color: var(--cyan); }
+    .visual-tee .pcard-overlay { padding: 18px; }
+    .visual-tee .pcard-footer { display: block; }
+    .visual-tee .pcard-footer > div:first-child { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
 
     .pcard-footer {
       display: flex; align-items: center; justify-content: space-between;
@@ -610,6 +642,13 @@
       .product-shell { padding: 0 14px; }
       .pcard { border-radius: 16px; }
       .pcard-overlay { padding: 20px; }
+      .visual-tee { grid-row: span 2; min-height: 720px; }
+      .visual-tee .pcard-overlay { padding: 16px; }
+      .pcard-img.product-img-photo { padding: 12px 8px 214px; }
+      .tee-colour-options { gap: 4px; }
+      .tee-colour-chip { padding-inline: 6px; font-size: 8px; }
+      .tee-order-actions { grid-template-columns: minmax(0, 1fr); }
+      .tee-order-actions .tee-shop-link { width: 100%; min-height: 38px; white-space: normal; }
       .pcard-name { font-size: 30px; }
       .pcard-desc { max-height: none; opacity: 1; font-size: 13px; }
       .pcard-footer { align-items: flex-end; }
@@ -802,19 +841,45 @@
       <div class="bento" id="productGrid">
 
         <!-- 1. Classic T-Shirt — featured (5 cols × 2 rows) -->
-        <div class="pcard p-feat" data-cat="tshirt">
+        <div class="pcard p-feat visual-tee" data-cat="tshirt" data-tee-card>
           <span class="pcard-tag pt-best">Best Seller</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/classic-tshirt-community.jpg" alt="Classic T-Shirt community gear promo" loading="lazy" style="object-fit:contain; background:#111;">
+          <img class="pcard-img product-img-photo" src="assets/merch/black-dtf-print.png" alt="Black The Skate Guys Community T-shirt mockup" loading="lazy" data-tee-image>
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt / Community Drop</div>
             <div class="pcard-name">TSG Community Tee</div>
             <div class="pcard-desc">The main logo tee for class days, rink nights, and showing up with the crew.</div>
+            <div class="tee-variant-control" aria-label="TSG Community Tee colour options">
+              <div class="tee-variant-top">
+                <span class="tee-colour-label" data-tee-colour-label>Colour: Black</span>
+                <div class="tee-variant-arrows" aria-label="Cycle T-shirt colours">
+                  <button class="tee-variant-arrow" type="button" data-tee-dir="-1" aria-label="Previous T-shirt colour">‹</button>
+                  <button class="tee-variant-arrow" type="button" data-tee-dir="1" aria-label="Next T-shirt colour">›</button>
+                </div>
+              </div>
+              <div class="tee-colour-options" aria-label="Available colours">
+                <button class="tee-colour-chip active" type="button" data-tee-variant="0" data-src="assets/merch/black-dtf-print.png" data-colour="Black" data-alt="Black The Skate Guys Community T-shirt mockup" aria-pressed="true" aria-label="Show Black T-shirt"><span class="tee-chip-dot" style="--swatch:#050505"></span><span>Black</span></button>
+                <button class="tee-colour-chip" type="button" data-tee-variant="1" data-src="assets/merch/charcoal-grey-dtf-print.png" data-colour="Charcoal Grey" data-alt="Charcoal grey The Skate Guys Community T-shirt mockup" aria-pressed="false" aria-label="Show Charcoal Grey T-shirt"><span class="tee-chip-dot" style="--swatch:#3f4144"></span><span>Charcoal</span></button>
+                <button class="tee-colour-chip" type="button" data-tee-variant="2" data-src="assets/merch/white-dtf-print.png" data-colour="White" data-alt="White The Skate Guys Community T-shirt mockup" aria-pressed="false" aria-label="Show White T-shirt"><span class="tee-chip-dot" style="--swatch:#f4f4ef"></span><span>White</span></button>
+                <button class="tee-colour-chip" type="button" data-tee-variant="3" data-src="assets/merch/heather-grey-dtf-print.png" data-colour="Heather Grey" data-alt="Heather grey The Skate Guys Community T-shirt mockup" aria-pressed="false" aria-label="Show Heather Grey T-shirt"><span class="tee-chip-dot" style="--swatch:#b8b8b3"></span><span>Heather</span></button>
+                <button class="tee-colour-chip" type="button" data-tee-variant="4" data-src="assets/merch/purple-dtf-print.png" data-colour="Purple" data-alt="Purple The Skate Guys Community T-shirt mockup" aria-pressed="false" aria-label="Show Purple T-shirt"><span class="tee-chip-dot" style="--swatch:#583b83"></span><span>Purple</span></button>
+              </div>
+            </div>
+            <div class="tee-size-control">
+              <label for="teeSize">Size</label>
+              <select id="teeSize" data-tee-size aria-label="Select T-shirt size" required>
+                <option value="" selected disabled>Choose size</option>
+                <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option>
+              </select>
+            </div>
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$160</div>
                 <span class="pcard-price-sub">TTD · Sizes XS–3XL</span>
               </div>
-              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+              <div class="tee-order-actions">
+                <button class="pcard-btn" type="button" data-tee-whatsapp>Order on WhatsApp</button>
+                <a class="tee-shop-link" href="https://theskateguys.myshopify.com" target="_blank" rel="noopener">Shop online</a>
+              </div>
             </div>
           </div>
         </div>
@@ -822,7 +887,7 @@
         <!-- 2. Bucket Hat — standard (4 cols × 2 rows) -->
         <div class="pcard p-std" data-cat="headwear">
           <span class="pcard-tag pt-wear">Everyday Wear</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-bucket-hat-logo.svg" alt="Temporary TSG Community Bucket Hat logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-bucket-hat-logo.svg" alt="Black bucket hat mockup with the neon The Skate Guys community logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Headwear / All-Black</div>
             <div class="pcard-name">Circle Logo Bucket Hat</div>
@@ -840,7 +905,7 @@
         <!-- 3. Hoodie Solid SK8 — standard (3 cols × 1 row, wide) -->
         <div class="pcard p-wide" data-cat="hoodie">
           <span class="pcard-tag pt-new">New Drop</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Solid With SK8 hoodie logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Black Solid With SK8 hoodie mockup with TSG branding" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie / Statement Piece</div>
             <div class="pcard-name">Solid With SK8 Hoodie</div>
@@ -858,7 +923,7 @@
         <!-- 4. Keychain — small -->
         <div class="pcard p-sm" data-cat="accessory">
           <span class="pcard-tag pt-skater">For Skaters</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-keychain-logo.svg" alt="Temporary TSG Acrylic Keychain logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-keychain-logo.svg" alt="TSG acrylic keychain mockup with the community logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Accessory / Daily Carry</div>
             <div class="pcard-name">TSG Pocket Keychain</div>
@@ -875,7 +940,7 @@
         <!-- 5. Hoodie Therapy — half -->
         <div class="pcard p-half" data-cat="hoodie">
           <span class="pcard-tag pt-limited">Limited Run</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Rollerskate Because Therapy hoodie logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Rollerskate Because Therapy hoodie mockup with neon TSG logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie / Mood Piece</div>
             <div class="pcard-name">Therapy Roll Hoodie</div>
@@ -893,7 +958,7 @@
         <!-- 6. Proud Skate Mom — half -->
         <div class="pcard p-half" data-cat="tshirt">
           <span class="pcard-tag pt-wear">Everyday Wear</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Proud Skate Mom T-shirt logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Proud Skate Mom T-shirt mockup with TSG branding" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt / Family Crew</div>
             <div class="pcard-name">Skate Mom Tee</div>
@@ -911,7 +976,7 @@
         <!-- 7. Hoodie F8 — third -->
         <div class="pcard p-third" data-cat="hoodie">
           <span class="pcard-tag pt-skater">For Skaters</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary Rollersk8 With F8 hoodie logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Rollersk8 With F8 hoodie mockup with neon TSG logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie / Skate Phrase</div>
             <div class="pcard-name">F8 Roll Hoodie</div>
@@ -926,7 +991,7 @@
         <!-- 8. Hoodie Running Sucks — third -->
         <div class="pcard p-third" data-cat="hoodie">
           <span class="pcard-tag pt-new">New Drop</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="Temporary I Skate Because Running Sucks hoodie logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-hoodie-logo.svg" alt="I Skate Because Running Sucks hoodie mockup with TSG logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie / Streetwear</div>
             <div class="pcard-name">Skate Over Running Hoodie</div>
@@ -941,7 +1006,7 @@
         <!-- 9. Christmas Tee — third -->
         <div class="pcard p-third" data-cat="tshirt">
           <span class="pcard-tag pt-limited">Limited Run</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Keep Skat-ing Christmas tee logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Keep Skat-ing Christmas T-shirt mockup with TSG branding" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt / Seasonal</div>
             <div class="pcard-name">Holiday Roll Tee</div>
@@ -956,7 +1021,7 @@
         <!-- 10. Socks — half -->
         <div class="pcard p-half" data-cat="accessory">
           <span class="pcard-tag pt-soon">Coming Soon</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-socks-logo.svg" alt="Temporary TSG Community Socks logo mockup" loading="lazy">
+          <img class="pcard-img product-img-contain" src="assets/merch/mockup-socks-logo.svg" alt="TSG community crew socks mockup with the neon logo" loading="lazy">
           <div class="pcard-overlay">
             <div class="pcard-cat">Accessory / Coming Soon</div>
             <div class="pcard-name">Community Crew Socks</div>
@@ -1175,6 +1240,41 @@
 
     function shop() { window.open('https://theskateguys.myshopify.com', '_blank'); }
     function notify() { window.open(`${waBase}?text=${encodeURIComponent("Hi TSG! I'd like to be notified when the TSG Community Socks are available.")}`, '_blank'); }
+
+    const teeCard = document.querySelector('[data-tee-card]');
+    if (teeCard) {
+      const teeImage = teeCard.querySelector('[data-tee-image]');
+      const teeLabel = teeCard.querySelector('[data-tee-colour-label]');
+      const teeOptions = [...teeCard.querySelectorAll('[data-tee-variant]')];
+      const teeArrows = [...teeCard.querySelectorAll('[data-tee-dir]')];
+      const teeSize = teeCard.querySelector('[data-tee-size]');
+      const teeWhatsApp = teeCard.querySelector('[data-tee-whatsapp]');
+      let teeIndex = 0;
+
+      function setTeeVariant(nextIndex) {
+        if (!teeImage || !teeLabel || !teeOptions.length) return;
+        teeIndex = (nextIndex + teeOptions.length) % teeOptions.length;
+        const active = teeOptions[teeIndex];
+        teeImage.src = active.dataset.src;
+        teeImage.alt = active.dataset.alt;
+        teeLabel.textContent = `Colour: ${active.dataset.colour}`;
+        teeOptions.forEach((option, index) => {
+          const selected = index === teeIndex;
+          option.classList.toggle('active', selected);
+          option.setAttribute('aria-pressed', String(selected));
+        });
+      }
+
+      teeOptions.forEach((option, index) => option.addEventListener('click', () => setTeeVariant(index)));
+      teeArrows.forEach(arrow => arrow.addEventListener('click', () => setTeeVariant(teeIndex + Number(arrow.dataset.teeDir || 0))));
+      teeWhatsApp?.addEventListener('click', () => {
+        if (!teeSize?.reportValidity()) return;
+        const colour = teeOptions[teeIndex]?.dataset.colour || 'Black';
+        const product = teeCard.querySelector('.pcard-name')?.textContent.trim() || 'TSG Community Tee';
+        const message = `Hi TSG! I'd like to order the ${product}. Colour: ${colour}. Size: ${teeSize.value}. Please confirm availability and delivery/pickup.`;
+        window.open(`${waBase}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+      });
+    }
 
     // Hamburger
     const hbg = document.getElementById('hamburger');

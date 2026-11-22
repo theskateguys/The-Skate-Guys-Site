@@ -758,7 +758,7 @@
       </h1>
       <p class="hero-desc">Skate-ready streetwear for class days, rink nights, road moves, and everyday community wear across Trinidad &amp; Tobago.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://theskateguys.myshopify.com" target="_blank" rel="noopener">Shop the Drop</a>
+        <a class="btn btn-primary" href="https://mcz2t1-es.myshopify.com/collections/all" target="_blank" rel="noopener">Shop the Drop</a>
         <a class="btn btn-ghost" href="https://wa.me/18682766878?text=Hi%20TSG!%20I%27d%20like%20to%20order%20some%20merch." target="_blank" rel="noopener">Order on WhatsApp</a>
       </div>
       <div class="hero-stats">
@@ -814,7 +814,7 @@
                 <div class="pcard-price">$160</div>
                 <span class="pcard-price-sub">TTD · Sizes XS–3XL</span>
               </div>
-              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+              <button class="pcard-btn" onclick="shop('/products/the-skate-guys-community-t-shirt')">Buy Now</button>
             </div>
           </div>
         </div>
@@ -1007,7 +1007,7 @@
             <span class="order-step-num">01</span>
             <h3>Shopify checkout</h3>
             <p>Browse the current drop and complete your order through the online store when the item, size, and price are already clear.</p>
-            <a class="btn btn-primary btn-sm" href="https://theskateguys.myshopify.com" target="_blank" rel="noopener">Shop the Drop</a>
+            <a class="btn btn-primary btn-sm" href="https://mcz2t1-es.myshopify.com/collections/all" target="_blank" rel="noopener">Shop the Drop</a>
           </div>
           <div class="order-step">
             <span class="order-step-num">02</span>
@@ -1173,7 +1173,8 @@
     const waBase = `https://wa.me/${WA}`;
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    function shop() { window.open('https://theskateguys.myshopify.com', '_blank'); }
+    const STORE = 'https://mcz2t1-es.myshopify.com';
+    function shop(path) { window.open(STORE + (path || '/collections/all'), '_blank'); }
     function notify() { window.open(`${waBase}?text=${encodeURIComponent("Hi TSG! I'd like to be notified when the TSG Community Socks are available.")}`, '_blank'); }
 
     // Hamburger

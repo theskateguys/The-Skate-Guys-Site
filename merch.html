@@ -428,6 +428,7 @@
       letter-spacing: .02em;
     }
     .size-guide p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .photo-pending { display:flex; align-items:center; justify-content:center; background:#14141c; color:#b9b9c8; text-align:center; font-size:18px; letter-spacing:.12em; padding:24px 24px 180px; }
     .size-chart-wrap {
       overflow-x: hidden;
       border: 1px solid rgba(255,255,255,.08);
@@ -700,11 +701,11 @@
     <div class="top-bar-track" aria-hidden="true">
       <span>🛼 OFFICIAL TSG COMMUNITY GEAR</span>
       <span>✏️ CUSTOM NAME PRINTING AVAILABLE</span>
-      <span>🚚 FREE DELIVERY ON ORDERS OVER TT$600 &middot; SHIPS WORLDWIDE</span>
+      <span>DELIVERY OPTIONS &amp; CHARGES CONFIRMED AT CHECKOUT</span>
       <span>TT$80 PER PERSON &middot; 75 MINUTES &middot; SKATE RENTAL INCLUDED</span>
       <span>🛼 OFFICIAL TSG COMMUNITY GEAR</span>
       <span>✏️ CUSTOM NAME PRINTING AVAILABLE</span>
-      <span>🚚 FREE DELIVERY ON ORDERS OVER TT$600 &middot; SHIPS WORLDWIDE</span>
+      <span>DELIVERY OPTIONS &amp; CHARGES CONFIRMED AT CHECKOUT</span>
       <span>TT$80 PER PERSON &middot; 75 MINUTES &middot; SKATE RENTAL INCLUDED</span>
     </div>
   </div>
@@ -767,8 +768,8 @@
           <div class="stat-label">Products</div>
         </div>
         <div class="stat">
-          <div class="stat-num" style="color:var(--pink);">$20</div>
-          <div class="stat-label">Starts from TTD</div>
+          <div class="stat-num" style="color:var(--pink);">$229</div>
+          <div class="stat-label">Available from TTD</div>
         </div>
         <div class="stat">
           <div class="stat-num" style="color:var(--gold);">TSG</div>
@@ -803,16 +804,16 @@
 
         <!-- 1. Classic T-Shirt — featured (5 cols × 2 rows) -->
         <div class="pcard p-feat" data-cat="tshirt">
-          <span class="pcard-tag pt-best">Best Seller</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/classic-tshirt-community.jpg" alt="Classic T-Shirt community gear promo" loading="lazy" style="object-fit:contain; background:#111;">
+          <span class="pcard-tag pt-best">Community Drop</span>
+          <img class="pcard-img product-img-contain" src="https://cdn.shopify.com/s/files/1/0977/9108/2863/files/unisex-staple-t-shirt-black-heather-front-2-6a2fc7b13f7d3.jpg?v=1781516239" alt="TSG Community Tee in black heather, front logo print" loading="lazy" style="object-fit:contain; background:#111;">
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt / Community Drop</div>
             <div class="pcard-name">TSG Community Tee</div>
-            <div class="pcard-desc">Neon Community logo front, "Rollersk8 With F8" back. Printed on demand, shipped worldwide.</div>
+            <div class="pcard-desc">Neon Community logo front, "Rollersk8 With F8" back. Printed on demand. Delivery options are shown at checkout.</div>
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$229</div>
-                <span class="pcard-price-sub">TTD · XS–5XL · Free delivery over $600</span>
+                <span class="pcard-price-sub">TTD · XS–2XL</span>
               </div>
               <button class="pcard-btn" onclick="shop('/products/the-skate-guys-community-t-shirt')">Buy Now</button>
             </div>
@@ -821,18 +822,18 @@
 
         <!-- 2. Bucket Hat — standard (4 cols × 2 rows) -->
         <div class="pcard p-std" data-cat="headwear">
-          <span class="pcard-tag pt-wear">Everyday Wear</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-bucket-hat-logo.svg" alt="Temporary TSG Community Bucket Hat logo mockup" loading="lazy">
+          <span class="pcard-tag pt-soon">Coming Soon</span>
+          <div class="pcard-img photo-pending" role="img" aria-label="TSG Community Bucket Hat product photo coming soon"><span>PRODUCT PHOTO<br>COMING SOON</span></div>
           <div class="pcard-overlay">
             <div class="pcard-cat">Headwear / All-Black</div>
-            <div class="pcard-name">Circle Logo Bucket Hat</div>
+            <div class="pcard-name">TSG Community Bucket Hat</div>
             <div class="pcard-desc">Low-key shade with the neon TSG mark for sessions, pop-ups, and roadwear.</div>
             <div class="pcard-footer">
               <div>
-                <div class="pcard-price">$80</div>
+                <div class="pcard-price">$85</div>
                 <span class="pcard-price-sub">TTD · One size</span>
               </div>
-              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+              <button class="pcard-btn" onclick="enquire('TSG Community Bucket Hat')">Ask TSG</button>
             </div>
           </div>
         </div>
@@ -844,11 +845,11 @@
           <div class="pcard-overlay">
             <div class="pcard-cat">Hoodie / Statement Piece</div>
             <div class="pcard-name">Solid With Sk8 Hoodie</div>
-            <div class="pcard-desc">Community logo on the front, "Solid With Sk8" on the back. Warm heavy-blend hoodie, printed on demand and shipped worldwide.</div>
+            <div class="pcard-desc">Community logo on the front, "Solid With Sk8" on the back. Warm heavy-blend hoodie, printed on demand. Delivery options are shown at checkout.</div>
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$349</div>
-                <span class="pcard-price-sub">TTD · S–5XL · Free delivery over $600</span>
+                <span class="pcard-price-sub">TTD · S–2XL</span>
               </div>
               <button class="pcard-btn" onclick="shop('/products/solid-with-sk8-hoodie')">Buy Now</button>
             </div>
@@ -857,17 +858,17 @@
 
         <!-- 4. Keychain — small -->
         <div class="pcard p-sm" data-cat="accessory">
-          <span class="pcard-tag pt-skater">For Skaters</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-keychain-logo.svg" alt="Temporary TSG Acrylic Keychain logo mockup" loading="lazy">
+          <span class="pcard-tag pt-soon">Coming Soon</span>
+          <div class="pcard-img photo-pending" role="img" aria-label="TSG Community Keychain product photo coming soon"><span>PRODUCT PHOTO<br>COMING SOON</span></div>
           <div class="pcard-overlay">
             <div class="pcard-cat">Accessory / Daily Carry</div>
-            <div class="pcard-name">TSG Pocket Keychain</div>
+            <div class="pcard-name">TSG Community Keychain</div>
             <div class="pcard-footer">
               <div>
-                <div class="pcard-price">$20</div>
+                <div class="pcard-price">$25</div>
                 <span class="pcard-price-sub">TTD</span>
               </div>
-              <button class="pcard-btn" onclick="shop()">Shop</button>
+              <button class="pcard-btn" onclick="enquire('TSG Community Keychain')">Ask TSG</button>
             </div>
           </div>
         </div>
@@ -883,7 +884,7 @@
             <div class="pcard-footer">
               <div>
                 <div class="pcard-price">$349</div>
-                <span class="pcard-price-sub">TTD · S–5XL · Free delivery over $600</span>
+                <span class="pcard-price-sub">TTD · S–2XL</span>
               </div>
               <button class="pcard-btn" onclick="shop('/products/rollerskate-therapy-hoodie')">Buy Now</button>
             </div>
@@ -892,8 +893,8 @@
 
         <!-- 6. Proud Skate Mom — half -->
         <div class="pcard p-half" data-cat="tshirt">
-          <span class="pcard-tag pt-wear">Everyday Wear</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Proud Skate Mom T-shirt logo mockup" loading="lazy">
+          <span class="pcard-tag pt-soon">Coming Soon</span>
+          <div class="pcard-img photo-pending" role="img" aria-label="Skate Mom Tee product photo coming soon"><span>PRODUCT PHOTO<br>COMING SOON</span></div>
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt / Family Crew</div>
             <div class="pcard-name">Skate Mom Tee</div>
@@ -903,7 +904,7 @@
                 <div class="pcard-price">$160</div>
                 <span class="pcard-price-sub">TTD</span>
               </div>
-              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+              <button class="pcard-btn" onclick="enquire('Skate Mom Tee')">Ask TSG</button>
             </div>
           </div>
         </div>
@@ -917,7 +918,7 @@
             <div class="pcard-name">Rollersk8 With F8 Hoodie</div>
             <div class="pcard-desc">Roll with faith. Neon script on the back, Community logo on the front.</div>
             <div class="pcard-footer">
-              <div><div class="pcard-price">$349</div><span class="pcard-price-sub">TTD · S–5XL · Free delivery over $600</span></div>
+              <div><div class="pcard-price">$349</div><span class="pcard-price-sub">TTD · S–2XL</span></div>
               <button class="pcard-btn" onclick="shop('/products/rollersk8-with-f8-hoodie')">Buy Now</button>
             </div>
           </div>
@@ -932,7 +933,7 @@
             <div class="pcard-name">I Skate Because Running Sucks Hoodie</div>
             <div class="pcard-desc">Why run when you can roll? Bold back print for every skater who picked wheels over cardio.</div>
             <div class="pcard-footer">
-              <div><div class="pcard-price">$349</div><span class="pcard-price-sub">TTD · S–5XL · Free delivery over $600</span></div>
+              <div><div class="pcard-price">$349</div><span class="pcard-price-sub">TTD · S–2XL</span></div>
               <button class="pcard-btn" onclick="shop('/products/i-skate-because-running-sucks-hoodie')">Buy Now</button>
             </div>
           </div>
@@ -940,15 +941,15 @@
 
         <!-- 9. Christmas Tee — third -->
         <div class="pcard p-third" data-cat="tshirt">
-          <span class="pcard-tag pt-limited">Limited Run</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-tshirt-logo.svg" alt="Temporary Keep Skat-ing Christmas tee logo mockup" loading="lazy">
+          <span class="pcard-tag pt-soon">Coming Soon</span>
+          <div class="pcard-img photo-pending" role="img" aria-label="Holiday Roll Tee product photo coming soon"><span>PRODUCT PHOTO<br>COMING SOON</span></div>
           <div class="pcard-overlay">
             <div class="pcard-cat">T-Shirt / Seasonal</div>
             <div class="pcard-name">Holiday Roll Tee</div>
             <div class="pcard-desc">A seasonal skate tee for festive sessions and community meetups.</div>
             <div class="pcard-footer">
               <div><div class="pcard-price">$160</div><span class="pcard-price-sub">TTD</span></div>
-              <button class="pcard-btn" onclick="shop()">Buy Now</button>
+              <button class="pcard-btn" onclick="enquire('Holiday Roll Tee')">Ask TSG</button>
             </div>
           </div>
         </div>
@@ -956,14 +957,14 @@
         <!-- 10. Socks — half -->
         <div class="pcard p-half" data-cat="accessory">
           <span class="pcard-tag pt-soon">Coming Soon</span>
-          <img class="pcard-img product-img-contain" src="assets/merch/mockup-socks-logo.svg" alt="Temporary TSG Community Socks logo mockup" loading="lazy">
+          <div class="pcard-img photo-pending" role="img" aria-label="Community Crew Socks product photo coming soon"><span>PRODUCT PHOTO<br>COMING SOON</span></div>
           <div class="pcard-overlay">
             <div class="pcard-cat">Accessory / Coming Soon</div>
             <div class="pcard-name">Community Crew Socks</div>
             <div class="pcard-desc">Branded crew socks for rink fits. Register interest via WhatsApp.</div>
             <div class="pcard-footer">
               <div><div class="pcard-price">$35</div><span class="pcard-price-sub">TTD</span></div>
-              <button class="pcard-btn" onclick="notify()">Notify Me</button>
+              <button class="pcard-btn" onclick="enquire('Community Crew Socks')">Ask TSG</button>
             </div>
           </div>
         </div>
@@ -1023,58 +1024,16 @@
         <div class="size-guide-head">
           <div class="size-guide-kicker">Find Your Size</div>
           <h2 id="sizeGuideTitle">FIND YOUR SIZE.</h2>
-          <p>Use this quick guide for TSG tees and hoodie fits. Measurements are in inches and are meant to help you choose a comfortable everyday fit.</p>
+          <p>The Community Tee is offered in XS–2XL and hoodies in S–2XL. Fit and measurements vary by garment. Check the individual product size guide or ask TSG before ordering. We do not offer sizes above 2XL.</p>
         </div>
 
         <div class="size-chart-wrap">
-          <table class="size-chart">
-            <thead>
-              <tr>
-                <th scope="col">Size</th>
-                <th scope="col">Chest</th>
-                <th scope="col">Length</th>
-                <th scope="col">Best for</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="size-label" data-label="Size">XS</td>
-                <td data-label="Chest">32&ndash;34 in</td>
-                <td data-label="Length">25&ndash;26 in</td>
-                <td data-label="Best for">small teens / petite adults</td>
-              </tr>
-              <tr>
-                <td class="size-label" data-label="Size">S</td>
-                <td data-label="Chest">35&ndash;37 in</td>
-                <td data-label="Length">27&ndash;28 in</td>
-                <td data-label="Best for">slim adults</td>
-              </tr>
-              <tr>
-                <td class="size-label" data-label="Size">M</td>
-                <td data-label="Chest">38&ndash;40 in</td>
-                <td data-label="Length">28&ndash;29 in</td>
-                <td data-label="Best for">regular fit</td>
-              </tr>
-              <tr>
-                <td class="size-label" data-label="Size">L</td>
-                <td data-label="Chest">41&ndash;43 in</td>
-                <td data-label="Length">29&ndash;30 in</td>
-                <td data-label="Best for">relaxed fit</td>
-              </tr>
-              <tr>
-                <td class="size-label" data-label="Size">XL</td>
-                <td data-label="Chest">44&ndash;46 in</td>
-                <td data-label="Length">30&ndash;31 in</td>
-                <td data-label="Best for">bigger relaxed fit</td>
-              </tr>
-              <tr>
-                <td class="size-label" data-label="Size">2XL</td>
-                <td data-label="Chest">47&ndash;50 in</td>
-                <td data-label="Length">31&ndash;32 in</td>
-                <td data-label="Best for">oversized fit</td>
-              </tr>
-            </tbody>
-          </table>
+          <table class="size-chart"><caption>Sizes offered — maximum 2XL</caption><thead><tr><th scope="col">Size</th><th scope="col">Community Tee</th><th scope="col">Hoodies</th></tr></thead><tbody><tr><td class="size-label" data-label="Size">XS</td><td data-label="Community Tee">Available</td><td data-label="Hoodies">Not offered</td></tr>
+<tr><td class="size-label" data-label="Size">S</td><td data-label="Community Tee">Available</td><td data-label="Hoodies">Available</td></tr>
+<tr><td class="size-label" data-label="Size">M</td><td data-label="Community Tee">Available</td><td data-label="Hoodies">Available</td></tr>
+<tr><td class="size-label" data-label="Size">L</td><td data-label="Community Tee">Available</td><td data-label="Hoodies">Available</td></tr>
+<tr><td class="size-label" data-label="Size">XL</td><td data-label="Community Tee">Available</td><td data-label="Hoodies">Available</td></tr>
+<tr><td class="size-label" data-label="Size">2XL</td><td data-label="Community Tee">Available</td><td data-label="Hoodies">Available</td></tr></tbody></table>
         </div>
 
         <div class="size-note">
@@ -1125,7 +1084,7 @@
         <a class="btn btn-primary btn-sm" href="https://wa.me/18682766878?text=Hi%20TSG%2C%20I%20have%20a%20merch%20question." target="_blank" rel="noopener">Message TSG about Merch</a>
       </div>
 
-      <p style="font-size: 11px; color: var(--muted); margin-top: 16px; text-align: center;">All prices in Trinidad &amp; Tobago Dollars (TTD). Approx. 6.8 TTD = 1 USD.</p>
+      <p style="font-size: 11px; color: var(--muted); margin-top: 16px; text-align: center;">All prices in Trinidad &amp; Tobago Dollars (TTD). Delivery availability and charges are confirmed at checkout.</p>
 
     </div>
   </main>
@@ -1136,7 +1095,7 @@
       <div class="footer-inner">
         <div>
           <div class="footer-brand">The Skate Guys</div>
-          <div class="footer-tag">Trinidad &amp; Tobago's leading rollerskate community.</div>
+          <div class="footer-tag">Roller skating, community and lifestyle in Trinidad &amp; Tobago.</div>
           <div class="social-row">
             <a class="s-btn" href="https://instagram.com/the_skateguys" target="_blank" rel="noopener">📸 Instagram</a>
             <a class="s-btn" href="https://wa.me/18682766878?text=Hi%20TSG%2C%20I%20have%20a%20merch%20question." target="_blank" rel="noopener">Message TSG about Merch</a>
@@ -1175,6 +1134,7 @@
 
     const STORE = 'https://mcz2t1-es.myshopify.com';
     function shop(path) { window.open(STORE + (path || '/collections/all'), '_blank'); }
+    function enquire(item) { window.open(`${waBase}?text=${encodeURIComponent(`Hi TSG! I'd like an update on ${item}.`)}`, '_blank', 'noopener'); }
     function notify() { window.open(`${waBase}?text=${encodeURIComponent("Hi TSG! I'd like to be notified when the TSG Community Socks are available.")}`, '_blank'); }
 
     // Hamburger
